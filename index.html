@@ -191,6 +191,160 @@
     }
 
     /* ============================================================
+       SECTION 5 — How It Works (3 accordion rows)
+       ============================================================ */
+    .how {
+      position: relative;
+      background: var(--color-dark);
+      padding: 120px 28px 140px;
+      overflow: hidden;
+      isolation: isolate;
+      border-top: 1px solid var(--color-border);
+    }
+    .how__inner {
+      max-width: 1320px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+    .how__header {
+      max-width: 720px;
+      margin-bottom: 64px;
+    }
+    .how__heading {
+      font-family: 'Bebas Neue', sans-serif;
+      font-weight: 400;
+      font-size: clamp(56px, 7vw, 96px);
+      line-height: 0.95;
+      letter-spacing: 0.005em;
+      color: #fff;
+      margin: 16px 0 0;
+      max-width: 14ch;
+    }
+
+    .how__list { display: flex; flex-direction: column; border-top: 1px solid rgba(255, 255, 255, 0.2); }
+    .how-row {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 32px 0;
+      cursor: pointer;
+      transition: background 300ms;
+    }
+    .how-row:hover { background: rgba(255, 255, 255, 0.015); }
+    .how-row__top {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 36px;
+      align-items: center;
+    }
+    .how-row__num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-weight: 400;
+      font-size: clamp(36px, 5vw, 56px);
+      line-height: 1;
+      color: var(--color-accent);
+      letter-spacing: 0.04em;
+    }
+    .how-row__title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-weight: 400;
+      font-size: clamp(36px, 5vw, 56px);
+      line-height: 1;
+      letter-spacing: 0.01em;
+      color: #fff;
+      margin: 0;
+    }
+    .how-row__arrow {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      transition: transform 400ms cubic-bezier(.4,0,.2,1), border-color 300ms, background 300ms;
+      flex-shrink: 0;
+    }
+    .how-row.is-open .how-row__arrow {
+      background: var(--color-accent);
+      border-color: var(--color-accent);
+      color: #0a0a0c;
+      transform: rotate(135deg);
+    }
+
+    .how-row__panel {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 500ms cubic-bezier(.4,0,.2,1);
+    }
+    .how-row__panel-inner {
+      padding: 24px 0 8px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 360px);
+      gap: 48px;
+      align-items: start;
+    }
+    .how-row.is-open .how-row__panel { max-height: 360px; }
+
+    .how-row__body {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 17px;
+      line-height: 1.7;
+      color: rgba(240, 240, 240, 0.78);
+      margin: 0;
+      max-width: 60ch;
+    }
+    .how-row__tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .how-row__tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 12px;
+      border: 1px solid rgba(var(--accent-rgb), 0.3);
+      border-radius: 9999px;
+      background: rgba(var(--accent-rgb), 0.05);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+    }
+
+    .how__book {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 56px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      transition: gap 300ms;
+    }
+    .how__book:hover { gap: 18px; }
+    .how__book .arrow {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      border: 1px solid rgba(var(--accent-rgb), 0.45);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 300ms, transform 350ms cubic-bezier(.4,0,.2,1);
+    }
+    .how__book:hover .arrow { background: rgba(var(--accent-rgb), 0.15); transform: rotate(45deg); }
+
+    @media (max-width: 768px) {
+      .how-row__panel-inner { grid-template-columns: 1fr; gap: 24px; }
+      .how-row__top { gap: 20px; }
+      .how-row__arrow { width: 44px; height: 44px; }
+      .how-row.is-open .how-row__panel { max-height: 480px; }
+    }
+    @media (max-width: 520px) {
+      .how { padding: 80px 20px 100px; }
+      .how__header { margin-bottom: 40px; }
+    }
+
+    /* ============================================================
        SECTION 4 — Fleet (tab filter + 9 vehicle cards)
        ============================================================ */
     .fleet {
@@ -1111,7 +1265,92 @@
         </a>
       </div>
     </section>
-    <!-- SECTION:HOW -->
+    <!-- ============================================================
+         SECTION 5 — HOW IT WORKS
+         ============================================================ -->
+    <section class="how" id="how" aria-labelledby="howHeading">
+      <div class="beam beam--reverse" aria-hidden="true"></div>
+      <div class="how__inner">
+        <div class="how__header reveal">
+          <span class="label-bracket">How It Works</span>
+          <h2 class="how__heading" id="howHeading">Three steps to your perfect ride.</h2>
+        </div>
+
+        <div class="how__list">
+
+          <div class="how-row reveal is-open" data-row="1">
+            <div class="how-row__top" role="button" tabindex="0" aria-expanded="true" aria-controls="how-panel-1">
+              <span class="how-row__num">01 /</span>
+              <h3 class="how-row__title">Choose your vehicle</h3>
+              <span class="how-row__arrow" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>
+              </span>
+            </div>
+            <div class="how-row__panel" id="how-panel-1">
+              <div class="how-row__panel-inner">
+                <p class="how-row__body">Browse our premium fleet and select the perfect vehicle for your occasion. From Rolls Royce Phantoms to stretch Hummers, we have Sydney's finest.</p>
+                <div class="how-row__tags">
+                  <span class="how-row__tag">Wedding</span>
+                  <span class="how-row__tag">Corporate</span>
+                  <span class="how-row__tag">Formal</span>
+                  <span class="how-row__tag">Birthday</span>
+                  <span class="how-row__tag">Hens</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="how-row reveal" data-row="2">
+            <div class="how-row__top" role="button" tabindex="0" aria-expanded="false" aria-controls="how-panel-2">
+              <span class="how-row__num">02 /</span>
+              <h3 class="how-row__title">Tell us your details</h3>
+              <span class="how-row__arrow" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>
+              </span>
+            </div>
+            <div class="how-row__panel" id="how-panel-2">
+              <div class="how-row__panel-inner">
+                <p class="how-row__body">Let us know your pickup location, destination, date, time and any special requirements. We'll confirm availability and send a quote within the hour.</p>
+                <div class="how-row__tags">
+                  <span class="how-row__tag">Sydney</span>
+                  <span class="how-row__tag">Wollongong</span>
+                  <span class="how-row__tag">Airport</span>
+                  <span class="how-row__tag">Cruise Terminal</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="how-row reveal" data-row="3">
+            <div class="how-row__top" role="button" tabindex="0" aria-expanded="false" aria-controls="how-panel-3">
+              <span class="how-row__num">03 /</span>
+              <h3 class="how-row__title">Arrive in style</h3>
+              <span class="how-row__arrow" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>
+              </span>
+            </div>
+            <div class="how-row__panel" id="how-panel-3">
+              <div class="how-row__panel-inner">
+                <p class="how-row__body">Your professional chauffeur arrives early, immaculately presented. Sit back, relax and enjoy the journey in complete luxury.</p>
+                <div class="how-row__tags">
+                  <span class="how-row__tag">Professional Chauffeur</span>
+                  <span class="how-row__tag">On Time</span>
+                  <span class="how-row__tag">Premium Experience</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <a href="#contact" class="how__book">
+          Book your limousine today
+          <span class="arrow" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>
+          </span>
+        </a>
+      </div>
+    </section>
     <!-- SECTION:OCCASIONS -->
     <!-- SECTION:TESTIMONIALS -->
     <!-- SECTION:CTA -->
@@ -1406,6 +1645,34 @@
               console.warn('[hero] GLTF load failed — ground + lights only.', err);
             }
           );
+        })();
+
+        // -------- How-it-works accordion --------
+        (function initHowAccordion() {
+          var rows = document.querySelectorAll('.how-row');
+          if (!rows.length) return;
+          function toggle(row) {
+            var willOpen = !row.classList.contains('is-open');
+            // Close all rows first (single-open accordion)
+            rows.forEach(function (r) {
+              r.classList.remove('is-open');
+              var top = r.querySelector('.how-row__top');
+              if (top) top.setAttribute('aria-expanded', 'false');
+            });
+            if (willOpen) {
+              row.classList.add('is-open');
+              var top = row.querySelector('.how-row__top');
+              if (top) top.setAttribute('aria-expanded', 'true');
+            }
+          }
+          rows.forEach(function (row) {
+            var top = row.querySelector('.how-row__top');
+            if (!top) return;
+            top.addEventListener('click', function () { toggle(row); });
+            top.addEventListener('keydown', function (e) {
+              if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(row); }
+            });
+          });
         })();
 
         // -------- Fleet tab filter --------
