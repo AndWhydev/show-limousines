@@ -191,6 +191,218 @@
     }
 
     /* ============================================================
+       SECTION 4 — Fleet (tab filter + 9 vehicle cards)
+       ============================================================ */
+    .fleet {
+      position: relative;
+      background: var(--color-dark);
+      padding: 120px 28px 140px;
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .fleet__inner {
+      max-width: 1320px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+    .fleet__header {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 48px;
+      align-items: end;
+      margin-bottom: 56px;
+    }
+    .fleet__heading {
+      font-family: 'Bebas Neue', sans-serif;
+      font-weight: 400;
+      font-size: clamp(56px, 7vw, 96px);
+      line-height: 0.95;
+      letter-spacing: 0.005em;
+      color: #fff;
+      margin: 16px 0 0;
+    }
+    .fleet__intro {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      color: rgba(240, 240, 240, 0.65);
+      max-width: 38ch;
+      padding-bottom: 6px;
+    }
+
+    /* Tab filter */
+    .fleet__tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 48px;
+      padding: 8px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--color-border);
+      border-radius: 9999px;
+      width: max-content;
+      max-width: 100%;
+    }
+    .fleet__tab {
+      padding: 10px 22px;
+      border-radius: 9999px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: rgba(255, 255, 255, 0.72);
+      border: 1px solid transparent;
+      transition: background 300ms, color 300ms, border-color 300ms;
+      cursor: pointer;
+    }
+    .fleet__tab:hover { color: #fff; border-color: rgba(var(--accent-rgb), 0.35); }
+    .fleet__tab.is-active {
+      background: var(--color-accent);
+      color: #0a0a0c;
+      border-color: var(--color-accent);
+    }
+
+    /* Grid */
+    .fleet__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .fleet-card {
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 400ms cubic-bezier(.4,0,.2,1),
+                  border-color 400ms ease,
+                  box-shadow 400ms ease;
+    }
+    .fleet-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(var(--accent-rgb), 0.55);
+      box-shadow: 0 30px 60px -30px rgba(var(--accent-rgb), 0.35);
+    }
+    .fleet-card[hidden] { display: none; }
+
+    .fleet-card__media {
+      width: 100%;
+      height: 240px;
+      position: relative;
+      background:
+        radial-gradient(ellipse 60% 50% at 30% 30%, rgba(var(--accent-rgb), 0.18) 0%, transparent 60%),
+        linear-gradient(135deg, #1a1a22 0%, #0f0f15 100%);
+      overflow: hidden;
+    }
+    .fleet-card__media::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 60%, rgba(10, 10, 12, 0.55) 100%);
+    }
+    .fleet-card__silhouette {
+      position: absolute;
+      left: 50%; top: 50%;
+      transform: translate(-50%, -50%);
+      color: rgba(var(--accent-rgb), 0.22);
+      width: 70%; max-width: 240px;
+      transition: transform 600ms cubic-bezier(.4,0,.2,1), color 300ms ease;
+    }
+    .fleet-card:hover .fleet-card__silhouette {
+      transform: translate(-50%, -50%) scale(1.06);
+      color: rgba(var(--accent-rgb), 0.35);
+    }
+    .fleet-card__badge {
+      position: absolute;
+      top: 16px; left: 16px;
+      padding: 5px 11px;
+      border-radius: 9999px;
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.78);
+    }
+
+    .fleet-card__body {
+      padding: 24px 24px 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .fleet-card__brand {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10.5px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      font-weight: 600;
+    }
+    .fleet-card__model {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 24px;
+      font-weight: 500;
+      color: #fff;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+    }
+    .fleet-card__capacity {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      color: rgba(240, 240, 240, 0.55);
+    }
+    .fleet-card__footer {
+      margin-top: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .fleet__viewall {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 56px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      transition: gap 300ms;
+    }
+    .fleet__viewall:hover { gap: 16px; }
+    .fleet__viewall .arrow {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      border: 1px solid rgba(var(--accent-rgb), 0.45);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 300ms, transform 350ms cubic-bezier(.4,0,.2,1);
+    }
+    .fleet__viewall:hover .arrow {
+      background: rgba(var(--accent-rgb), 0.15);
+      transform: rotate(45deg);
+    }
+
+    @media (max-width: 1024px) {
+      .fleet__grid { grid-template-columns: repeat(2, 1fr); }
+      .fleet__header { grid-template-columns: 1fr; gap: 18px; align-items: start; }
+    }
+    @media (max-width: 640px) {
+      .fleet { padding: 80px 20px 100px; }
+      .fleet__grid { grid-template-columns: 1fr; gap: 18px; }
+      .fleet-card__media { height: 220px; }
+    }
+
+    /* ============================================================
        SECTION 3 — Marquee ticker (gold band, infinite scroll)
        ============================================================ */
     .marquee {
@@ -723,7 +935,182 @@
         <span class="marquee__item">Party Limos <span class="marquee__diamond">✦</span></span>
       </div>
     </section>
-    <!-- SECTION:FLEET -->
+    <!-- ============================================================
+         SECTION 4 — FLEET
+         ============================================================ -->
+    <section class="fleet" id="fleet" aria-labelledby="fleetHeading">
+      <div class="beam" aria-hidden="true"></div>
+      <div class="fleet__inner">
+        <div class="fleet__header reveal">
+          <div>
+            <span class="label-bracket">Our Fleet</span>
+            <h2 class="fleet__heading" id="fleetHeading">Travel in luxury.</h2>
+          </div>
+          <p class="fleet__intro">Hand-selected stretch limousines, luxury sedans and prestige vehicles. Every car immaculately maintained, every chauffeur impeccably presented.</p>
+        </div>
+
+        <div class="fleet__tabs reveal" role="tablist" aria-label="Filter fleet by category">
+          <button class="fleet__tab is-active" role="tab" aria-selected="true" data-filter="stretch">Stretch Limos</button>
+          <button class="fleet__tab" role="tab" aria-selected="false" data-filter="hummer">Hummers</button>
+          <button class="fleet__tab" role="tab" aria-selected="false" data-filter="mercedes">Mercedes</button>
+          <button class="fleet__tab" role="tab" aria-selected="false" data-filter="sedan">Luxury Sedans</button>
+        </div>
+
+        <div class="fleet__grid" id="fleetGrid">
+
+          <!-- 1. Rolls Royce Phantom — Luxury Sedan -->
+          <article class="fleet-card reveal" data-cat="sedan">
+            <div class="fleet-card__media">
+              <span class="fleet-card__badge">Sedan</span>
+              <svg class="fleet-card__silhouette" viewBox="0 0 300 110" fill="currentColor" aria-hidden="true"><path d="M30 78 c0-2 1-3 3-3 h15 c2 0 3 1 3 3 v3 h-21z M249 78 c0-2 1-3 3-3 h15 c2 0 3 1 3 3 v3 h-21z M30 70 h240 c8 0 12-4 12-12 v-4 c0-6-4-10-12-12 l-30-8 c-8-2-16-4-28-4 h-110 c-12 0-22 2-32 6 l-32 12 c-6 2-10 6-10 12 v6 c0 6 4 10 12 10z M75 50 h60 v-12 h-40 c-6 0-10 2-14 6z M165 50 h70 v-12 h-50 c-8 0-14 2-20 6z"/></svg>
+            </div>
+            <div class="fleet-card__body">
+              <span class="fleet-card__brand">Rolls Royce</span>
+              <span class="fleet-card__model">Phantom Sedan</span>
+              <span class="fleet-card__capacity">Up to 4 passengers · The wedding choice</span>
+              <div class="fleet-card__footer">
+                <a href="#contact" class="btn-outline-sm">View Details</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 2. White Chrysler Super Stretch -->
+          <article class="fleet-card reveal" data-cat="stretch">
+            <div class="fleet-card__media">
+              <span class="fleet-card__badge">Stretch</span>
+              <svg class="fleet-card__silhouette" viewBox="0 0 380 90" fill="currentColor" aria-hidden="true"><path d="M20 68 c0-2 1-3 3-3 h13 c2 0 3 1 3 3 v3 h-19z M341 68 c0-2 1-3 3-3 h13 c2 0 3 1 3 3 v3 h-19z M22 60 h340 c6 0 10-4 10-10 v-3 c0-4-3-8-8-10 l-26-7 c-6-2-12-3-20-3 h-220 c-8 0-15 1-22 4 l-44 14 c-5 2-8 5-8 10 v3 c0 4 3 8 8 8z M55 42 h45 v-9 h-30 c-4 0-8 1-11 4z M115 42 h55 v-9 h-40 c-5 0-9 1-12 4z M185 42 h55 v-9 h-40 c-5 0-9 1-12 4z M255 42 h75 v-9 h-55 c-7 0-12 1-17 4z"/></svg>
+            </div>
+            <div class="fleet-card__body">
+              <span class="fleet-card__brand">Chrysler</span>
+              <span class="fleet-card__model">Super Stretch (White)</span>
+              <span class="fleet-card__capacity">Up to 10 passengers · The classic</span>
+              <div class="fleet-card__footer">
+                <a href="#contact" class="btn-outline-sm">View Details</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 3. Black Chrysler Super Stretch -->
+          <article class="fleet-card reveal" data-cat="stretch">
+            <div class="fleet-card__media">
+              <span class="fleet-card__badge">Stretch</span>
+              <svg class="fleet-card__silhouette" viewBox="0 0 380 90" fill="currentColor" aria-hidden="true"><path d="M20 68 c0-2 1-3 3-3 h13 c2 0 3 1 3 3 v3 h-19z M341 68 c0-2 1-3 3-3 h13 c2 0 3 1 3 3 v3 h-19z M22 60 h340 c6 0 10-4 10-10 v-3 c0-4-3-8-8-10 l-26-7 c-6-2-12-3-20-3 h-220 c-8 0-15 1-22 4 l-44 14 c-5 2-8 5-8 10 v3 c0 4 3 8 8 8z M55 42 h45 v-9 h-30 c-4 0-8 1-11 4z M115 42 h55 v-9 h-40 c-5 0-9 1-12 4z M185 42 h55 v-9 h-40 c-5 0-9 1-12 4z M255 42 h75 v-9 h-55 c-7 0-12 1-17 4z"/></svg>
+            </div>
+            <div class="fleet-card__body">
+              <span class="fleet-card__brand">Chrysler</span>
+              <span class="fleet-card__model">Super Stretch Black</span>
+              <span class="fleet-card__capacity">Up to 10 passengers · The corporate</span>
+              <div class="fleet-card__footer">
+                <a href="#contact" class="btn-outline-sm">View Details</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 4. Chrysler Gullwing -->
+          <article class="fleet-card reveal" data-cat="stretch">
+            <div class="fleet-card__media">
+              <span class="fleet-card__badge">Gullwing</span>
+              <svg class="fleet-card__silhouette" viewBox="0 0 380 90" fill="currentColor" aria-hidden="true"><path d="M20 68 c0-2 1-3 3-3 h13 c2 0 3 1 3 3 v3 h-19z M341 68 c0-2 1-3 3-3 h13 c2 0 3 1 3 3 v3 h-19z M22 60 h340 c6 0 10-4 10-10 v-3 c0-4-3-8-8-10 l-26-7 c-6-2-12-3-20-3 h-220 c-8 0-15 1-22 4 l-44 14 c-5 2-8 5-8 10 v3 c0 4 3 8 8 8z M70 22 q15-15 35-15 q20 0 35 15 l-3 4 q-15-12-32-12 q-17 0-32 12z M195 22 q15-15 35-15 q20 0 35 15 l-3 4 q-15-12-32-12 q-17 0-32 12z"/></svg>
+            </div>
+            <div class="fleet-card__body">
+              <span class="fleet-card__brand">Chrysler</span>
+              <span class="fleet-card__model">Super Stretch Gullwing</span>
+              <span class="fleet-card__capacity">Up to 10 passengers · The showstopper</span>
+              <div class="fleet-card__footer">
+                <a href="#contact" class="btn-outline-sm">View Details</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 5. Stretch Hummer H2 (14 pax) -->
+          <article class="fleet-card reveal" data-cat="hummer">
+            <div class="fleet-card__media">
+              <span class="fleet-card__badge">Hummer</span>
+              <svg class="fleet-card__silhouette" viewBox="0 0 380 110" fill="currentColor" aria-hidden="true"><path d="M22 80 c0-3 2-5 5-5 h15 c3 0 5 2 5 5 v3 h-25z M335 80 c0-3 2-5 5-5 h15 c3 0 5 2 5 5 v3 h-25z M22 72 h340 v-12 c0-6-2-12-6-16 l-12-14 c-3-4-8-6-13-6 h-258 c-5 0-10 2-13 6 l-12 14 c-4 4-6 10-6 16 v12z M58 36 h60 v-22 h-44 c-3 0-6 2-7 5z M130 36 h60 v-22 h-60z M202 36 h60 v-22 h-60z M274 36 h50 v-22 h-44 c-3 0-6 2-7 5z"/></svg>
+            </div>
+            <div class="fleet-card__body">
+              <span class="fleet-card__brand">Hummer</span>
+              <span class="fleet-card__model">H2 Stretch (14 Pax)</span>
+              <span class="fleet-card__capacity">Up to 14 passengers · The group classic</span>
+              <div class="fleet-card__footer">
+                <a href="#contact" class="btn-outline-sm">View Details</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 6. Stretch Hummer H2 (16 pax) -->
+          <article class="fleet-card reveal" data-cat="hummer">
+            <div class="fleet-card__media">
+              <span class="fleet-card__badge">Hummer</span>
+              <svg class="fleet-card__silhouette" viewBox="0 0 380 110" fill="currentColor" aria-hidden="true"><path d="M22 80 c0-3 2-5 5-5 h15 c3 0 5 2 5 5 v3 h-25z M335 80 c0-3 2-5 5-5 h15 c3 0 5 2 5 5 v3 h-25z M22 72 h340 v-12 c0-6-2-12-6-16 l-12-14 c-3-4-8-6-13-6 h-258 c-5 0-10 2-13 6 l-12 14 c-4 4-6 10-6 16 v12z M58 36 h60 v-22 h-44 c-3 0-6 2-7 5z M130 36 h60 v-22 h-60z M202 36 h60 v-22 h-60z M274 36 h50 v-22 h-44 c-3 0-6 2-7 5z"/></svg>
+            </div>
+            <div class="fleet-card__body">
+              <span class="fleet-card__brand">Hummer</span>
+              <span class="fleet-card__model">H2 Stretch (16 Pax)</span>
+              <span class="fleet-card__capacity">Up to 16 passengers · The full house</span>
+              <div class="fleet-card__footer">
+                <a href="#contact" class="btn-outline-sm">View Details</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 7. Mercedes S Class AMG -->
+          <article class="fleet-card reveal" data-cat="mercedes">
+            <div class="fleet-card__media">
+              <span class="fleet-card__badge">Sedan</span>
+              <svg class="fleet-card__silhouette" viewBox="0 0 300 110" fill="currentColor" aria-hidden="true"><path d="M30 78 c0-2 1-3 3-3 h15 c2 0 3 1 3 3 v3 h-21z M249 78 c0-2 1-3 3-3 h15 c2 0 3 1 3 3 v3 h-21z M30 70 h240 c8 0 12-4 12-12 v-4 c0-6-4-10-12-12 l-30-8 c-8-2-16-4-28-4 h-110 c-12 0-22 2-32 6 l-32 12 c-6 2-10 6-10 12 v6 c0 6 4 10 12 10z M75 50 h60 v-12 h-40 c-6 0-10 2-14 6z M165 50 h70 v-12 h-50 c-8 0-14 2-20 6z"/></svg>
+            </div>
+            <div class="fleet-card__body">
+              <span class="fleet-card__brand">Mercedes</span>
+              <span class="fleet-card__model">S Class AMG Sedan</span>
+              <span class="fleet-card__capacity">Up to 4 passengers · The executive</span>
+              <div class="fleet-card__footer">
+                <a href="#contact" class="btn-outline-sm">View Details</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 8. Mercedes Sprinter Limo -->
+          <article class="fleet-card reveal" data-cat="mercedes">
+            <div class="fleet-card__media">
+              <span class="fleet-card__badge">Limo Van</span>
+              <svg class="fleet-card__silhouette" viewBox="0 0 320 130" fill="currentColor" aria-hidden="true"><path d="M22 100 c0-3 2-5 5-5 h15 c3 0 5 2 5 5 v3 h-25z M275 100 c0-3 2-5 5-5 h15 c3 0 5 2 5 5 v3 h-25z M22 92 h280 v-50 c0-8-6-15-15-15 h-220 c-9 0-15 7-15 15 v50z M58 70 h45 v-32 h-32 c-7 0-13 6-13 13z M118 70 h55 v-32 h-55z M188 70 h45 v-32 h-45z M248 70 h45 v-32 h-32 c-7 0-13 6-13 13z"/></svg>
+            </div>
+            <div class="fleet-card__body">
+              <span class="fleet-card__brand">Mercedes</span>
+              <span class="fleet-card__model">Sprinter Limo Van</span>
+              <span class="fleet-card__capacity">Up to 14 passengers · The party</span>
+              <div class="fleet-card__footer">
+                <a href="#contact" class="btn-outline-sm">View Details</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 9. Mercedes Valente -->
+          <article class="fleet-card reveal" data-cat="mercedes">
+            <div class="fleet-card__media">
+              <span class="fleet-card__badge">Minivan</span>
+              <svg class="fleet-card__silhouette" viewBox="0 0 320 120" fill="currentColor" aria-hidden="true"><path d="M22 90 c0-3 2-5 5-5 h15 c3 0 5 2 5 5 v3 h-25z M275 90 c0-3 2-5 5-5 h15 c3 0 5 2 5 5 v3 h-25z M22 82 h280 v-40 c0-7-4-14-12-16 l-18-4 c-6-1-12-2-18-2 h-180 c-8 0-15 2-22 6 l-22 14 c-5 3-8 8-8 14 v28z M58 62 h60 v-26 h-40 c-6 0-12 2-16 6z M126 62 h70 v-26 h-70z M204 62 h70 v-26 h-50 c-8 0-14 2-20 6z"/></svg>
+            </div>
+            <div class="fleet-card__body">
+              <span class="fleet-card__brand">Mercedes</span>
+              <span class="fleet-card__model">Valente Luxury Minivan</span>
+              <span class="fleet-card__capacity">Up to 8 passengers · The intimate group</span>
+              <div class="fleet-card__footer">
+                <a href="#contact" class="btn-outline-sm">View Details</a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <a href="#contact" class="fleet__viewall">
+          View Full Fleet
+          <span class="arrow" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>
+          </span>
+        </a>
+      </div>
+    </section>
     <!-- SECTION:HOW -->
     <!-- SECTION:OCCASIONS -->
     <!-- SECTION:TESTIMONIALS -->
@@ -1019,6 +1406,33 @@
               console.warn('[hero] GLTF load failed — ground + lights only.', err);
             }
           );
+        })();
+
+        // -------- Fleet tab filter --------
+        (function initFleetTabs() {
+          var tabs = document.querySelectorAll('.fleet__tab');
+          var cards = document.querySelectorAll('.fleet-card');
+          if (!tabs.length || !cards.length) return;
+          function activate(filter) {
+            tabs.forEach(function (t) {
+              var on = t.getAttribute('data-filter') === filter;
+              t.classList.toggle('is-active', on);
+              t.setAttribute('aria-selected', String(on));
+            });
+            cards.forEach(function (c) {
+              var match = c.getAttribute('data-cat') === filter;
+              if (match) { c.hidden = false; }
+              else       { c.hidden = true;  }
+            });
+            if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+          }
+          tabs.forEach(function (t) {
+            t.addEventListener('click', function () {
+              activate(t.getAttribute('data-filter'));
+            });
+          });
+          // Default — first tab (Stretch Limos)
+          activate('stretch');
         })();
 
         // -------- Navigation: slide-in, hide-on-scroll-down, hamburger --------
