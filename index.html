@@ -191,6 +191,233 @@
     }
 
     /* ============================================================
+       SECTION 7 — Testimonials (2-col cycling + stats bar)
+       ============================================================ */
+    .testi {
+      position: relative;
+      background: var(--color-dark);
+      padding: 120px 28px 0;
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .testi__inner { max-width: 1320px; margin: 0 auto; position: relative; z-index: 2; }
+    .testi__header { margin-bottom: 56px; max-width: 720px; }
+    .testi__heading {
+      font-family: 'Bebas Neue', sans-serif;
+      font-weight: 400;
+      font-size: clamp(56px, 7vw, 96px);
+      line-height: 0.95;
+      letter-spacing: 0.005em;
+      color: #fff;
+      margin: 16px 0 0;
+      max-width: 12ch;
+    }
+
+    .testi__grid {
+      display: grid;
+      grid-template-columns: 0.85fr 1fr;
+      gap: 32px;
+      align-items: stretch;
+    }
+    .testi__media {
+      border-radius: 18px;
+      overflow: hidden;
+      position: relative;
+      min-height: 500px;
+      background:
+        radial-gradient(ellipse 70% 60% at 30% 20%, rgba(var(--accent-rgb), 0.32) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 40% at 75% 80%, rgba(var(--accent-rgb), 0.18) 0%, transparent 65%),
+        linear-gradient(160deg, #1a1a22 0%, #0a0a0c 100%);
+    }
+    .testi__media::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 50%, rgba(0, 0, 0, 0.45) 100%);
+    }
+    .testi__media-mark {
+      position: absolute;
+      left: 32px; bottom: 32px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 0.08em;
+      color: rgba(255, 255, 255, 0.85);
+      z-index: 2;
+    }
+    .testi__media-mark span { display: block; color: var(--color-accent); font-size: 13px; letter-spacing: 0.22em; margin-bottom: 4px; }
+    .testi__media-icon {
+      position: absolute;
+      left: 50%; top: 50%;
+      transform: translate(-50%, -50%);
+      color: rgba(var(--accent-rgb), 0.35);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 96px;
+      line-height: 1;
+      user-select: none;
+    }
+
+    .testi__card {
+      position: relative;
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(12px) saturate(140%);
+      -webkit-backdrop-filter: blur(12px) saturate(140%);
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      border-radius: 18px;
+      padding: 44px 44px 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 500px;
+    }
+
+    .testi__slides { position: relative; flex: 1; }
+    .testi__slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 500ms ease;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+    .testi__slide.is-active { opacity: 1; position: relative; }
+    .testi__quote-mark {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 72px;
+      line-height: 0.7;
+      color: var(--color-accent);
+    }
+    .testi__quote {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 19px;
+      line-height: 1.65;
+      color: rgba(240, 240, 240, 0.92);
+      margin: 0;
+      font-style: italic;
+      font-weight: 400;
+    }
+    .testi__attr {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    .testi__name {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: 0.01em;
+    }
+    .testi__meta {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      color: rgba(240, 240, 240, 0.6);
+    }
+    .testi__stars {
+      display: inline-flex;
+      gap: 2px;
+      color: var(--color-accent);
+      font-size: 16px;
+      letter-spacing: 1px;
+    }
+
+    .testi__nav {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-top: 32px;
+    }
+    .testi__nav-btn {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 300ms, border-color 300ms, color 300ms;
+    }
+    .testi__nav-btn:hover {
+      background: var(--color-accent);
+      border-color: var(--color-accent);
+      color: #0a0a0c;
+    }
+    .testi__counter {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      color: rgba(240, 240, 240, 0.5);
+      letter-spacing: 0.08em;
+      margin-left: 8px;
+    }
+    .testi__counter strong { color: #fff; font-weight: 500; }
+
+    /* Stats bar below */
+    .testi-stats {
+      position: relative;
+      z-index: 2;
+      background: var(--color-dark);
+      padding: 80px 28px 120px;
+    }
+    .testi-stats__inner {
+      max-width: 1320px;
+      margin: 0 auto;
+      border-top: 1px solid var(--color-border);
+      padding-top: 64px;
+    }
+    .testi-stats__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+    .testi-stat {
+      text-align: center;
+      padding: 8px 24px;
+      position: relative;
+    }
+    .testi-stat + .testi-stat::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 50%;
+      transform: translateY(-50%);
+      width: 1px; height: 56px;
+      background: var(--color-border);
+    }
+    .testi-stat__num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-weight: 400;
+      font-size: clamp(48px, 6vw, 80px);
+      line-height: 1;
+      letter-spacing: 0.01em;
+      color: var(--color-accent);
+      display: block;
+      margin-bottom: 14px;
+    }
+    .testi-stat__label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(240, 240, 240, 0.6);
+      font-weight: 500;
+    }
+
+    @media (max-width: 900px) {
+      .testi__grid { grid-template-columns: 1fr; gap: 18px; }
+      .testi__media { min-height: 280px; }
+      .testi__card { min-height: 0; padding: 32px 28px; }
+      .testi-stats__grid { grid-template-columns: repeat(2, 1fr); gap: 40px 0; }
+      .testi-stat:nth-child(3)::before { display: none; }
+    }
+    @media (max-width: 480px) {
+      .testi { padding: 80px 20px 0; }
+      .testi-stats { padding: 56px 20px 80px; }
+      .testi-stats__grid { grid-template-columns: 1fr; gap: 32px; }
+      .testi-stat::before { display: none; }
+    }
+
+    /* ============================================================
        SECTION 6 — Occasions (white contrast section, 8 cards)
        Breaks the dark rhythm — sits between How It Works and
        Testimonials as a visual breath.
@@ -1534,7 +1761,92 @@
         </div>
       </div>
     </section>
-    <!-- SECTION:TESTIMONIALS -->
+    <!-- ============================================================
+         SECTION 7 — TESTIMONIALS + STATS
+         ============================================================ -->
+    <section class="testi" id="testimonials" aria-labelledby="testiHeading">
+      <div class="beam" aria-hidden="true"></div>
+      <div class="testi__inner">
+        <div class="testi__header reveal">
+          <span class="label-bracket">Customer Testimonials</span>
+          <h2 class="testi__heading" id="testiHeading">What our clients say.</h2>
+        </div>
+
+        <div class="testi__grid">
+          <div class="testi__media reveal" aria-hidden="true">
+            <span class="testi__media-icon">"</span>
+            <div class="testi__media-mark"><span>Trusted by</span>500+ Sydney events</div>
+          </div>
+
+          <article class="testi__card reveal" aria-live="polite" aria-atomic="true">
+            <div class="testi__quote-mark" aria-hidden="true">"</div>
+            <div class="testi__slides" id="testiSlides">
+
+              <div class="testi__slide is-active" data-slide="0">
+                <p class="testi__quote">The Rolls Royce Phantom made our wedding day absolutely perfect. Our chauffeur was early, professional and made us feel like royalty from the moment we stepped in.</p>
+                <div class="testi__attr">
+                  <div class="testi__name">Sarah M.</div>
+                  <div class="testi__meta">Wedding · Parramatta</div>
+                  <div class="testi__stars" aria-label="Rated 5 out of 5 stars">★★★★★</div>
+                </div>
+              </div>
+
+              <div class="testi__slide" data-slide="1">
+                <p class="testi__quote">We hired the Hummer for my daughter's school formal. The whole group was blown away. The driver was fantastic and the limo was immaculate inside. Worth every cent.</p>
+                <div class="testi__attr">
+                  <div class="testi__name">David T.</div>
+                  <div class="testi__meta">School Formal · Campbelltown</div>
+                  <div class="testi__stars" aria-label="Rated 5 out of 5 stars">★★★★★</div>
+                </div>
+              </div>
+
+              <div class="testi__slide" data-slide="2">
+                <p class="testi__quote">Used Show Limousines for a corporate event transfer. Punctual, professional and the Mercedes S Class was stunning. Will use again for every corporate occasion.</p>
+                <div class="testi__attr">
+                  <div class="testi__name">Rebecca L.</div>
+                  <div class="testi__meta">Corporate · Sydney CBD</div>
+                  <div class="testi__stars" aria-label="Rated 5 out of 5 stars">★★★★★</div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="testi__nav">
+              <button class="testi__nav-btn" id="testiPrev" aria-label="Previous testimonial">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+              </button>
+              <button class="testi__nav-btn" id="testiNext" aria-label="Next testimonial">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+              <span class="testi__counter"><strong id="testiCur">01</strong> / 03</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="testi-stats" aria-label="Show Limousines by the numbers">
+      <div class="testi-stats__inner">
+        <div class="testi-stats__grid">
+          <div class="testi-stat reveal">
+            <span class="testi-stat__num" data-count="500" data-suffix="+">0</span>
+            <span class="testi-stat__label">Events Completed</span>
+          </div>
+          <div class="testi-stat reveal">
+            <span class="testi-stat__num" data-count="15" data-suffix="+">0</span>
+            <span class="testi-stat__label">Premium Vehicles</span>
+          </div>
+          <div class="testi-stat reveal">
+            <span class="testi-stat__num">5★</span>
+            <span class="testi-stat__label">Average Rating</span>
+          </div>
+          <div class="testi-stat reveal">
+            <span class="testi-stat__num" data-count="10" data-suffix="+">0</span>
+            <span class="testi-stat__label">Years Experience</span>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- SECTION:CTA -->
     <!-- SECTION:FOOTER -->
   </main>
@@ -1827,6 +2139,27 @@
               console.warn('[hero] GLTF load failed — ground + lights only.', err);
             }
           );
+        })();
+
+        // -------- Testimonial cycler --------
+        (function initTestimonials() {
+          var slides = document.querySelectorAll('.testi__slide');
+          var prev = document.getElementById('testiPrev');
+          var next = document.getElementById('testiNext');
+          var cur = document.getElementById('testiCur');
+          if (!slides.length) return;
+          var i = 0;
+          var auto = null;
+          function show(n) {
+            i = (n + slides.length) % slides.length;
+            slides.forEach(function (s, idx) { s.classList.toggle('is-active', idx === i); });
+            if (cur) cur.textContent = String(i + 1).padStart(2, '0');
+          }
+          function step(d) { show(i + d); reset(); }
+          function reset() { if (auto) clearInterval(auto); auto = setInterval(function () { show(i + 1); }, 7000); }
+          if (prev) prev.addEventListener('click', function () { step(-1); });
+          if (next) next.addEventListener('click', function () { step(1); });
+          reset();
         })();
 
         // -------- How-it-works accordion --------
