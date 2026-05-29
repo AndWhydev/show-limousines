@@ -191,6 +191,52 @@
     }
 
     /* ============================================================
+       SECTION 3 — Marquee ticker (gold band, infinite scroll)
+       ============================================================ */
+    .marquee {
+      background: var(--color-accent);
+      color: #0a0a0c;
+      padding: 22px 0;
+      overflow: hidden;
+      position: relative;
+      isolation: isolate;
+    }
+    .marquee__track {
+      display: flex;
+      width: max-content;
+      animation: marquee-scroll 40s linear infinite;
+      will-change: transform;
+    }
+    .marquee:hover .marquee__track { animation-play-state: paused; }
+    @keyframes marquee-scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    .marquee__item {
+      display: inline-flex;
+      align-items: center;
+      gap: 28px;
+      padding: 0 28px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      letter-spacing: 0.08em;
+      color: #0a0a0c;
+      white-space: nowrap;
+      transition: transform 300ms ease;
+    }
+    .marquee__item:hover { transform: scale(1.05); }
+    .marquee__diamond {
+      display: inline-block;
+      color: #0a0a0c;
+      font-size: 14px;
+      opacity: 0.65;
+    }
+    @media (max-width: 640px) {
+      .marquee { padding: 18px 0; }
+      .marquee__item { font-size: 22px; gap: 20px; padding: 0 20px; }
+    }
+
+    /* ============================================================
        SECTION 2 — Hero (Three.js 3D car + GSAP pinned scroll)
        Full viewport, dark with dual gold radial glows, 3D car on
        right, text on left. GSAP pins for 200vh, three phase scroll.
@@ -652,7 +698,31 @@
         <span class="down"></span>
       </div>
     </section>
-    <!-- SECTION:MARQUEE -->
+    <!-- ============================================================
+         SECTION 3 — MARQUEE TICKER
+         ============================================================ -->
+    <section class="marquee" aria-label="Services marquee">
+      <div class="marquee__track">
+        <!-- First copy -->
+        <span class="marquee__item">Weddings <span class="marquee__diamond">✦</span></span>
+        <span class="marquee__item">School Formals <span class="marquee__diamond">✦</span></span>
+        <span class="marquee__item">Airport Transfers <span class="marquee__diamond">✦</span></span>
+        <span class="marquee__item">Hens Parties <span class="marquee__diamond">✦</span></span>
+        <span class="marquee__item">Corporate Events <span class="marquee__diamond">✦</span></span>
+        <span class="marquee__item">Birthday Limos <span class="marquee__diamond">✦</span></span>
+        <span class="marquee__item">Concert Transfers <span class="marquee__diamond">✦</span></span>
+        <span class="marquee__item">Party Limos <span class="marquee__diamond">✦</span></span>
+        <!-- Second copy (duplicated for seamless loop) -->
+        <span class="marquee__item">Weddings <span class="marquee__diamond">✦</span></span>
+        <span class="marquee__item">School Formals <span class="marquee__diamond">✦</span></span>
+        <span class="marquee__item">Airport Transfers <span class="marquee__diamond">✦</span></span>
+        <span class="marquee__item">Hens Parties <span class="marquee__diamond">✦</span></span>
+        <span class="marquee__item">Corporate Events <span class="marquee__diamond">✦</span></span>
+        <span class="marquee__item">Birthday Limos <span class="marquee__diamond">✦</span></span>
+        <span class="marquee__item">Concert Transfers <span class="marquee__diamond">✦</span></span>
+        <span class="marquee__item">Party Limos <span class="marquee__diamond">✦</span></span>
+      </div>
+    </section>
     <!-- SECTION:FLEET -->
     <!-- SECTION:HOW -->
     <!-- SECTION:OCCASIONS -->
