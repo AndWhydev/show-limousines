@@ -43,7 +43,9 @@
 
     *, *::before, *::after { box-sizing: border-box; }
     * { margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    /* Native smooth-scroll deliberately OFF — Lenis owns scroll so the two
+       don't fight. (scroll-behavior:smooth + Lenis = jerky.) */
+    html { scroll-behavior: auto; }
     html, body { overflow-x: hidden; }
     body {
       background: var(--color-bg);
@@ -2180,20 +2182,29 @@
         }
 
         // -------- Lenis smooth scroll --------
+        // CRITICAL: Lenis must be driven by EXACTLY ONE source. When GSAP +
+        // ScrollTrigger are in play, the standard pattern is to let the GSAP
+        // ticker drive Lenis (one RAF loop in total). A second raf() loop
+        // alongside gsap.ticker.add → double-step → jerky/skipping scroll.
         var lenis = null;
         if (typeof Lenis !== 'undefined') {
           lenis = new Lenis({
-            duration: 1.2,
+            duration: 1.1,
             easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
-            smooth: true,
-            smoothTouch: false
+            smoothTouch: false,
+            // Slightly tighter lerp on the scroll-pinned hero — feels
+            // less floaty without losing the smoothness.
+            lerp: 0.1
           });
-          function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
-          requestAnimationFrame(raf);
           if (typeof ScrollTrigger !== 'undefined') {
+            // ScrollTrigger learns about Lenis scroll updates.
             lenis.on('scroll', ScrollTrigger.update);
+            // GSAP ticker is the SOLE driver of the Lenis RAF.
             gsap.ticker.add(function (t) { lenis.raf(t * 1000); });
             gsap.ticker.lagSmoothing(0);
+          } else {
+            // Fallback: drive Lenis ourselves only if GSAP isn't around.
+            (function raf(time) { lenis.raf(time); requestAnimationFrame(raf); })();
           }
           window.__lenis = lenis;
         }
