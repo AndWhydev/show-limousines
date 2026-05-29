@@ -191,6 +191,102 @@
     }
 
     /* ============================================================
+       SECTION 6 — Occasions (white contrast section, 8 cards)
+       Breaks the dark rhythm — sits between How It Works and
+       Testimonials as a visual breath.
+       ============================================================ */
+    .occasions {
+      background: #ffffff;
+      color: #0a0a0c;
+      padding: 120px 28px 140px;
+      position: relative;
+    }
+    .occasions__inner { max-width: 1320px; margin: 0 auto; }
+    .occasions__header { margin-bottom: 64px; max-width: 720px; }
+    .occasions__heading {
+      font-family: 'Bebas Neue', sans-serif;
+      font-weight: 400;
+      font-size: clamp(56px, 7vw, 96px);
+      line-height: 0.95;
+      letter-spacing: 0.005em;
+      color: #0a0a0c;
+      margin: 16px 0 0;
+      max-width: 16ch;
+    }
+    .occasions__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .occ-card {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      transition: transform 400ms cubic-bezier(.4,0,.2,1);
+    }
+    .occ-card:hover { transform: translateY(-6px); }
+    .occ-card__media {
+      width: 100%;
+      aspect-ratio: 1 / 1.1;
+      border-radius: 18px;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse 70% 60% at 30% 25%, rgba(var(--accent-rgb), 0.22) 0%, transparent 65%),
+        linear-gradient(160deg, #1a1a22 0%, #0F1014 100%);
+    }
+    .occ-card__media::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 55%, rgba(0, 0, 0, 0.35) 100%);
+    }
+    .occ-card__icon {
+      position: absolute;
+      left: 50%; top: 50%;
+      transform: translate(-50%, -50%);
+      color: rgba(var(--accent-rgb), 0.55);
+      transition: transform 500ms cubic-bezier(.4,0,.2,1), color 300ms;
+    }
+    .occ-card:hover .occ-card__icon {
+      transform: translate(-50%, -50%) scale(1.12);
+      color: var(--color-accent);
+    }
+    .occ-card__index {
+      position: absolute;
+      top: 16px;
+      right: 18px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 16px;
+      letter-spacing: 0.18em;
+      color: rgba(255, 255, 255, 0.4);
+      z-index: 2;
+    }
+    .occ-card__name {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 19px;
+      font-weight: 600;
+      color: #0a0a0c;
+      letter-spacing: -0.005em;
+      margin: 0;
+    }
+    .occ-card__desc {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      line-height: 1.55;
+      color: rgba(10, 10, 12, 0.55);
+      margin: -12px 0 0;
+    }
+
+    @media (max-width: 1024px) {
+      .occasions__grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    }
+    @media (max-width: 480px) {
+      .occasions { padding: 80px 20px 100px; }
+      .occasions__header { margin-bottom: 40px; }
+    }
+
+    /* ============================================================
        SECTION 5 — How It Works (3 accordion rows)
        ============================================================ */
     .how {
@@ -1351,7 +1447,93 @@
         </a>
       </div>
     </section>
-    <!-- SECTION:OCCASIONS -->
+    <!-- ============================================================
+         SECTION 6 — OCCASIONS
+         ============================================================ -->
+    <section class="occasions" id="occasions" aria-labelledby="occasionsHeading">
+      <div class="occasions__inner">
+        <div class="occasions__header reveal">
+          <span class="label-bracket label-bracket--dark">Occasions</span>
+          <h2 class="occasions__heading" id="occasionsHeading">Every moment deserves luxury.</h2>
+        </div>
+
+        <div class="occasions__grid">
+
+          <article class="occ-card reveal">
+            <div class="occ-card__media">
+              <span class="occ-card__index">01</span>
+              <svg class="occ-card__icon" width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M32 14 c-6 0-10 4-10 10 0 8 10 14 10 14 s10-6 10-14 c0-6-4-10-10-10z"/><circle cx="32" cy="24" r="3"/><path d="M14 50 h36 M20 50 v-4 M44 50 v-4"/></svg>
+            </div>
+            <h3 class="occ-card__name">Wedding Limousines</h3>
+            <p class="occ-card__desc">Make your special day unforgettable.</p>
+          </article>
+
+          <article class="occ-card reveal">
+            <div class="occ-card__media">
+              <span class="occ-card__index">02</span>
+              <svg class="occ-card__icon" width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 28 l22-10 22 10 -22 10z"/><path d="M16 31 v9 c0 0 6 5 16 5 s16-5 16-5 v-9"/><path d="M52 28 v14"/></svg>
+            </div>
+            <h3 class="occ-card__name">School Formals</h3>
+            <p class="occ-card__desc">Arrive like royalty with your crew.</p>
+          </article>
+
+          <article class="occ-card reveal">
+            <div class="occ-card__media">
+              <span class="occ-card__index">03</span>
+              <svg class="occ-card__icon" width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 36 l48-14 v6 l-48 14z"/><path d="M22 32 l-8-6 4-1 8 5z"/><path d="M14 44 h36"/></svg>
+            </div>
+            <h3 class="occ-card__name">Airport Transfers</h3>
+            <p class="occ-card__desc">Stress-free travel from door to terminal.</p>
+          </article>
+
+          <article class="occ-card reveal">
+            <div class="occ-card__media">
+              <span class="occ-card__index">04</span>
+              <svg class="occ-card__icon" width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 48 l4-22 12 4 12-4 4 22z"/><path d="M22 30 c0-8 4-14 10-14 s10 6 10 14"/><circle cx="32" cy="14" r="3"/></svg>
+            </div>
+            <h3 class="occ-card__name">Hens Parties</h3>
+            <p class="occ-card__desc">The ultimate girls' night out begins here.</p>
+          </article>
+
+          <article class="occ-card reveal">
+            <div class="occ-card__media">
+              <span class="occ-card__index">05</span>
+              <svg class="occ-card__icon" width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="14" y="22" width="36" height="24" rx="2"/><path d="M24 22 v-6 h16 v6"/><path d="M14 32 h36"/></svg>
+            </div>
+            <h3 class="occ-card__name">Corporate Transfers</h3>
+            <p class="occ-card__desc">First impressions that matter.</p>
+          </article>
+
+          <article class="occ-card reveal">
+            <div class="occ-card__media">
+              <span class="occ-card__index">06</span>
+              <svg class="occ-card__icon" width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="14" y="26" width="36" height="22" rx="3"/><path d="M14 32 h36"/><path d="M24 26 c0-6 3-10 8-10 s8 4 8 10"/><circle cx="22" cy="40" r="2"/><circle cx="42" cy="40" r="2"/></svg>
+            </div>
+            <h3 class="occ-card__name">Birthday Celebrations</h3>
+            <p class="occ-card__desc">Because you deserve it.</p>
+          </article>
+
+          <article class="occ-card reveal">
+            <div class="occ-card__media">
+              <span class="occ-card__index">07</span>
+              <svg class="occ-card__icon" width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 38 c-3 0-5 2-5 5 v3 h10 v-3 c0-3-2-5-5-5z"/><path d="M22 38 v-22"/><path d="M22 16 c4 0 16 3 16 8 c0 5-12 6-16 4 z"/></svg>
+            </div>
+            <h3 class="occ-card__name">Concert Transfers</h3>
+            <p class="occ-card__desc">Arrive to the show in style.</p>
+          </article>
+
+          <article class="occ-card reveal">
+            <div class="occ-card__media">
+              <span class="occ-card__index">08</span>
+              <svg class="occ-card__icon" width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 42 c0 4 6 6 18 6 s18-2 18-6 l-4-14 h-28z"/><path d="M22 28 v-12 l10 4 10-4 v12"/><path d="M32 16 v12"/></svg>
+            </div>
+            <h3 class="occ-card__name">Cruise Transfers</h3>
+            <p class="occ-card__desc">Start your voyage from the moment you leave.</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
     <!-- SECTION:TESTIMONIALS -->
     <!-- SECTION:CTA -->
     <!-- SECTION:FOOTER -->
