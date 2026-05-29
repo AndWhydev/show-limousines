@@ -191,6 +191,47 @@
     }
 
     /* ============================================================
+       SECTION 8 — Gold CTA band (pre-footer)
+       ============================================================ */
+    .cta-band {
+      background: var(--color-accent);
+      color: #0a0a0c;
+      padding: 22px 28px;
+    }
+    .cta-band__inner {
+      max-width: 1320px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+    .cta-band__text {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 17px;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .cta-band__text .sep { opacity: 0.4; }
+    .cta-band__phone {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: #0a0a0c;
+      transition: opacity 300ms;
+    }
+    .cta-band__phone:hover { opacity: 0.8; }
+    @media (max-width: 700px) {
+      .cta-band__inner { flex-direction: column; gap: 8px; }
+      .cta-band__text { font-size: 15px; gap: 8px; flex-wrap: wrap; justify-content: center; }
+      .cta-band__phone { font-size: 17px; }
+    }
+
+    /* ============================================================
        SECTION 7 — Testimonials (2-col cycling + stats bar)
        ============================================================ */
     .testi {
@@ -1847,7 +1888,19 @@
         </div>
       </div>
     </section>
-    <!-- SECTION:CTA -->
+    <!-- ============================================================
+         SECTION 8 — GOLD CTA BAND
+         ============================================================ -->
+    <section class="cta-band" aria-label="Contact prompt">
+      <div class="cta-band__inner">
+        <div class="cta-band__text">
+          Ready to book your limousine?
+          <span class="sep">·</span>
+          Call us today
+        </div>
+        <a href="tel:0422023413" class="cta-band__phone">0422 023 413</a>
+      </div>
+    </section>
     <!-- SECTION:FOOTER -->
   </main>
 
