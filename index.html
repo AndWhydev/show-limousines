@@ -191,6 +191,165 @@
     }
 
     /* ============================================================
+       SECTION 9 — Footer (4-col + subscribe form + diagonal beam)
+       ============================================================ */
+    .foot {
+      position: relative;
+      background: var(--color-dark);
+      padding: 100px 28px 40px;
+      overflow: hidden;
+      isolation: isolate;
+      border-top: 1px solid var(--color-border);
+    }
+    .foot__inner { max-width: 1320px; margin: 0 auto; position: relative; z-index: 2; }
+
+    .foot__top {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 48px;
+      align-items: end;
+      padding-bottom: 56px;
+    }
+    .foot__brand-wrap { display: flex; flex-direction: column; gap: 16px; }
+    .foot__brand {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 36px;
+      letter-spacing: 0.06em;
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .foot__brand-mark { width: 40px; height: 40px; color: var(--color-accent); }
+    .foot__brand-mark svg { width: 100%; height: 100%; }
+    .foot__brand span { color: var(--color-accent); }
+    .foot__tag {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      color: rgba(240, 240, 240, 0.6);
+      max-width: 360px;
+      line-height: 1.55;
+    }
+
+    /* Subscribe form */
+    .foot__sub { display: flex; flex-direction: column; gap: 10px; }
+    .foot__sub-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(240, 240, 240, 0.55);
+    }
+    .foot__sub-form {
+      display: flex;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--color-border);
+      border-radius: 9999px;
+      padding: 6px 6px 6px 20px;
+      max-width: 520px;
+    }
+    .foot__sub-input {
+      flex: 1;
+      background: none;
+      border: none;
+      outline: none;
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      padding: 8px 0;
+      min-width: 0;
+    }
+    .foot__sub-input::placeholder { color: rgba(240, 240, 240, 0.4); }
+    .foot__sub-btn {
+      padding: 10px 22px;
+      border-radius: 9999px;
+      background: var(--color-accent);
+      color: #0a0a0c;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: opacity 300ms;
+      white-space: nowrap;
+    }
+    .foot__sub-btn:hover { opacity: 0.85; }
+    .foot__sub-note {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      color: rgba(240, 240, 240, 0.45);
+    }
+
+    /* Divider */
+    .foot__divider {
+      height: 1px;
+      background: rgba(255, 255, 255, 0.18);
+      margin: 0 0 56px;
+    }
+
+    /* 4-col link grid */
+    .foot__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+      margin-bottom: 64px;
+    }
+    .foot-col__title {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #fff;
+      margin: 0 0 20px;
+    }
+    .foot-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .foot-col a {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      color: rgba(240, 240, 240, 0.62);
+      transition: color 300ms;
+    }
+    .foot-col a:hover { color: var(--color-accent); }
+
+    /* Bottom bar */
+    .foot__bottom {
+      border-top: 1px solid var(--color-border);
+      padding-top: 28px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12.5px;
+      color: rgba(240, 240, 240, 0.48);
+    }
+    .foot__bottom a {
+      color: rgba(240, 240, 240, 0.62);
+      transition: color 300ms;
+    }
+    .foot__bottom a:hover { color: var(--color-accent); }
+    .foot__bottom .sep { margin: 0 8px; opacity: 0.35; }
+    .foot__credit { display: inline-flex; gap: 6px; align-items: center; }
+    .foot__credit a {
+      color: var(--color-accent);
+      border-bottom: 1px dotted rgba(var(--accent-rgb), 0.4);
+      padding-bottom: 1px;
+    }
+
+    @media (max-width: 1024px) {
+      .foot__top { grid-template-columns: 1fr; gap: 32px; align-items: start; }
+      .foot__grid { grid-template-columns: repeat(2, 1fr); gap: 36px; }
+    }
+    @media (max-width: 520px) {
+      .foot { padding: 64px 20px 32px; }
+      .foot__grid { grid-template-columns: 1fr; gap: 32px; margin-bottom: 48px; }
+      .foot__brand { font-size: 28px; }
+    }
+
+    /* ============================================================
        SECTION 8 — Gold CTA band (pre-footer)
        ============================================================ */
     .cta-band {
@@ -1901,7 +2060,107 @@
         <a href="tel:0422023413" class="cta-band__phone">0422 023 413</a>
       </div>
     </section>
-    <!-- SECTION:FOOTER -->
+    <!-- ============================================================
+         SECTION 9 — FOOTER
+         ============================================================ -->
+    <footer class="foot" id="contact" aria-labelledby="footHeading">
+      <div class="beam" aria-hidden="true"></div>
+      <h2 class="visually-hidden" id="footHeading" style="position:absolute;left:-10000px;">Site footer</h2>
+      <div class="foot__inner">
+
+        <div class="foot__top">
+          <div class="foot__brand-wrap">
+            <div class="foot__brand">
+              <span class="foot__brand-mark" aria-hidden="true">
+                <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4 13L9 6h14l5 7-12 13L4 13z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                  <path d="M4 13h24M11 13l5 13M21 13l-5 13M9 6l2 7M23 6l-2 7" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              SHOW <span>LIMOUSINES</span>
+            </div>
+            <p class="foot__tag">Sydney's most luxurious chauffeur-driven limousines. Weddings, formals, corporate and special occasions across Sydney &amp; Wollongong.</p>
+          </div>
+
+          <form class="foot__sub" id="footSubForm" onsubmit="return false;">
+            <label class="foot__sub-label" for="footEmail">Get exclusive offers</label>
+            <div class="foot__sub-form">
+              <input class="foot__sub-input" type="email" id="footEmail" name="email" placeholder="your@email.com" required aria-label="Email address">
+              <button class="foot__sub-btn" type="submit">Subscribe</button>
+            </div>
+            <span class="foot__sub-note" id="footSubNote">Wedding tips, fleet news, occasional offers. No spam.</span>
+          </form>
+        </div>
+
+        <div class="foot__divider" aria-hidden="true"></div>
+
+        <div class="foot__grid">
+
+          <nav class="foot-col" aria-labelledby="footCompany">
+            <h3 class="foot-col__title" id="footCompany">Company</h3>
+            <ul>
+              <li><a href="#about">About Us</a></li>
+              <li><a href="#fleet">Gallery</a></li>
+              <li><a href="#testimonials">Reviews</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Terms &amp; Conditions</a></li>
+            </ul>
+          </nav>
+
+          <nav class="foot-col" aria-labelledby="footServices">
+            <h3 class="foot-col__title" id="footServices">Services</h3>
+            <ul>
+              <li><a href="#occasions">Wedding Limos</a></li>
+              <li><a href="#occasions">Airport Transfers</a></li>
+              <li><a href="#occasions">School Formals</a></li>
+              <li><a href="#occasions">Hens Parties</a></li>
+              <li><a href="#occasions">Corporate Transfers</a></li>
+              <li><a href="#occasions">Birthday Limos</a></li>
+            </ul>
+          </nav>
+
+          <nav class="foot-col" aria-labelledby="footFleet">
+            <h3 class="foot-col__title" id="footFleet">Fleet</h3>
+            <ul>
+              <li><a href="#fleet">Rolls Royce Phantom</a></li>
+              <li><a href="#fleet">Chrysler Stretch</a></li>
+              <li><a href="#fleet">Hummer Limo</a></li>
+              <li><a href="#fleet">Mercedes Range</a></li>
+              <li><a href="#fleet">Party Bus</a></li>
+            </ul>
+          </nav>
+
+          <nav class="foot-col" aria-labelledby="footLocations">
+            <h3 class="foot-col__title" id="footLocations">Locations</h3>
+            <ul>
+              <li><a href="#contact">Sydney CBD</a></li>
+              <li><a href="#contact">Parramatta</a></li>
+              <li><a href="#contact">Wollongong</a></li>
+              <li><a href="#contact">Eastern Suburbs</a></li>
+              <li><a href="#contact">Northern Beaches</a></li>
+              <li><a href="#contact">Inner West</a></li>
+              <li><a href="#contact">Sutherland Shire</a></li>
+            </ul>
+          </nav>
+
+        </div>
+
+        <div class="foot__bottom">
+          <div>
+            &copy; 2026 Show Limousines<span class="sep">·</span>ABN: [to be confirmed]
+          </div>
+          <div>
+            <a href="mailto:info@showlimousines.com.au">info@showlimousines.com.au</a>
+            <span class="sep">·</span>
+            <a href="tel:0422023413">0422 023 413</a>
+          </div>
+          <div class="foot__credit">
+            Powered by <a href="https://awlabs.com.au" target="_blank" rel="noopener noreferrer">All Webbed Labs</a>
+          </div>
+        </div>
+
+      </div>
+    </footer>
   </main>
 
   <script>
@@ -2192,6 +2451,30 @@
               console.warn('[hero] GLTF load failed — ground + lights only.', err);
             }
           );
+        })();
+
+        // -------- Footer subscribe (lightweight client-side handoff) --------
+        (function initFootSub() {
+          var form = document.getElementById('footSubForm');
+          var note = document.getElementById('footSubNote');
+          var input = document.getElementById('footEmail');
+          if (!form || !note || !input) return;
+          form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            var email = (input.value || '').trim();
+            var ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+            if (!ok) {
+              note.textContent = 'Please enter a valid email address.';
+              note.style.color = '#ff8c7a';
+              input.focus();
+              return;
+            }
+            note.textContent = "Thanks — we'll be in touch with offers soon.";
+            note.style.color = '#C9A84C';
+            input.value = '';
+            // TODO: wire to actual mailing list (Mailchimp/Klaviyo/CRM)
+            // — for now the submission is captured client-side only.
+          });
         })();
 
         // -------- Testimonial cycler --------
