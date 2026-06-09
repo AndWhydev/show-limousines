@@ -38,9 +38,12 @@
       --color-text: #f0f0f0;
       --color-muted: #888899;
       --color-accent: #C9A84C;
-      --color-accent-hover: #e0c06a;
+      --color-accent-hover: #e7cd7b;
       --accent-rgb: 201,168,76;
       --color-dark: #0F1014;
+      /* Metallic gold lifted from the Show Limousines logo (champagne → gold → antique) */
+      --gold-gradient: linear-gradient(135deg, #F6E7A8 0%, #E3C66B 28%, #C9A84C 52%, #A6822F 78%, #E8CE80 100%);
+      --gold-gradient-soft: linear-gradient(135deg, #E9CE7E 0%, #C9A84C 55%, #9C7A2C 100%);
     }
 
     *, *::before, *::after { box-sizing: border-box; }
@@ -80,6 +83,10 @@
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--color-accent);
+      background: var(--gold-gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
       font-weight: 500;
     }
     .label-bracket::before { content: '['; opacity: 0.7; margin-right: 4px; }
@@ -163,8 +170,20 @@
     }
     .btn-pill--secondary .btn-pill__arrow { background: rgba(255,255,255,0.12); color: #fff; }
 
-    .btn-pill--gold { background: var(--color-accent); color: #000; }
-    .btn-pill--gold .btn-pill__arrow { background: rgba(0,0,0,0.15); color: #000; }
+    .btn-pill--gold {
+      background: var(--gold-gradient);
+      background-size: 140% 140%;
+      color: #1a1206;
+      box-shadow: 0 6px 22px rgba(var(--accent-rgb), 0.28);
+      transition: background-position 600ms ease, box-shadow 300ms ease, transform 300ms ease;
+    }
+    .btn-pill--gold:hover {
+      opacity: 1;
+      background-position: 100% 100%;
+      box-shadow: 0 8px 30px rgba(var(--accent-rgb), 0.45);
+      transform: translateY(-1px);
+    }
+    .btn-pill--gold .btn-pill__arrow { background: rgba(0,0,0,0.18); color: #1a1206; }
 
     .btn-pill--sm { padding: 7px 9px 7px 18px; font-size: 12px; gap: 9px; }
     .btn-pill--sm .btn-pill__arrow { width: 24px; height: 24px; }
@@ -226,7 +245,7 @@
     .nav-inner {
       max-width: 1320px;
       margin: 0 auto;
-      padding: 14px 28px;
+      padding: 16px 28px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -252,22 +271,22 @@
     .nav-brand__mark svg { width: 100%; height: 100%; }
     .nav-brand__name { color: #fff; }
     .nav-brand__name span { color: var(--color-accent); }
-    .nav-brand__logo { height: 40px; width: auto; display: block; }
+    .nav-brand__logo { height: 56px; width: auto; display: block; }
 
     .nav-pills {
       display: inline-flex;
       align-items: center;
-      gap: 2px;
-      padding: 4px 6px;
+      gap: 4px;
+      padding: 5px 8px;
       background: rgba(var(--accent-rgb), 0.08);
       border: 1px solid rgba(var(--accent-rgb), 0.28);
       border-radius: 9999px;
     }
     .nav-pill {
-      padding: 7px 14px;
+      padding: 9px 18px;
       border-radius: 9999px;
       font-family: 'DM Sans', sans-serif;
-      font-size: 12px;
+      font-size: 14px;
       font-weight: 500;
       letter-spacing: 0.04em;
       color: rgba(255,255,255,0.85);
@@ -332,7 +351,7 @@
     .nav-mobile a:hover { color: var(--color-accent); }
     .nav-mobile .nav-mobile__cta { margin-top: 28px; }
 
-    @media (max-width: 1180px) {
+    @media (max-width: 1240px) {
       .nav-pills { display: none; }
       .nav-phone { display: none; }
       .nav-burger { display: inline-flex; }
@@ -343,7 +362,7 @@
       .nav-announce .sep { margin: 0 6px; }
       .nav-brand { font-size: 20px; }
       .nav-brand__mark { width: 26px; height: 26px; }
-      .nav-brand__logo { height: 30px; }
+      .nav-brand__logo { height: 42px; }
       .nav-right .btn-pill--gold { padding: 7px 9px 7px 16px; font-size: 12px; }
     }
 
@@ -370,6 +389,86 @@
       z-index: 1;
       width: 100%;
       height: 100%;
+    }
+
+    /* ---- Cinematic atmosphere layer (sits over the 3D canvas, behind the copy) ---- */
+    .hero__fx {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    /* Drifting gold light blooms */
+    .hero__fx-glow {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      mix-blend-mode: screen;
+      opacity: 0.55;
+      will-change: transform, opacity;
+    }
+    .hero__fx-glow--a {
+      width: 46vw; height: 46vw;
+      left: -8vw; top: -6vw;
+      background: radial-gradient(circle at 50% 50%, rgba(243,226,168,0.55) 0%, rgba(201,168,76,0.30) 38%, transparent 70%);
+      animation: heroGlowA 14s ease-in-out infinite;
+    }
+    .hero__fx-glow--b {
+      width: 40vw; height: 40vw;
+      right: -6vw; bottom: -10vw;
+      background: radial-gradient(circle at 50% 50%, rgba(231,205,123,0.40) 0%, rgba(166,130,47,0.22) 42%, transparent 72%);
+      animation: heroGlowB 18s ease-in-out infinite;
+    }
+    /* Slow sweeping light beams */
+    .hero__fx-beams {
+      position: absolute;
+      inset: -20% -10%;
+      background:
+        linear-gradient(102deg, transparent 38%, rgba(246,231,168,0.10) 47%, rgba(246,231,168,0.18) 50%, rgba(246,231,168,0.10) 53%, transparent 62%),
+        linear-gradient(98deg, transparent 60%, rgba(201,168,76,0.08) 70%, transparent 80%);
+      mix-blend-mode: screen;
+      animation: heroBeams 16s ease-in-out infinite;
+      opacity: 0.8;
+    }
+    /* Fine film grain */
+    .hero__fx-grain {
+      position: absolute;
+      inset: 0;
+      opacity: 0.06;
+      mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+      animation: heroGrain 1.2s steps(3) infinite;
+    }
+    /* Cinematic vignette + warm floor wash */
+    .hero__fx-vignette {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 90% 75% at 50% 42%, transparent 55%, rgba(0,0,0,0.55) 100%),
+        linear-gradient(180deg, rgba(10,8,4,0.35) 0%, transparent 22%, transparent 70%, rgba(201,168,76,0.06) 100%);
+    }
+    @keyframes heroGlowA {
+      0%,100% { transform: translate3d(0,0,0) scale(1); opacity: 0.5; }
+      50%     { transform: translate3d(4vw,3vh,0) scale(1.12); opacity: 0.7; }
+    }
+    @keyframes heroGlowB {
+      0%,100% { transform: translate3d(0,0,0) scale(1.05); opacity: 0.42; }
+      50%     { transform: translate3d(-3vw,-2vh,0) scale(1); opacity: 0.62; }
+    }
+    @keyframes heroBeams {
+      0%,100% { transform: translateX(-6%); opacity: 0.55; }
+      50%     { transform: translateX(6%); opacity: 0.9; }
+    }
+    @keyframes heroGrain {
+      0% { transform: translate(0,0); }
+      33% { transform: translate(-4%, 3%); }
+      66% { transform: translate(3%, -2%); }
+      100% { transform: translate(0,0); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero__fx-glow--a, .hero__fx-glow--b, .hero__fx-beams, .hero__fx-grain { animation: none; }
     }
 
     .hero__inner {
@@ -468,6 +567,10 @@
       line-height: 1;
       letter-spacing: 0.02em;
       color: var(--color-accent);
+      background: var(--gold-gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
     .hero__stat-label {
       font-family: 'DM Sans', sans-serif;
@@ -2041,6 +2144,13 @@
          ============================================================ -->
     <section class="hero" id="hero" aria-label="Show Limousines hero">
       <canvas class="hero__canvas" id="heroCanvas" aria-hidden="true"></canvas>
+      <div class="hero__fx" aria-hidden="true">
+        <span class="hero__fx-glow hero__fx-glow--a"></span>
+        <span class="hero__fx-glow hero__fx-glow--b"></span>
+        <span class="hero__fx-beams"></span>
+        <span class="hero__fx-grain"></span>
+        <span class="hero__fx-vignette"></span>
+      </div>
       <div class="beam" aria-hidden="true"></div>
 
       <div class="hero__inner">
