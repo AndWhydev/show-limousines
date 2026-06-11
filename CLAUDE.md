@@ -38,30 +38,35 @@ Local preview: npx serve . -l 4200
 
 ## Tech Stack
 
-- Single file: index.html (153KB, no build step needed)
-- Three.js r128 for 3D car hero (./car.glb)
-- GSAP 3 + ScrollTrigger for scroll animations
-- Lenis for smooth scrolling
+- Multi-page static site (6 HTML pages, no build step — Vercel serves them directly)
+- Shared `styles.css` (all styling) and `main.js` (all behaviour) linked by every page
+- Header + footer markup is duplicated into each page (no templating); edit all
+  pages when changing nav/footer, or re-derive from one
+- Three.js r128 for the 3D car hero — Home page only (`main.js` guards it so it
+  no-ops on pages without `#heroCanvas`)
+- GSAP 3 + ScrollTrigger for scroll animations; Lenis for smooth scrolling
 - Deploy: GitHub push to main = Vercel auto-deploys instantly
 
 ---
 
-## What Is Already Built
+## Pages (7) — nav mirrors the original showlimousines.com.au menu
+## Home · Wedding Limousines · Services · Fleet · About Us · Locations · Contact
 
-The full site is complete with these sections:
-1. Header — logo, phone, email, 7-item nav, GET A QUOTE button
-2. Hero — Three.js 3D car, GSAP scroll-scrub, "Arrive in Style" heading, 3 CTAs
-3. Trust Strip — 4 columns: Google Rating, Serving Sydney, Red Carpet, Available 365 Days
-4. Services Grid — 8 cards, dark background, all link to #quote
-5. About — company description, Google review badge (5.0 stars, 160+ reviews)
-6. Fleet — 11 vehicles in single grid with real client photos
-7. How It Works — 4 steps
-8. Quote Form — full booking form, mailto:info@showlimousines.com.au
-9. Testimonials — 5 real Google reviews in a carousel
-10. Long-form SEO content — "Wedding, Party & Event Limousines"
-11. Google Map — embedded iframe, 11 service locations
-12. FAQ Accordion — 4 questions
-13. Footer — socials, 8 services, 11 locations, AWL credit
+1. `index.html` — Home: 3D hero, trust strip (4 cols), CTA band
+2. `wedding.html` — Wedding Limousines: feature copy + photo, testimonials, CTA
+3. `services.html` — 9 service cards + "How It Works" (4 steps)
+4. `fleet.html` — 11 vehicles with real client photos
+5. `about.html` — company description, Google 5.0 badge, testimonials, Gallery link
+6. `locations.html` — service-area map + 11 areas
+7. `contact.html` — quote form (mailto) + FAQ accordion
+
+Plus `gallery.html` — masonry of real photos (`gallery-01..11.jpg`); not in the
+top nav, linked from the About page, the mobile menu and the footer (matches the
+original site, where Gallery sits under About Us).
+
+Every inner page opens with a `.page-hero` banner. Header is pinned/fixed and
+always visible (no hide-on-scroll). Footer (socials, service/location/fleet
+columns, AWL credit) is shared across all pages.
 
 ---
 
@@ -92,6 +97,11 @@ The full site is complete with these sections:
 
 ## Recently Completed
 
+- Rebuilt as a 7-page site mirroring the original showlimousines.com.au menu
+  (Home, Wedding Limousines, Services, Fleet, About Us, Locations, Contact);
+  extracted shared styles.css + main.js; Gallery linked under About Us
+- Gallery wedding tile now uses the couple-removed Black Edition photo
+- Header pinned/always-visible (removed hide-on-scroll-down)
 - Real client fleet photos swapped in for all 11 vehicles (replaced the
   AI-generated images); normalised to 1536x864 JPEGs
 - Black Edition fleet photo: bride & groom removed and the full limousine

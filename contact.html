@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Show Limousines — Get a Quote | Sydney Limo Hire</title>
+  <meta name="description" content="Get a free quote from Show Limousines. Call 0422 023 413 or request a tailored package online. Serving Sydney, Wollongong and 11 surrounding locations.">
+
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.0.45/dist/lenis.min.js"></script>
+  <script src="https://unpkg.com/split-type"></script>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="nav-wrap" id="navWrap" role="banner">
+    <div class="nav-announce" role="region" aria-label="Promotional banner">
+      Sydney's Premier Limousine Service
+      <span class="sep">·</span>
+      Call <a href="tel:0422023413">0422 023 413</a>
+      <span class="sep">·</span>
+      <a href="mailto:info@showlimousines.com.au">info@showlimousines.com.au</a>
+    </div>
+    <nav class="nav-main" role="navigation" aria-label="Primary">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-brand" aria-label="Show Limousines — home">
+          <img src="logo.png" alt="Show Limousines" class="nav-brand__logo" width="1514" height="443">
+        </a>
+
+        <div class="nav-pills" role="menubar">
+          <a href="index.html" class="nav-pill" role="menuitem">Home</a>
+          <a href="wedding.html" class="nav-pill" role="menuitem">Wedding Limousines</a>
+          <a href="services.html" class="nav-pill" role="menuitem">Services</a>
+          <a href="fleet.html" class="nav-pill" role="menuitem">Fleet</a>
+          <a href="about.html" class="nav-pill" role="menuitem">About Us</a>
+          <a href="locations.html" class="nav-pill" role="menuitem">Locations</a>
+          <a href="contact.html" class="nav-pill is-active" aria-current="page" role="menuitem">Contact</a>
+        </div>
+
+        <div class="nav-right">
+          <a href="contact.html#quote" class="btn-pill btn-pill--gold">
+            Get a Quote
+            <span class="btn-pill__arrow" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>
+            </span>
+          </a>
+          <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-controls="navMobile" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="nav-mobile" id="navMobile" aria-hidden="true">
+    <a href="index.html">Home</a>
+    <a href="wedding.html">Wedding Limousines</a>
+    <a href="services.html">Services</a>
+    <a href="fleet.html">Fleet</a>
+    <a href="about.html">About Us</a>
+    <a href="locations.html">Locations</a>
+    <a href="contact.html" aria-current="page">Contact</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="tel:0422023413">Call 0422 023 413</a>
+    <a href="mailto:info@showlimousines.com.au">info@showlimousines.com.au</a>
+    <div class="nav-mobile__cta">
+      <a href="contact.html#quote" class="btn-pill btn-pill--gold">
+        Get a Free Quote
+        <span class="btn-pill__arrow" aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>
+        </span>
+      </a>
+    </div>
+  </div>
+  <main>
+    <section class="page-hero" aria-label="Let's plan your arrival.">
+      <div class="page-hero__inner reveal">
+        <span class="label-bracket">Contact Us</span>
+        <h1 class="page-hero__title">Let's plan your arrival.</h1>
+        <p class="page-hero__sub">Tell us your event details and we'll put together a tailored package. Call 0422 023 413 or send an enquiry below.</p>
+      </div>
+    </section>
+    <section class="quote" id="quote" aria-labelledby="quoteHeading">
+      <div class="beam" aria-hidden="true"></div>
+      <div class="quote__inner">
+        <div class="quote__header reveal">
+          <span class="label-bracket">Get a Quote</span>
+          <h2 class="quote__heading" id="quoteHeading">Tell us about your event.</h2>
+          <p class="quote__sub">Fill in the details below and we'll send you a personalised quote within the hour. Or call us direct on <a href="tel:0422023413" style="color:var(--color-accent);">0422 023 413</a> — we're open 24/7.</p>
+        </div>
+
+        <div class="quote__grid">
+          <form class="quote-form reveal" id="quoteForm" action="mailto:info@showlimousines.com.au" method="post" enctype="text/plain">
+            <div class="quote-field">
+              <label for="qName">Name <span class="req">*</span></label>
+              <input type="text" id="qName" name="name" required autocomplete="name">
+            </div>
+            <div class="quote-field">
+              <label for="qPhone">Phone <span class="req">*</span></label>
+              <input type="tel" id="qPhone" name="phone" required autocomplete="tel">
+            </div>
+            <div class="quote-field">
+              <label for="qEmail">Email <span class="req">*</span></label>
+              <input type="email" id="qEmail" name="email" required autocomplete="email">
+            </div>
+            <div class="quote-field">
+              <label for="qDate">Date <span class="req">*</span></label>
+              <input type="date" id="qDate" name="date" required>
+            </div>
+            <div class="quote-field">
+              <label for="qPickupTime">Pick-up time</label>
+              <select id="qPickupTime" name="pickup_time"></select>
+            </div>
+            <div class="quote-field">
+              <label for="qDropoffTime">Drop-off time</label>
+              <select id="qDropoffTime" name="dropoff_time"></select>
+            </div>
+            <div class="quote-field full">
+              <label for="qPickupLoc">Pick-up location</label>
+              <input type="text" id="qPickupLoc" name="pickup_location" placeholder="Suburb or full address">
+            </div>
+            <div class="quote-field full">
+              <label for="qDropoffLoc">Drop-off location</label>
+              <input type="text" id="qDropoffLoc" name="dropoff_location" placeholder="Suburb or full address">
+            </div>
+            <div class="quote-field">
+              <label for="qPax">Number of passengers</label>
+              <input type="number" id="qPax" name="passengers" min="1" max="20" placeholder="e.g. 8">
+            </div>
+            <div class="quote-field">
+              <label for="qOccasion">Occasion</label>
+              <select id="qOccasion" name="occasion">
+                <option value="">Select an occasion</option>
+                <option>Wedding</option>
+                <option>Airport Transfer</option>
+                <option>School Formal</option>
+                <option>Hen's Party</option>
+                <option>Buck's Party</option>
+                <option>Birthday</option>
+                <option>Corporate Event</option>
+                <option>Concert Transfer</option>
+                <option>General Hire</option>
+                <option>Christmas Party</option>
+                <option>Cruise Transfer</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="quote-field full">
+              <label for="qComments">Additional comments</label>
+              <textarea id="qComments" name="comments" placeholder="Run sheet, special requests, anything we should know…"></textarea>
+            </div>
+            <div class="quote-submit">
+              <button type="submit" class="btn-pill btn-pill--gold btn-magnetic" style="width:100%; justify-content:center;">
+                Send Enquiry
+                <span class="btn-pill__arrow" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>
+                </span>
+              </button>
+            </div>
+          </form>
+
+          <aside class="quote-aside reveal" aria-label="Contact information">
+            <h3 class="quote-aside__title">Talk to us direct.</h3>
+
+            <div class="quote-aside__row">
+              <span class="quote-aside__icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-7 8-13a8 8 0 1 0-16 0c0 6 8 13 8 13z"/><circle cx="12" cy="9" r="3"/></svg>
+              </span>
+              <div>
+                <span class="quote-aside__label">Service area</span>
+                <span class="quote-aside__value">Greater Sydney &amp; Wollongong</span>
+              </div>
+            </div>
+
+            <div class="quote-aside__row">
+              <span class="quote-aside__icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </span>
+              <div>
+                <span class="quote-aside__label">Phone</span>
+                <a href="tel:0422023413" class="quote-aside__value">0422 023 413</a>
+              </div>
+            </div>
+
+            <div class="quote-aside__row">
+              <span class="quote-aside__icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg>
+              </span>
+              <div>
+                <span class="quote-aside__label">Email</span>
+                <a href="mailto:info@showlimousines.com.au" class="quote-aside__value">info@showlimousines.com.au</a>
+              </div>
+            </div>
+
+            <div class="quote-aside__row">
+              <span class="quote-aside__icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </span>
+              <div>
+                <span class="quote-aside__label">Reviews</span>
+                <span class="quote-aside__value">160+ five-star Google reviews</span>
+              </div>
+            </div>
+
+            <div class="quote-aside__row">
+              <span class="quote-aside__icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              </span>
+              <div>
+                <span class="quote-aside__label">Hours</span>
+                <span class="quote-aside__value">Open 24/7 — 365 days a year</span>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+    <section class="faq" id="faq" aria-labelledby="faqHeading">
+      <div class="beam" aria-hidden="true"></div>
+      <div class="faq__inner">
+        <div class="faq__header reveal">
+          <span class="label-bracket">FAQs</span>
+          <h2 class="faq__heading" id="faqHeading">Common questions, answered.</h2>
+        </div>
+
+        <div class="faq__list">
+
+          <div class="faq-item reveal">
+            <div class="faq-item__top" role="button" tabindex="0" aria-expanded="false">
+              <h3 class="faq-item__q">How much does it cost to hire a limousine?</h3>
+              <span class="faq-item__arrow" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+              </span>
+            </div>
+            <div class="faq-item__panel">
+              <p class="faq-item__a">The costs involved to hire a limo will vary depending on the vehicle, location, and pick up/drop off requirements. Most limousine hire companies will charge by the hour. At Show Limousines, all of our limousine hire services start at $399 per booking. For a more accurate quote, get in touch with our team and we'll send it over via email.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal">
+            <div class="faq-item__top" role="button" tabindex="0" aria-expanded="false">
+              <h3 class="faq-item__q">What's included when I book a limo?</h3>
+              <span class="faq-item__arrow" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+              </span>
+            </div>
+            <div class="faq-item__panel">
+              <p class="faq-item__a">For all transfers and events, we include a uniformed chauffeur, bottled water, and a luxurious modern vehicle. For weddings, we roll out the red carpet for the bride, the cars are laced with satin ribbon and sparkling wine. Each car is fitted with air conditioning, bluetooth, drink holders, party lights, and comfortable, luxurious seating.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal">
+            <div class="faq-item__top" role="button" tabindex="0" aria-expanded="false">
+              <h3 class="faq-item__q">How far in advance do I need to book?</h3>
+              <span class="faq-item__arrow" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+              </span>
+            </div>
+            <div class="faq-item__panel">
+              <p class="faq-item__a">We recommend booking as far in advance as possible! Particularly for an event or special occasion, as we want to ensure that you get the right vehicle and can secure the date of the event. For weddings, we get bookings a year in advance. That being said, we do take on last-minute bookings and will always do our best to accommodate requests.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal">
+            <div class="faq-item__top" role="button" tabindex="0" aria-expanded="false">
+              <h3 class="faq-item__q">How many people can fit into a limo?</h3>
+              <span class="faq-item__arrow" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+              </span>
+            </div>
+            <div class="faq-item__panel">
+              <p class="faq-item__a">That depends on the vehicle chosen! For our stretch limousines and hummer limousines, we can fit up to 16 guests in one car. For smaller parties, we can seat 4 to 8 passengers. For weddings, we offer car packages where you can hire multiple cars for the big day.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+    <footer class="foot" aria-labelledby="footHeading">
+      <div class="beam" aria-hidden="true"></div>
+      <h2 class="visually-hidden" id="footHeading">Site footer</h2>
+      <div class="foot__inner">
+
+        <!-- Prominent contact block -->
+        <div class="foot__contact">
+          <div>
+            <p class="foot__contact-head">Ready when you are.</p>
+            <p class="foot__contact-sub">Call us direct, drop us an email or fill out the quote form above. We reply within the hour, 24 hours a day.</p>
+            <div class="foot__socials" aria-label="Social links">
+              <a href="https://www.facebook.com/showlimousines/" target="_blank" rel="noopener noreferrer" class="foot__social" aria-label="Show Limousines on Facebook">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
+              </a>
+              <a href="https://www.instagram.com/showlimousines/" target="_blank" rel="noopener noreferrer" class="foot__social" aria-label="Show Limousines on Instagram">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="foot__contact-info">
+            <div class="foot__contact-row">
+              <span class="foot__contact-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </span>
+              <div>
+                <span class="foot__contact-label">Phone</span>
+                <a href="tel:0422023413" class="foot__contact-value">0422 023 413</a>
+              </div>
+            </div>
+            <div class="foot__contact-row">
+              <span class="foot__contact-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg>
+              </span>
+              <div>
+                <span class="foot__contact-label">Email</span>
+                <a href="mailto:info@showlimousines.com.au" class="foot__contact-value">info@showlimousines.com.au</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="foot__top">
+          <div class="foot__brand-wrap">
+            <div class="foot__brand">
+              <img src="logo.png" alt="Show Limousines" class="foot__brand-logo" width="1514" height="443">
+            </div>
+            <p class="foot__tag">Sydney's premier chauffeur-driven limousines. Weddings, formals, corporate and special occasions across Sydney &amp; Wollongong.</p>
+          </div>
+
+          <form class="foot__sub" id="footSubForm" onsubmit="return false;">
+            <label class="foot__sub-label" for="footEmail">Get exclusive offers</label>
+            <div class="foot__sub-form">
+              <input class="foot__sub-input" type="email" id="footEmail" name="email" placeholder="your@email.com" required aria-label="Email address">
+              <button class="foot__sub-btn" type="submit">Subscribe</button>
+            </div>
+            <span class="foot__sub-note" id="footSubNote">Wedding tips, fleet news, occasional offers. No spam.</span>
+          </form>
+        </div>
+
+        <div class="foot__divider" aria-hidden="true"></div>
+
+        <div class="foot__grid">
+
+          <nav class="foot-col" aria-labelledby="footLinks">
+            <h3 class="foot-col__title" id="footLinks">Links</h3>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="fleet.html">Our Vehicles</a></li>
+              <li><a href="services.html">Limo Hire</a></li>
+              <li><a href="fleet.html">Hummer Hire</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="contact.html#quote">Contact</a></li>
+              <li><a href="index.html">Sitemap</a></li>
+            </ul>
+          </nav>
+
+          <nav class="foot-col" aria-labelledby="footServices">
+            <h3 class="foot-col__title" id="footServices">Services</h3>
+            <ul>
+              <li><a href="services.html">Wedding Limos</a></li>
+              <li><a href="services.html">Airport Transfers</a></li>
+              <li><a href="services.html">School Formals</a></li>
+              <li><a href="services.html">Hens Parties</a></li>
+              <li><a href="services.html">Corporate Transfers</a></li>
+              <li><a href="services.html">Birthday Limos</a></li>
+              <li><a href="services.html">Concert Transfers</a></li>
+              <li><a href="services.html">Party &amp; Event Car Hire</a></li>
+            </ul>
+          </nav>
+
+          <nav class="foot-col" aria-labelledby="footLocations">
+            <h3 class="foot-col__title" id="footLocations">Locations</h3>
+            <ul>
+              <li><a href="locations.html#map">Bankstown</a></li>
+              <li><a href="locations.html#map">Campbelltown</a></li>
+              <li><a href="locations.html#map">Eastern Suburbs</a></li>
+              <li><a href="locations.html#map">Inner West</a></li>
+              <li><a href="locations.html#map">Liverpool</a></li>
+              <li><a href="locations.html#map">Marrickville</a></li>
+              <li><a href="locations.html#map">Northern Beaches</a></li>
+              <li><a href="locations.html#map">Parramatta</a></li>
+              <li><a href="locations.html#map">Penrith</a></li>
+              <li><a href="locations.html#map">Sutherland Shire</a></li>
+              <li><a href="locations.html#map">Wollongong</a></li>
+            </ul>
+          </nav>
+
+          <nav class="foot-col" aria-labelledby="footFleet">
+            <h3 class="foot-col__title" id="footFleet">Fleet</h3>
+            <ul>
+              <li><a href="fleet.html">Rolls Royce Phantom</a></li>
+              <li><a href="fleet.html">Chrysler Stretch</a></li>
+              <li><a href="fleet.html">Chrysler Gullwing</a></li>
+              <li><a href="fleet.html">Hummer H2</a></li>
+              <li><a href="fleet.html">Mercedes S Class</a></li>
+              <li><a href="fleet.html">Mercedes Sprinter</a></li>
+              <li><a href="fleet.html">Mercedes Valente</a></li>
+              <li><a href="fleet.html">VW Crafter Minibus</a></li>
+            </ul>
+          </nav>
+
+        </div>
+
+        <div class="foot__bottom">
+          <div>
+            &copy; 2026 Show Limousines<span class="sep">·</span>ABN 51 149 228 357
+          </div>
+          <div>
+            <a href="mailto:info@showlimousines.com.au">info@showlimousines.com.au</a>
+            <span class="sep">·</span>
+            <a href="tel:0422023413">0422 023 413</a>
+          </div>
+          <div class="foot__credit">
+            Powered by <a href="https://awlabs.com.au" target="_blank" rel="noopener noreferrer">All Webbed Labs</a>
+          </div>
+        </div>
+
+      </div>
+    </footer>
+  <script src="main.js"></script>
+</body>
+</html>
