@@ -3704,13 +3704,8 @@
           var ticking = false;
           function onScroll() {
             var y = window.scrollY;
-            if (y < 80) {
-              navWrap.classList.remove('is-hidden');
-            } else if (y > lastY + 6) {
-              navWrap.classList.add('is-hidden');
-            } else if (y < lastY - 6) {
-              navWrap.classList.remove('is-hidden');
-            }
+            // Keep the nav pinned and always visible while scrolling for easy access
+            navWrap.classList.remove('is-hidden');
             lastY = y;
             ticking = false;
           }
