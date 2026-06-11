@@ -20,7 +20,7 @@ Local preview: npx serve . -l 4200
 - Facebook: https://www.facebook.com/showlimousines/
 - Instagram: https://www.instagram.com/showlimousines/
 - Original site: https://www.showlimousines.com.au
-- ABN: TBC (do not remove placeholder until client confirms)
+- ABN: 51 149 228 357 (confirmed, live in footer)
 
 ---
 
@@ -48,21 +48,20 @@ Local preview: npx serve . -l 4200
 
 ## What Is Already Built
 
-The full site is complete with these 14 sections:
+The full site is complete with these sections:
 1. Header — logo, phone, email, 7-item nav, GET A QUOTE button
 2. Hero — Three.js 3D car, GSAP scroll-scrub, "Arrive in Style" heading, 3 CTAs
 3. Trust Strip — 4 columns: Google Rating, Serving Sydney, Red Carpet, Available 365 Days
-4. Occasions Grid — 8 cards, dark background, all link to #quote
+4. Services Grid — 8 cards, dark background, all link to #quote
 5. About — company description, Google review badge (5.0 stars, 160+ reviews)
 6. Fleet — 11 vehicles in single grid with AI-generated images
 7. How It Works — 4 steps
 8. Quote Form — full booking form, mailto:info@showlimousines.com.au
 9. Testimonials — 5 real Google reviews in a carousel
-10. Gallery — placeholder grid (real photos needed from client)
-11. Long-form SEO content — "Wedding, Party & Event Limousines"
-12. Google Map — embedded iframe, 11 service locations
-13. FAQ Accordion — 4 questions
-14. Footer — socials, 8 services, 11 locations, AWL credit
+10. Long-form SEO content — "Wedding, Party & Event Limousines"
+11. Google Map — embedded iframe, 11 service locations
+12. FAQ Accordion — 4 questions
+13. Footer — socials, 8 services, 11 locations, AWL credit
 
 ---
 
@@ -85,12 +84,17 @@ The full site is complete with these 14 sections:
 ## What Is Still Outstanding
 
 - Real fleet photos from client (to replace AI-generated images)
-- Client ABN (currently shows "ABN: TBC" in footer)
 - Client review and approval of the full site
-- Replace placeholder gallery with real event photos from client
 - 3D car model upgrade (current model is a low-poly generic sedan, not a limo)
 - Mobile responsiveness verification on real devices
 - Point showlimousines.com.au domain at Vercel once client approves
+
+## Recently Completed
+
+- ABN confirmed and set in footer (51 149 228 357)
+- Placeholder gallery section removed
+- Wedding Limousines section removed; Occasions renamed to Services
+- Logo + favicon added; cinematic hero background, logo-gold colour scheme
 
 ---
 
