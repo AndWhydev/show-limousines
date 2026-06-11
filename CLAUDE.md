@@ -54,7 +54,7 @@ The full site is complete with these sections:
 3. Trust Strip — 4 columns: Google Rating, Serving Sydney, Red Carpet, Available 365 Days
 4. Services Grid — 8 cards, dark background, all link to #quote
 5. About — company description, Google review badge (5.0 stars, 160+ reviews)
-6. Fleet — 11 vehicles in single grid with AI-generated images
+6. Fleet — 11 vehicles in single grid with real client photos
 7. How It Works — 4 steps
 8. Quote Form — full booking form, mailto:info@showlimousines.com.au
 9. Testimonials — 5 real Google reviews in a carousel
@@ -65,7 +65,7 @@ The full site is complete with these sections:
 
 ---
 
-## Fleet Vehicles (11 total, all have AI-generated images)
+## Fleet Vehicles (11 total, all have real client photos)
 
 1. Rolls Royce Phantom — 4 pax — fleet-rolls-royce-phantom-v2.jpg
 2. White Chrysler Super Stretch — 10 pax — fleet-chrysler-white-v2.jpg
@@ -83,14 +83,19 @@ The full site is complete with these sections:
 
 ## What Is Still Outstanding
 
-- Real fleet photos from client (to replace AI-generated images)
 - Client review and approval of the full site
+- Black Chrysler Super Stretch: client asked to remove the white ribbons on
+  the bonnet (source supplied with them still on) — not yet done
 - 3D car model upgrade (current model is a low-poly generic sedan, not a limo)
 - Mobile responsiveness verification on real devices
 - Point showlimousines.com.au domain at Vercel once client approves
 
 ## Recently Completed
 
+- Real client fleet photos swapped in for all 11 vehicles (replaced the
+  AI-generated images); normalised to 1536x864 JPEGs
+- Black Edition fleet photo: bride & groom removed and the full limousine
+  reconstructed via AI edit (fal Nano Banana Pro)
 - ABN confirmed and set in footer (51 149 228 357)
 - Placeholder gallery section removed
 - Wedding Limousines section removed; Occasions renamed to Services
