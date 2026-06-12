@@ -26,14 +26,14 @@
   <script src="https://unpkg.com/lenis@1.0.45/dist/lenis.min.js"></script>
   <script src="https://unpkg.com/split-type"></script>
 
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
 
   <!-- ============================================================
        NAVIGATION
        ============================================================ -->
-  <header class="nav-wrap" id="navWrap" role="banner">
+      <header class="nav-wrap" id="navWrap" role="banner">
     <div class="nav-announce" role="region" aria-label="Promotional banner">
       Sydney's Premier Limousine Service
       <span class="sep">·</span>
@@ -43,26 +43,93 @@
     </div>
     <nav class="nav-main" role="navigation" aria-label="Primary">
       <div class="nav-inner">
-        <a href="#hero" class="nav-brand" aria-label="Show Limousines — home">
-          <img src="logo.png" alt="Show Limousines" class="nav-brand__logo" width="1514" height="443">
+        <a href="/" class="nav-brand" aria-label="Show Limousines — home">
+          <img src="/logo.png" alt="Show Limousines" class="nav-brand__logo" width="1514" height="443">
         </a>
-
         <div class="nav-pills" role="menubar">
-          <a href="#hero" class="nav-pill" role="menuitem">Home</a>
-          <a href="#services" class="nav-pill" role="menuitem">Services</a>
-          <a href="#fleet" class="nav-pill" role="menuitem">Fleet</a>
-          <a href="#about" class="nav-pill" role="menuitem">About Us</a>
-          <a href="#map" class="nav-pill" role="menuitem">Locations</a>
-          <a href="#quote" class="nav-pill" role="menuitem">Contact</a>
+          <a href="/" class="nav-pill is-active" aria-current="page" role="menuitem">Home</a>
+          <div class="nav-pill-group">
+            <a href="/wedding-limousine-sydney/" class="nav-pill" role="menuitem" aria-haspopup="true">Wedding Limousines <svg class="nav-pill-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></a>
+            <div class="nav-dropdown" role="menu">
+              <a href="/wedding-limousine-sydney/" role="menuitem">Wedding Car Hire Sydney</a>
+              <a href="/wedding-limousine-hire-wollongong/" role="menuitem">Wedding Car Hire Wollongong</a>
+            </div>
+          </div>
+          <div class="nav-pill-group">
+            <a href="/services/" class="nav-pill" role="menuitem" aria-haspopup="true">Services <svg class="nav-pill-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></a>
+            <div class="nav-dropdown nav-dropdown--wide" role="menu">
+              <a href="/airport-limo-transfers-sydney/" role="menuitem">Airport Transfers</a>
+              <a href="/cruise-transfer-sydney/" role="menuitem">Cruise Transfers</a>
+              <a href="/birthday-limousine-sydney/" role="menuitem">Birthday Limos</a>
+              <a href="/concert-limo-transfers-sydney/" role="menuitem">Concert Transfers</a>
+              <a href="/school-formal-limousine-hire-sydney/" role="menuitem">School Formal Limos</a>
+              <a href="/corporate-transfers/" role="menuitem">Corporate Transfers</a>
+              <a href="/party-limousine-hire-sydney/" role="menuitem">Party Limos</a>
+              <a href="/hens-party-limo-sydney/" role="menuitem">Hen's Party Limos</a>
+            </div>
+          </div>
+          <div class="nav-pill-group">
+            <a href="/fleet/" class="nav-pill" role="menuitem" aria-haspopup="true">Fleet <svg class="nav-pill-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></a>
+            <div class="nav-dropdown nav-dropdown--mega" role="menu">
+            <div class="nav-mega__group">
+              <a class="nav-mega__heading" href="/chrysler-limo-hire-sydney/">Chrysler</a>
+              <a href="/vehicle/chrysler-super-stretch-limousine/" role="menuitem">White Chrysler Super Stretch</a>
+              <a href="/vehicle/black-chrysler-super-stretch-limousine/" role="menuitem">Black Chrysler Super Stretch</a>
+              <a href="/vehicle/black-edition-chrysler-super-stretch-limousine/" role="menuitem">Chrysler Super Stretch (Black Edition)</a>
+              <a href="/vehicle/gullwing-chrysler-super-stretch-limousine/" role="menuitem">Chrysler Super Stretch Gullwing</a>
+            </div>
+            <div class="nav-mega__group">
+              <a class="nav-mega__heading" href="/hummer-limo-hire-sydney/">Hummer</a>
+              <a href="/vehicle/hummer-stretch-limousine/" role="menuitem">Stretch Hummer (14 Pax)</a>
+              <a href="/vehicle/hummer-h2-stretch-limousine/" role="menuitem">Stretch Hummer (16 Pax)</a>
+            </div>
+            <div class="nav-mega__group">
+              <span class="nav-mega__heading">Mercedes</span>
+              <a href="/vehicle/mercedes-s-class-amg-sedan/" role="menuitem">Mercedes S Class AMG Sedan</a>
+              <a href="/vehicle/mercedes-valente-premium-minibus/" role="menuitem">Mercedes Valente Luxury Minivan</a>
+              <a href="/vehicle/mercedes-sprinter-limo-van/" role="menuitem">Mercedes Sprinter Limo Van</a>
+            </div>
+            <div class="nav-mega__group">
+              <a class="nav-mega__heading" href="/rolls-royce-hire-sydney/">Rolls Royce</a>
+              <a href="/vehicle/rolls-royce-phantom-sedan/" role="menuitem">Rolls Royce Phantom</a>
+            </div>
+            <div class="nav-mega__group">
+              <span class="nav-mega__heading">Volkswagen</span>
+              <a href="/vehicle/volkswagen-crafter-premium-minibus/" role="menuitem">VW Crafter Luxury Minibus</a>
+            </div>
+            </div>
+          </div>
+          <div class="nav-pill-group">
+            <a href="/about-us/" class="nav-pill" role="menuitem" aria-haspopup="true">About us <svg class="nav-pill-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></a>
+            <div class="nav-dropdown" role="menu">
+              <a href="/gallery/" role="menuitem">Gallery</a>
+              <a href="/blog/" role="menuitem">Blog</a>
+              <a href="/reviews/" role="menuitem">Reviews</a>
+              <a href="/term-conditions/" role="menuitem">Terms &amp; Conditions</a>
+            </div>
+          </div>
+          <div class="nav-pill-group">
+            <button class="nav-pill" type="button" aria-haspopup="true">Locations <svg class="nav-pill-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+            <div class="nav-dropdown nav-dropdown--wide" role="menu">
+              <a href="/limo-hire-bankstown/" role="menuitem">Bankstown</a>
+              <a href="/limo-hire-campbelltown/" role="menuitem">Campbelltown</a>
+              <a href="/limo-hire-eastern-suburbs/" role="menuitem">Eastern Suburbs</a>
+              <a href="/limo-hire-inner-west/" role="menuitem">Inner West</a>
+              <a href="/limo-hire-liverpool/" role="menuitem">Liverpool</a>
+              <a href="/limo-hire-marrickville/" role="menuitem">Marrickville</a>
+              <a href="/limo-hire-northern-beaches/" role="menuitem">Northern Beaches</a>
+              <a href="/limo-hire-parramatta/" role="menuitem">Parramatta</a>
+              <a href="/limo-hire-penrith/" role="menuitem">Penrith</a>
+              <a href="/limo-hire-sutherland-shire/" role="menuitem">Sutherland Shire</a>
+              <a href="/limo-hire-wollongong/" role="menuitem">Wollongong</a>
+            </div>
+          </div>
+          <a href="/contact/" class="nav-pill" role="menuitem">Contact</a>
         </div>
-
         <div class="nav-right">
-          <a href="tel:0422023413" class="nav-phone">0422 023 413</a>
-          <a href="#quote" class="btn-pill btn-pill--gold">
+          <a href="/contact/" class="btn-pill btn-pill--gold">
             Get a Quote
-            <span class="btn-pill__arrow" aria-hidden="true">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>
-            </span>
+            <span class="btn-pill__arrow" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></span>
           </a>
           <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-controls="navMobile" aria-expanded="false">
             <span></span><span></span><span></span>
@@ -73,25 +140,106 @@
   </header>
 
   <!-- Mobile menu -->
-  <div class="nav-mobile" id="navMobile" aria-hidden="true">
-    <a href="#hero">Home</a>
-    <a href="#services">Services</a>
-    <a href="#fleet">Fleet</a>
-    <a href="#about">About Us</a>
-    <a href="#map">Locations</a>
-    <a href="#quote">Contact</a>
+      <div class="nav-mobile" id="navMobile" aria-hidden="true">
+    <a href="/" aria-current="page">Home</a>
+    <div class="nav-mobile__group">
+      <div class="nav-mobile__grouptop">
+        <a href="/wedding-limousine-sydney/">Wedding Limousines</a>
+        <button class="nav-mobile__caret" aria-label="Toggle Wedding Limousines submenu" aria-expanded="false">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+      </div>
+      <div class="nav-mobile__sub">
+        <a href="/wedding-limousine-sydney/">Wedding Car Hire Sydney</a>
+        <a href="/wedding-limousine-hire-wollongong/">Wedding Car Hire Wollongong</a>
+      </div>
+    </div>
+    <div class="nav-mobile__group">
+      <div class="nav-mobile__grouptop">
+        <a href="/services/">Services</a>
+        <button class="nav-mobile__caret" aria-label="Toggle Services submenu" aria-expanded="false">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+      </div>
+      <div class="nav-mobile__sub">
+        <a href="/airport-limo-transfers-sydney/">Airport Transfers</a>
+        <a href="/cruise-transfer-sydney/">Cruise Transfers</a>
+        <a href="/birthday-limousine-sydney/">Birthday Limos</a>
+        <a href="/concert-limo-transfers-sydney/">Concert Transfers</a>
+        <a href="/school-formal-limousine-hire-sydney/">School Formal Limos</a>
+        <a href="/corporate-transfers/">Corporate Transfers</a>
+        <a href="/party-limousine-hire-sydney/">Party Limos</a>
+        <a href="/hens-party-limo-sydney/">Hen's Party Limos</a>
+      </div>
+    </div>
+    <div class="nav-mobile__group">
+      <div class="nav-mobile__grouptop">
+        <a href="/fleet/">Fleet</a>
+        <button class="nav-mobile__caret" aria-label="Toggle Fleet submenu" aria-expanded="false">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+      </div>
+      <div class="nav-mobile__sub">
+        <a href="/chrysler-limo-hire-sydney/">Chrysler</a>
+        <a href="/vehicle/chrysler-super-stretch-limousine/">White Chrysler Super Stretch</a>
+        <a href="/vehicle/black-chrysler-super-stretch-limousine/">Black Chrysler Super Stretch</a>
+        <a href="/vehicle/black-edition-chrysler-super-stretch-limousine/">Chrysler Super Stretch (Black Edition)</a>
+        <a href="/vehicle/gullwing-chrysler-super-stretch-limousine/">Chrysler Super Stretch Gullwing</a>
+        <a href="/hummer-limo-hire-sydney/">Hummer</a>
+        <a href="/vehicle/hummer-stretch-limousine/">Stretch Hummer (14 Pax)</a>
+        <a href="/vehicle/hummer-h2-stretch-limousine/">Stretch Hummer (16 Pax)</a>
+        <span class="nav-mega__heading">Mercedes</span>
+        <a href="/vehicle/mercedes-s-class-amg-sedan/">Mercedes S Class AMG Sedan</a>
+        <a href="/vehicle/mercedes-valente-premium-minibus/">Mercedes Valente Luxury Minivan</a>
+        <a href="/vehicle/mercedes-sprinter-limo-van/">Mercedes Sprinter Limo Van</a>
+        <a href="/rolls-royce-hire-sydney/">Rolls Royce</a>
+        <a href="/vehicle/rolls-royce-phantom-sedan/">Rolls Royce Phantom</a>
+        <span class="nav-mega__heading">Volkswagen</span>
+        <a href="/vehicle/volkswagen-crafter-premium-minibus/">VW Crafter Luxury Minibus</a>
+      </div>
+    </div>
+    <div class="nav-mobile__group">
+      <div class="nav-mobile__grouptop">
+        <a href="/about-us/">About us</a>
+        <button class="nav-mobile__caret" aria-label="Toggle About us submenu" aria-expanded="false">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+      </div>
+      <div class="nav-mobile__sub">
+        <a href="/gallery/">Gallery</a>
+        <a href="/blog/">Blog</a>
+        <a href="/reviews/">Reviews</a>
+        <a href="/term-conditions/">Terms &amp; Conditions</a>
+      </div>
+    </div>
+    <div class="nav-mobile__group">
+      <div class="nav-mobile__grouptop">
+        <span>Locations</span>
+        <button class="nav-mobile__caret" aria-label="Toggle Locations submenu" aria-expanded="false">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+      </div>
+      <div class="nav-mobile__sub">
+        <a href="/limo-hire-bankstown/">Bankstown</a>
+        <a href="/limo-hire-campbelltown/">Campbelltown</a>
+        <a href="/limo-hire-eastern-suburbs/">Eastern Suburbs</a>
+        <a href="/limo-hire-inner-west/">Inner West</a>
+        <a href="/limo-hire-liverpool/">Liverpool</a>
+        <a href="/limo-hire-marrickville/">Marrickville</a>
+        <a href="/limo-hire-northern-beaches/">Northern Beaches</a>
+        <a href="/limo-hire-parramatta/">Parramatta</a>
+        <a href="/limo-hire-penrith/">Penrith</a>
+        <a href="/limo-hire-sutherland-shire/">Sutherland Shire</a>
+        <a href="/limo-hire-wollongong/">Wollongong</a>
+      </div>
+    </div>
+    <a href="/contact/">Contact</a>
     <a href="tel:0422023413">Call 0422 023 413</a>
     <a href="mailto:info@showlimousines.com.au">info@showlimousines.com.au</a>
     <div class="nav-mobile__cta">
-      <a href="#quote" class="btn-pill btn-pill--gold">
-        Get a Free Quote
-        <span class="btn-pill__arrow" aria-hidden="true">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>
-        </span>
-      </a>
+      <a href="/contact/" class="btn-pill btn-pill--gold">Get a Free Quote <span class="btn-pill__arrow" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></span></a>
     </div>
   </div>
-
   <main>
     <!-- ============================================================
          HERO
@@ -674,7 +822,12 @@
         </div>
 
         <div class="quote__grid">
-          <form class="quote-form reveal" id="quoteForm" action="mailto:info@showlimousines.com.au" method="post" enctype="text/plain">
+          <form class="quote-form reveal" id="quoteForm" action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="WEB3FORMS_ACCESS_KEY_HERE">
+            <input type="hidden" name="subject" value="New Show Limousines enquiry">
+            <input type="hidden" name="from_name" value="Show Limousines Website">
+            <input type="hidden" name="redirect" value="https://www.showlimousines.com.au/thank-you/">
+            <input type="checkbox" name="botcheck" class="visually-hidden" style="display:none" tabindex="-1" autocomplete="off">
             <div class="quote-field">
               <label for="qName">Name <span class="req">*</span></label>
               <input type="text" id="qName" name="name" required autocomplete="name">
@@ -994,147 +1147,76 @@
     <!-- ============================================================
          FOOTER
          ============================================================ -->
-    <footer class="foot" id="contact" aria-labelledby="footHeading">
+            <footer class="foot" aria-labelledby="footHeading">
       <div class="beam" aria-hidden="true"></div>
       <h2 class="visually-hidden" id="footHeading">Site footer</h2>
       <div class="foot__inner">
-
-        <!-- Prominent contact block -->
         <div class="foot__contact">
           <div>
-            <p class="foot__contact-head">Ready when you are.</p>
-            <p class="foot__contact-sub">Call us direct, drop us an email or fill out the quote form above. We reply within the hour, 24 hours a day.</p>
+            <div class="foot__brand"><img src="/logo.png" alt="Show Limousines" class="foot__brand-logo" width="1514" height="443"></div>
+            <p class="foot__tag">Show Limousines specialises in personalised limo hire services throughout Sydney and the Wollongong areas. Catering to a range of different events including weddings, private functions, birthdays, concerts and events, airport transfers, cruise transfers, school formals, corporate travellers, hen's nights.</p>
             <div class="foot__socials" aria-label="Social links">
-              <a href="https://www.facebook.com/showlimousines/" target="_blank" rel="noopener noreferrer" class="foot__social" aria-label="Show Limousines on Facebook">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
-              </a>
-              <a href="https://www.instagram.com/showlimousines/" target="_blank" rel="noopener noreferrer" class="foot__social" aria-label="Show Limousines on Instagram">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
-              </a>
+              <a href="https://www.facebook.com/showlimousines/" target="_blank" rel="noopener noreferrer" class="foot__social" aria-label="Show Limousines on Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg></a>
+              <a href="https://www.instagram.com/showlimousines/" target="_blank" rel="noopener noreferrer" class="foot__social" aria-label="Show Limousines on Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
             </div>
           </div>
           <div class="foot__contact-info">
-            <div class="foot__contact-row">
-              <span class="foot__contact-icon" aria-hidden="true">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              </span>
-              <div>
-                <span class="foot__contact-label">Phone</span>
-                <a href="tel:0422023413" class="foot__contact-value">0422 023 413</a>
-              </div>
-            </div>
-            <div class="foot__contact-row">
-              <span class="foot__contact-icon" aria-hidden="true">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg>
-              </span>
-              <div>
-                <span class="foot__contact-label">Email</span>
-                <a href="mailto:info@showlimousines.com.au" class="foot__contact-value">info@showlimousines.com.au</a>
-              </div>
-            </div>
+            <div class="foot__contact-row"><span class="foot__contact-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><div><span class="foot__contact-label">Phone</span><a href="tel:0422023413" class="foot__contact-value">0422 023 413</a></div></div>
+            <div class="foot__contact-row"><span class="foot__contact-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg></span><div><span class="foot__contact-label">Email</span><a href="mailto:info@showlimousines.com.au" class="foot__contact-value">info@showlimousines.com.au</a></div></div>
           </div>
         </div>
-
-        <div class="foot__top">
-          <div class="foot__brand-wrap">
-            <div class="foot__brand">
-              <img src="logo.png" alt="Show Limousines" class="foot__brand-logo" width="1514" height="443">
-            </div>
-            <p class="foot__tag">Sydney's premier chauffeur-driven limousines. Weddings, formals, corporate and special occasions across Sydney &amp; Wollongong.</p>
-          </div>
-
-          <form class="foot__sub" id="footSubForm" onsubmit="return false;">
-            <label class="foot__sub-label" for="footEmail">Get exclusive offers</label>
-            <div class="foot__sub-form">
-              <input class="foot__sub-input" type="email" id="footEmail" name="email" placeholder="your@email.com" required aria-label="Email address">
-              <button class="foot__sub-btn" type="submit">Subscribe</button>
-            </div>
-            <span class="foot__sub-note" id="footSubNote">Wedding tips, fleet news, occasional offers. No spam.</span>
-          </form>
-        </div>
-
         <div class="foot__divider" aria-hidden="true"></div>
-
         <div class="foot__grid">
-
-          <nav class="foot-col" aria-labelledby="footLinks">
-            <h3 class="foot-col__title" id="footLinks">Links</h3>
+          <nav class="foot-col">
+            <h3 class="foot-col__title">Links</h3>
             <ul>
-              <li><a href="#hero">Home</a></li>
-              <li><a href="#fleet">Our Vehicles</a></li>
-              <li><a href="#services">Limo Hire</a></li>
-              <li><a href="#fleet">Hummer Hire</a></li>
-              <li><a href="#about">About Us</a></li>
-              <li><a href="#quote">Contact</a></li>
-              <li><a href="#hero">Sitemap</a></li>
+              <li><a href="/">Home</a></li>
+              <li><a href="/gallery/">Gallery</a></li>
+              <li><a href="/contact/">Contact</a></li>
+              <li><a href="/about-us/">About Us</a></li>
+              <li><a href="/vehicles/">Our Vehicles</a></li>
+              <li><a href="/">Limo Hire</a></li>
+              <li><a href="/hummer-limo-hire-sydney/">Hummer Hire</a></li>
+              <li><a href="/sitemap/">Sitemap</a></li>
             </ul>
           </nav>
-
-          <nav class="foot-col" aria-labelledby="footServices">
-            <h3 class="foot-col__title" id="footServices">Services</h3>
+          <nav class="foot-col">
+            <h3 class="foot-col__title">Any Event</h3>
             <ul>
-              <li><a href="#services">Wedding Limos</a></li>
-              <li><a href="#services">Airport Transfers</a></li>
-              <li><a href="#services">School Formals</a></li>
-              <li><a href="#services">Hens Parties</a></li>
-              <li><a href="#services">Corporate Transfers</a></li>
-              <li><a href="#services">Birthday Limos</a></li>
-              <li><a href="#services">Concert Transfers</a></li>
-              <li><a href="#services">Party &amp; Event Car Hire</a></li>
+              <li><a href="/wedding-limousine-sydney/">Wedding Car Hire</a></li>
+              <li><a href="/concert-limo-transfers-sydney/">Concert Transfers</a></li>
+              <li><a href="/airport-limo-transfers-sydney/">Airport Transfers</a></li>
+              <li><a href="/birthday-limousine-sydney/">Birthday Transfers</a></li>
+              <li><a href="/school-formal-limousine-hire-sydney/">School Formals</a></li>
+              <li><a href="/party-limousine-hire-sydney/">Party &amp; Event Car Hire</a></li>
+              <li><a href="/corporate-transfers/">Corporate Transfers</a></li>
             </ul>
           </nav>
-
-          <nav class="foot-col" aria-labelledby="footLocations">
-            <h3 class="foot-col__title" id="footLocations">Locations</h3>
+          <nav class="foot-col">
+            <h3 class="foot-col__title">Locations</h3>
             <ul>
-              <li><a href="#map">Bankstown</a></li>
-              <li><a href="#map">Campbelltown</a></li>
-              <li><a href="#map">Eastern Suburbs</a></li>
-              <li><a href="#map">Inner West</a></li>
-              <li><a href="#map">Liverpool</a></li>
-              <li><a href="#map">Marrickville</a></li>
-              <li><a href="#map">Northern Beaches</a></li>
-              <li><a href="#map">Parramatta</a></li>
-              <li><a href="#map">Penrith</a></li>
-              <li><a href="#map">Sutherland Shire</a></li>
-              <li><a href="#map">Wollongong</a></li>
+              <li><a href="/">Limo Hire Sydney</a></li>
+              <li><a href="/limo-hire-campbelltown/">Campbelltown</a></li>
+              <li><a href="/limo-hire-eastern-suburbs/">Eastern Suburbs</a></li>
+              <li><a href="/limo-hire-inner-west/">Inner West</a></li>
+              <li><a href="/limo-hire-marrickville/">Marrickville</a></li>
+              <li><a href="/limo-hire-northern-beaches/">Northern Beaches</a></li>
+              <li><a href="/limo-hire-parramatta/">Parramatta</a></li>
+              <li><a href="/limo-hire-penrith/">Penrith</a></li>
+              <li><a href="/limo-hire-sutherland-shire/">Sutherland Shire</a></li>
+              <li><a href="/limo-hire-wollongong/">Wollongong</a></li>
             </ul>
           </nav>
-
-          <nav class="foot-col" aria-labelledby="footFleet">
-            <h3 class="foot-col__title" id="footFleet">Fleet</h3>
-            <ul>
-              <li><a href="#fleet">Rolls Royce Phantom</a></li>
-              <li><a href="#fleet">Chrysler Stretch</a></li>
-              <li><a href="#fleet">Chrysler Gullwing</a></li>
-              <li><a href="#fleet">Hummer H2</a></li>
-              <li><a href="#fleet">Mercedes S Class</a></li>
-              <li><a href="#fleet">Mercedes Sprinter</a></li>
-              <li><a href="#fleet">Mercedes Valente</a></li>
-              <li><a href="#fleet">VW Crafter Minibus</a></li>
-            </ul>
-          </nav>
-
         </div>
-
         <div class="foot__bottom">
-          <div>
-            &copy; 2026 Show Limousines<span class="sep">·</span>ABN 51 149 228 357
-          </div>
-          <div>
-            <a href="mailto:info@showlimousines.com.au">info@showlimousines.com.au</a>
-            <span class="sep">·</span>
-            <a href="tel:0422023413">0422 023 413</a>
-          </div>
-          <div class="foot__credit">
-            Powered by <a href="https://awlabs.com.au" target="_blank" rel="noopener noreferrer">All Webbed Labs</a>
-          </div>
+          <div>&copy; 2026 Show Limousines | All Rights Reserved</div>
+          <div><a href="mailto:info@showlimousines.com.au">info@showlimousines.com.au</a><span class="sep">·</span><a href="tel:0422023413">0422 023 413</a></div>
+          <div class="foot__credit">Powered by <a href="https://awlabs.com.au" target="_blank" rel="noopener noreferrer">All Webbed Labs</a></div>
         </div>
-
       </div>
     </footer>
   </main>
 
-  <script src="main.js"></script>
+  <script src="/main.js"></script>
 </body>
 </html>

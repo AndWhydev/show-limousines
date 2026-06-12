@@ -497,12 +497,19 @@
 
           if (form) {
             form.addEventListener('submit', function (e) {
-              // Friendly inline thank-you — no backend.
-              e.preventDefault();
-              window.alert("Thank you! We'll be in touch.");
-              form.reset();
-              if (pickupSel) pickupSel.selectedIndex = 0;
-              if (dropSel) dropSel.selectedIndex = 0;
+              // Web3Forms handles delivery + redirect to /thank-you/ server-side.
+              // While the access key is still the placeholder, intercept so we
+              // don't POST to a dead key — show a friendly note instead.
+              var keyEl = form.querySelector('input[name="access_key"]');
+              var key = keyEl ? keyEl.value : '';
+              if (!key || /ACCESS_KEY_HERE/.test(key)) {
+                e.preventDefault();
+                window.alert("Thanks! (Demo mode — add your Web3Forms key to enable live delivery.) We'll be in touch.");
+                form.reset();
+                if (pickupSel) pickupSel.selectedIndex = 0;
+                if (dropSel) dropSel.selectedIndex = 0;
+              }
+              // else: let the form POST natively to Web3Forms.
             });
           }
         })();
@@ -550,6 +557,21 @@
               } else { close(); }
             });
             mobile.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', close); });
+          }
+
+          // -------- Mobile submenu groups (progressive enhancement) --------
+          if (mobile) {
+            mobile.querySelectorAll('.nav-mobile__group').forEach(function (group) {
+              var caret = group.querySelector('.nav-mobile__caret');
+              if (!caret) return;
+              group.classList.add('js-ready');
+              caret.addEventListener('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                var open = group.classList.toggle('is-open');
+                caret.setAttribute('aria-expanded', open ? 'true' : 'false');
+              });
+            });
           }
         })();
       });

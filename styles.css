@@ -2044,3 +2044,207 @@
       .foot__brand { font-size: 26px; }
     }
   
+/* ============================================================
+   MULTI-PAGE ADDITIONS (active nav, inner-page banner, CTA,
+   gallery, wedding/feature, 7-item nav fit)
+   ============================================================ */
+.nav-pill.is-active { background: rgba(var(--accent-rgb), 0.18); color: #fff; }
+
+/* Fit 7 nav items: tighten pills, drop the separate phone link */
+@media (min-width: 1241px) {
+  .nav-pills { gap: 2px; padding: 4px 6px; }
+  .nav-pill { padding: 9px 14px; font-size: 14px; letter-spacing: 0.02em; }
+  .nav-inner { gap: 16px; }
+}
+@media (max-width: 1240px) { .nav-burger { display: inline-flex; } .nav-pills { display: none; } }
+
+/* Inner-page banner */
+.page-hero {
+  position: relative;
+  padding: 190px 28px 76px;
+  text-align: center;
+  border-bottom: 1px solid var(--color-border);
+  background:
+    radial-gradient(ellipse 70% 80% at 50% 0%, rgba(var(--accent-rgb), 0.16) 0%, transparent 60%),
+    linear-gradient(180deg, #101015 0%, var(--color-bg) 100%);
+  overflow: hidden;
+}
+.page-hero__inner { max-width: 880px; margin: 0 auto; }
+.page-hero .label-bracket { justify-content: center; }
+.page-hero__title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(46px, 8vw, 92px);
+  line-height: 0.96; letter-spacing: 0.01em; color: #fff; margin: 14px 0 0;
+}
+.page-hero__sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(15px, 2.2vw, 18px); line-height: 1.6;
+  color: rgba(255, 255, 255, 0.6); max-width: 640px; margin: 18px auto 0;
+}
+@media (max-width: 768px) { .page-hero { padding: 150px 20px 60px; } }
+
+/* Home CTA band */
+.home-cta {
+  padding: 110px 28px; text-align: center; border-top: 1px solid var(--color-border);
+  background: radial-gradient(ellipse 60% 70% at 50% 100%, rgba(var(--accent-rgb), 0.12) 0%, transparent 65%), var(--color-bg);
+}
+.home-cta__inner { max-width: 760px; margin: 0 auto; }
+.home-cta .label-bracket { justify-content: center; }
+.home-cta__title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(34px, 5.5vw, 58px); line-height: 1.02; color: #fff; margin: 14px 0 0; }
+.home-cta__body { font-family: 'DM Sans', sans-serif; font-size: 16px; line-height: 1.65; color: rgba(255,255,255,0.6); margin: 18px auto 32px; max-width: 600px; }
+.home-cta__actions { display: inline-flex; align-items: center; gap: 16px; flex-wrap: wrap; justify-content: center; }
+
+/* Wedding / generic two-column feature */
+.feature { padding: 100px 28px; }
+.feature__inner { max-width: 1320px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.feature__title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(34px, 5vw, 60px); line-height: 1.0; color: #fff; margin: 14px 0 22px; }
+.feature__copy p { font-family: 'DM Sans', sans-serif; font-size: 16px; line-height: 1.7; color: rgba(255,255,255,0.62); margin: 0 0 16px; }
+.feature__list { list-style: none; padding: 0; margin: 22px 0 30px; display: grid; gap: 10px; }
+.feature__list li { font-family: 'DM Sans', sans-serif; font-size: 15px; color: rgba(255,255,255,0.8); padding-left: 26px; position: relative; }
+.feature__list li::before { content: ''; position: absolute; left: 0; top: 7px; width: 8px; height: 8px; border-radius: 50%; background: var(--color-accent); }
+.feature__media { border-radius: 20px; overflow: hidden; border: 1px solid var(--color-border); }
+.feature__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+@media (max-width: 900px) { .feature__inner { grid-template-columns: 1fr; gap: 32px; } .feature { padding: 70px 20px; } }
+
+/* Gallery link strip (About page) */
+.gallery-cta { padding: 70px 28px; text-align: center; border-top: 1px solid var(--color-border); }
+.gallery-cta__inner { max-width: 700px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.gallery-cta__text { font-family: 'Bebas Neue', sans-serif; font-size: clamp(24px, 4vw, 36px); color: #fff; margin: 0; letter-spacing: 0.02em; }
+
+/* Gallery grid */
+.gallery { padding: 80px 28px 110px; }
+.gallery__inner { max-width: 1320px; margin: 0 auto; }
+.gallery__grid { columns: 3; column-gap: 18px; }
+.gallery__item { position: relative; display: block; margin: 0 0 18px; border-radius: 16px; overflow: hidden; border: 1px solid var(--color-border); break-inside: avoid; background: linear-gradient(160deg, #1a1a22 0%, #0F1014 100%); }
+.gallery__item img { width: 100%; height: auto; display: block; transition: transform 700ms cubic-bezier(.4,0,.2,1), filter 400ms ease; }
+.gallery__item:hover img { transform: scale(1.05); filter: brightness(1.06); }
+.gallery__item::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 60%, rgba(10,10,12,0.55) 100%); pointer-events: none; }
+.gallery__cap { position: absolute; left: 16px; bottom: 14px; z-index: 2; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.92); letter-spacing: 0.02em; }
+@media (max-width: 1024px) { .gallery__grid { columns: 2; } }
+@media (max-width: 600px) { .gallery__grid { columns: 1; } .gallery { padding: 60px 20px 90px; } }
+
+/* ============================================================
+   NAV DROPDOWNS (desktop) + mobile submenu groups
+   Added for the full multi-page menu mirroring showlimousines.com.au
+   ============================================================ */
+
+/* ---- Desktop dropdowns ---- */
+.nav-pill-group { position: relative; display: inline-flex; }
+.nav-pill-group > .nav-pill { display: inline-flex; align-items: center; gap: 5px; }
+.nav-pill-caret { transition: transform 300ms; opacity: 0.65; flex: none; }
+.nav-pill-group:hover > .nav-pill .nav-pill-caret,
+.nav-pill-group:focus-within > .nav-pill .nav-pill-caret { transform: rotate(180deg); opacity: 1; }
+.nav-pill-group:hover > .nav-pill,
+.nav-pill-group:focus-within > .nav-pill { background: rgba(var(--accent-rgb), 0.18); color: #fff; }
+
+/* invisible hover bridge so the 14px gap to the panel doesn't drop it */
+.nav-pill-group::after { content: ''; position: absolute; top: 100%; left: 0; right: 0; height: 18px; }
+
+.nav-dropdown {
+  position: absolute;
+  top: calc(100% + 14px);
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  min-width: 248px;
+  background: rgba(13, 13, 16, 0.97);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid rgba(var(--accent-rgb), 0.3);
+  border-radius: 16px;
+  padding: 10px;
+  display: grid;
+  gap: 2px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 240ms ease, transform 240ms ease, visibility 240ms;
+  z-index: 70;
+  box-shadow: 0 26px 64px rgba(0, 0, 0, 0.6);
+}
+.nav-dropdown--wide { min-width: 480px; grid-template-columns: 1fr 1fr; }
+.nav-pill-group:hover > .nav-dropdown,
+.nav-pill-group:focus-within > .nav-dropdown {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+.nav-dropdown a {
+  display: block;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.82);
+  white-space: nowrap;
+  transition: background 200ms, color 200ms;
+}
+.nav-dropdown a:hover,
+.nav-dropdown a[aria-current="page"] {
+  background: rgba(var(--accent-rgb), 0.16);
+  color: #fff;
+}
+
+/* keep the wide panels from overflowing the viewport edges */
+.nav-pill-group:last-child .nav-dropdown,
+.nav-pill-group:nth-last-child(2) .nav-dropdown { left: auto; right: 0; transform: translateY(8px); }
+.nav-pill-group:last-child:hover > .nav-dropdown,
+.nav-pill-group:nth-last-child(2):hover > .nav-dropdown,
+.nav-pill-group:last-child:focus-within > .nav-dropdown,
+.nav-pill-group:nth-last-child(2):focus-within > .nav-dropdown { transform: translateY(0); }
+
+/* ---- Mobile submenu groups ---- */
+.nav-mobile__group { border-bottom: 1px solid var(--color-border); }
+.nav-mobile__grouptop { display: flex; align-items: center; justify-content: space-between; }
+.nav-mobile__grouptop > a {
+  flex: 1;
+  border-bottom: none;
+}
+.nav-mobile__caret {
+  flex: none;
+  width: 44px; height: 56px;
+  display: inline-flex; align-items: center; justify-content: center;
+  color: rgba(255, 255, 255, 0.7);
+  background: none; border: none; padding: 0;
+  transition: transform 300ms, color 300ms;
+}
+.nav-mobile__caret:hover { color: var(--color-accent); }
+.nav-mobile__group.is-open > .nav-mobile__grouptop .nav-mobile__caret { transform: rotate(180deg); color: var(--color-accent); }
+.nav-mobile__sub { padding: 0 0 10px 16px; }
+.nav-mobile__sub a {
+  font-size: 19px;
+  padding: 9px 0;
+  color: rgba(255, 255, 255, 0.7);
+  border-bottom: none;
+}
+.nav-mobile__sub a:hover,
+.nav-mobile__sub a[aria-current="page"] { color: var(--color-accent); }
+/* Progressive enhancement: collapse only once JS marks the group ready */
+.nav-mobile__group.js-ready .nav-mobile__sub { display: none; }
+.nav-mobile__group.js-ready.is-open .nav-mobile__sub { display: block; }
+
+/* ============================================================
+   CONTENT REBUILD ADDITIONS — prose blocks + Fleet mega-panel
+   Built only from existing tokens; visually native to the shell.
+   ============================================================ */
+.prose { padding: 80px 28px; position: relative; }
+.prose__inner { max-width: 920px; margin: 0 auto; }
+.prose__inner > .label-bracket { margin-bottom: 18px; }
+.prose__h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(26px, 4vw, 40px); letter-spacing: 0.01em; color: #fff; margin: 40px 0 14px; line-height: 1.04; }
+.prose__h3 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(20px, 3vw, 27px); letter-spacing: 0.02em; color: var(--color-accent); margin: 30px 0 10px; }
+.prose p { color: rgba(255,255,255,0.72); font-size: 16.5px; line-height: 1.75; margin: 0 0 16px; }
+.prose__list { list-style: none; margin: 6px 0 22px; padding: 0; }
+.prose__list li { position: relative; padding: 7px 0 7px 26px; color: rgba(255,255,255,0.78); }
+.prose__list li::before { content: ''; position: absolute; left: 2px; top: 15px; width: 8px; height: 8px; border-radius: 50%; background: var(--gold-gradient-soft); }
+.prose__quote { border-left: 2px solid var(--color-accent); padding: 6px 0 6px 20px; margin: 20px 0; color: #fff; font-style: italic; }
+.prose a { color: var(--color-accent); }
+.prose a:hover { color: var(--color-accent-hover); }
+.prose__h2:first-child, .prose__inner > .prose__h2:first-of-type { margin-top: 0; }
+
+/* Fleet brand-grouped mega panel (Chrysler / Hummer / Mercedes / RR / VW) */
+.nav-dropdown--mega { min-width: 720px; grid-template-columns: repeat(3, 1fr); gap: 6px 18px; }
+.nav-mega__group { display: block; padding: 4px; }
+.nav-mega__heading { display: block; font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-accent); padding: 8px 14px 4px; }
+@media (max-width: 1240px) { .nav-dropdown--mega { min-width: 0; } }
