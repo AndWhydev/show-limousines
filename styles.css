@@ -2122,3 +2122,105 @@
 .gallery__cap { position: absolute; left: 16px; bottom: 14px; z-index: 2; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.92); letter-spacing: 0.02em; }
 @media (max-width: 1024px) { .gallery__grid { columns: 2; } }
 @media (max-width: 600px) { .gallery__grid { columns: 1; } .gallery { padding: 60px 20px 90px; } }
+
+/* ============================================================
+   NAV DROPDOWNS (desktop) + mobile submenu groups
+   Added for the full multi-page menu mirroring showlimousines.com.au
+   ============================================================ */
+
+/* ---- Desktop dropdowns ---- */
+.nav-pill-group { position: relative; display: inline-flex; }
+.nav-pill-group > .nav-pill { display: inline-flex; align-items: center; gap: 5px; }
+.nav-pill-caret { transition: transform 300ms; opacity: 0.65; flex: none; }
+.nav-pill-group:hover > .nav-pill .nav-pill-caret,
+.nav-pill-group:focus-within > .nav-pill .nav-pill-caret { transform: rotate(180deg); opacity: 1; }
+.nav-pill-group:hover > .nav-pill,
+.nav-pill-group:focus-within > .nav-pill { background: rgba(var(--accent-rgb), 0.18); color: #fff; }
+
+/* invisible hover bridge so the 14px gap to the panel doesn't drop it */
+.nav-pill-group::after { content: ''; position: absolute; top: 100%; left: 0; right: 0; height: 18px; }
+
+.nav-dropdown {
+  position: absolute;
+  top: calc(100% + 14px);
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  min-width: 248px;
+  background: rgba(13, 13, 16, 0.97);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid rgba(var(--accent-rgb), 0.3);
+  border-radius: 16px;
+  padding: 10px;
+  display: grid;
+  gap: 2px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 240ms ease, transform 240ms ease, visibility 240ms;
+  z-index: 70;
+  box-shadow: 0 26px 64px rgba(0, 0, 0, 0.6);
+}
+.nav-dropdown--wide { min-width: 480px; grid-template-columns: 1fr 1fr; }
+.nav-pill-group:hover > .nav-dropdown,
+.nav-pill-group:focus-within > .nav-dropdown {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+.nav-dropdown a {
+  display: block;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.82);
+  white-space: nowrap;
+  transition: background 200ms, color 200ms;
+}
+.nav-dropdown a:hover,
+.nav-dropdown a[aria-current="page"] {
+  background: rgba(var(--accent-rgb), 0.16);
+  color: #fff;
+}
+
+/* keep the wide panels from overflowing the viewport edges */
+.nav-pill-group:last-child .nav-dropdown,
+.nav-pill-group:nth-last-child(2) .nav-dropdown { left: auto; right: 0; transform: translateY(8px); }
+.nav-pill-group:last-child:hover > .nav-dropdown,
+.nav-pill-group:nth-last-child(2):hover > .nav-dropdown,
+.nav-pill-group:last-child:focus-within > .nav-dropdown,
+.nav-pill-group:nth-last-child(2):focus-within > .nav-dropdown { transform: translateY(0); }
+
+/* ---- Mobile submenu groups ---- */
+.nav-mobile__group { border-bottom: 1px solid var(--color-border); }
+.nav-mobile__grouptop { display: flex; align-items: center; justify-content: space-between; }
+.nav-mobile__grouptop > a {
+  flex: 1;
+  border-bottom: none;
+}
+.nav-mobile__caret {
+  flex: none;
+  width: 44px; height: 56px;
+  display: inline-flex; align-items: center; justify-content: center;
+  color: rgba(255, 255, 255, 0.7);
+  background: none; border: none; padding: 0;
+  transition: transform 300ms, color 300ms;
+}
+.nav-mobile__caret:hover { color: var(--color-accent); }
+.nav-mobile__group.is-open > .nav-mobile__grouptop .nav-mobile__caret { transform: rotate(180deg); color: var(--color-accent); }
+.nav-mobile__sub { padding: 0 0 10px 16px; }
+.nav-mobile__sub a {
+  font-size: 19px;
+  padding: 9px 0;
+  color: rgba(255, 255, 255, 0.7);
+  border-bottom: none;
+}
+.nav-mobile__sub a:hover,
+.nav-mobile__sub a[aria-current="page"] { color: var(--color-accent); }
+/* Progressive enhancement: collapse only once JS marks the group ready */
+.nav-mobile__group.js-ready .nav-mobile__sub { display: none; }
+.nav-mobile__group.js-ready.is-open .nav-mobile__sub { display: block; }

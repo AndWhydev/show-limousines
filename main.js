@@ -551,6 +551,23 @@
             });
             mobile.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', close); });
           }
+
+          // -------- Mobile submenu groups (progressive enhancement) --------
+          // Subs are visible by default; once JS marks a group ready it can
+          // collapse/expand so the long full menu stays manageable on phones.
+          if (mobile) {
+            mobile.querySelectorAll('.nav-mobile__group').forEach(function (group) {
+              var caret = group.querySelector('.nav-mobile__caret');
+              if (!caret) return;
+              group.classList.add('js-ready');
+              caret.addEventListener('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                var open = group.classList.toggle('is-open');
+                caret.setAttribute('aria-expanded', open ? 'true' : 'false');
+              });
+            });
+          }
         })();
       });
     })();

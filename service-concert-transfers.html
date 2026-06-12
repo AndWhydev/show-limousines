@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Our Fleet — Stretch Limousines, Hummers &amp; Luxury Cars | Show Limousines</title>
-  <meta name="description" content="Explore the Show Limousines fleet — stretch Chryslers, stretch Hummers, Rolls Royce Phantom, Mercedes sedans and party buses for up to 16 passengers in Sydney.">
+  <title>Limo Hire — Concert Transfers Sydney | Show Limousines</title>
+  <meta name="description" content="Skip the parking and the surge pricing — arrive at the show in style and get home safely afterwards. Call 0422 023 413.">
 
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="favicon.png">
@@ -21,7 +21,7 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header class="nav-wrap" id="navWrap" role="banner">
+  <header class="nav-wrap" id="navWrap" role="banner">
     <div class="nav-announce" role="region" aria-label="Promotional banner">
       Sydney's Premier Limousine Service
       <span class="sep">·</span>
@@ -45,12 +45,12 @@
             </div>
           </div>
           <div class="nav-pill-group">
-            <a href="services.html" class="nav-pill" role="menuitem" aria-haspopup="true">Services <svg class="nav-pill-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></a>
+            <a href="services.html" class="nav-pill is-active" role="menuitem" aria-haspopup="true">Services <svg class="nav-pill-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></a>
             <div class="nav-dropdown nav-dropdown--wide" role="menu">
               <a href="service-airport-transfers.html" role="menuitem">Airport Transfers</a>
               <a href="service-cruise-transfers.html" role="menuitem">Cruise Transfers</a>
               <a href="service-birthday-limos.html" role="menuitem">Birthday Limos</a>
-              <a href="service-concert-transfers.html" role="menuitem">Concert Transfers</a>
+              <a href="service-concert-transfers.html" aria-current="page" role="menuitem">Concert Transfers</a>
               <a href="service-school-formals.html" role="menuitem">School Formal Limos</a>
               <a href="service-corporate-transfers.html" role="menuitem">Corporate Transfers</a>
               <a href="service-party-limos.html" role="menuitem">Party Limos</a>
@@ -58,7 +58,7 @@
             </div>
           </div>
           <div class="nav-pill-group">
-            <a href="fleet.html" class="nav-pill is-active" aria-current="page" role="menuitem" aria-haspopup="true">Fleet <svg class="nav-pill-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></a>
+            <a href="fleet.html" class="nav-pill" role="menuitem" aria-haspopup="true">Fleet <svg class="nav-pill-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></a>
             <div class="nav-dropdown nav-dropdown--wide" role="menu">
               <a href="fleet-rolls-royce-phantom.html" role="menuitem">Rolls Royce Phantom</a>
               <a href="fleet-chrysler-white.html" role="menuitem">White Chrysler Super Stretch</a>
@@ -115,8 +115,7 @@
       </div>
     </nav>
   </header>
-
-    <div class="nav-mobile" id="navMobile" aria-hidden="true">
+  <div class="nav-mobile" id="navMobile" aria-hidden="true">
     <a href="index.html">Home</a>
     <div class="nav-mobile__group">
       <div class="nav-mobile__grouptop">
@@ -130,10 +129,10 @@
         <a href="wedding-wollongong.html">Wedding Car Hire Wollongong</a>
       </div>
     </div>
-    <div class="nav-mobile__group">
+    <div class="nav-mobile__group is-open">
       <div class="nav-mobile__grouptop">
         <a href="services.html">Services</a>
-        <button class="nav-mobile__caret" aria-label="Toggle Services submenu" aria-expanded="false">
+        <button class="nav-mobile__caret" aria-label="Toggle Services submenu" aria-expanded="true">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
         </button>
       </div>
@@ -141,17 +140,17 @@
         <a href="service-airport-transfers.html">Airport Transfers</a>
         <a href="service-cruise-transfers.html">Cruise Transfers</a>
         <a href="service-birthday-limos.html">Birthday Limos</a>
-        <a href="service-concert-transfers.html">Concert Transfers</a>
+        <a href="service-concert-transfers.html" aria-current="page">Concert Transfers</a>
         <a href="service-school-formals.html">School Formal Limos</a>
         <a href="service-corporate-transfers.html">Corporate Transfers</a>
         <a href="service-party-limos.html">Party Limos</a>
         <a href="service-hens-party.html">Hen's Party Limos</a>
       </div>
     </div>
-    <div class="nav-mobile__group is-open">
+    <div class="nav-mobile__group">
       <div class="nav-mobile__grouptop">
-        <a href="fleet.html" aria-current="page">Fleet</a>
-        <button class="nav-mobile__caret" aria-label="Toggle Fleet submenu" aria-expanded="true">
+        <a href="fleet.html">Fleet</a>
+        <button class="nav-mobile__caret" aria-label="Toggle Fleet submenu" aria-expanded="false">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
         </button>
       </div>
@@ -217,107 +216,47 @@
     </div>
   </div>
   <main>
-    <section class="page-hero" aria-label="Travel in luxury.">
+    <section class="page-hero" aria-label="Concert transfers without the hassle.">
       <div class="page-hero__inner reveal">
-        <span class="label-bracket">Our Fleet</span>
-        <h1 class="page-hero__title">Travel in luxury.</h1>
-        <p class="page-hero__sub">Eleven hand-selected vehicles — stretch limousines, Hummers, luxury sedans and premium minibuses. Every car immaculately maintained, every chauffeur impeccably presented.</p>
+        <span class="label-bracket">Services · Concert Transfers</span>
+        <h1 class="page-hero__title">Concert transfers without the hassle.</h1>
+        <p class="page-hero__sub">Skip the parking and the surge pricing — arrive at the show in style and get home safely afterwards.</p>
       </div>
     </section>
-    <section class="fleet" id="fleet" aria-labelledby="fleetHeading">
+    <section class="feature">
+      <div class="feature__inner">
+        <div class="feature__copy reveal">
+          <span class="label-bracket">Concert Transfers</span>
+          <h2 class="feature__title">Arrive to the show in style.</h2>
+          <p>Heading to a concert, festival or the footy? Show Limousines gets you door-to-door without the parking headaches, the post-show queues or the long walk back to the car.</p>
+          <p>Your chauffeur drops you right at the gate and is ready when the encore ends — keeping the group together and the night running smoothly.</p>
+          <ul class="feature__list">
+            <li>Drop-off close to the venue</li>
+            <li>No parking or surge pricing</li>
+            <li>Safe ride home after the show</li>
+            <li>Groups of up to 16</li>
+          </ul>
+          <a href="contact.html#quote" class="btn-pill btn-pill--gold">
+            Get a Free Quote
+            <span class="btn-pill__arrow" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></span>
+          </a>
+        </div>
+        <div class="feature__media reveal">
+          <img src="gallery-10.jpg" alt="Concert and event limousine transfer" loading="lazy" decoding="async">
+        </div>
+      </div>
+    </section>
+    <section class="fleet" aria-labelledby="fleetStripHeading">
       <div class="beam" aria-hidden="true"></div>
       <div class="fleet__inner">
         <div class="fleet__header reveal">
           <div>
             <span class="label-bracket">Our Fleet</span>
-            <h2 class="fleet__heading" id="fleetHeading">Travel in luxury.</h2>
+            <h2 class="fleet__heading" id="fleetStripHeading">Get the group there together.</h2>
           </div>
-          <p class="fleet__intro">Eleven hand-selected vehicles — stretch limousines, hummers, luxury sedans and premium minibuses. Every car immaculately maintained, every chauffeur impeccably presented.</p>
+          <p class="fleet__intro">Stretch limousines and minibuses that keep everyone moving as one.</p>
         </div>
-
-        <div class="fleet__grid" id="fleetGrid">
-
-          <!-- 1. Rolls Royce Phantom -->
-          <article class="fleet-card reveal">
-            <div class="fleet-card__media">
-              <img class="fleet-card__img" src="fleet-rolls-royce-phantom-v2.jpg" alt="Rolls Royce Phantom Sedan" loading="lazy" decoding="async">
-              <span class="fleet-card__badge">Sedan</span>
-            </div>
-            <div class="fleet-card__body">
-              <span class="fleet-card__brand">Rolls Royce</span>
-              <span class="fleet-card__model">Phantom Sedan</span>
-              <span class="fleet-card__capacity">Up to 4 passengers · The wedding choice</span>
-              <div class="fleet-card__footer">
-                <a href="contact.html#quote" class="btn-outline-sm">View Details</a>
-              </div>
-            </div>
-          </article>
-
-          <!-- 2. White Chrysler Super Stretch -->
-          <article class="fleet-card reveal">
-            <div class="fleet-card__media">
-              <img class="fleet-card__img" src="fleet-chrysler-white-v2.jpg" alt="White Chrysler Super Stretch limousine" loading="lazy" decoding="async">
-              <span class="fleet-card__badge">Stretch</span>
-            </div>
-            <div class="fleet-card__body">
-              <span class="fleet-card__brand">Chrysler</span>
-              <span class="fleet-card__model">Super Stretch (White)</span>
-              <span class="fleet-card__capacity">Up to 10 passengers · The classic</span>
-              <div class="fleet-card__footer">
-                <a href="contact.html#quote" class="btn-outline-sm">View Details</a>
-              </div>
-            </div>
-          </article>
-
-          <!-- 3. Black Chrysler Super Stretch -->
-          <article class="fleet-card reveal">
-            <div class="fleet-card__media">
-              <img class="fleet-card__img" src="fleet-chrysler-black-v2.jpg" alt="Black Chrysler Super Stretch limousine" loading="lazy" decoding="async">
-              <span class="fleet-card__badge">Stretch</span>
-            </div>
-            <div class="fleet-card__body">
-              <span class="fleet-card__brand">Chrysler</span>
-              <span class="fleet-card__model">Super Stretch Black</span>
-              <span class="fleet-card__capacity">Up to 10 passengers · The corporate</span>
-              <div class="fleet-card__footer">
-                <a href="contact.html#quote" class="btn-outline-sm">View Details</a>
-              </div>
-            </div>
-          </article>
-
-          <!-- 4. Chrysler Super Stretch "Black Edition" -->
-          <article class="fleet-card reveal">
-            <div class="fleet-card__media">
-              <img class="fleet-card__img" src="fleet-chrysler-black-edition-v2.jpg" alt="Chrysler Super Stretch Black Edition limousine" loading="lazy" decoding="async">
-              <span class="fleet-card__badge">Stretch</span>
-            </div>
-            <div class="fleet-card__body">
-              <span class="fleet-card__brand">Chrysler</span>
-              <span class="fleet-card__model">Super Stretch "Black Edition"</span>
-              <span class="fleet-card__capacity">Up to 10 passengers · The all-night party</span>
-              <div class="fleet-card__footer">
-                <a href="contact.html#quote" class="btn-outline-sm">View Details</a>
-              </div>
-            </div>
-          </article>
-
-          <!-- 5. Chrysler Gullwing -->
-          <article class="fleet-card reveal">
-            <div class="fleet-card__media">
-              <img class="fleet-card__img" src="fleet-chrysler-gullwing-v2.jpg" alt="Chrysler Gullwing Stretch limousine" loading="lazy" decoding="async">
-              <span class="fleet-card__badge">Gullwing</span>
-            </div>
-            <div class="fleet-card__body">
-              <span class="fleet-card__brand">Chrysler</span>
-              <span class="fleet-card__model">Super Stretch Gullwing</span>
-              <span class="fleet-card__capacity">Up to 10 passengers · The showstopper</span>
-              <div class="fleet-card__footer">
-                <a href="contact.html#quote" class="btn-outline-sm">View Details</a>
-              </div>
-            </div>
-          </article>
-
-          <!-- 6. Stretch Hummer H2 (14 pax) -->
+        <div class="fleet__grid">
           <article class="fleet-card reveal">
             <div class="fleet-card__media">
               <img class="fleet-card__img" src="fleet-hummer-green-v2.jpg" alt="Green Hummer H2 Stretch limousine" loading="lazy" decoding="async">
@@ -328,76 +267,26 @@
               <span class="fleet-card__model">H2 Stretch (14 Pax)</span>
               <span class="fleet-card__capacity">Up to 14 passengers · The group classic</span>
               <div class="fleet-card__footer">
-                <a href="contact.html#quote" class="btn-outline-sm">View Details</a>
+                <a href="fleet-hummer-14.html" class="btn-outline-sm">View Details</a>
               </div>
             </div>
           </article>
 
-          <!-- 7. Stretch Hummer H2 (16 pax) -->
           <article class="fleet-card reveal">
             <div class="fleet-card__media">
-              <img class="fleet-card__img" src="fleet-hummer-white-v2.jpg" alt="White Hummer H2 Stretch limousine" loading="lazy" decoding="async">
-              <span class="fleet-card__badge">Hummer</span>
+              <img class="fleet-card__img" src="fleet-chrysler-white-v2.jpg" alt="White Chrysler Super Stretch limousine" loading="lazy" decoding="async">
+              <span class="fleet-card__badge">Stretch</span>
             </div>
             <div class="fleet-card__body">
-              <span class="fleet-card__brand">Hummer</span>
-              <span class="fleet-card__model">H2 Stretch (16 Pax)</span>
-              <span class="fleet-card__capacity">Up to 16 passengers · The full house</span>
+              <span class="fleet-card__brand">Chrysler</span>
+              <span class="fleet-card__model">Super Stretch (White)</span>
+              <span class="fleet-card__capacity">Up to 10 passengers · The classic</span>
               <div class="fleet-card__footer">
-                <a href="contact.html#quote" class="btn-outline-sm">View Details</a>
+                <a href="fleet-chrysler-white.html" class="btn-outline-sm">View Details</a>
               </div>
             </div>
           </article>
 
-          <!-- 8. Mercedes S Class AMG -->
-          <article class="fleet-card reveal">
-            <div class="fleet-card__media">
-              <img class="fleet-card__img" src="fleet-mercedes-s-class-v2.jpg" alt="Mercedes S Class AMG Sedan" loading="lazy" decoding="async">
-              <span class="fleet-card__badge">Sedan</span>
-            </div>
-            <div class="fleet-card__body">
-              <span class="fleet-card__brand">Mercedes</span>
-              <span class="fleet-card__model">S Class AMG Sedan</span>
-              <span class="fleet-card__capacity">Up to 4 passengers · The executive</span>
-              <div class="fleet-card__footer">
-                <a href="contact.html#quote" class="btn-outline-sm">View Details</a>
-              </div>
-            </div>
-          </article>
-
-          <!-- 9. Mercedes Sprinter Limo -->
-          <article class="fleet-card reveal">
-            <div class="fleet-card__media">
-              <img class="fleet-card__img" src="fleet-mercedes-sprinter-v2.jpg" alt="Mercedes Sprinter Limo Van" loading="lazy" decoding="async">
-              <span class="fleet-card__badge">Limo Van</span>
-            </div>
-            <div class="fleet-card__body">
-              <span class="fleet-card__brand">Mercedes</span>
-              <span class="fleet-card__model">Sprinter Limo Van</span>
-              <span class="fleet-card__capacity">Up to 14 passengers · The party</span>
-              <div class="fleet-card__footer">
-                <a href="contact.html#quote" class="btn-outline-sm">View Details</a>
-              </div>
-            </div>
-          </article>
-
-          <!-- 10. Mercedes Valente -->
-          <article class="fleet-card reveal">
-            <div class="fleet-card__media">
-              <img class="fleet-card__img" src="fleet-mercedes-valente-v2.jpg" alt="Mercedes Valente Luxury Minivan" loading="lazy" decoding="async">
-              <span class="fleet-card__badge">Minivan</span>
-            </div>
-            <div class="fleet-card__body">
-              <span class="fleet-card__brand">Mercedes</span>
-              <span class="fleet-card__model">Valente Luxury Minivan</span>
-              <span class="fleet-card__capacity">Up to 7 passengers · The intimate group</span>
-              <div class="fleet-card__footer">
-                <a href="contact.html#quote" class="btn-outline-sm">View Details</a>
-              </div>
-            </div>
-          </article>
-
-          <!-- 11. Volkswagen Crafter Premium Minibus -->
           <article class="fleet-card reveal">
             <div class="fleet-card__media">
               <img class="fleet-card__img" src="fleet-vw-crafter-v2.jpg" alt="Volkswagen Crafter Premium Minibus" loading="lazy" decoding="async">
@@ -408,22 +297,91 @@
               <span class="fleet-card__model">Crafter Premium Minibus</span>
               <span class="fleet-card__capacity">Up to 11 passengers · The full crew</span>
               <div class="fleet-card__footer">
-                <a href="contact.html#quote" class="btn-outline-sm">View Details</a>
+                <a href="fleet-vw-crafter.html" class="btn-outline-sm">View Details</a>
               </div>
             </div>
           </article>
         </div>
-
         <a href="fleet.html" class="fleet__viewall">
           View Full Fleet
-          <span class="arrow" aria-hidden="true">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>
-          </span>
+          <span class="arrow" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></span>
         </a>
       </div>
     </section>
+    <section class="faq" id="faq" aria-labelledby="faqHeading">
+      <div class="beam" aria-hidden="true"></div>
+      <div class="faq__inner">
+        <div class="faq__header reveal">
+          <span class="label-bracket">FAQs</span>
+          <h2 class="faq__heading" id="faqHeading">Common questions, answered.</h2>
+        </div>
+        <div class="faq__list">
+          <div class="faq-item reveal">
+            <div class="faq-item__top" role="button" tabindex="0" aria-expanded="false">
+              <h3 class="faq-item__q">How much does it cost to hire a limousine?</h3>
+              <span class="faq-item__arrow" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+              </span>
+            </div>
+            <div class="faq-item__panel">
+              <p class="faq-item__a">The costs involved to hire a limo will vary depending on the vehicle, location, and pick up/drop off requirements. Most limousine hire companies will charge by the hour. At Show Limousines, all of our limousine hire services start at $399 per booking. For a more accurate quote, get in touch with our team and we'll send it over via email.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal">
+            <div class="faq-item__top" role="button" tabindex="0" aria-expanded="false">
+              <h3 class="faq-item__q">What's included when I book a limo?</h3>
+              <span class="faq-item__arrow" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+              </span>
+            </div>
+            <div class="faq-item__panel">
+              <p class="faq-item__a">For all transfers and events, we include a uniformed chauffeur, bottled water, and a luxurious modern vehicle. For weddings, we roll out the red carpet for the bride, the cars are laced with satin ribbon and sparkling wine. Each car is fitted with air conditioning, bluetooth, drink holders, party lights, and comfortable, luxurious seating.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal">
+            <div class="faq-item__top" role="button" tabindex="0" aria-expanded="false">
+              <h3 class="faq-item__q">How far in advance do I need to book?</h3>
+              <span class="faq-item__arrow" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+              </span>
+            </div>
+            <div class="faq-item__panel">
+              <p class="faq-item__a">We recommend booking as far in advance as possible! Particularly for an event or special occasion, as we want to ensure that you get the right vehicle and can secure the date of the event. For weddings, we get bookings a year in advance. That being said, we do take on last-minute bookings and will always do our best to accommodate requests.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal">
+            <div class="faq-item__top" role="button" tabindex="0" aria-expanded="false">
+              <h3 class="faq-item__q">How many people can fit into a limo?</h3>
+              <span class="faq-item__arrow" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+              </span>
+            </div>
+            <div class="faq-item__panel">
+              <p class="faq-item__a">That depends on the vehicle chosen! For our stretch limousines and hummer limousines, we can fit up to 16 guests in one car. For smaller parties, we can seat 4 to 8 passengers. For weddings, we offer car packages where you can hire multiple cars for the big day.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="home-cta">
+      <div class="home-cta__inner reveal">
+        <span class="label-bracket">Show Limousines</span>
+        <h2 class="home-cta__title">Sydney &amp; Wollongong's premier chauffeured limousines</h2>
+        <p class="home-cta__body">From weddings and formals to airport transfers and a night on the town — our immaculately presented fleet and professional chauffeurs make every arrival unforgettable.</p>
+        <div class="home-cta__actions">
+          <a href="contact.html#quote" class="btn-pill btn-pill--gold">
+            Get a Quote
+            <span class="btn-pill__arrow" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></span>
+          </a>
+          <a href="fleet.html" class="btn-outline-sm">View the Fleet</a>
+        </div>
+      </div>
+    </section>
   </main>
-        <footer class="foot" aria-labelledby="footHeading">
+    <footer class="foot" aria-labelledby="footHeading">
       <div class="beam" aria-hidden="true"></div>
       <h2 class="visually-hidden" id="footHeading">Site footer</h2>
       <div class="foot__inner">
