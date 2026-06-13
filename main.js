@@ -400,40 +400,6 @@
           reset();
         })();
 
-        // -------- Wedding vehicle slider --------
-        (function initWeddingSlider() {
-          var root = document.querySelector('.wslider');
-          if (!root) return;
-          var slides = root.querySelectorAll('.wslide');
-          if (!slides.length) return;
-          var cap = root.querySelector('.wslider__cap');
-          var dotsWrap = root.querySelector('.wslider__dots');
-          var prevBtn = root.querySelector('.wslider__btn--prev');
-          var nextBtn = root.querySelector('.wslider__btn--next');
-          var i = 0, auto = null, dots = [];
-          slides.forEach(function (s, idx) {
-            var d = document.createElement('button');
-            d.type = 'button';
-            d.className = 'wslider__dot' + (idx === 0 ? ' is-active' : '');
-            d.setAttribute('aria-label', 'Show ' + (s.getAttribute('data-cap') || ('vehicle ' + (idx + 1))));
-            d.addEventListener('click', function () { show(idx); resetTimer(); });
-            if (dotsWrap) dotsWrap.appendChild(d);
-            dots.push(d);
-          });
-          function show(n) {
-            i = (n + slides.length) % slides.length;
-            slides.forEach(function (s, idx) { s.classList.toggle('is-active', idx === i); });
-            dots.forEach(function (d, idx) { d.classList.toggle('is-active', idx === i); });
-            if (cap) cap.textContent = slides[i].getAttribute('data-cap') || '';
-          }
-          function step(d) { show(i + d); resetTimer(); }
-          function resetTimer() { if (auto) clearInterval(auto); auto = setInterval(function () { show(i + 1); }, 5000); }
-          if (prevBtn) prevBtn.addEventListener('click', function () { step(-1); });
-          if (nextBtn) nextBtn.addEventListener('click', function () { step(1); });
-          show(0);
-          resetTimer();
-        })();
-
         // -------- How-it-works accordion --------
         (function initHowAccordion() {
           var rows = document.querySelectorAll('.how-row');
