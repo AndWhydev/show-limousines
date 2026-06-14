@@ -91,270 +91,47 @@
           requestAnimationFrame(function () { h.classList.add('is-in'); });
         })();
 
-        // -------- Hero 3D car (Three.js) --------
-        // Ground tuned matte/dark so it never reads purple under the warm
-        // env panels — previously a metallic floor + warm key + cool fill
-        // mixed in reflection to a mauve cast. Now low-metalness, dark,
-        // no warm point bounce.
-        (function initHero3D() {
-          var canvas = document.getElementById('heroCanvas');
+        // -------- Hero video scroll-scrub (Higgsfield clip bound to scroll) --------
+        (function initHeroScrub() {
+          var video = document.getElementById('heroVideo');
           var heroEl = document.getElementById('hero');
-          if (!canvas || !heroEl || typeof THREE === 'undefined') {
-            if (heroEl) heroEl.classList.add('is-no-webgl');
+          if (!video || !heroEl || typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+            if (video) { video.setAttribute('autoplay',''); video.setAttribute('loop',''); video.play && video.play().catch(function(){}); }
             return;
           }
-
-          var renderer;
-          try {
-            renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: false });
-            if (!renderer.getContext()) throw new Error('no context');
-          } catch (e) {
-            console.warn('[hero] WebGL unavailable — fallback to text-only.', e);
-            heroEl.classList.add('is-no-webgl');
-            return;
+          function setup() {
+            var duration = video.duration;
+            if (!duration || !isFinite(duration)) return;
+            video.pause();
+            video.currentTime = 0;
+            gsap.to(video, {
+              currentTime: duration - 0.05,
+              ease: 'none',
+              scrollTrigger: {
+                trigger: heroEl,
+                start: 'top top',
+                end: '+=180%',
+                pin: true,
+                scrub: 0.5,
+                anticipatePin: 1,
+                invalidateOnRefresh: true
+              }
+            });
+            gsap.to('.hero__text', {
+              opacity: 0,
+              y: -40,
+              ease: 'none',
+              scrollTrigger: {
+                trigger: heroEl,
+                start: 'top+=60% top',
+                end: '+=120%',
+                scrub: 0.5
+              }
+            });
+            ScrollTrigger.refresh();
           }
-          renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-          renderer.outputEncoding = THREE.sRGBEncoding;
-          renderer.toneMapping = THREE.ACESFilmicToneMapping;
-          renderer.toneMappingExposure = 1.0;
-          renderer.shadowMap.enabled = true;
-          renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-
-          var scene = new THREE.Scene();
-          scene.background = new THREE.Color(0x0a0a0c);
-
-          var camera = new THREE.PerspectiveCamera(38, heroEl.clientWidth / heroEl.clientHeight, 0.1, 100);
-          var camStart = { x: 6.5, y: 1.8, z: 5.5, tx: 1.5, ty: 0.6, tz: 0 };
-          camera.position.set(camStart.x, camStart.y, camStart.z);
-          camera.lookAt(camStart.tx, camStart.ty, camStart.tz);
-
-          // ---- Procedural studio environment (PMREM) — warm only ----
-          var pmrem = new THREE.PMREMGenerator(renderer);
-          pmrem.compileEquirectangularShader();
-          var envScene = new THREE.Scene();
-          envScene.background = new THREE.Color(0x05050a);
-          function addEnvPanel(color, intensity, pos, size) {
-            var m = new THREE.Mesh(
-              new THREE.PlaneGeometry(size[0], size[1]),
-              new THREE.MeshBasicMaterial({
-                color: new THREE.Color(color).multiplyScalar(intensity),
-                side: THREE.DoubleSide
-              })
-            );
-            m.position.set(pos[0], pos[1], pos[2]);
-            m.lookAt(0, 0.5, 0);
-            envScene.add(m);
-          }
-          // Gold key panels
-          addEnvPanel(0xffc878, 9.0, [ 4,  5,  3], [6, 4]);
-          addEnvPanel(0xffae5e, 5.0, [ 3,  1,  4], [4, 2.5]);
-          // Warm rim from behind for edge separation
-          addEnvPanel(0xffb060, 5.0, [-2,  4, -6], [6, 3]);
-          // Soft warm top bounce
-          addEnvPanel(0x665544, 1.2, [ 0,  7,  0], [10, 10]);
-          var envRT = pmrem.fromScene(envScene, 0.035);
-          scene.environment = envRT.texture;
-          pmrem.dispose();
-
-          // ---- Cinematic studio lighting ----
-          scene.add(new THREE.AmbientLight(0x1a1a22, 0.35));
-
-          var dirLight = new THREE.DirectionalLight(0xffd58c, 3.2);
-          dirLight.position.set(5, 8, 4);
-          dirLight.castShadow = true;
-          dirLight.shadow.mapSize.set(2048, 2048);
-          dirLight.shadow.camera.near = 0.5;
-          dirLight.shadow.camera.far = 30;
-          dirLight.shadow.camera.left = -8;
-          dirLight.shadow.camera.right = 8;
-          dirLight.shadow.camera.top = 8;
-          dirLight.shadow.camera.bottom = -8;
-          dirLight.shadow.bias = -0.0005;
-          dirLight.shadow.radius = 4;
-          scene.add(dirLight);
-
-          var rimLight = new THREE.DirectionalLight(0xffae5e, 1.8);
-          rimLight.position.set(-3, 4, -6);
-          scene.add(rimLight);
-
-          // Dark, near-matte ground — kills the purple cast.
-          var groundMat = new THREE.MeshStandardMaterial({
-            color: 0x07070a,
-            roughness: 0.78,
-            metalness: 0.15,
-            envMapIntensity: 0.25
-          });
-          var ground = new THREE.Mesh(new THREE.PlaneGeometry(40, 40), groundMat);
-          ground.rotation.x = -Math.PI / 2;
-          ground.position.y = -0.5;
-          ground.receiveShadow = true;
-          scene.add(ground);
-
-          function resize() {
-            var w = heroEl.clientWidth, h = heroEl.clientHeight;
-            renderer.setSize(w, h, false);
-            camera.aspect = w / h;
-            camera.updateProjectionMatrix();
-          }
-          resize();
-          window.addEventListener('resize', resize);
-
-          var car = null;
-          var carInitial = { rotY: 0, posZ: 0 };
-
-          (function animate() {
-            requestAnimationFrame(animate);
-            renderer.render(scene, camera);
-          })();
-
-          // ============================================================
-          // Procedural stretch limousine — built from primitives so the
-          // hero reads as a genuine black stretch limo (not a generic
-          // sedan), needs no external .glb, and picks up the gold studio
-          // env-map + rim lighting for a premium cinematic finish.
-          // ============================================================
-          function buildLimousine() {
-            var limo = new THREE.Group();
-
-            // ---- Shared materials ----
-            // Big flat box faces mirror-reflect the bright studio env, so
-            // keep metalness moderate + roughness higher → the dark base
-            // colour dominates and the body reads as glossy black paint
-            // rather than flat light panels, while edges still catch gold.
-            var bodyMat = new THREE.MeshStandardMaterial({
-              color: 0x09090b, metalness: 0.35, roughness: 0.52, envMapIntensity: 0.5
-            });
-            var glassMat = new THREE.MeshStandardMaterial({
-              color: 0x05060a, metalness: 0.3, roughness: 0.14, envMapIntensity: 0.7
-            });
-            var tireMat = new THREE.MeshStandardMaterial({
-              color: 0x080809, metalness: 0.1, roughness: 0.85, envMapIntensity: 0.4
-            });
-            var goldMat = new THREE.MeshStandardMaterial({
-              color: 0xC9A84C, metalness: 0.95, roughness: 0.30, envMapIntensity: 1.25
-            });
-            var headMat = new THREE.MeshStandardMaterial({
-              color: 0xfff1d0, emissive: 0xffd58c, emissiveIntensity: 1.3, roughness: 0.3
-            });
-            var tailMat = new THREE.MeshStandardMaterial({
-              color: 0x2a0402, emissive: 0xff2a1a, emissiveIntensity: 1.5, roughness: 0.4
-            });
-
-            function box(w, h, d, x, y, z, mat) {
-              var m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mat);
-              m.position.set(x, y, z);
-              limo.add(m);
-              return m;
-            }
-
-            // ---- Lower body (long three-box chassis) ----
-            box(5.0, 0.50, 1.12, 0.0, 0.58, 0.0, bodyMat);
-            // Subtle rocker / sill for depth
-            box(4.6, 0.16, 1.18, 0.0, 0.40, 0.0, bodyMat);
-            // Gold beltline accent strips down each flank
-            box(4.7, 0.035, 1.15, 0.0, 0.80, 0.0, goldMat);
-
-            // ---- Greenhouse: long dark-glass passenger cabin ----
-            // Offset slightly rearward — the long rear is the limo signature.
-            box(4.0, 0.40, 0.96, -0.10, 1.03, 0.0, glassMat);
-            // Body-colour roof cap on top of the glass
-            box(3.4, 0.10, 0.90, -0.10, 1.28, 0.0, bodyMat);
-            // Pillars (A / B / C) breaking up the glass band
-            box(0.10, 0.40, 0.98, 1.75, 1.03, 0.0, bodyMat);
-            box(0.10, 0.40, 0.98, 0.10, 1.03, 0.0, bodyMat);
-            box(0.10, 0.40, 0.98, -1.95, 1.03, 0.0, bodyMat);
-
-            // ---- Front detailing ----
-            box(0.06, 0.22, 0.90, 2.53, 0.55, 0.0, goldMat);          // grille
-            box(0.06, 0.13, 0.20, 2.52, 0.62, 0.40, headMat);         // headlight R
-            box(0.06, 0.13, 0.20, 2.52, 0.62, -0.40, headMat);        // headlight L
-            // ---- Rear detailing ----
-            box(0.06, 0.11, 0.24, -2.53, 0.62, 0.38, tailMat);        // taillight R
-            box(0.06, 0.11, 0.24, -2.53, 0.62, -0.38, tailMat);       // taillight L
-
-            // ---- Wheels (gold-rimmed) ----
-            function wheel(x, z) {
-              var hub = new THREE.Group();
-              var tire = new THREE.Mesh(
-                new THREE.CylinderGeometry(0.40, 0.40, 0.28, 28), tireMat
-              );
-              tire.rotation.x = Math.PI / 2;   // lay axle along Z
-              hub.add(tire);
-              var rim = new THREE.Mesh(
-                new THREE.CylinderGeometry(0.24, 0.24, 0.30, 20), goldMat
-              );
-              rim.rotation.x = Math.PI / 2;
-              hub.add(rim);
-              hub.position.set(x, 0.40, z);
-              limo.add(hub);
-            }
-            wheel(2.25, 0.66);  wheel(2.25, -0.66);
-            wheel(-2.25, 0.66); wheel(-2.25, -0.66);
-
-            return limo;
-          }
-
-          (function initLimo() {
-            var model = buildLimousine();
-            var rawBox = new THREE.Box3().setFromObject(model);
-            var rawSize = rawBox.getSize(new THREE.Vector3());
-            var rawCenter = rawBox.getCenter(new THREE.Vector3());
-            model.position.x = -rawCenter.x;
-            model.position.y = -rawBox.min.y;
-            model.position.z = -rawCenter.z;
-
-            car = new THREE.Group();
-            car.add(model);
-
-            var maxDim = Math.max(rawSize.x, rawSize.y, rawSize.z) || 1;
-            var target = 3.2;
-            car.scale.setScalar(target / maxDim);
-
-            car.position.set(1.5, -0.5, 0);
-            car.rotation.y = -0.5;
-
-            model.traverse(function (n) {
-              if (n.isMesh) { n.castShadow = true; n.receiveShadow = true; }
-            });
-            scene.add(car);
-            carInitial.rotY = car.rotation.y;
-            carInitial.posZ = car.position.z;
-
-            if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-              var camPos = { x: camStart.x, y: camStart.y, z: camStart.z };
-              var camTgt = { x: camStart.tx, y: camStart.ty, z: camStart.tz };
-
-              var tl = gsap.timeline({
-                scrollTrigger: {
-                  trigger: '.hero',
-                  start: 'top top',
-                  end: '+=200%',
-                  pin: true,
-                  scrub: 1.0,
-                  anticipatePin: 1,
-                  invalidateOnRefresh: true
-                },
-                defaults: { ease: 'none' }
-              });
-
-              tl.to(car.rotation, { y: carInitial.rotY + 0.65, duration: 0.3 }, 0);
-
-              tl.to(camPos, {
-                x: 0, y: 2.4, z: 7.5, duration: 0.3,
-                onUpdate: function () {
-                  camera.position.set(camPos.x, camPos.y, camPos.z);
-                  camera.lookAt(camTgt.x, camTgt.y, camTgt.z);
-                }
-              }, 0.3);
-              tl.to(camTgt, { x: 0, y: 0.4, z: 0, duration: 0.3 }, 0.3);
-
-              tl.to(car.position, { z: carInitial.posZ + 3.5, duration: 0.4 }, 0.6);
-              tl.to('.hero__text', { opacity: 0, y: -40, duration: 0.4 }, 0.6);
-              tl.to('.hero__hint', { opacity: 0, duration: 0.2 }, 0.6);
-
-              ScrollTrigger.refresh();
-            }
-          })();
+          if (video.readyState >= 1) setup();
+          else video.addEventListener('loadedmetadata', setup, { once: true });
         })();
 
         // -------- Footer subscribe --------

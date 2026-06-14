@@ -15,9 +15,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Three.js r128 (limo hero is built procedurally — no GLTFLoader needed) -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
   <!-- GSAP + ScrollTrigger -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
@@ -86,7 +83,9 @@
          HERO
          ============================================================ -->
     <section class="hero" id="hero" aria-label="Show Limousines hero">
-      <canvas class="hero__canvas" id="heroCanvas" aria-hidden="true"></canvas>
+      <video class="hero__video" id="heroVideo" muted playsinline preload="auto" poster="fleet-chrysler-black-v2.jpg" aria-hidden="true">
+        <source src="hero-scrub.mp4" type="video/mp4">
+      </video>
       <div class="hero__fx" aria-hidden="true">
         <span class="hero__fx-glow hero__fx-glow--a"></span>
         <span class="hero__fx-glow hero__fx-glow--b"></span>
