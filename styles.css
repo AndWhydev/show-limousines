@@ -2310,33 +2310,67 @@
   gap: 24px;
   margin-top: 52px;
 }
-.wstandout__tags {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  margin-top: 52px;
+/* Services — photo cards with title/description overlaid (like the /services/ page) */
+.wstandout__services { margin-top: 60px; text-align: center; }
+.wstandout__services .label-bracket { display: inline-flex; margin-bottom: 30px; }
+.wsvc-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  text-align: left;
 }
-.wstandout__tags-label {
+.wsvc-card {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 5;
+  border-radius: 18px;
+  overflow: hidden;
+  text-decoration: none;
+  border: 1px solid var(--color-border);
+  transition: border-color .4s ease, transform .4s cubic-bezier(.2,.7,.2,1);
+}
+.wsvc-card:hover { border-color: rgba(var(--accent-rgb), 0.55); transform: translateY(-4px); }
+.wsvc-card__img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  transition: transform .6s cubic-bezier(.2,.7,.2,1);
+}
+.wsvc-card:hover .wsvc-card__img { transform: scale(1.06); }
+.wsvc-card__overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(8,8,10,0.94) 6%, rgba(8,8,10,0.45) 42%, rgba(8,8,10,0.08) 100%);
+}
+.wsvc-card__body {
+  position: absolute; left: 0; right: 0; bottom: 0; z-index: 2;
+  display: flex; flex-direction: column;
+  padding: 24px 22px;
+}
+.wsvc-card__name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(22px, 2.3vw, 28px);
+  letter-spacing: 0.02em;
+  color: #fff;
+  margin-bottom: 6px;
+}
+.wsvc-card__desc {
   font-family: 'DM Sans', sans-serif;
-  font-size: 13px;
-  letter-spacing: 0.04em;
-  color: var(--color-muted);
-  margin-right: 4px;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: rgba(255,255,255,0.72);
+  margin-bottom: 14px;
 }
-.wtag {
-  display: inline-block;
-  padding: 8px 16px;
-  border: 1px solid rgba(var(--accent-rgb), 0.4);
-  border-radius: 999px;
+.wsvc-card__more {
+  display: inline-flex; align-items: center; gap: 6px;
   color: var(--color-accent);
   font-family: 'DM Sans', sans-serif;
-  font-size: 13px;
-  letter-spacing: 0.02em;
-  transition: background .3s ease, border-color .3s ease;
+  font-size: 12.5px; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  transition: gap .3s ease;
 }
-.wtag:hover { background: rgba(var(--accent-rgb), 0.1); border-color: var(--color-accent); }
+.wsvc-card:hover .wsvc-card__more { gap: 11px; }
+@media (max-width: 860px) { .wsvc-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 540px) { .wsvc-grid { grid-template-columns: 1fr; } }
 @media (max-width: 760px) {
   .wstandout { padding: 60px 22px; }
   .wstandout__cards { grid-template-columns: 1fr; }
@@ -2493,6 +2527,9 @@
   margin-bottom: 44px;
 }
 .wfleet-card {
+  display: block;
+  color: inherit;
+  text-decoration: none;
   border: 1px solid var(--color-border);
   border-radius: 16px;
   overflow: hidden;
@@ -2500,6 +2537,15 @@
   transition: transform .4s cubic-bezier(.2,.7,.2,1), border-color .4s;
 }
 .wfleet-card:hover { transform: translateY(-5px); border-color: rgba(201,168,76,0.4); }
+.wfleet-card__more {
+  display: inline-flex; align-items: center; gap: 6px;
+  margin-top: 12px;
+  color: var(--color-accent);
+  font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: gap .3s ease;
+}
+.wfleet-card:hover .wfleet-card__more { gap: 11px; }
 .wfleet-card__media { aspect-ratio: 16 / 10; overflow: hidden; }
 .wfleet-card__media img {
   width: 100%; height: 100%;
@@ -2524,3 +2570,161 @@
 .nav-mega__group { display: block; padding: 4px; }
 .nav-mega__heading { display: block; font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-accent); padding: 8px 14px 4px; }
 @media (max-width: 1240px) { .nav-dropdown--mega { min-width: 0; } }
+
+/* ============================================================
+   Services page — "what we cater for" cards, area tags, related searches
+   ============================================================ */
+.svc-cater { text-align: center; }
+.svc-cater .label-bracket { display: inline-flex; margin-bottom: 18px; }
+.svc-intro { color: rgba(255,255,255,0.82); font-size: 17px; margin: 0 0 30px; }
+.svc-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin: 0 0 46px;
+  text-align: center;
+}
+.svc-card {
+  display: flex; flex-direction: column; align-items: center; gap: 16px;
+  text-decoration: none;
+  padding: 30px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  background: var(--color-bg-raised);
+  transition: transform .35s cubic-bezier(.2,.7,.2,1), border-color .35s, background .35s;
+}
+.svc-card:hover { transform: translateY(-5px); border-color: rgba(var(--accent-rgb), 0.5); background: #15151b; }
+.svc-card__icon {
+  display: grid; place-items: center;
+  width: 64px; height: 64px; border-radius: 50%;
+  color: var(--color-accent);
+  border: 1px solid rgba(var(--accent-rgb), 0.4);
+  background: radial-gradient(circle, rgba(var(--accent-rgb), 0.14) 0%, transparent 70%);
+  transition: border-color .35s ease, transform .5s cubic-bezier(.2,.7,.2,1);
+}
+.svc-card:hover .svc-card__icon { border-color: rgba(var(--accent-rgb), 0.8); transform: scale(1.06); }
+.svc-card__name { font-family: 'DM Sans', sans-serif; font-size: 14.5px; font-weight: 600; color: #fff; letter-spacing: 0.01em; }
+
+.svc-areas-intro { color: rgba(255,255,255,0.82); font-size: 16px; margin: 0 0 16px; }
+.area-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.area-tag {
+  display: inline-block; padding: 8px 18px;
+  border: 1px solid rgba(var(--accent-rgb), 0.45);
+  border-radius: 999px;
+  color: var(--color-accent);
+  font-family: 'DM Sans', sans-serif; font-size: 13px; letter-spacing: 0.03em;
+}
+
+.related { padding: 56px 28px 76px; border-top: 1px solid var(--color-border); background: var(--color-bg); }
+.related__inner { max-width: 1100px; margin: 0 auto; }
+.related__title {
+  font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--color-muted); margin: 0 0 20px;
+}
+.related__list { list-style: none; padding: 0; margin: 0; column-count: 3; column-gap: 32px; }
+.related__list li { break-inside: avoid; margin-bottom: 7px; }
+.related__list a {
+  color: rgba(255,255,255,0.4);
+  font-family: 'DM Sans', sans-serif; font-size: 12.5px;
+  text-decoration: none; transition: color .2s ease;
+}
+.related__list a:hover { color: var(--color-accent); }
+
+@media (max-width: 860px) { .svc-cards { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 760px) { .related__list { column-count: 2; } }
+@media (max-width: 520px) { .svc-cards { grid-template-columns: 1fr; } }
+@media (max-width: 460px) { .related__list { column-count: 1; } }
+
+/* ============================================================
+   Fleet page — alternating vehicle blocks + Any Occasion CTA
+   ============================================================ */
+.vehfleet { padding: 72px 28px 24px; position: relative; }
+.vehfleet__inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 2; display: flex; flex-direction: column; gap: 80px; }
+.veh-block { display: grid; grid-template-columns: 1fr; gap: 26px; }
+.veh-block__frame {
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--color-bg-raised);
+}
+.veh-block__img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block; }
+.veh-block__detail { display: flex; flex-direction: column; align-items: flex-start; }
+.veh-block__name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(28px, 3.3vw, 44px);
+  line-height: 1.04; letter-spacing: 0.01em;
+  color: #fff; margin: 0 0 20px;
+}
+.veh-block__specs { display: flex; flex-wrap: wrap; gap: 9px; margin-bottom: 22px; }
+.spec-chip {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 7px 13px;
+  border: 1px solid rgba(var(--accent-rgb), 0.4);
+  border-radius: 999px;
+  color: var(--color-accent);
+  font-family: 'DM Sans', sans-serif; font-size: 12.5px; letter-spacing: 0.01em;
+}
+.spec-chip svg { flex-shrink: 0; }
+.veh-block__desc { color: rgba(255,255,255,0.72); font-size: 16px; line-height: 1.72; margin: 0 0 26px; }
+@media (min-width: 900px) {
+  .veh-block { grid-template-columns: 1.05fr 1fr; gap: 56px; align-items: center; }
+  .veh-block:nth-of-type(even) .veh-block__media { order: 2; }
+}
+
+.anyocc { padding: 76px 28px 92px; position: relative; text-align: center; overflow: hidden; }
+.anyocc__inner { max-width: 760px; margin: 0 auto; position: relative; z-index: 2; }
+.anyocc .label-bracket { display: inline-flex; margin-bottom: 20px; }
+.anyocc__text { color: rgba(255,255,255,0.8); font-size: 17px; line-height: 1.7; margin: 0 0 32px; }
+
+/* ============================================================
+   About Us page — sleek, calm, editorial (generous whitespace,
+   restrained gold, minimal borders)
+   ============================================================ */
+.ab-hero { padding: 122px 28px 54px; text-align: center; }
+.ab-hero__inner { max-width: 760px; margin: 0 auto; }
+.ab-hero__title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(58px, 9vw, 108px); line-height: 0.94; letter-spacing: 0.02em; color: #fff; margin: 0; }
+.ab-rule { display: block; width: 54px; height: 2px; margin: 26px auto 28px; background: var(--gold-gradient-soft); border-radius: 2px; }
+.ab-hero__sub { color: rgba(255,255,255,0.6); font-size: 18px; line-height: 1.7; margin: 0; }
+
+.ab-stats { padding: 6px 28px 66px; }
+.ab-stats__inner { max-width: 940px; margin: 0 auto; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 22px 42px; }
+.ab-stat { font-family: 'DM Sans', sans-serif; font-size: 15px; color: rgba(255,255,255,0.58); letter-spacing: 0.02em; }
+.ab-stat .g { color: var(--color-accent); font-weight: 600; }
+.ab-stats__div { width: 1px; height: 24px; background: rgba(255,255,255,0.14); }
+
+.ab-intro { padding: 58px 28px; }
+.ab-intro__inner { max-width: 1140px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 66px; align-items: center; }
+.ab-intro__media img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 18px; display: block; }
+.ab-intro__text p { color: rgba(255,255,255,0.74); font-size: 17px; line-height: 1.8; margin: 0 0 20px; }
+.ab-intro__text p:last-child { margin-bottom: 0; }
+
+.ab-highlights { padding: 50px 28px; }
+.ab-highlights__inner { max-width: 1040px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 38px; }
+.ab-hl { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; }
+.ab-hl__icon { color: var(--color-accent); display: grid; place-items: center; width: 52px; height: 52px; }
+.ab-hl__label { font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600; color: #fff; letter-spacing: 0.01em; }
+
+.ab-fleet { padding: 58px 28px; text-align: center; }
+.ab-fleet__inner { max-width: 820px; margin: 0 auto; }
+.ab-eyebrow { display: inline-block; font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 16px; }
+.ab-fleet__text { color: rgba(255,255,255,0.64); font-size: 17px; line-height: 1.85; margin: 0; }
+
+.ab-gallery { padding: 50px 28px 76px; }
+.ab-gallery__inner { max-width: 1040px; margin: 0 auto; }
+.ab-gallery__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.ab-gallery__item img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 16px; display: block; }
+
+.ab-cta { padding: 86px 28px; text-align: center; background: var(--color-dark); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); }
+.ab-cta__inner { max-width: 720px; margin: 0 auto; }
+.ab-cta__lead { color: rgba(255,255,255,0.52); font-size: 15px; line-height: 1.7; margin: 0 0 16px; }
+.ab-cta__line { font-family: 'Bebas Neue', sans-serif; font-size: clamp(26px, 4vw, 42px); line-height: 1.1; letter-spacing: 0.01em; color: #fff; margin: 0 0 30px; }
+
+@media (max-width: 900px) {
+  .ab-intro__inner { grid-template-columns: 1fr; gap: 30px; }
+  .ab-highlights__inner { grid-template-columns: repeat(2, 1fr); gap: 34px; }
+}
+@media (max-width: 560px) {
+  .ab-hero { padding: 84px 22px 40px; }
+  .ab-gallery__grid { grid-template-columns: 1fr; }
+}
