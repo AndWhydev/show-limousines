@@ -400,6 +400,66 @@
           reset();
         })();
 
+        // -------- Wedding vehicle showcase slider --------
+        (function initVehicleShowcase() {
+          var root = document.querySelector('.wvshow');
+          if (!root) return;
+          var slides = root.querySelectorAll('.wvshow__slide');
+          if (!slides.length) return;
+          var dotsWrap = root.querySelector('.wvshow__dots');
+          var prevBtn = root.querySelector('.wvshow__btn--prev');
+          var nextBtn = root.querySelector('.wvshow__btn--next');
+          var i = 0, auto = null, dots = [];
+          slides.forEach(function (s, idx) {
+            var d = document.createElement('button');
+            d.type = 'button';
+            d.className = 'wvshow__dot' + (idx === 0 ? ' is-active' : '');
+            var img = s.querySelector('img');
+            d.setAttribute('aria-label', img ? img.getAttribute('alt') : ('Vehicle ' + (idx + 1)));
+            d.addEventListener('click', function () { show(idx); resetTimer(); });
+            if (dotsWrap) dotsWrap.appendChild(d);
+            dots.push(d);
+          });
+          function show(n) {
+            i = (n + slides.length) % slides.length;
+            slides.forEach(function (s, idx) { s.classList.toggle('is-active', idx === i); });
+            dots.forEach(function (d, idx) { d.classList.toggle('is-active', idx === i); });
+          }
+          function step(d) { show(i + d); resetTimer(); }
+          function resetTimer() { if (auto) clearInterval(auto); auto = setInterval(function () { show(i + 1); }, 4500); }
+          if (prevBtn) prevBtn.addEventListener('click', function () { step(-1); });
+          if (nextBtn) nextBtn.addEventListener('click', function () { step(1); });
+          show(0);
+          resetTimer();
+        })();
+
+        // -------- Review cards: per-card "Read more" toggle --------
+        (function initReviewCards() {
+          var cards = document.querySelectorAll('.wrev-card');
+          if (!cards.length) return;
+          function evaluate() {
+            cards.forEach(function (card) {
+              var text = card.querySelector('.wrev-card__text');
+              var btn = card.querySelector('.wrev-card__more');
+              if (!text || !btn) return;
+              if (!text.classList.contains('is-clamped')) return; // already expanded by user
+              btn.hidden = (text.scrollHeight - text.clientHeight <= 4);
+            });
+          }
+          cards.forEach(function (card) {
+            var text = card.querySelector('.wrev-card__text');
+            var btn = card.querySelector('.wrev-card__more');
+            if (!text || !btn) return;
+            btn.addEventListener('click', function () {
+              var clamped = text.classList.toggle('is-clamped');
+              btn.textContent = clamped ? 'Read more' : 'Read less';
+              btn.setAttribute('aria-expanded', String(!clamped));
+            });
+          });
+          evaluate();
+          window.addEventListener('load', evaluate);
+        })();
+
         // -------- How-it-works accordion --------
         (function initHowAccordion() {
           var rows = document.querySelectorAll('.how-row');

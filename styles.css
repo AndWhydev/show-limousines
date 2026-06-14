@@ -2252,15 +2252,99 @@
   width: 100%; height: 100%;
   object-fit: cover; display: block;
 }
-.wedintro .testi__media-icon,
-.wedintro .testi__media-mark { z-index: 2; }
-.wedintro .testi__card { justify-content: flex-start; }
-.wedintro .testi__quote-mark { margin-bottom: 10px; }
+.wedintro .testi__card { justify-content: center; }
+
+/* Vehicle showcase slider inside the testimonials media panel */
+.wvshow__slide {
+  position: absolute; inset: 0; margin: 0;
+  opacity: 0; pointer-events: none;
+  transition: opacity .7s ease;
+}
+.wvshow__slide.is-active { opacity: 1; pointer-events: auto; }
+.wvshow__dots {
+  position: absolute; left: 0; right: 0; bottom: 22px; z-index: 3;
+  display: flex; justify-content: center; gap: 7px;
+}
+.wvshow__dot {
+  width: 7px; height: 7px; border-radius: 50%; padding: 0; border: none;
+  background: rgba(255,255,255,0.5); cursor: pointer;
+  transition: background .3s, width .3s, border-radius .3s;
+}
+.wvshow__dot:hover { background: rgba(255,255,255,0.85); }
+.wvshow__dot.is-active { background: var(--color-accent); width: 20px; border-radius: 4px; }
+.wvshow__btn {
+  position: absolute; top: 50%; transform: translateY(-50%); z-index: 3;
+  width: 40px; height: 40px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: rgba(10,10,12,0.5); color: #fff;
+  border: 1px solid rgba(255,255,255,0.22); cursor: pointer;
+  -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+  transition: background .3s, border-color .3s, color .3s;
+}
+.wvshow__btn:hover { background: var(--color-accent); border-color: var(--color-accent); color: #0a0a0c; }
+.wvshow__btn--prev { left: 16px; }
+.wvshow__btn--next { right: 16px; }
+
+/* "Wedding Vehicles That Stand Out" — full-bleed dark/gold band.
+   Reuses the existing .fleet-card component; only the band + pill tags are new. */
+.wstandout {
+  position: relative;
+  width: 100vw;
+  left: 50%; right: 50%;
+  margin-left: -50vw; margin-right: -50vw;
+  margin-top: 64px; margin-bottom: 8px;
+  background: var(--color-dark);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  padding: 84px 28px;
+}
+.wstandout__inner { max-width: 1180px; margin: 0 auto; }
+.wstandout__head { max-width: 760px; margin: 0 auto; text-align: center; }
+.wstandout__head .label-bracket { margin-bottom: 16px; }
+.wstandout__heading { margin: 0 0 22px; text-align: center; }
+.wstandout__head p { color: rgba(255, 255, 255, 0.72); }
+.wstandout__head p:last-child { margin-bottom: 0; }
+.wstandout__cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 52px;
+}
+.wstandout__tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 52px;
+}
+.wstandout__tags-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: var(--color-muted);
+  margin-right: 4px;
+}
+.wtag {
+  display: inline-block;
+  padding: 8px 16px;
+  border: 1px solid rgba(var(--accent-rgb), 0.4);
+  border-radius: 999px;
+  color: var(--color-accent);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  transition: background .3s ease, border-color .3s ease;
+}
+.wtag:hover { background: rgba(var(--accent-rgb), 0.1); border-color: var(--color-accent); }
+@media (max-width: 760px) {
+  .wstandout { padding: 60px 22px; }
+  .wstandout__cards { grid-template-columns: 1fr; }
+}
 .wedintro .label-bracket { margin-bottom: 16px; }
 .wedintro__heading { margin: 0 0 18px; }
 .wedintro .testi__card p { margin-bottom: 14px; }
 .wedintro .testi__card p:last-of-type { margin-bottom: 0; }
-.wedintro__foot { margin-top: auto; }
 
 /* Section spacer / divider after the intro */
 .prose__inner > .wsection-divider {
@@ -2302,7 +2386,7 @@
 
 /* Let the card grids break out wider than the 920px reading column so they
    breathe like the homepage's full-width sections. */
-.wpkg-grid, .wreviews, .wfleet-grid {
+.wpkg-grid, .wrev-grid, .wfleet-grid {
   position: relative;
   width: min(1180px, 92vw);
   margin-left: 50%;
@@ -2341,35 +2425,72 @@
 .wpkg-card .prose__h3 { margin: 4px 0 18px; }
 .wpkg-card .prose__list { margin: 0; }
 
-/* Reviews — masonry of bordered panels instead of a raw wall of text */
-.wreviews {
-  column-count: 3;
-  column-gap: 24px;
-  margin: 34px 0 12px;
-  list-style: none;
-  padding: 0;
+/* Reviews — centered 4x4 grid of individual review cards (homepage dark/gold).
+   align-items:stretch (default) keeps every card in a row the same height. */
+.wrev-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 34px;
+  margin-bottom: 12px;
 }
-.wreviews li {
-  break-inside: avoid;
-  -webkit-column-break-inside: avoid;
-  margin: 0 0 24px;
-  padding: 26px 26px 28px;
-  border: 1px solid var(--color-border);
-  border-left: 3px solid rgba(201,168,76,0.55);
-  border-radius: 14px;
+.wrev-card {
+  display: flex;
+  flex-direction: column;
   background: var(--color-bg-raised);
-  color: rgba(255,255,255,0.7);
-  font-size: 15px;
-  line-height: 1.72;
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-accent);
+  border-radius: 14px;
+  padding: 24px 24px 22px;
 }
-.wreviews li::before { content: none; }  /* drop the inherited prose__list dot */
+.wrev-card__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.wrev-card__who { display: flex; flex-direction: column; gap: 3px; }
+.wrev-card__name { font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 15px; color: #fff; }
+.wrev-card__date { font-family: 'DM Sans', sans-serif; font-size: 12.5px; color: var(--color-muted); }
+.wrev-card__stars { color: var(--color-accent); font-size: 14px; letter-spacing: 1px; flex-shrink: 0; }
+.wrev-card__text {
+  margin: 0;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.7);
+}
+.wrev-card__text.is-clamped {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.wrev-card__more {
+  align-self: flex-start;
+  margin-top: 12px;
+  padding: 0;
+  background: none;
+  border: none;
+  color: var(--color-accent);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: color .25s ease;
+}
+.wrev-card__more:hover { color: var(--color-accent-hover); text-decoration: underline; }
+.wrev-card__more[hidden] { display: none; }
 
 /* Fleet — image cards, echoing the homepage fleet grid */
 .wfleet-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 22px;
-  margin: 34px 0 44px;
+  margin-top: 34px;
+  margin-bottom: 44px;
 }
 .wfleet-card {
   border: 1px solid var(--color-border);
@@ -2390,12 +2511,12 @@
 .wfleet-card__body .prose__h3 { margin: 0; font-size: clamp(18px, 2vw, 22px); }
 .wfleet-card__body p { margin: 8px 0 0; color: rgba(255,255,255,0.55); font-size: 14px; }
 
-@media (max-width: 860px) {
-  .wreviews { column-count: 2; }
+@media (max-width: 1024px) {
+  .wrev-grid { grid-template-columns: repeat(2, 1fr); }
 }
-@media (max-width: 560px) {
-  .wreviews { column-count: 1; }
-  .wpkg-grid, .wreviews, .wfleet-grid { width: 100%; margin-left: 0; transform: none; }
+@media (max-width: 600px) {
+  .wrev-grid { grid-template-columns: 1fr; }
+  .wpkg-grid, .wrev-grid, .wfleet-grid { width: 100%; margin-left: 0; transform: none; }
 }
 
 /* Fleet brand-grouped mega panel (Chrysler / Hummer / Mercedes / RR / VW) */
