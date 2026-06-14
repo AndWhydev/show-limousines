@@ -130,8 +130,8 @@
             });
             ScrollTrigger.refresh();
           }
-          if (video.readyState >= 1) setup();
-          else video.addEventListener('loadedmetadata', setup, { once: true });
+          if (video.readyState >= 4) setup();
+          else video.addEventListener('canplaythrough', setup, { once: true });
         })();
 
         // -------- Footer subscribe --------
