@@ -129,10 +129,8 @@ function header(active) {
     <nav class="nav-main" role="navigation" aria-label="Primary">
       <div class="nav-inner">
         <a href="/" class="nav-brand" aria-label="Show Limousines — Sydney's Premier Luxury Transport — home">
-          <picture>
-            <source media="(max-width: 520px)" srcset="/show-limousines-s-mark.png">
-            <img src="/show-limousines-logo.svg" alt="Show Limousines — Sydney's Premier Luxury Transport" class="nav-brand__logo" width="1500" height="470">
-          </picture>
+          <img src="/logo-wordmark.png" alt="Show Limousines" class="nav-brand__logo" width="1490" height="419">
+          <span class="nav-brand__tagline">Sydney's Premier Luxury Transport</span>
         </a>
         <div class="nav-pills" role="menubar">
 ${pills}
@@ -238,7 +236,7 @@ function footer() {
       <div class="foot__inner">
         <div class="foot__contact">
           <div>
-            <div class="foot__brand"><img src="/show-limousines-logo.svg" alt="Show Limousines — Sydney's Premier Luxury Transport" class="foot__brand-logo" width="1500" height="470"></div>
+            <div class="foot__brand"><img src="/logo.png" alt="Show Limousines" class="foot__brand-logo" width="1514" height="443"></div>
             <p class="foot__tag">Show Limousines specialises in personalised limo hire services throughout Sydney and the Wollongong areas. Catering to a range of different events including weddings, private functions, birthdays, concerts and events, airport transfers, cruise transfers, school formals, corporate travellers, hen's nights.</p>
             <div class="foot__socials" aria-label="Social links">
               <a href="https://www.facebook.com/showlimousines/" target="_blank" rel="noopener noreferrer" class="foot__social" aria-label="Show Limousines on Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg></a>
@@ -285,18 +283,14 @@ function head(fm, slug) {
   <meta property="og:title" content="${attr(ogt)}">
   <meta property="og:description" content="${attr(ogd)}">
   <meta property="og:url" content="${canonical}">
-  <meta property="og:image" content="${SITE}/show-limousines-s-mark.png">
-  <meta property="og:image:width" content="488">
-  <meta property="og:image:height" content="444">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="${attr(ogt)}">
   <meta name="twitter:description" content="${attr(ogd)}">
-  <meta name="twitter:image" content="${SITE}/show-limousines-s-mark.png">
-  <link rel="icon" type="image/png" href="/show-limousines-s-mark.png">
-  <link rel="apple-touch-icon" href="/show-limousines-s-mark.png">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cinzel:wght@500;600&family=DM+Sans:wght@400;500;600;700&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script src="https://unpkg.com/lenis@1.0.45/dist/lenis.min.js"></script>
@@ -545,7 +539,7 @@ function vehiclePage(slug) {
     head(fm, slug), header(pathFor(slug)), mobileNav(pathFor(slug)), '  <main>',
     pageHero('Fleet · ' + (v ? v.badge : ''), h1, v ? ('Up to ' + v.pax + ' passengers · chauffeur-driven across Sydney & Wollongong.') : fm.description),
     `    <section class="feature"><div class="feature__inner">
-        <div class="feature__media reveal"><img src="/${v ? v.img : 'show-limousines-s-mark.png'}" alt="${attr(h1)}" loading="lazy" decoding="async"></div>
+        <div class="feature__media reveal"><img src="/${v ? v.img : 'logo.png'}" alt="${attr(h1)}" loading="lazy" decoding="async"></div>
         <div class="feature__copy reveal">
           <span class="label-bracket">${esc(v ? v.badge : 'Fleet')}</span>
           <h2 class="feature__title">${esc(h1)}</h2>
