@@ -128,8 +128,9 @@ function header(active) {
     </div>
     <nav class="nav-main" role="navigation" aria-label="Primary">
       <div class="nav-inner">
-        <a href="/" class="nav-brand" aria-label="Show Limousines — home">
-          <img src="/logo.png" alt="Show Limousines" class="nav-brand__logo" width="1514" height="443">
+        <a href="/" class="nav-brand" aria-label="Show Limousines — Sydney's Premier Luxury Transport — home">
+          <img src="/logo-wordmark.png" alt="Show Limousines" class="nav-brand__logo" width="1490" height="419">
+          <span class="nav-brand__tagline">Sydney's Premier Luxury Transport</span>
         </a>
         <div class="nav-pills" role="menubar">
 ${pills}

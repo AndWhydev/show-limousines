@@ -225,12 +225,26 @@
 
     .nav-brand {
       display: inline-flex;
+      flex-direction: column;
       align-items: center;
-      gap: 10px;
+      gap: 3px;
       font-family: 'Bebas Neue', sans-serif;
       font-size: 22px;
       letter-spacing: 0.06em;
       color: #fff;
+      line-height: 1;
+    }
+    /* Tagline rebuilt as crisp HTML text (the baked-in one was illegibly small).
+       Gold on the dark header for high contrast; scales independently of the logo. */
+    .nav-brand__tagline {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      white-space: nowrap;
+      text-indent: 0.26em;
     }
     .nav-brand__mark {
       width: 30px; height: 30px;
@@ -242,7 +256,7 @@
     .nav-brand__mark svg { width: 100%; height: 100%; }
     .nav-brand__name { color: #fff; }
     .nav-brand__name span { color: var(--color-accent); }
-    .nav-brand__logo { height: 56px; width: auto; display: block; }
+    .nav-brand__logo { height: 50px; width: auto; display: block; }
 
     .nav-pills {
       display: inline-flex;
@@ -333,7 +347,9 @@
       .nav-announce .sep { margin: 0 6px; }
       .nav-brand { font-size: 20px; }
       .nav-brand__mark { width: 26px; height: 26px; }
-      .nav-brand__logo { height: 42px; }
+      .nav-brand__logo { height: 44px; }
+      /* Wordmark-only on phones — the wide tagline would crowd the CTA/hamburger */
+      .nav-brand__tagline { display: none; }
       .nav-right .btn-pill--gold { padding: 7px 9px 7px 16px; font-size: 12px; }
     }
 
