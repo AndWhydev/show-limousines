@@ -242,7 +242,7 @@
       font-weight: 600;
       letter-spacing: 0.26em;
       text-transform: uppercase;
-      color: var(--color-accent);
+      color: rgba(255, 255, 255, 0.88);
       white-space: nowrap;
       text-indent: 0.26em;
     }
