@@ -64,7 +64,7 @@ const NAV = [
     { label: 'Rolls Royce', href: '/rolls-royce-hire-sydney/', items: VEHICLES.filter(v => v.badge === 'Rolls Royce').map(v => ({ label: v.name, href: v.url })) },
     { label: 'Volkswagen', href: '#', items: VEHICLES.filter(v => v.badge === 'Volkswagen').map(v => ({ label: v.name, href: v.url })) },
   ] },
-  { label: 'About us', href: '/about-us/', children: [
+  { label: 'About Us', href: '/about-us/', children: [
     { label: 'Gallery', href: '/gallery/' },
     { label: 'Blog', href: '/blog/' },
     { label: 'Reviews', href: '/reviews/' },
