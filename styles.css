@@ -2234,9 +2234,87 @@
 }
 .nav-mobile__sub a:hover,
 .nav-mobile__sub a[aria-current="page"] { color: var(--color-accent); }
-/* Progressive enhancement: collapse only once JS marks the group ready */
-.nav-mobile__group.js-ready .nav-mobile__sub { display: none; }
-.nav-mobile__group.js-ready.is-open .nav-mobile__sub { display: block; }
+/* Progressive enhancement: collapse only once JS marks the group ready.
+   Direct-child (>) so nested groups (Fleet → make → vehicles) toggle their
+   OWN submenu independently rather than every descendant sub at once. */
+.nav-mobile__group.js-ready > .nav-mobile__sub { display: none; }
+.nav-mobile__group.js-ready.is-open > .nav-mobile__sub { display: block; }
+
+/* Nested make-level accordion inside the mobile Fleet group */
+.nav-mobile__group--sub { border-bottom: none; }
+.nav-mobile__sub .nav-mobile__group--sub > .nav-mobile__grouptop > a,
+.nav-mobile__sub .nav-mobile__group--sub > .nav-mobile__grouptop > span {
+  font-size: 19px;
+  padding: 9px 0;
+  color: rgba(255, 255, 255, 0.7);
+}
+.nav-mobile__sub .nav-mobile__group--sub > .nav-mobile__grouptop > span { display: block; flex: 1; }
+.nav-mobile__group--sub .nav-mobile__caret { height: 42px; }
+.nav-mobile__group--sub > .nav-mobile__sub { padding-left: 16px; }
+
+/* ---- Desktop two-level Fleet flyout ---- */
+.nav-dropdown--fleet { min-width: 230px; }
+.nav-flyout { position: relative; }
+/* hover bridge across the 8px gap to the side panel */
+.nav-flyout::after { content: ''; position: absolute; top: 0; bottom: 0; left: 100%; width: 12px; }
+.nav-flyout__parent {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.82);
+  white-space: nowrap;
+  background: none; border: none; text-align: left; cursor: pointer;
+  transition: background 200ms, color 200ms;
+}
+.nav-flyout__caret { opacity: 0.6; flex: none; transition: transform 220ms, opacity 220ms; }
+.nav-flyout:hover > .nav-flyout__parent,
+.nav-flyout:focus-within > .nav-flyout__parent { background: rgba(var(--accent-rgb), 0.16); color: #fff; }
+.nav-flyout:hover > .nav-flyout__parent .nav-flyout__caret,
+.nav-flyout:focus-within > .nav-flyout__parent .nav-flyout__caret { opacity: 1; transform: translateX(2px); }
+.nav-flyout__panel {
+  position: absolute;
+  top: -11px;
+  left: calc(100% + 9px);
+  min-width: 238px;
+  background: rgba(13, 13, 16, 0.98);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid rgba(var(--accent-rgb), 0.3);
+  border-radius: 16px;
+  padding: 10px;
+  display: grid;
+  gap: 2px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateX(8px);
+  transition: opacity 220ms ease, transform 220ms ease, visibility 220ms;
+  z-index: 80;
+  box-shadow: 0 26px 64px rgba(0, 0, 0, 0.6);
+}
+.nav-flyout:hover > .nav-flyout__panel,
+.nav-flyout:focus-within > .nav-flyout__panel {
+  opacity: 1; visibility: visible; pointer-events: auto; transform: translateX(0);
+}
+.nav-flyout__panel a {
+  display: block;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.82);
+  white-space: nowrap;
+  transition: background 200ms, color 200ms;
+}
+.nav-flyout__panel a:hover,
+.nav-flyout__panel a[aria-current="page"] { background: rgba(var(--accent-rgb), 0.16); color: #fff; }
 
 /* ============================================================
    CONTENT REBUILD ADDITIONS — prose blocks + Fleet mega-panel

@@ -19,6 +19,7 @@ const SITE = 'https://www.showlimousines.com.au';
 const WEB3FORMS_KEY = 'WEB3FORMS_ACCESS_KEY_HERE'; // <-- paste your Web3Forms access key (web3forms.com) to go live
 const ARROW = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>';
 const CARET = '<svg class="nav-pill-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>';
+const CARET_R = '<svg class="nav-flyout__caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>';
 function esc(s) { return String(s == null ? '' : s).replace(/&(?!amp;|lt;|gt;|#)/g, '&amp;'); }
 function attr(s) { return esc(s).replace(/"/g, '&quot;'); }
 
@@ -96,12 +97,17 @@ function header(active) {
     }
     let panel;
     if (item.mega) {
-      const groups = item.mega.map(g => {
-        const head = g.href === '#' ? `<span class="nav-mega__heading">${esc(g.label)}</span>` : `<a class="nav-mega__heading" href="${g.href}">${esc(g.label)}</a>`;
-        const items = g.items.map(i => `              <a href="${i.href}" role="menuitem">${esc(i.label)}</a>`).join('\n');
-        return `            <div class="nav-mega__group">\n              ${head}\n${items}\n            </div>`;
+      // Two-level Fleet menu: a dropdown of car makes, each opening its own
+      // flyout submenu of vehicles (▸). Pure-grouping makes (href '#') open
+      // the flyout without being links; the rest are clickable category pages.
+      const makes = item.mega.map(g => {
+        const parent = g.href === '#'
+          ? `<button class="nav-flyout__parent" type="button" aria-haspopup="true">${esc(g.label)} ${CARET_R}</button>`
+          : `<a class="nav-flyout__parent" href="${g.href}" aria-haspopup="true">${esc(g.label)} ${CARET_R}</a>`;
+        const items = g.items.map(i => `                <a href="${i.href}" role="menuitem">${esc(i.label)}</a>`).join('\n');
+        return `            <div class="nav-flyout">\n              ${parent}\n              <div class="nav-flyout__panel" role="menu">\n${items}\n              </div>\n            </div>`;
       }).join('\n');
-      panel = `            <div class="nav-dropdown nav-dropdown--mega" role="menu">\n${groups}\n            </div>`;
+      panel = `            <div class="nav-dropdown nav-dropdown--fleet" role="menu">\n${makes}\n            </div>`;
     } else {
       const links = item.children.map(c => `              <a href="${c.href}"${c.href === active ? ' aria-current="page"' : ''} role="menuitem">${esc(c.label)}</a>`).join('\n');
       panel = `            <div class="nav-dropdown${item.wide ? ' nav-dropdown--wide' : ''}" role="menu">\n${links}\n            </div>`;
@@ -148,9 +154,22 @@ function mobileNav(active) {
     if (!item.children && !item.mega) return `    <a href="${item.href}"${cur}>${esc(item.label)}</a>`;
     let subs;
     if (item.mega) {
+      // Mobile Fleet: each make is its own nested accordion (tap to reveal its
+      // vehicles), mirroring the desktop two-level flyout.
       subs = item.mega.map(g => {
-        const head = g.href === '#' ? `<span class="nav-mega__heading">${esc(g.label)}</span>` : `<a href="${g.href}">${esc(g.label)}</a>`;
-        return `        ${head}\n` + g.items.map(i => `        <a href="${i.href}">${esc(i.label)}</a>`).join('\n');
+        const gtop = g.href === '#' ? `<span>${esc(g.label)}</span>` : `<a href="${g.href}">${esc(g.label)}</a>`;
+        const veh = g.items.map(i => `          <a href="${i.href}">${esc(i.label)}</a>`).join('\n');
+        return `        <div class="nav-mobile__group nav-mobile__group--sub">
+          <div class="nav-mobile__grouptop">
+            ${gtop}
+            <button class="nav-mobile__caret" aria-label="Toggle ${attr(g.label)} submenu" aria-expanded="false">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+          </div>
+          <div class="nav-mobile__sub">
+${veh}
+          </div>
+        </div>`;
       }).join('\n');
     } else {
       subs = item.children.map(c => `        <a href="${c.href}">${esc(c.label)}</a>`).join('\n');
@@ -176,6 +195,14 @@ ${items}
       <a href="/contact/" class="btn-pill btn-pill--gold">Get a Free Quote <span class="btn-pill__arrow" aria-hidden="true">${ARROW}</span></a>
     </div>
   </div>`;
+}
+
+/* When this file is required by a tooling script (e.g. nav-update.js) rather
+   than run directly, expose the shared nav generators and stop here — do NOT
+   run the full site build (which would also rewrite the home page form, etc.). */
+if (require.main !== module) {
+  module.exports = { header, mobileNav, NAV, VEHICLES };
+  return;
 }
 
 const FOOT_LINKS = [
