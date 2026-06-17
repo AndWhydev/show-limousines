@@ -91,47 +91,21 @@
           requestAnimationFrame(function () { h.classList.add('is-in'); });
         })();
 
-        // -------- Hero video scroll-scrub (Higgsfield clip bound to scroll) --------
-        (function initHeroScrub() {
+        // -------- Hero background video (autoplay/loop; respects reduced motion) --------
+        (function initHeroVideo() {
           var video = document.getElementById('heroVideo');
-          var heroEl = document.getElementById('hero');
-          if (!video || !heroEl || typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
-            if (video) { video.setAttribute('autoplay',''); video.setAttribute('loop',''); video.play && video.play().catch(function(){}); }
+          if (!video) return;
+          var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          if (reduce) {
+            // Show the poster instead of playing the video
+            video.removeAttribute('autoplay');
+            video.removeAttribute('loop');
+            try { video.pause(); video.currentTime = 0; } catch (e) {}
             return;
           }
-          function setup() {
-            var duration = video.duration;
-            if (!duration || !isFinite(duration)) return;
-            video.pause();
-            video.currentTime = 0;
-            gsap.to(video, {
-              currentTime: duration - 0.05,
-              ease: 'none',
-              scrollTrigger: {
-                trigger: heroEl,
-                start: 'top top',
-                end: '+=180%',
-                pin: true,
-                scrub: 0.5,
-                anticipatePin: 1,
-                invalidateOnRefresh: true
-              }
-            });
-            gsap.to('.hero__text', {
-              opacity: 0,
-              y: -40,
-              ease: 'none',
-              scrollTrigger: {
-                trigger: heroEl,
-                start: 'top+=60% top',
-                end: '+=120%',
-                scrub: 0.5
-              }
-            });
-            ScrollTrigger.refresh();
-          }
-          if (video.readyState >= 4) setup();
-          else video.addEventListener('canplaythrough', setup, { once: true });
+          video.muted = true;
+          var play = video.play && video.play();
+          if (play && play.catch) play.catch(function () {});
         })();
 
         // -------- Footer subscribe --------
