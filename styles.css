@@ -2444,7 +2444,9 @@
 .wsvc-card__img {
   position: absolute; inset: 0;
   width: 100%; height: 100%;
-  object-fit: cover; display: block;
+  padding: 12px;
+  background: #0a0a0c;
+  object-fit: contain; object-position: center; display: block;
   transition: transform .6s cubic-bezier(.2,.7,.2,1);
 }
 .wsvc-card:hover .wsvc-card__img { transform: scale(1.06); }
@@ -2664,6 +2666,14 @@
   transition: transform .6s cubic-bezier(.2,.7,.2,1);
 }
 .wfleet-card:hover .wfleet-card__media img { transform: scale(1.05); }
+/* No-crop fit for the green Hummer and black Chrysler collection items */
+.wfleet-card__media img[src*="fleet-hummer-green-v2"],
+.wfleet-card__media img[src*="fleet-chrysler-black-v2"] {
+  width: 100%; height: 100%;
+  padding: 12px;
+  background: #0a0a0c;
+  object-fit: contain; object-position: center;
+}
 .wfleet-card__body { padding: 18px 20px 22px; }
 .wfleet-card__body .prose__h3 { margin: 0; font-size: clamp(18px, 2vw, 22px); }
 .wfleet-card__body p { margin: 8px 0 0; color: rgba(255,255,255,0.55); font-size: 14px; }
