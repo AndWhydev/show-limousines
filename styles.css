@@ -2359,13 +2359,15 @@
 .wedintro .testi__media img {
   position: absolute; inset: 0;
   width: 100%; height: 100%;
-  object-fit: cover; display: block;
+  padding: 12px;
+  object-fit: contain; object-position: center; display: block;
 }
 .wedintro .testi__card { justify-content: center; }
 
 /* Vehicle showcase slider inside the testimonials media panel */
 .wvshow__slide {
   position: absolute; inset: 0; margin: 0;
+  background: #0a0a0c;
   opacity: 0; pointer-events: none;
   transition: opacity .7s ease;
 }
