@@ -91,6 +91,18 @@
           requestAnimationFrame(function () { h.classList.add('is-in'); });
         })();
 
+        // -------- Keep --header-height in sync with the fixed nav (announce + main) --------
+        (function syncHeaderHeight() {
+          var nav = document.querySelector('.nav-wrap');
+          if (!nav) return;
+          function set() {
+            document.documentElement.style.setProperty('--header-height', nav.offsetHeight + 'px');
+          }
+          set();
+          window.addEventListener('resize', set, { passive: true });
+          window.addEventListener('load', set);
+        })();
+
         // -------- Hero background video (autoplay/loop; respects reduced motion) --------
         (function initHeroVideo() {
           var video = document.getElementById('heroVideo');

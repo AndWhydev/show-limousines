@@ -12,6 +12,8 @@
       --color-accent-hover: #e7cd7b;
       --accent-rgb: 201,168,76;
       --color-dark: #0F1014;
+      /* Combined height of the fixed announcement bar + nav; refined at runtime by JS */
+      --header-height: 120px;
       /* Metallic gold lifted from the Show Limousines logo (champagne → gold → antique) */
       --gold-gradient: linear-gradient(135deg, #F6E7A8 0%, #E3C66B 28%, #C9A84C 52%, #A6822F 78%, #E8CE80 100%);
       --gold-gradient-soft: linear-gradient(135deg, #E9CE7E 0%, #C9A84C 55%, #9C7A2C 100%);
@@ -358,7 +360,9 @@
        ============================================================ */
     .hero {
       position: relative;
-      min-height: 100svh;
+      margin-top: var(--header-height);
+      height: calc(100svh - var(--header-height));
+      min-height: 0;
       width: 100%;
       overflow: hidden;
       background:
@@ -377,7 +381,7 @@
       z-index: 0;
       width: 100%;
       height: 100%;
-      padding: clamp(80px, 16vh, 180px) clamp(24px, 7vw, 140px);
+      padding: clamp(8px, 2vh, 28px) clamp(16px, 5vw, 100px);
       object-fit: contain;
       object-position: center;
       background: var(--color-bg);
@@ -479,7 +483,7 @@
       width: 100%;
       max-width: 1320px;
       margin: 0 auto;
-      padding: 160px 28px 80px;
+      padding: clamp(14px, 2.5vh, 56px) 28px;
       display: grid;
       grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
       gap: 5vw;
@@ -487,7 +491,7 @@
     }
 
     .hero__text { min-width: 0; }
-    .hero__label { margin-bottom: 16px; }
+    .hero__label { margin-bottom: clamp(8px, 1.4vh, 16px); }
 
     .hero__seo-h1 {
       font-family: 'DM Sans', sans-serif;
@@ -496,7 +500,7 @@
       letter-spacing: 0.22em;
       text-transform: uppercase;
       color: rgba(255,255,255,0.78);
-      margin: 0 0 22px;
+      margin: 0 0 clamp(10px, 1.6vh, 22px);
     }
     .hero__seo-h1::before {
       content: '';
@@ -511,11 +515,11 @@
     .hero-heading {
       font-family: 'Bebas Neue', sans-serif;
       font-weight: 400;
-      font-size: clamp(80px, 10vw, 160px);
+      font-size: clamp(40px, min(8vw, 8.5vh), 132px);
       line-height: 0.9;
       letter-spacing: -0.02em;
       color: #fff;
-      margin: 0 0 28px;
+      margin: 0 0 clamp(14px, 2.5vh, 28px);
       max-width: 10ch;
       overflow: hidden;
     }
@@ -533,11 +537,11 @@
 
     .hero__sub {
       font-family: 'DM Sans', sans-serif;
-      font-size: 18px;
-      line-height: 1.6;
+      font-size: clamp(15px, 1.7vh, 18px);
+      line-height: 1.55;
       color: rgba(240, 240, 240, 0.78);
       max-width: 480px;
-      margin: 0 0 40px;
+      margin: 0 0 clamp(16px, 2.6vh, 40px);
       opacity: 0;
       transform: translateY(20px);
       animation: limo-rise 0.9s 0.6s cubic-bezier(.19,1,.22,1) forwards;
@@ -556,8 +560,8 @@
     .hero__stats {
       display: flex;
       align-items: flex-end;
-      gap: 36px;
-      margin-top: 56px;
+      gap: clamp(20px, 3vw, 36px);
+      margin-top: clamp(16px, 3vh, 56px);
       opacity: 0;
       transform: translateY(20px);
       animation: limo-rise 0.9s 1.0s cubic-bezier(.19,1,.22,1) forwards;
@@ -625,14 +629,26 @@
     .hero.is-no-webgl .hero__stage { display: none; }
 
     @media (max-width: 1024px) {
-      .hero__inner { grid-template-columns: 1fr; padding: 140px 24px 80px; }
-      .hero__stage { min-height: 40vh; order: 2; }
+      .hero__inner { grid-template-columns: 1fr; padding: clamp(20px, 3vh, 40px) 24px; }
+      .hero__stage { display: none; }
       .hero-heading { max-width: 10ch; }
     }
     @media (max-width: 520px) {
-      .hero-heading { font-size: clamp(46px, 13vw, 80px); }
-      .hero__stats { gap: 20px; margin-top: 40px; }
-      .hero__stat-num { font-size: 30px; }
+      .hero-heading { font-size: clamp(34px, min(12vw, 7vh), 80px); }
+      .hero__sub { margin-bottom: clamp(10px, 2vh, 28px); }
+      .hero__stats { gap: 18px; margin-top: clamp(12px, 2vh, 40px); }
+      .hero__stat-num { font-size: 28px; }
+      .hero__hint { display: none; }
+    }
+    /* Very short viewports (small phones, landscape) — compress so the whole hero + car fit */
+    @media (max-height: 700px) {
+      .hero__inner { padding-top: 12px; padding-bottom: 12px; }
+      .hero-heading { font-size: clamp(30px, min(8vw, 6.2vh), 80px); margin-bottom: 10px; }
+      .hero__sub { font-size: 14px; line-height: 1.45; margin-bottom: 10px; }
+      .hero__ctas { gap: 8px; }
+      .hero__ctas .btn-pill { padding-top: 9px; padding-bottom: 9px; }
+      .hero__stats { margin-top: 10px; gap: 16px; }
+      .hero__stat-num { font-size: 24px; }
       .hero__hint { display: none; }
     }
 
