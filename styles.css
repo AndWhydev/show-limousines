@@ -2837,7 +2837,7 @@
 
 .ab-intro { padding: 58px 28px; }
 .ab-intro__inner { max-width: 1140px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 66px; align-items: center; }
-.ab-intro__media img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 18px; display: block; }
+.ab-intro__media img { width: 100%; aspect-ratio: 4 / 3; padding: 12px; background: #0a0a0c; object-fit: contain; object-position: center; border-radius: 18px; display: block; }
 .ab-intro__text p { color: rgba(255,255,255,0.74); font-size: 17px; line-height: 1.8; margin: 0 0 20px; }
 .ab-intro__text p:last-child { margin-bottom: 0; }
 
