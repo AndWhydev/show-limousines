@@ -1480,7 +1480,7 @@
     }
     .testi__grid {
       display: grid;
-      grid-template-columns: 0.85fr 1fr;
+      grid-template-columns: 1fr;
       gap: 32px;
       align-items: stretch;
     }
@@ -1589,7 +1589,25 @@
       display: flex;
       gap: 12px;
       align-items: center;
+      flex-wrap: wrap;
+      row-gap: 16px;
       margin-top: 28px;
+    }
+    /* "Trusted by 160+ Sydney clients" relocated into the card footer (was its own box) */
+    .testi__trust {
+      margin-right: auto;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 0.08em;
+      line-height: 1.05;
+      color: rgba(255, 255, 255, 0.85);
+    }
+    .testi__trust span {
+      display: block;
+      color: var(--color-accent);
+      font-size: 13px;
+      letter-spacing: 0.22em;
+      margin-bottom: 2px;
     }
     .testi__nav-btn {
       width: 48px; height: 48px;
@@ -1638,13 +1656,43 @@
       transition: background 300ms, transform 350ms cubic-bezier(.4,0,.2,1);
     }
     .testi__viewall:hover .arrow { background: rgba(var(--accent-rgb), 0.15); transform: rotate(45deg); }
+    /* Clickable Google-source badge, top-right of the testimonial card */
+    .testi__google {
+      position: absolute;
+      top: 28px;
+      right: 28px;
+      z-index: 4;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 14px 7px 11px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      color: rgba(240, 240, 240, 0.82);
+      text-decoration: none;
+      transition: border-color 300ms ease, background 300ms ease, color 300ms ease;
+    }
+    .testi__google:hover {
+      border-color: rgba(var(--accent-rgb), 0.55);
+      background: rgba(255, 255, 255, 0.10);
+      color: #fff;
+    }
+    .testi__google-logo { width: 16px; height: 16px; display: block; flex-shrink: 0; }
     @media (max-width: 900px) {
       .testi__grid { grid-template-columns: 1fr; gap: 18px; }
       .testi__media { min-height: 280px; }
       .testi__card { min-height: 0; padding: 32px 28px; }
+      .testi__google { top: 20px; right: 20px; }
     }
     @media (max-width: 480px) {
       .testi { padding: 80px 20px 100px; }
+      .testi__google { top: 16px; right: 16px; padding: 6px 10px; }
+      .testi__google-text { display: none; }
     }
 
     /* ============================================================
