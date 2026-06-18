@@ -302,8 +302,8 @@ function head(fm, slug) {
 const FOOT_SCRIPT = `  <script src="/main.js"></script>\n</body>\n</html>`;
 
 /* ---------------- Section builders ---------------- */
-function pageHero(eyebrow, h1, sub) {
-  return `    <section class="page-hero" aria-label="${attr(h1)}">
+function pageHero(eyebrow, h1, sub, img) {
+  return `    <section class="page-hero" aria-label="${attr(h1)}"${img ? ` style="--hero-img:url('/${img}')"` : ''}>
       <div class="page-hero__inner reveal">
         <span class="label-bracket">${esc(eyebrow)}</span>
         <h1 class="page-hero__title">${esc(h1)}</h1>

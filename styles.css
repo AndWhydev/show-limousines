@@ -2169,15 +2169,67 @@
 /* Inner-page banner */
 .page-hero {
   position: relative;
-  padding: 190px 28px 76px;
+  width: 100%;
+  /* Behaves like the homepage hero: sits BELOW the fixed navbar (no overlap),
+     a single clean 16:9 image fills the whole section edge-to-edge via cover.
+     The images are 16:9 with the car framed with margin, so the whole vehicle
+     stays visible and there is no empty space or doubled-up image. */
+  margin-top: var(--header-height, 120px);
+  aspect-ratio: 16 / 9;
+  max-height: 720px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
   text-align: center;
   border-bottom: 1px solid var(--color-border);
-  background:
-    radial-gradient(ellipse 70% 80% at 50% 0%, rgba(var(--accent-rgb), 0.16) 0%, transparent 60%),
-    linear-gradient(180deg, #101015 0%, var(--color-bg) 100%);
+  background: var(--color-bg);
   overflow: hidden;
 }
-.page-hero__inner { max-width: 880px; margin: 0 auto; }
+/* Single full-bleed banner image — fills the whole header, no gaps, no duplicate */
+.page-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: var(--hero-img, none);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+/* Subtle overlay so the centered title stays readable over the car */
+.page-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    radial-gradient(ellipse 78% 72% at 50% 50%, transparent 0%, rgba(10, 10, 12, 0.30) 100%),
+    linear-gradient(180deg, rgba(10, 10, 12, 0.52) 0%, rgba(10, 10, 12, 0.22) 42%, rgba(10, 10, 12, 0.46) 100%);
+}
+.page-hero__inner { position: relative; z-index: 2; max-width: 880px; margin: 0 auto; }
+/* Showcase variant (Fleet, Services): text anchored to the top so it never sits
+   on the car; the car is nudged down a touch so the whole vehicle + tires stay clear. */
+.page-hero--showcase { align-items: flex-start; }
+.page-hero--showcase::before { background-position: center 62%; }
+.page-hero--showcase::after {
+  background:
+    radial-gradient(ellipse 90% 50% at 50% 0%, rgba(var(--accent-rgb), 0.18) 0%, transparent 55%),
+    linear-gradient(180deg, rgba(10, 10, 12, 0.88) 0%, rgba(10, 10, 12, 0.50) 18%, rgba(10, 10, 12, 0.0) 40%, rgba(10, 10, 12, 0.0) 78%, rgba(10, 10, 12, 0.30) 100%);
+}
+@media (max-width: 768px) {
+  .page-hero { aspect-ratio: 3 / 2; max-height: none; }
+  /* On mobile the car fills the full height, so keep the text footprint minimal —
+     compact title in a darker top band, descriptive sub hidden — so the whole car
+     stays clear of the text. */
+  .page-hero--showcase .page-hero__sub { display: none; }
+  .page-hero--showcase .page-hero__title { font-size: clamp(34px, 9vw, 52px); }
+  .page-hero--showcase::after {
+    background:
+      radial-gradient(ellipse 95% 45% at 50% 0%, rgba(var(--accent-rgb), 0.16) 0%, transparent 55%),
+      linear-gradient(180deg, rgba(10, 10, 12, 0.90) 0%, rgba(10, 10, 12, 0.55) 22%, rgba(10, 10, 12, 0.0) 42%, rgba(10, 10, 12, 0.0) 72%, rgba(10, 10, 12, 0.28) 100%);
+  }
+}
 .page-hero .label-bracket { justify-content: center; }
 .page-hero__title {
   font-family: 'Bebas Neue', sans-serif;
@@ -2189,7 +2241,7 @@
   font-size: clamp(15px, 2.2vw, 18px); line-height: 1.6;
   color: rgba(255, 255, 255, 0.6); max-width: 640px; margin: 18px auto 0;
 }
-@media (max-width: 768px) { .page-hero { padding: 150px 20px 60px; } }
+@media (max-width: 768px) { .page-hero { padding-left: 20px; padding-right: 20px; } }
 
 /* Home CTA band */
 .home-cta {
