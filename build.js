@@ -344,11 +344,11 @@ function quoteForm(heading, sub) {
           </form>
           <aside class="quote-aside reveal" aria-label="Contact information">
             <h3 class="quote-aside__title">Talk to us direct.</h3>
-            <div class="quote-aside__row"><span class="quote-aside__icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-7 8-13a8 8 0 1 0-16 0c0 6 8 13 8 13z"/><circle cx="12" cy="9" r="3"/></svg></span><div><span class="quote-aside__label">Service area</span><span class="quote-aside__value">Greater Sydney &amp; Wollongong</span></div></div>
-            <div class="quote-aside__row"><span class="quote-aside__icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><div><span class="quote-aside__label">Phone</span><a href="tel:${TEL}" class="quote-aside__value">${PHONE}</a></div></div>
-            <div class="quote-aside__row"><span class="quote-aside__icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg></span><div><span class="quote-aside__label">Email</span><a href="mailto:${EMAIL}" class="quote-aside__value">${EMAIL}</a></div></div>
-            <div class="quote-aside__row"><span class="quote-aside__icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><div><span class="quote-aside__label">Reviews</span><span class="quote-aside__value">160+ five-star Google reviews</span></div></div>
-            <div class="quote-aside__row"><span class="quote-aside__icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span><div><span class="quote-aside__label">Hours</span><span class="quote-aside__value">Open 24/7 — 365 days a year</span></div></div>
+            <div class="quote-aside__row"><span class="quote-aside__icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-7 8-13a8 8 0 1 0-16 0c0 6 8 13 8 13z"/><circle cx="12" cy="9" r="3"/></svg></span><div><span class="quote-aside__label">Service area</span> <span class="quote-aside__value">Greater Sydney &amp; Wollongong</span></div></div>
+            <div class="quote-aside__row"><span class="quote-aside__icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><div><span class="quote-aside__label">Phone</span> <a href="tel:${TEL}" class="quote-aside__value">${PHONE}</a></div></div>
+            <div class="quote-aside__row"><span class="quote-aside__icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg></span><div><span class="quote-aside__label">Email</span> <a href="mailto:${EMAIL}" class="quote-aside__value">${EMAIL}</a></div></div>
+            <div class="quote-aside__row"><span class="quote-aside__icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><div><span class="quote-aside__label">Reviews</span> <span class="quote-aside__value">160+ five-star Google reviews</span></div></div>
+            <div class="quote-aside__row"><span class="quote-aside__icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span><div><span class="quote-aside__label">Hours</span> <span class="quote-aside__value">Open 24/7 — 365 days a year</span></div></div>
           </aside>
         </div>
       </div>
@@ -514,7 +514,7 @@ function servicePage(slug, eyebrow) {
     pageHero(eyebrow || 'Services', h1, fm.description),
     proseSection('Show Limousines', lines, { dropFirstH1: true }),
     fleetGrid('Vehicles for your day.', 'A few of our most-requested vehicles — explore the full fleet for more.', fleetSlugs.map(s => VBY[s])),
-    TESTIMONIALS, faq(), quoteForm('Get a quick quote.', 'Leave your details below and we’ll get back to you within the hour.'),
+    TESTIMONIALS, faq(), quoteForm('Get a quick quote.', 'Leave your details below and we will get back to you as soon as possible.'),
     '  </main>', footer(), FOOT_SCRIPT,
   ]);
 }
@@ -632,7 +632,7 @@ infoPage('reviews', 'Reviews', [googleBadge(), TESTIMONIALS]);
   const { fm } = parseMd('contact');
   emit('contact', [head(fm, 'contact'), header('/contact/'), mobileNav('/contact/'), '  <main>',
     pageHero('Contact Us', "Let's plan your arrival.", fm.description || 'Tell us your event details and we’ll put together a tailored package.'),
-    quoteForm('Tell us about your event.', 'Fill in the details below and we’ll send a personalised quote within the hour.'),
+    quoteForm('Tell us about your event.', 'Fill in the details below and we will get back to you as soon as possible.'),
     mapSection('Servicing Sydney & Wollongong.'), '  </main>', footer(), FOOT_SCRIPT]);
 })();
 
@@ -641,7 +641,7 @@ infoPage('reviews', 'Reviews', [googleBadge(), TESTIMONIALS]);
   const { fm } = parseMd('thank-you');
   emit('thank-you', [head(fm.title ? fm : { title: 'Thank You | Show Limousines', description: 'Thanks for your enquiry — we’ll be in touch shortly.' }, 'thank-you'),
     header('#'), mobileNav('#'), '  <main>',
-    pageHero('Thank You', 'Thank you — we’ll be in touch.', 'Your enquiry has been received. Our team will get back to you within the hour. For anything urgent call ' + PHONE + '.'),
+    pageHero('Thank You', 'Thank you — we’ll be in touch.', 'Your enquiry has been received. Our team will get back to you as soon as possible. For anything urgent call ' + PHONE + '.'),
     `    <section class="home-cta"><div class="home-cta__inner reveal"><span class="label-bracket">Show Limousines</span><h2 class="home-cta__title">While you wait, explore the fleet</h2><div class="home-cta__actions"><a href="/fleet/" class="btn-pill btn-pill--gold">View the Fleet <span class="btn-pill__arrow" aria-hidden="true">${ARROW}</span></a><a href="/" class="btn-outline-sm">Back to Home</a></div></div></section>`,
     '  </main>', footer(), FOOT_SCRIPT]);
 })();
