@@ -196,6 +196,36 @@
           resetTimer();
         })();
 
+        // -------- Fleet carousel (shows 3 vehicles, slides through all) --------
+        (function initFleetCarousel() {
+          var root = document.querySelector('.fleetcar');
+          if (!root) return;
+          var viewport = root.querySelector('.fleetcar__viewport');
+          var track = root.querySelector('.fleetcar__track');
+          var cards = track ? track.querySelectorAll('.fleet-card') : [];
+          if (!cards.length) return;
+          var prevBtn = root.querySelector('.fleetcar__btn--prev');
+          var nextBtn = root.querySelector('.fleetcar__btn--next');
+          var i = 0, auto = null;
+          function step() {
+            var gap = parseFloat(getComputedStyle(track).columnGap) || 24;
+            return cards[0].getBoundingClientRect().width + gap;
+          }
+          function perView() { return Math.max(1, Math.round(viewport.clientWidth / step())); }
+          function maxIndex() { return Math.max(0, cards.length - perView()); }
+          function go(n) {
+            var mx = maxIndex();
+            i = n > mx ? 0 : (n < 0 ? mx : n);
+            track.style.transform = 'translateX(' + (-i * step()) + 'px)';
+          }
+          function resetTimer() { if (auto) clearInterval(auto); auto = setInterval(function () { go(i + 1); }, 4500); }
+          if (prevBtn) prevBtn.addEventListener('click', function () { go(i - 1); resetTimer(); });
+          if (nextBtn) nextBtn.addEventListener('click', function () { go(i + 1); resetTimer(); });
+          window.addEventListener('resize', function () { go(Math.min(i, maxIndex())); });
+          go(0);
+          resetTimer();
+        })();
+
         // -------- Review cards: per-card "Read more" toggle --------
         (function initReviewCards() {
           var cards = document.querySelectorAll('.wrev-card');
