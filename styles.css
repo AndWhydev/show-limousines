@@ -2547,6 +2547,30 @@
 .wvshow__btn--prev { left: 16px; }
 .wvshow__btn--next { right: 16px; }
 
+/* About Us — "Our Fleet" slider section (About Us page only). Reuses the global
+   .wvshow slide/dot/button rules; only the frame + image fit are scoped here. */
+.abfleet { padding: clamp(56px, 8vw, 96px) 24px; position: relative; overflow: hidden; border-bottom: 1px solid var(--color-border); }
+.abfleet__inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 2; }
+.abfleet__header { text-align: center; margin-bottom: clamp(28px, 4vw, 44px); }
+.abfleet__header .label-bracket { justify-content: center; }
+.abfleet__heading { font-family: 'Bebas Neue', sans-serif; font-size: clamp(34px, 5.5vw, 60px); line-height: 1; color: #fff; margin: 8px 0 0; }
+
+/* Gallery page — cinematic masonry photo gallery (Gallery page only) */
+.gallery-mason { padding: clamp(56px, 8vw, 100px) 24px; position: relative; overflow: hidden; border-bottom: 1px solid var(--color-border); }
+.gallery-mason__inner { max-width: 1340px; margin: 0 auto; position: relative; z-index: 2; }
+.gallery-mason__head { text-align: center; margin-bottom: clamp(30px, 4vw, 52px); }
+.gallery-mason__head .label-bracket { justify-content: center; }
+.gallery-mason__heading { font-family: 'Bebas Neue', sans-serif; font-size: clamp(36px, 6vw, 66px); line-height: 1; color: #fff; margin: 8px 0 12px; }
+.gallery-mason__intro { color: rgba(255, 255, 255, 0.6); max-width: 660px; margin: 0 auto; font-size: clamp(14px, 1.8vw, 17px); line-height: 1.6; }
+.gallery-mason__grid { column-count: 4; column-gap: 14px; }
+.gallery-mason__item { break-inside: avoid; margin: 0 0 14px; position: relative; overflow: hidden; border-radius: 14px; border: 1px solid var(--color-border); background: #111; cursor: pointer; }
+.gallery-mason__item img { width: 100%; height: auto; display: block; transition: transform .7s cubic-bezier(.2, .7, .2, 1); }
+.gallery-mason__item::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(201, 168, 76, 0) 55%, rgba(10, 10, 12, 0.55) 100%); opacity: 0; transition: opacity .5s ease; pointer-events: none; }
+.gallery-mason__item:hover img { transform: scale(1.06); }
+.gallery-mason__item:hover::after { opacity: 1; }
+@media (max-width: 1100px) { .gallery-mason__grid { column-count: 3; } }
+@media (max-width: 720px) { .gallery-mason__grid { column-count: 2; column-gap: 10px; } .gallery-mason__item { margin-bottom: 10px; border-radius: 11px; } }
+
 /* "Wedding Vehicles That Stand Out" — full-bleed dark/gold band.
    Reuses the existing .fleet-card component; only the band + pill tags are new. */
 .wstandout {
