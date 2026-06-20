@@ -3104,3 +3104,32 @@
   .svc-why__grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
   .svc-why__card { padding: 24px 12px; }
 }
+
+/* ============================================================
+   Uniform soft, rounded image frames site-wide.
+   Matches the Homepage occasion photo cards: consistent 18px
+   corner radius + overflow:hidden + a subtle soft drop shadow,
+   with images filling the frame edge-to-edge (object-fit:cover,
+   no letterboxing). Appended last so it standardises every
+   image-card variant regardless of earlier per-component rules.
+   ============================================================ */
+.occ-card__media,
+.fleet-card,
+.gallery-mason__item,
+.veh-block__frame,
+.feature__media,
+.card__media,
+.testi__media {
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.42);
+}
+/* Fixed-frame card images fill edge-to-edge (kills letterboxing) */
+.fleet-card__img,
+.veh-block__img,
+.feature__media img,
+.card__img,
+.wedintro .testi__media img {
+  object-fit: cover;
+  padding: 0;
+}
