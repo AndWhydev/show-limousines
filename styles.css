@@ -1867,6 +1867,47 @@
     }
 
     /* ============================================================
+       CTA BAND (pre-footer) — recovered from commit 68f4ba2
+       ============================================================ */
+    .cta-band {
+      background: var(--color-accent);
+      color: #0a0a0c;
+      padding: 22px 28px;
+    }
+    .cta-band__inner {
+      max-width: 1320px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+    .cta-band__text {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 17px;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .cta-band__text .sep { opacity: 0.4; }
+    .cta-band__phone {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: #0a0a0c;
+      transition: opacity 300ms;
+    }
+    .cta-band__phone:hover { opacity: 0.8; }
+    @media (max-width: 700px) {
+      .cta-band__inner { flex-direction: column; gap: 8px; }
+      .cta-band__text { font-size: 15px; gap: 8px; flex-wrap: wrap; justify-content: center; }
+      .cta-band__phone { font-size: 17px; }
+    }
+
+    /* ============================================================
        FOOTER — contact block, socials, 4 cols
        ============================================================ */
     .foot {
