@@ -91,7 +91,7 @@
           requestAnimationFrame(function () { h.classList.add('is-in'); });
         })();
 
-        // -------- Keep --header-height in sync with the fixed nav (announce + main) --------
+        // -------- Keep --header-height in sync with the fixed nav --------
         (function syncHeaderHeight() {
           var nav = document.querySelector('.nav-wrap');
           if (!nav) return;

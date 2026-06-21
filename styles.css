@@ -12,8 +12,8 @@
       --color-accent-hover: #e7cd7b;
       --accent-rgb: 201,168,76;
       --color-dark: #0F1014;
-      /* Combined height of the fixed announcement bar + nav; refined at runtime by JS */
-      --header-height: 120px;
+      /* Height of the fixed nav bar; refined at runtime by JS (main.js syncHeaderHeight) */
+      --header-height: 84px;
       /* Metallic gold lifted from the Show Limousines logo (champagne → gold → antique) */
       --gold-gradient: linear-gradient(135deg, #F6E7A8 0%, #E3C66B 28%, #C9A84C 52%, #A6822F 78%, #E8CE80 100%);
       --gold-gradient-soft: linear-gradient(135deg, #E9CE7E 0%, #C9A84C 55%, #9C7A2C 100%);
@@ -180,7 +180,7 @@
     }
 
     /* ============================================================
-       NAV — top announce + main pill bar (7-item nav)
+       NAV — main pill bar (7-item nav)
        ============================================================ */
     .nav-wrap {
       position: fixed;
@@ -191,24 +191,6 @@
     }
     .nav-wrap.is-loaded { transform: translateY(0); }
     .nav-wrap.is-hidden { transform: translateY(-100%); }
-
-    .nav-announce {
-      background: var(--color-accent);
-      color: #0a0a0c;
-      text-align: center;
-      padding: 7px 16px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.04em;
-    }
-    .nav-announce a {
-      color: inherit;
-      font-weight: 600;
-      border-bottom: 1px solid rgba(0,0,0,0.25);
-      padding-bottom: 1px;
-    }
-    .nav-announce .sep { margin: 0 10px; opacity: 0.45; }
 
     .nav-main {
       background: rgba(10, 10, 12, 0.82);
@@ -237,18 +219,6 @@
       color: #fff;
       line-height: 1;
     }
-    /* Tagline rebuilt as crisp HTML text (the baked-in one was illegibly small).
-       Gold on the dark header for high contrast; scales independently of the logo. */
-    .nav-brand__tagline {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 9px;
-      font-weight: 600;
-      letter-spacing: 0.26em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.88);
-      white-space: nowrap;
-      text-indent: 0.26em;
-    }
     .nav-brand__mark {
       width: 30px; height: 30px;
       display: inline-flex;
@@ -259,6 +229,9 @@
     .nav-brand__mark svg { width: 100%; height: 100%; }
     .nav-brand__name { color: #fff; }
     .nav-brand__name span { color: var(--color-accent); }
+    /* The logo is a wide wordmark lockup (S monogram + SHOW LIMOUSINES + tagline),
+       cropped to its content in the SVG so it fills the header like the old
+       wordmark did — same footprint (~175x50). */
     .nav-brand__logo { height: 50px; width: auto; display: block; }
 
     .nav-pills {
@@ -346,13 +319,9 @@
       .nav-inner { padding: 12px 20px; }
     }
     @media (max-width: 520px) {
-      .nav-announce { font-size: 11px; padding: 6px 12px; }
-      .nav-announce .sep { margin: 0 6px; }
       .nav-brand { font-size: 20px; }
       .nav-brand__mark { width: 26px; height: 26px; }
       .nav-brand__logo { height: 44px; }
-      /* Wordmark-only on phones — the wide tagline would crowd the CTA/hamburger */
-      .nav-brand__tagline { display: none; }
       .nav-right .btn-pill--gold { padding: 7px 9px 7px 16px; font-size: 12px; }
     }
 
@@ -2014,15 +1983,6 @@
       flex-direction: column;
       align-items: flex-start;
       gap: 10px;
-    }
-    .foot__brand .foot__brand-tagline {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 9px;
-      font-weight: 600;
-      letter-spacing: 0.26em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.7);
-      white-space: nowrap;
     }
     .foot__brand-mark { width: 36px; height: 36px; color: var(--color-accent); }
     .foot__brand-mark svg { width: 100%; height: 100%; }
