@@ -1,0 +1,134 @@
+{
+  "fleet-chrysler-black-edition-v2.jpg": {
+    "base": "fleet-chrysler-black-edition-v2",
+    "w": 1600,
+    "h": 893,
+    "widths": [
+      400,
+      640,
+      960,
+      1280,
+      1600
+    ]
+  },
+  "fleet-chrysler-black-v2.jpg": {
+    "base": "fleet-chrysler-black-v2",
+    "w": 1600,
+    "h": 893,
+    "widths": [
+      400,
+      640,
+      960,
+      1280,
+      1600
+    ]
+  },
+  "fleet-chrysler-gullwing-v2.jpg": {
+    "base": "fleet-chrysler-gullwing-v2",
+    "w": 1600,
+    "h": 893,
+    "widths": [
+      400,
+      640,
+      960,
+      1280,
+      1600
+    ]
+  },
+  "fleet-chrysler-white-v2.jpg": {
+    "base": "fleet-chrysler-white-v2",
+    "w": 1600,
+    "h": 893,
+    "widths": [
+      400,
+      640,
+      960,
+      1280,
+      1600
+    ]
+  },
+  "fleet-hummer-green-v2.jpg": {
+    "base": "fleet-hummer-green-v2",
+    "w": 1600,
+    "h": 893,
+    "widths": [
+      400,
+      640,
+      960,
+      1280,
+      1600
+    ]
+  },
+  "fleet-hummer-white-v2.jpg": {
+    "base": "fleet-hummer-white-v2",
+    "w": 1600,
+    "h": 893,
+    "widths": [
+      400,
+      640,
+      960,
+      1280,
+      1600
+    ]
+  },
+  "fleet-mercedes-s-class-v2.jpg": {
+    "base": "fleet-mercedes-s-class-v2",
+    "w": 1600,
+    "h": 893,
+    "widths": [
+      400,
+      640,
+      960,
+      1280,
+      1600
+    ]
+  },
+  "fleet-mercedes-sprinter-v2.jpg": {
+    "base": "fleet-mercedes-sprinter-v2",
+    "w": 1600,
+    "h": 893,
+    "widths": [
+      400,
+      640,
+      960,
+      1280,
+      1600
+    ]
+  },
+  "fleet-mercedes-valente-v2.jpg": {
+    "base": "fleet-mercedes-valente-v2",
+    "w": 1600,
+    "h": 893,
+    "widths": [
+      400,
+      640,
+      960,
+      1280,
+      1600
+    ]
+  },
+  "fleet-rolls-royce-phantom-v2.jpg": {
+    "base": "fleet-rolls-royce-phantom-v2",
+    "w": 1600,
+    "h": 893,
+    "widths": [
+      400,
+      640,
+      960,
+      1280,
+      1600
+    ]
+  },
+  "fleet-vw-crafter-v2.jpg": {
+    "base": "fleet-vw-crafter-v2",
+    "w": 1600,
+    "h": 893,
+    "widths": [
+      400,
+      640,
+      960,
+      1280,
+      1600
+    ]
+  }
+}

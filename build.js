@@ -23,6 +23,35 @@ const CARET_R = '<svg class="nav-flyout__caret" width="11" height="11" viewBox="
 function esc(s) { return String(s == null ? '' : s).replace(/&(?!amp;|lt;|gt;|#)/g, '&amp;'); }
 function attr(s) { return esc(s).replace(/"/g, '&quot;'); }
 
+/* ---------------- Responsive images (Commit 2 — high-res standard) ----------------
+   Every <img> whose source has generated derivatives (see gen-images.js +
+   assets/img-manifest.json) is rewritten into a <picture> with AVIF + WebP
+   srcset at >=2x widths and the original JPEG as a fallback. width/height are
+   stamped to prevent layout shift. Idempotent via the data-r marker, so it is
+   safe to run over the already-built home page on every rebuild. */
+let IMG_MANIFEST = {};
+try { IMG_MANIFEST = JSON.parse(fs.readFileSync(path.join(ROOT, 'assets', 'img-manifest.json'), 'utf8')); }
+catch { console.warn('  (no img-manifest.json — run `node gen-images.js` for responsive images)'); }
+function _srcset(base, ext, widths) { return widths.map(w => `/assets/img/${base}-${w}.${ext} ${w}w`).join(', '); }
+function responsify(html) {
+  return html.replace(/<img\b[^>]*>/g, (tag) => {
+    if (tag.includes('data-r')) return tag;
+    const m = tag.match(/\ssrc="\/?([^"]+)"/);
+    if (!m) return tag;
+    const file = m[1].split('/').pop().split('?')[0];
+    const e = IMG_MANIFEST[file];
+    if (!e) return tag;
+    const sizes = (tag.match(/\ssizes="([^"]*)"/) || [])[1] || '(max-width:700px) 100vw, 33vw';
+    let img = tag.replace('<img', '<img data-r');
+    if (!/\ssizes=/.test(img)) img = img.replace('<img', `<img sizes="${sizes}"`);
+    if (!/\swidth=/.test(img)) img = img.replace('<img', `<img width="${e.w}" height="${e.h}"`);
+    return '<picture>'
+      + `<source type="image/avif" srcset="${_srcset(e.base, 'avif', e.widths)}" sizes="${sizes}">`
+      + `<source type="image/webp" srcset="${_srcset(e.base, 'webp', e.widths)}" sizes="${sizes}">`
+      + img + '</picture>';
+  });
+}
+
 /* ---------------- Vehicles ---------------- */
 const VEHICLES = [
   { slug: 'vehicle-chrysler-super-stretch-limousine', name: 'White Chrysler Super Stretch', img: 'fleet-chrysler-white-v2.jpg', badge: 'Chrysler', pax: 10 },
@@ -487,7 +516,7 @@ function emit(slug, parts) {
   const p = pathFor(slug);
   const dir = p === '/' ? ROOT : path.join(ROOT, p.replace(/^\/|\/$/g, ''));
   fs.mkdirSync(dir, { recursive: true });
-  fs.writeFileSync(path.join(dir, 'index.html'), parts.filter(Boolean).join('\n') + '\n', 'utf8');
+  fs.writeFileSync(path.join(dir, 'index.html'), responsify(parts.filter(Boolean).join('\n') + '\n'), 'utf8');
   written.push(p);
 }
 
@@ -531,7 +560,7 @@ function vehiclePage(slug) {
     head(fm, slug), header(pathFor(slug)), mobileNav(pathFor(slug)), '  <main>',
     pageHero('Fleet · ' + (v ? v.badge : ''), h1, v ? ('Up to ' + v.pax + ' passengers · chauffeur-driven across Sydney & Wollongong.') : fm.description),
     `    <section class="feature"><div class="feature__inner">
-        <div class="feature__media reveal"><img src="/${v ? v.img : 'logo.png'}" alt="${attr(h1)}" loading="lazy" decoding="async"></div>
+        <div class="feature__media reveal"><img src="/${v ? v.img : 'logo.png'}" alt="${attr(h1)}" sizes="(max-width:900px) 100vw, 50vw" loading="lazy" decoding="async"></div>
         <div class="feature__copy reveal">
           <span class="label-bracket">${esc(v ? v.badge : 'Fleet')}</span>
           <h2 class="feature__title">${esc(h1)}</h2>
@@ -662,6 +691,7 @@ infoPage('reviews', 'Reviews', [googleBadge(), TESTIMONIALS]);
   h = h.replace(/<form class="quote-form[^"]*"[^>]*id="quoteForm"[^>]*>/, `<form class="quote-form reveal" id="quoteForm" action="https://api.web3forms.com/submit" method="POST">\n            <input type="hidden" name="access_key" value="${WEB3FORMS_KEY}">\n            <input type="hidden" name="subject" value="New Show Limousines enquiry">\n            <input type="hidden" name="from_name" value="Show Limousines Website">\n            <input type="hidden" name="redirect" value="${SITE}/thank-you/">\n            <input type="checkbox" name="botcheck" class="visually-hidden" style="display:none" tabindex="-1" autocomplete="off">`);
   // root-relative shared assets
   h = h.replace('href="styles.css"', 'href="/styles.css"').replace('src="main.js"', 'src="/main.js"');
+  h = responsify(h);
   fs.writeFileSync(path.join(ROOT, 'index.html'), h, 'utf8');
   written.push('/ (home patched)');
 })();

@@ -3134,3 +3134,6 @@
   object-fit: cover;
   padding: 0;
 }
+
+/* Responsive <picture> wrappers should not generate a box (Commit 2) */
+picture{display:contents}
