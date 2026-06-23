@@ -68,7 +68,7 @@ We take great pride in delivering exceptional customer service – from the mome
 #### 0422 023 413
 #### info@showlimousines.com.au
 #### 160+ 5 Star Google Reviews
-#### Open 24/7
+#### 365 Days a Year
 ### Customer Testimonials
 ### Hear From Show Limousines' Customers
 "Fantastic experience! Mick was great to deal with. The vehicle used on the day not only looked amazing, but the driver was on time and was friendly with the entire bridal party."

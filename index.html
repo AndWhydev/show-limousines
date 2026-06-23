@@ -30,7 +30,7 @@
   <!-- ============================================================
        NAVIGATION
        ============================================================ -->
-                        <header class="nav-wrap" id="navWrap" role="banner">
+                          <header class="nav-wrap" id="navWrap" role="banner">
     <nav class="nav-main" role="navigation" aria-label="Primary">
       <div class="nav-inner">
         <a href="/" class="nav-brand" aria-label="Show Limousines — Sydney's Premier Luxury Transport — home">
@@ -140,7 +140,7 @@
   </header>
 
   <!-- Mobile menu -->
-                        <div class="nav-mobile" id="navMobile" aria-hidden="true">
+                          <div class="nav-mobile" id="navMobile" aria-hidden="true">
     <a href="/" aria-current="page">Home</a>
     <div class="nav-mobile__group">
       <div class="nav-mobile__grouptop">
@@ -840,11 +840,16 @@
         <div class="quote__header reveal">
           <span class="label-bracket">Get a Quote</span>
           <h2 class="quote__heading" id="quoteHeading">Tell us about your event.</h2>
-          <p class="quote__sub">Fill in the details below and we will get back to you as soon as possible. Or call us direct on <a href="tel:0422023413" style="color:var(--color-accent);">0422 023 413</a> — we're open 24/7.</p>
+          <p class="quote__sub">Fill in the details below and we will get back to you as soon as possible. Or call us direct on <a href="tel:0422023413" style="color:var(--color-accent);">0422 023 413</a>.</p>
         </div>
 
         <div class="quote__grid">
           <form class="quote-form reveal" id="quoteForm" action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="WEB3FORMS_ACCESS_KEY_HERE">
+            <input type="hidden" name="subject" value="New Show Limousines enquiry">
+            <input type="hidden" name="from_name" value="Show Limousines Website">
+            <input type="hidden" name="redirect" value="https://www.showlimousines.com.au/thank-you/">
+            <input type="checkbox" name="botcheck" class="visually-hidden" style="display:none" tabindex="-1" autocomplete="off">
             <input type="hidden" name="access_key" value="WEB3FORMS_ACCESS_KEY_HERE">
             <input type="hidden" name="subject" value="New Show Limousines enquiry">
             <input type="hidden" name="from_name" value="Show Limousines Website">
@@ -992,7 +997,7 @@
               </span>
               <div>
                 <span class="quote-aside__label">Hours</span>
-                <span class="quote-aside__value">Open 24/7 — 365 days a year</span>
+                <span class="quote-aside__value">365 days a year</span>
               </div>
             </div>
           </aside>
@@ -1206,7 +1211,7 @@
     <!-- ============================================================
          FOOTER
          ============================================================ -->
-                                <footer class="foot" aria-labelledby="footHeading">
+                                    <footer class="foot" aria-labelledby="footHeading">
       <div class="beam" aria-hidden="true"></div>
       <h2 class="visually-hidden" id="footHeading">Site footer</h2>
       <div class="foot__inner">
