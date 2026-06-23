@@ -43,7 +43,7 @@ function vurl(slug) { return '/vehicle/' + slug.replace(/^vehicle-/, '') + '/'; 
 /* ---------------- Nav mega-menu config (§2.1) ---------------- */
 const NAV = [
   { label: 'Home', href: '/' },
-  { label: 'Wedding Limousines', href: '/wedding-limousine-sydney/', children: [
+  { label: 'Wedding Cars', href: '/wedding-limousine-sydney/', children: [
     { label: 'Wedding Car Hire Sydney', href: '/wedding-limousine-sydney/' },
     { label: 'Wedding Car Hire Wollongong', href: '/wedding-limousine-hire-wollongong/' },
   ] },
