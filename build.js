@@ -53,18 +53,20 @@ function responsify(html) {
 }
 
 /* ---------------- Vehicles ---------------- */
+/* Canonical fleet order (Commit 3) — used everywhere the fleet is listed.
+   Home grid is auto-sorted to this order in patchHome(). */
 const VEHICLES = [
-  { slug: 'vehicle-chrysler-super-stretch-limousine', name: 'White Chrysler Super Stretch', img: 'fleet-chrysler-white-v2.jpg', badge: 'Chrysler', pax: 10 },
-  { slug: 'vehicle-black-chrysler-super-stretch-limousine', name: 'Black Chrysler Super Stretch', img: 'fleet-chrysler-black-v2.jpg', badge: 'Chrysler', pax: 10 },
-  { slug: 'vehicle-black-edition-chrysler-super-stretch-limousine', name: 'Chrysler Super Stretch (Black Edition)', img: 'fleet-chrysler-black-edition-v2.jpg', badge: 'Chrysler', pax: 10 },
-  { slug: 'vehicle-gullwing-chrysler-super-stretch-limousine', name: 'Chrysler Super Stretch Gullwing', img: 'fleet-chrysler-gullwing-v2.jpg', badge: 'Chrysler', pax: 10 },
   { slug: 'vehicle-hummer-stretch-limousine', name: 'Stretch Hummer (14 Pax)', img: 'fleet-hummer-green-v2.jpg', badge: 'Hummer', pax: 14 },
   { slug: 'vehicle-hummer-h2-stretch-limousine', name: 'Stretch Hummer (16 Pax)', img: 'fleet-hummer-white-v2.jpg', badge: 'Hummer', pax: 16 },
-  { slug: 'vehicle-mercedes-s-class-amg-sedan', name: 'Mercedes S Class AMG Sedan', img: 'fleet-mercedes-s-class-v2.jpg', badge: 'Mercedes', pax: 4 },
-  { slug: 'vehicle-mercedes-valente-premium-minibus', name: 'Mercedes Valente Luxury Minivan', img: 'fleet-mercedes-valente-v2.jpg', badge: 'Mercedes', pax: 7 },
   { slug: 'vehicle-mercedes-sprinter-limo-van', name: 'Mercedes Sprinter Limo Van', img: 'fleet-mercedes-sprinter-v2.jpg', badge: 'Mercedes', pax: 14 },
+  { slug: 'vehicle-gullwing-chrysler-super-stretch-limousine', name: 'Chrysler Super Stretch Gullwing', img: 'fleet-chrysler-gullwing-v2.jpg', badge: 'Chrysler', pax: 10 },
+  { slug: 'vehicle-black-edition-chrysler-super-stretch-limousine', name: 'Chrysler Super Stretch (Black Edition)', img: 'fleet-chrysler-black-edition-v2.jpg', badge: 'Chrysler', pax: 10 },
+  { slug: 'vehicle-chrysler-super-stretch-limousine', name: 'White Chrysler Super Stretch', img: 'fleet-chrysler-white-v2.jpg', badge: 'Chrysler', pax: 10 },
+  { slug: 'vehicle-black-chrysler-super-stretch-limousine', name: 'Black Chrysler Super Stretch', img: 'fleet-chrysler-black-v2.jpg', badge: 'Chrysler', pax: 10 },
   { slug: 'vehicle-rolls-royce-phantom-sedan', name: 'Rolls Royce Phantom', img: 'fleet-rolls-royce-phantom-v2.jpg', badge: 'Rolls Royce', pax: 4 },
+  { slug: 'vehicle-mercedes-s-class-amg-sedan', name: 'Mercedes S Class AMG Sedan', img: 'fleet-mercedes-s-class-v2.jpg', badge: 'Mercedes', pax: 4 },
   { slug: 'vehicle-volkswagen-crafter-premium-minibus', name: 'VW Crafter Luxury Minibus', img: 'fleet-vw-crafter-v2.jpg', badge: 'Volkswagen', pax: 11 },
+  { slug: 'vehicle-mercedes-valente-premium-minibus', name: 'Mercedes Valente Luxury Minivan', img: 'fleet-mercedes-valente-v2.jpg', badge: 'Mercedes', pax: 7 },
 ];
 const VBY = {}; VEHICLES.forEach(v => { VBY[v.slug] = v; v.url = '/vehicle/' + v.slug.replace(/^vehicle-/, '') + '/'; });
 function vurl(slug) { return '/vehicle/' + slug.replace(/^vehicle-/, '') + '/'; }
@@ -691,6 +693,20 @@ infoPage('reviews', 'Reviews', [googleBadge(), TESTIMONIALS]);
   h = h.replace(/<form class="quote-form[^"]*"[^>]*id="quoteForm"[^>]*>/, `<form class="quote-form reveal" id="quoteForm" action="https://api.web3forms.com/submit" method="POST">\n            <input type="hidden" name="access_key" value="${WEB3FORMS_KEY}">\n            <input type="hidden" name="subject" value="New Show Limousines enquiry">\n            <input type="hidden" name="from_name" value="Show Limousines Website">\n            <input type="hidden" name="redirect" value="${SITE}/thank-you/">\n            <input type="checkbox" name="botcheck" class="visually-hidden" style="display:none" tabindex="-1" autocomplete="off">`);
   // root-relative shared assets
   h = h.replace('href="styles.css"', 'href="/styles.css"').replace('src="main.js"', 'src="/main.js"');
+
+  // Reorder the home fleet grid to the canonical VEHICLES order (Commit 3).
+  const ORDER = VEHICLES.map(v => v.img.replace(/\.jpg$/, ''));
+  h = h.replace(/(<div class="fleet__grid" id="fleetGrid">)([\s\S]*?)(<\/section>)/, (full, open, body, end) => {
+    const lastEnd = body.lastIndexOf('</article>') + '</article>'.length;
+    if (lastEnd < '</article>'.length) return full; // no cards found — leave as-is
+    const tail = body.slice(lastEnd);
+    const blocks = body.slice(0, lastEnd).split(/(?=<!--\s*\d+\.)/).filter(s => s.trim());
+    const rank = (b) => { const m = b.match(/fleet-[a-z0-9-]+-v2/); const i = m ? ORDER.indexOf(m[0]) : -1; return i < 0 ? 999 : i; };
+    blocks.sort((a, b) => rank(a) - rank(b));
+    const renum = blocks.map((b, i) => b.trim().replace(/<!--\s*\d+\.\s*/, `<!-- ${i + 1}. `));
+    return open + '\n\n          ' + renum.join('\n\n          ') + tail + end;
+  });
+
   h = responsify(h);
   fs.writeFileSync(path.join(ROOT, 'index.html'), h, 'utf8');
   written.push('/ (home patched)');
