@@ -1827,7 +1827,8 @@
     }
     @media (max-width: 520px) {
       .map { padding: 80px 20px 100px; }
-      .map__locs { grid-template-columns: 1fr; }
+      /* two suburbs per line on mobile so the list isn't so long (Commit 16) */
+      .map__locs { grid-template-columns: repeat(2, 1fr); gap: 8px 16px; }
       .map__frame iframe { height: 300px; }
     }
 
