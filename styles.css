@@ -636,6 +636,25 @@
       .hero__stage { display: none; }
       .hero-heading { max-width: 10ch; }
     }
+    /* Mobile hero: zoom OUT so the whole limousine is in frame (Commit 9).
+       Portrait viewports crop a 16:9 cover video badly; contain shows the
+       full car, anchored to the lower area so the text reads above it.
+       Desktop hero is untouched. */
+    @media (max-width: 768px) {
+      .hero__video {
+        object-fit: contain;
+        object-position: center 72%;
+      }
+      /* Keep the upper text dark for legibility, but ease the overlay over
+         the lower band so the whole limousine reads. */
+      .hero__overlay {
+        background: linear-gradient(to bottom,
+          rgba(0,0,0,0.82) 0%,
+          rgba(0,0,0,0.62) 36%,
+          rgba(0,0,0,0.22) 66%,
+          rgba(0,0,0,0.5) 100%);
+      }
+    }
     @media (max-width: 520px) {
       .hero-heading { font-size: clamp(34px, min(12vw, 7vh), 80px); }
       .hero__sub { margin-bottom: clamp(10px, 2vh, 28px); }
