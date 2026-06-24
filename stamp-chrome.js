@@ -19,6 +19,7 @@ const RE_FOOTER = /(  <!--CHROME:footer start[^\n]*-->\n)[\s\S]*?(\n  <!--\/CHRO
 
 let stamped = 0, skipped = 0;
 for (const slug of C.RESTORE_SLUGS) {
+  if (C.PINNED && C.PINNED.has(slug)) { skipped++; continue; } // frozen Fleet pages (8bc9c70) — leave untouched
   const route = C.pathFor(slug);
   const file = path.join(ROOT, route.replace(/^\/|\/$/g, ''), 'index.html');
   if (!fs.existsSync(file)) { skipped++; continue; }

@@ -43,6 +43,7 @@ function chromeFooter() {
 
 const written = [], missing = [];
 for (const slug of C.RESTORE_SLUGS) {
+  if (C.PINNED && C.PINNED.has(slug)) continue; // frozen verbatim (Fleet pages @ 8bc9c70) — never regenerate
   const route = C.pathFor(slug);
   const dir = route.replace(/^\/|\/$/g, '');
   const file = `${dir}/index.html`;

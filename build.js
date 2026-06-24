@@ -690,6 +690,16 @@ const RESTORE_SLUGS = new Set([
   'contact',
 ]);
 
+/* PINNED — the Fleet pages, frozen verbatim at commit 8bc9c70 (2026-06-21) by request.
+   They stay in RESTORE_SLUGS so emit() below still skips them (build.js never regenerates
+   them), and restore.js + stamp-chrome.js additionally skip these, so NOTHING in the build
+   pipeline rewrites them. Their index.html on disk is the committed 06-21 version, period.
+   To bring a fleet page back under the generator, remove its slug from PINNED. */
+const PINNED = new Set([
+  'fleet', 'vehicles', 'chrysler-limo-hire-sydney', 'hummer-limo-hire-sydney', 'rolls-royce-hire-sydney',
+  ...VEHICLES.map(v => v.slug),
+]);
+
 function emit(slug, parts) {
   if (RESTORE_SLUGS.has(slug)) return; // ejected — owned by restore.js (static OLD layout)
   const p = pathFor(slug);
@@ -1022,7 +1032,7 @@ if (require.main !== module) {
     pageHero, bannerFor, proseSection, parseMd,
     howItWorks, whyChoose, whyChooseService, weddingPackages,
     NAV, VEHICLES, VBY, SERVICE_FLEET, SERVICE_INFO, TESTIMONIALS, HOME_TESTI, HOME_FAQ,
-    PHONE, TEL, EMAIL, SITE, ARROW, RESTORE_SLUGS, pathFor,
+    PHONE, TEL, EMAIL, SITE, ARROW, RESTORE_SLUGS, PINNED, pathFor,
   };
   return;
 }
