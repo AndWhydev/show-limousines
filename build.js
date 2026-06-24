@@ -291,7 +291,53 @@ ${footCol('Locations', FOOT_LOC)}
           <div class="foot__credit">Powered by <a href="https://awlabs.com.au" target="_blank" rel="noopener noreferrer">All Webbed Labs</a></div>
         </div>
       </div>
-    </footer>`;
+    </footer>
+${subFooter()}`;
+}
+
+/* ---------------- Sub-footer link block (site-wide, identical on every page) ----
+   Two columns — Services + Locations — rendered below the main footer on every
+   page from this single shared component. Kept idempotent on the home page by the
+   patchHome() regex, which also swallows any previously-emitted sub-foot. */
+const SUBFOOT_SERVICES = [
+  ['Wedding Car Hire', '/wedding-limousine-sydney/'],
+  ['Airport Transfers', '/airport-limo-transfers-sydney/'],
+  ['Cruise Transfers', '/cruise-transfer-sydney/'],
+  ['Birthday Limos', '/birthday-limousine-sydney/'],
+  ['Concert Transfers', '/concert-limo-transfers-sydney/'],
+  ['School Formal Limos', '/school-formal-limousine-hire-sydney/'],
+  ['Corporate Transfers', '/corporate-transfers/'],
+  ['Party Limos', '/party-limousine-hire-sydney/'],
+  ["Hen's Party Limos", '/hens-party-limo-sydney/'],
+];
+const SUBFOOT_LOCATIONS = [
+  ['Bankstown', '/limo-hire-bankstown/'],
+  ['Campbelltown', '/limo-hire-campbelltown/'],
+  ['Eastern Suburbs', '/limo-hire-eastern-suburbs/'],
+  ['Inner West', '/limo-hire-inner-west/'],
+  ['Liverpool', '/limo-hire-liverpool/'],
+  ['Marrickville', '/limo-hire-marrickville/'],
+  ['Northern Beaches', '/limo-hire-northern-beaches/'],
+  ['Parramatta', '/limo-hire-parramatta/'],
+  ['Penrith', '/limo-hire-penrith/'],
+  ['Sutherland Shire', '/limo-hire-sutherland-shire/'],
+  ['Wollongong', '/limo-hire-wollongong/'],
+];
+function subFootCol(title, links) {
+  return `        <nav class="sub-foot__col" aria-label="${attr(title)}">
+          <h2 class="sub-foot__title">${esc(title)}</h2>
+          <ul class="sub-foot__list">
+${links.map(l => `            <li><a href="${l[1]}">${esc(l[0])}</a></li>`).join('\n')}
+          </ul>
+        </nav>`;
+}
+function subFooter() {
+  return `    <aside class="sub-foot" aria-label="Services and locations">
+      <div class="sub-foot__inner">
+${subFootCol('Services', SUBFOOT_SERVICES)}
+${subFootCol('Locations', SUBFOOT_LOCATIONS)}
+      </div>
+    </aside>`;
 }
 
 /* ---------------- Head / SEO ---------------- */
@@ -333,11 +379,87 @@ function head(fm, slug) {
 const FOOT_SCRIPT = `  <script src="/main.js"></script>\n</body>\n</html>`;
 
 /* ---------------- Section builders ---------------- */
-function pageHero(eyebrow, h1, sub, img) {
-  return `    <section class="page-hero" aria-label="${attr(h1)}"${img ? ` style="--hero-img:url('/${img}')"` : ''}>
+/* Per-page header banner (restored from commit 8e5c377^, the last build before the
+   06-23 regeneration dropped them). Each entry: [image, --hero-pos | null, carzoom?].
+   Layout/classes/CSS are unchanged from that commit — only the per-page wording (h1/sub)
+   comes from the current content. The home page hero and the bespoke
+   /wedding-limousine-sydney/ hero are intentionally NOT in this map. */
+const BANNER = {
+  // Wedding service pages
+  // Hero uses the right-facing shot of the same Gullwing limo (front points right;
+  // 'SHOW LIMOUSINES' plate reads correctly). The left-facing banner-wedding-chrysler-gullwing.jpg
+  // had a readable 'D1·SHOW' plate that a flip would mirror, so it is not used here.
+  'wedding-limousine-sydney': ['fleet-chrysler-gullwing-v2.jpg', '50%', true],
+  'wedding-limousine-hire-wollongong': ['banner-wedding-chrysler-white.jpg', '50%', true],
+  'wedding-limousine-shellharbour': ['banner-wedding-mercedes-s-class.jpg', '50%', false],
+  'wedding-cars-limousines': ['banner-wedding-rolls-royce.jpg', '50%', false],
+  // Service pages
+  'airport-limo-transfers-sydney': ['banner-service-airport-cruise.jpg', '66%', false],
+  'cruise-transfer-sydney': ['banner-service-airport-cruise.jpg', '74%', false],
+  'birthday-limousine-sydney': ['banner-service-birthday.jpg', '58%', false],
+  'concert-limo-transfers-sydney': ['banner-service-concert.jpg', '58%', false],
+  'school-formal-limousine-hire-sydney': ['banner-service-school-formal.jpg', null, false],
+  'corporate-transfers': ['banner-service-corporate.jpg', '50%', false],
+  'party-limousine-hire-sydney': ['banner-service-partybus.jpg', '58%', false],
+  'hens-party-limo-sydney': ['banner-service-hensbucks.jpg', '58%', false],
+  'funeral-limo-hire': ['banner-service-funeral.jpg', null, false],
+  // Location pages
+  'limo-hire-bankstown': ['banner-fleet-chrysler-white-v2.jpg', '50%', true],
+  'limo-hire-campbelltown': ['banner-fleet-chrysler-black-v2.jpg', '50%', true],
+  'limo-hire-eastern-suburbs': ['banner-fleet-rolls-royce-phantom-v2.jpg', '50%', true],
+  'limo-hire-inner-west': ['banner-fleet-chrysler-gullwing-v2.jpg', '50%', true],
+  'limo-hire-liverpool': ['banner-fleet-mercedes-s-class-v2.jpg', '50%', true],
+  'limo-hire-marrickville': ['banner-fleet-hummer-white-v2.jpg', '50%', true],
+  'limo-hire-northern-beaches': ['banner-fleet-mercedes-valente-v2.jpg', '50%', true],
+  'limo-hire-parramatta': ['banner-fleet-chrysler-black-edition-v2.jpg', '50%', true],
+  'limo-hire-penrith': ['banner-fleet-chrysler-gullwing-v2.jpg', '50%', true],
+  'limo-hire-sutherland-shire': ['banner-fleet-rolls-royce-phantom-v2.jpg', '50%', true],
+  'limo-hire-wollongong': ['banner-hero-gullwing-poster.jpg', '50%', true],
+  // Vehicle pages
+  'vehicle-hummer-stretch-limousine': ['banner-fleet-hummer-green-v2.jpg', '50%', true],
+  'vehicle-hummer-h2-stretch-limousine': ['banner-fleet-hummer-white-v2.jpg', '50%', true],
+  'vehicle-mercedes-sprinter-limo-van': ['banner-fleet-mercedes-sprinter-v2.jpg', '50%', true],
+  'vehicle-gullwing-chrysler-super-stretch-limousine': ['banner-fleet-chrysler-gullwing-v2.jpg', '50%', true],
+  'vehicle-black-edition-chrysler-super-stretch-limousine': ['banner-fleet-chrysler-black-edition-v2.jpg', '50%', true],
+  'vehicle-chrysler-super-stretch-limousine': ['banner-fleet-chrysler-white-v2.jpg', '50%', true],
+  'vehicle-black-chrysler-super-stretch-limousine': ['banner-fleet-chrysler-black-v2.jpg', '50%', true],
+  'vehicle-rolls-royce-phantom-sedan': ['banner-fleet-rolls-royce-phantom-v2.jpg', '50%', true],
+  'vehicle-mercedes-s-class-amg-sedan': ['banner-fleet-mercedes-s-class-v2.jpg', '50%', true],
+  'vehicle-volkswagen-crafter-premium-minibus': ['banner-fleet-vw-crafter-v2.jpg', '50%', true],
+  'vehicle-mercedes-valente-premium-minibus': ['banner-fleet-mercedes-valente-v2.jpg', '50%', true],
+  // Fleet category pages
+  'chrysler-limo-hire-sydney': ['banner-fleet-chrysler-black-v2.jpg', '50%', true],
+  'hummer-limo-hire-sydney': ['banner-fleet-hummer-white-v2.jpg', '50%', true],
+  'rolls-royce-hire-sydney': ['banner-fleet-rolls-royce-phantom-v2.jpg', '50%', true],
+  'fleet': ['banner-fleet-chrysler-gullwing-v2.jpg', '50%', true],
+  'vehicles': ['banner-fleet-chrysler-gullwing-v2.jpg', '50%', false],
+  // Hubs / informational
+  'services': ['banner-fleet-chrysler-white-v2.jpg', null, false],
+  'about-us': ['banner-fleet-rolls-royce-phantom-v2.jpg', '50%', true],
+  'term-conditions': ['banner-fleet-mercedes-s-class-v2.jpg', '50%', true],
+  'gallery': ['banner-hero-gullwing-poster.jpg', '50%', true],
+  'reviews': ['banner-fleet-rolls-royce-phantom-v2.jpg', '50%', true],
+  'blog': ['banner-hero-gullwing-poster.jpg', '50%', true],
+  'contact': ['banner-fleet-chrysler-black-v2.jpg', '50%', true],
+  'thank-you': ['banner-hero-gullwing-poster.jpg', '50%', false],
+  'sitemap': ['banner-fleet-chrysler-white-v2.jpg', '50%', false],
+  // Blog posts
+  'blog-dont-get-too-drunk': ['banner-service-partybus.jpg', '50%', false],
+  'blog-limousine-hire-costs-sydney': ['banner-fleet-chrysler-black-v2.jpg', '50%', false],
+  'blog-dos-and-donts': ['banner-fleet-chrysler-gullwing-v2.jpg', '50%', false],
+  'blog-wedding-limo-checklist': ['banner-wedding-chrysler-gullwing.jpg', '50%', false],
+};
+function bannerFor(slug) { const b = BANNER[slug]; return b ? { img: b[0], pos: b[1], zoom: b[2] } : null; }
+
+/* Page header banner — exact structure/classes from the restore commit (no eyebrow;
+   h1 forced to wrap; optional sub). `banner` is the bannerFor(slug) config. */
+function pageHero(eyebrow, h1, sub, banner) {
+  const b = banner && banner.img ? banner : null;
+  const cls = 'page-hero' + (b ? ' page-hero--toptext' + (b.zoom ? ' page-hero--carzoom' : '') : '');
+  const style = b ? ` style="--hero-img:url('/${b.img}')${b.pos ? `;--hero-pos:${b.pos}` : ''}"` : '';
+  return `    <section class="${cls}"${style} aria-label="${attr(h1)}">
       <div class="page-hero__inner reveal">
-        <span class="label-bracket">${esc(eyebrow)}</span>
-        <h1 class="page-hero__title">${esc(h1)}</h1>
+        <h1 class="page-hero__title" style="white-space:normal">${esc(h1)}</h1>
         ${sub ? `<p class="page-hero__sub">${esc(sub)}</p>` : ''}
       </div>
     </section>`;
@@ -378,7 +500,7 @@ function quoteForm(heading, sub) {
             <div class="quote-aside__row"><span class="quote-aside__icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-7 8-13a8 8 0 1 0-16 0c0 6 8 13 8 13z"/><circle cx="12" cy="9" r="3"/></svg></span><div><span class="quote-aside__label">Service area</span> <span class="quote-aside__value">Greater Sydney &amp; Wollongong</span></div></div>
             <div class="quote-aside__row"><span class="quote-aside__icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><div><span class="quote-aside__label">Phone</span> <a href="tel:${TEL}" class="quote-aside__value">${PHONE}</a></div></div>
             <div class="quote-aside__row"><span class="quote-aside__icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg></span><div><span class="quote-aside__label">Email</span> <a href="mailto:${EMAIL}" class="quote-aside__value">${EMAIL}</a></div></div>
-            <div class="quote-aside__row"><span class="quote-aside__icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><div><span class="quote-aside__label">Reviews</span> <span class="quote-aside__value">160+ five-star Google reviews</span></div></div>
+            <div class="quote-aside__row"><span class="quote-aside__icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><div><span class="quote-aside__label">Reviews</span> <span class="quote-aside__value">165+ five-star Google reviews</span></div></div>
             <div class="quote-aside__row"><span class="quote-aside__icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span><div><span class="quote-aside__label">Hours</span> <span class="quote-aside__value">365 days a year</span></div></div>
           </aside>
         </div>
@@ -418,7 +540,12 @@ function fleetCard(v) {
             <div class="fleet-card__body"><span class="fleet-card__brand">${esc(v.badge)}</span><span class="fleet-card__model">${esc(v.name)}</span><span class="fleet-card__capacity">Up to ${v.pax} passengers</span><div class="fleet-card__footer"><a href="${v.url}" class="btn-outline-sm">View Details</a></div></div>
           </article>`;
 }
-function fleetGrid(heading, intro, vehicles) {
+function fleetGrid(heading, intro, vehicles, opts) {
+  // opts.cta === true swaps the subtle "View Full Fleet" link for a prominent,
+  // site-standard gold pill button (used on the service pages' vehicle section).
+  const foot = opts && opts.cta
+    ? `        <div class="fleet__cta"><a href="/fleet/" class="btn-pill btn-pill--gold btn-magnetic">View Fleet <span class="btn-pill__arrow" aria-hidden="true">${ARROW}</span></a></div>`
+    : `        <a href="/fleet/" class="fleet__viewall">View Full Fleet <span class="arrow" aria-hidden="true">${ARROW}</span></a>`;
   return `    <section class="fleet" aria-labelledby="fleetGridHeading">
       <div class="beam" aria-hidden="true"></div>
       <div class="fleet__inner">
@@ -426,7 +553,7 @@ function fleetGrid(heading, intro, vehicles) {
         <div class="fleet__grid">
 ${vehicles.map(fleetCard).join('\n')}
         </div>
-        <a href="/fleet/" class="fleet__viewall">View Full Fleet <span class="arrow" aria-hidden="true">${ARROW}</span></a>
+${foot}
       </div>
     </section>`;
 }
@@ -444,10 +571,10 @@ function googleBadge() {
   return `    <section class="about" aria-label="Google reviews">
       <div class="beam" aria-hidden="true"></div>
       <div class="about__inner">
-        <div class="about__copy reveal"><span class="label-bracket">Reviews</span><h2 class="about__heading">Trusted by 160+ Five-Star reviews.</h2><p class="about__body">From weddings and formals to airport transfers and milestone birthdays, our clients keep coming back — and leaving five-star reviews on Google.</p><a href="https://www.google.com/search?q=Show+Limousines+Sydney+reviews" target="_blank" rel="noopener noreferrer" class="btn-pill btn-pill--gold btn-magnetic">All Google Reviews <span class="btn-pill__arrow" aria-hidden="true">${ARROW}</span></a></div>
+        <div class="about__copy reveal"><span class="label-bracket">Reviews</span><h2 class="about__heading">Trusted by 165+ Five-Star reviews.</h2><p class="about__body">From weddings and formals to airport transfers and milestone birthdays, our clients keep coming back — and leaving five-star reviews on Google.</p><a href="https://www.google.com/search?q=Show+Limousines+Sydney+reviews" target="_blank" rel="noopener noreferrer" class="btn-pill btn-pill--gold btn-magnetic">All Google Reviews <span class="btn-pill__arrow" aria-hidden="true">${ARROW}</span></a></div>
         <aside class="google-badge reveal" aria-label="Google reviews rating">
           <div class="google-badge__head"><span class="google-badge__logo" aria-hidden="true"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg></span><span class="google-badge__title">Google Reviews</span></div>
-          <div class="google-badge__score"><span class="google-badge__num">5.0</span><div class="google-badge__stars"><span class="google-badge__stars-row" aria-label="Rated 5 out of 5 stars">★★★★★</span><span class="google-badge__count"><strong>160+</strong> verified reviews</span></div></div>
+          <div class="google-badge__score"><span class="google-badge__num">5.0</span><div class="google-badge__stars"><span class="google-badge__stars-row" aria-label="Rated 5 out of 5 stars">★★★★★</span><span class="google-badge__count"><strong>165+</strong> verified reviews</span></div></div>
         </aside>
       </div>
     </section>`;
@@ -533,18 +660,36 @@ function emit(slug, parts) {
 /* ---------------- Page assembly ---------------- */
 const SERVICE_FLEET = {
   'wedding-limousine-sydney': ['vehicle-rolls-royce-phantom-sedan', 'vehicle-chrysler-super-stretch-limousine', 'vehicle-mercedes-s-class-amg-sedan'],
-  'airport-limo-transfers-sydney': ['vehicle-mercedes-s-class-amg-sedan', 'vehicle-mercedes-valente-premium-minibus', 'vehicle-volkswagen-crafter-premium-minibus'],
+  // Airport: white Chrysler super stretch replaces the Mercedes Valente as the featured vehicle.
+  'airport-limo-transfers-sydney': ['vehicle-mercedes-s-class-amg-sedan', 'vehicle-chrysler-super-stretch-limousine', 'vehicle-volkswagen-crafter-premium-minibus'],
   default: ['vehicle-chrysler-super-stretch-limousine', 'vehicle-hummer-h2-stretch-limousine', 'vehicle-rolls-royce-phantom-sedan'],
+};
+
+/* Per-service-page extras: the "Why Choose Our … Service" heading (icon strip added
+   to each service page) and an optional exact hero subheading override. Only slugs
+   listed here receive the why-choose strip and the prominent "View Fleet" button. */
+const SERVICE_INFO = {
+  'airport-limo-transfers-sydney': { why: 'Why Choose Our Airport Transfer Service', sub: 'Private airport transfers across Sydney and Wollongong with professional chauffeurs and luxury vehicles' },
+  'cruise-transfer-sydney': { why: 'Why Choose Our Cruise Transfer Service', sub: 'Luxury cruise terminal transfers with professional chauffeurs across Sydney and Wollongong' },
+  'birthday-limousine-sydney': { why: 'Why Choose Our Birthday Limo Service' },
+  'concert-limo-transfers-sydney': { why: 'Why Choose Our Concert Transfer Service' },
+  'school-formal-limousine-hire-sydney': { why: 'Why Choose Our School Formal Service' },
+  'corporate-transfers': { why: 'Why Choose Our Corporate Transfer Service' },
+  'party-limousine-hire-sydney': { why: 'Why Choose Our Party Limo Service' },
+  'hens-party-limo-sydney': { why: "Why Choose Our Hen's Party Service" },
 };
 function servicePage(slug, eyebrow) {
   const { fm, lines } = parseMd(slug);
   const h1 = (lines.find(l => /^#\s/.test(l)) || '# ' + (fm.title || slug)).replace(/^#\s+/, '');
   const fleetSlugs = SERVICE_FLEET[slug] || SERVICE_FLEET.default;
+  const info = SERVICE_INFO[slug];
+  const sub = (info && info.sub) || fm.description;
   return emit(slug, [
     head(fm, slug), header(pathFor(slug)), mobileNav(pathFor(slug)), '  <main>',
-    pageHero(eyebrow || 'Services', h1, fm.description),
+    pageHero(eyebrow || 'Services', h1, sub, bannerFor(slug)),
+    info ? whyChooseService(info.why) : null,
     proseSection('Show Limousines', lines, { dropFirstH1: true }),
-    fleetGrid('Vehicles for your day.', 'A few of our most-requested vehicles — explore the full fleet for more.', fleetSlugs.map(s => VBY[s])),
+    fleetGrid('Vehicles for your day.', 'A few of our most-requested vehicles — explore the full fleet for more.', fleetSlugs.map(s => VBY[s]), { cta: !!info }),
     TESTIMONIALS, faq(), quoteForm('Get a quick quote.', 'Leave your details below and we will get back to you as soon as possible.'),
     '  </main>', footer(), FOOT_SCRIPT,
   ]);
@@ -554,7 +699,7 @@ function locationPage(slug) {
   const h1 = (lines.find(l => /^#\s/.test(l)) || '# ' + (fm.title || slug)).replace(/^#\s+/, '');
   return emit(slug, [
     head(fm, slug), header(pathFor(slug)), mobileNav(pathFor(slug)), '  <main>',
-    pageHero('Locations', h1, fm.description),
+    pageHero('Locations', h1, fm.description, bannerFor(slug)),
     proseSection('Show Limousines', lines, { dropFirstH1: true }),
     fleetGrid('Popular in your area.', 'Our most-booked vehicles for local weddings, formals and events.', ['vehicle-chrysler-super-stretch-limousine', 'vehicle-hummer-h2-stretch-limousine', 'vehicle-rolls-royce-phantom-sedan'].map(s => VBY[s])),
     TESTIMONIALS, quoteForm('Get a quick quote.', 'Tell us about your event and we’ll tailor a package.'),
@@ -568,7 +713,7 @@ function vehiclePage(slug) {
   const others = VEHICLES.filter(x => x.slug !== slug).slice(0, 3);
   return emit(slug, [
     head(fm, slug), header(pathFor(slug)), mobileNav(pathFor(slug)), '  <main>',
-    pageHero('Fleet · ' + (v ? v.badge : ''), h1, v ? ('Up to ' + v.pax + ' passengers · chauffeur-driven across Sydney & Wollongong.') : fm.description),
+    pageHero('Fleet · ' + (v ? v.badge : ''), h1, v ? ('Up to ' + v.pax + ' passengers · chauffeur-driven across Sydney & Wollongong.') : fm.description, bannerFor(slug)),
     `    <section class="feature"><div class="feature__inner">
         <div class="feature__media reveal"><img src="/${v ? v.img : 'logo.png'}" alt="${attr(h1)}" sizes="(max-width:900px) 100vw, 50vw" loading="lazy" decoding="async"></div>
         <div class="feature__copy reveal">
@@ -588,7 +733,7 @@ function categoryPage(slug, eyebrow, vehicles) {
   const h1 = (lines.find(l => /^#\s/.test(l)) || '# ' + (fm.title || slug)).replace(/^#\s+/, '');
   return emit(slug, [
     head(fm, slug), header(pathFor(slug)), mobileNav(pathFor(slug)), '  <main>',
-    pageHero(eyebrow || 'Fleet', h1, fm.description),
+    pageHero(eyebrow || 'Fleet', h1, fm.description, bannerFor(slug)),
     proseSection('Show Limousines', lines, { dropFirstH1: true }),
     fleetGrid('Browse the range.', 'Tap any vehicle for full details, capacity and features.', vehicles),
     quoteForm('Get a quick quote.', 'Tell us which vehicle and occasion — we’ll do the rest.'),
@@ -600,9 +745,207 @@ function infoPage(slug, eyebrow, extra) {
   const h1 = (lines.find(l => /^#\s/.test(l)) || '# ' + (fm.title || slug)).replace(/^#\s+/, '');
   return emit(slug, [
     head(fm, slug), header(pathFor(slug)), mobileNav(pathFor(slug)), '  <main>',
-    pageHero(eyebrow || 'About Us', h1, fm.description),
+    pageHero(eyebrow || 'About Us', h1, fm.description, bannerFor(slug)),
     proseSection(null, lines, { dropFirstH1: true }),
     ...(extra || []),
+    '  </main>', footer(), FOOT_SCRIPT,
+  ]);
+}
+
+/* ============================================================
+   Wedding Car Hire Sydney (/wedding-limousine-sydney/) — bespoke page.
+   This route gets a richer, hand-built layout instead of the generic
+   servicePage() template: photo hero, an icon "why-choose" strip, tightened
+   copy, photographed package cards, a luxury-fleet grid (Gullwing as the
+   headline Chrysler) and the shared homepage "How It Works" steps.
+   ============================================================ */
+const IC_USER = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21a8 8 0 0 0-16 0"/><circle cx="12" cy="7" r="4"/></svg>';
+const IC_AWARD = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 22l5-3 5 3-1.21-8.12"/></svg>';
+const IC_CLOCK = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>';
+const IC_PIN = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-7 8-13a8 8 0 1 0-16 0c0 6 8 13 8 13z"/><circle cx="12" cy="9" r="3"/></svg>';
+
+function whyChoose() {
+  const cards = [
+    ['Professional Chauffeurs', 'Uniformed, experienced drivers who look after your bridal party all day.', IC_USER],
+    ['Red Carpet Service', 'Champagne, white satin ribbon and the full VIP treatment for the bride.', IC_AWARD],
+    ['On Time & Reliable', 'Early arrivals, planned run sheets, every stop on schedule.', IC_CLOCK],
+    ['Sydney Wedding Specialists', 'Local experts who know every venue across Sydney & Wollongong.', IC_PIN],
+  ].map(([t, s, ic]) => `          <div class="trust__item">
+            <span class="trust__icon">${ic}</span>
+            <div class="trust__body"><span class="trust__head">${esc(t)}</span><span class="trust__sub">${esc(s)}</span></div>
+          </div>`).join('\n');
+  return `    <section class="fleet trust--why" aria-labelledby="whyHeading">
+      <div class="beam" aria-hidden="true"></div>
+      <div class="fleet__inner">
+        <div class="fleet__header reveal"><div><span class="label-bracket">Why Show Limousines</span><h2 class="fleet__heading" id="whyHeading">Why couples choose Show Limousines</h2></div></div>
+        <div class="trust__inner">
+${cards}
+        </div>
+      </div>
+    </section>`;
+}
+
+/* Service-page "Why Choose Our … Service" strip — same icon-card layout as the
+   wedding whyChoose(), with a per-page heading. Generic cards that fit every
+   transfer/event service. */
+function whyChooseService(heading) {
+  const cards = [
+    ['Professional Chauffeurs', 'Uniformed, experienced drivers who get you there relaxed and on time.', IC_USER],
+    ['Luxury Fleet', 'Immaculate, air-conditioned vehicles with leather seats, refreshments and Bluetooth.', IC_AWARD],
+    ['On Time, Every Time', "Punctual pick-ups and planned routes, so you're never left waiting.", IC_CLOCK],
+    ['Sydney & Wollongong', 'Local chauffeurs covering every suburb, terminal and venue.', IC_PIN],
+  ].map(([t, s, ic]) => `          <div class="trust__item">
+            <span class="trust__icon">${ic}</span>
+            <div class="trust__body"><span class="trust__head">${esc(t)}</span><span class="trust__sub">${esc(s)}</span></div>
+          </div>`).join('\n');
+  return `    <section class="fleet trust--why" aria-labelledby="whyHeading">
+      <div class="beam" aria-hidden="true"></div>
+      <div class="fleet__inner">
+        <div class="fleet__header reveal"><div><span class="label-bracket">Why Show Limousines</span><h2 class="fleet__heading" id="whyHeading">${esc(heading)}</h2></div></div>
+        <div class="trust__inner">
+${cards}
+        </div>
+      </div>
+    </section>`;
+}
+
+function weddingPackages() {
+  const PKGS = [
+    { title: 'Chrysler Limousine Package', badge: 'Chrysler', img: 'fleet-chrysler-gullwing-v2.jpg', alt: 'Chrysler Super Stretch Gullwing wedding limousine', list: ['Chrysler Super Stretch Gullwing seating up to 10 passengers', 'Uniformed chauffeur', 'Red carpet', 'White satin ribbon on the limousine', 'Chilled bottled water', '2 bottles of sparkling wine'] },
+    { title: 'Just Married Package', badge: 'Rolls Royce', img: 'fleet-rolls-royce-phantom-v2.jpg', alt: 'Rolls Royce Phantom luxury wedding sedan', list: ['Any sedan of your choice seating up to 4 passengers', 'Uniformed chauffeurs', 'White satin ribbon on each vehicle'] },
+    { title: 'Diamond Package', badge: 'Mercedes', img: 'fleet-mercedes-s-class-v2.jpg', alt: 'Mercedes S Class AMG luxury wedding sedan', list: ['2 x luxury sedans seating up to 4 passengers each', 'Getaway vehicle at night for bride and groom'] },
+    { title: 'Platinum Package', badge: 'Hummer', img: 'fleet-hummer-white-v2.jpg', alt: 'White Hummer stretch wedding limousine', list: ['1 x white Hummer stretch limousine seating up to 14 or 16 passengers', '1 x white sedan of your choice up to 4 passengers', 'White satin ribbon on all cars'] },
+    { title: 'Hummer Stretch Limousine Package', badge: 'Hummer', img: 'fleet-hummer-green-v2.jpg', alt: 'Hummer stretch wedding limousine', list: ['Hummer Stretch Limousine seating up to 14 or 16 passengers'] },
+  ];
+  const cards = PKGS.map(p => `          <article class="fleet-card reveal">
+            <div class="fleet-card__media"><img class="fleet-card__img" src="/${p.img}" alt="${attr(p.alt)}" sizes="(max-width:640px) 100vw, (max-width:1024px) 50vw, 33vw" loading="lazy" decoding="async"><span class="fleet-card__badge">${esc(p.badge)}</span></div>
+            <div class="fleet-card__body">
+              <span class="fleet-card__brand">Package</span>
+              <span class="fleet-card__model">${esc(p.title)}</span>
+              <ul class="pkg-card__list">
+${p.list.map(li => `                <li>${esc(li)}</li>`).join('\n')}
+              </ul>
+            </div>
+          </article>`).join('\n');
+  return `    <section class="fleet pkg" aria-labelledby="pkgHeading">
+      <div class="beam" aria-hidden="true"></div>
+      <div class="fleet__inner">
+        <div class="fleet__header reveal"><div><span class="label-bracket">Wedding Packages</span><h2 class="fleet__heading" id="pkgHeading">Wedding Car Packages</h2></div><p class="fleet__intro">Every package can be custom tailored to your budget and run sheet — mix, match and add cars to build your dream arrival.</p></div>
+        <div class="fleet__grid pkg__grid">
+${cards}
+        </div>
+        <div class="pkg__cta"><a href="#quote" class="btn-pill btn-pill--gold btn-magnetic">Enquire about packages <span class="btn-pill__arrow" aria-hidden="true">${ARROW}</span></a></div>
+      </div>
+    </section>`;
+}
+
+/* Verbatim clone of the home-page "How It Works" steps (reference only — the
+   home page is never modified). Same copy, tags and "Get a free quote today"
+   button; links to this page's own #quote section. */
+function howItWorks() {
+  const STEPS = [
+    ['01', 'Submit your enquiry', "Drop us your event details — date, pick-up, drop-off, passenger count, the occasion. Use the quote form below or call us direct. We'll have everything we need to put a tailored package together.", ['Quote Form', 'Call', 'Email']],
+    ['02', "We'll come back to you", "We'll be back with a written quote that confirms availability, vehicle options and total pricing — no hidden extras, no surprises.", ['Written Quote', 'No Surprises']],
+    ['03', 'Confirm your booking', "Secure your booking with a small deposit and we'll send you a booking confirmation with all the details.", ['Small Deposit', 'Locked-In Rate', 'Confirmation Pack']],
+    ['04', 'Arrive in style', 'Sit back and enjoy the ride with champagne in hand (adults only). Your uniformed chauffeur arrives early, immaculately presented, and gets you to every stop on time, every time.', ['Uniformed Chauffeur', 'Champagne', 'Red Carpet']],
+  ];
+  const rows = STEPS.map(([num, title, body, tags], i) => {
+    const open = i === 0;
+    const n = i + 1;
+    return `          <div class="how-row reveal${open ? ' is-open' : ''}" data-row="${n}">
+            <div class="how-row__top" role="button" tabindex="0" aria-expanded="${open ? 'true' : 'false'}" aria-controls="how-panel-${n}">
+              <span class="how-row__num">${num} /</span>
+              <h3 class="how-row__title">${esc(title)}</h3>
+              <span class="how-row__arrow" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>
+              </span>
+            </div>
+            <div class="how-row__panel" id="how-panel-${n}">
+              <div class="how-row__panel-inner">
+                <p class="how-row__body">${esc(body)}</p>
+                <div class="how-row__tags">
+${tags.map(t => `                  <span class="how-row__tag">${esc(t)}</span>`).join('\n')}
+                </div>
+              </div>
+            </div>
+          </div>`;
+  }).join('\n\n');
+  return `    <section class="how" id="how" aria-labelledby="howHeading">
+      <div class="beam beam--reverse" aria-hidden="true"></div>
+      <div class="how__inner">
+        <div class="how__header reveal">
+          <span class="label-bracket">How It Works</span>
+          <h2 class="how__heading" id="howHeading">Four steps to your perfect ride.</h2>
+        </div>
+
+        <div class="how__list">
+
+${rows}
+
+        </div>
+
+        <a href="#quote" class="how__book">
+          Get a free quote today
+          <span class="arrow" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>
+          </span>
+        </a>
+      </div>
+    </section>`;
+}
+
+function weddingSydneyPage(slug) {
+  const { fm } = parseMd(slug);
+  const h1 = 'Wedding Cars & Wedding Limousine Hire Sydney';
+  const sub = 'Luxury wedding cars, stretch limousines and professional chauffeurs for your special day.';
+  // Luxury fleet for weddings — Gullwing is the headline Chrysler (global rule):
+  // the generic white "Chrysler Super Stretch" is intentionally omitted in its favour.
+  const weddingFleet = [
+    'vehicle-gullwing-chrysler-super-stretch-limousine',
+    'vehicle-black-edition-chrysler-super-stretch-limousine',
+    'vehicle-black-chrysler-super-stretch-limousine',
+    'vehicle-hummer-h2-stretch-limousine',
+    'vehicle-hummer-stretch-limousine',
+    'vehicle-mercedes-s-class-amg-sedan',
+    'vehicle-mercedes-sprinter-limo-van',
+    'vehicle-rolls-royce-phantom-sedan',
+    'vehicle-mercedes-valente-premium-minibus',
+    'vehicle-volkswagen-crafter-premium-minibus',
+  ].map(s => VBY[s]);
+  const WEDDING_FAQ = [
+    ['How far in advance should I book?', 'We recommend booking as far in advance as possible — like your other wedding vendors, most couples book 6 to 18 months out. That secures your dream wedding car without stressing over limited options. We can often help with last-minute requests too, so get in touch and we will do our best.'],
+    ['Where do you service in Sydney?', 'We service all of Sydney — from Western Sydney to the Northern Beaches, down to the Sutherland Shire and Wollongong. We regularly chauffeur clients from the CBD to Parramatta, Campbelltown, the Eastern Suburbs, Marrickville, the Inner West and everywhere in between.'],
+    ['How much does wedding car hire cost?', 'Costs vary with the vehicle, date, number of hours and pick-up/drop-off locations. Our wedding cars include Chryslers, stretch Hummers, Rolls Royce sedans and luxury minivans and minibuses. We offer wedding car packages to make hiring a fleet of beautiful cars more affordable.'],
+  ];
+  const prose = `    <section class="prose">
+      <div class="beam" aria-hidden="true"></div>
+      <div class="prose__inner reveal">
+        <span class="label-bracket">Show Limousines</span>
+          <h2 class="prose__h2">Book Your Sydney Wedding Cars with Show Limousines</h2>
+          <p>Your wedding day deserves an entrance to match. Show Limousines provides luxury wedding cars, stretch limousines and Hummer limousines with a professional chauffeured service right across Sydney and Wollongong — so the only thing you have to think about is enjoying the day. Whether it is an intimate boutique wedding or a grand celebration, every booking comes with the full VIP treatment: a red carpet for the bride, white satin ribbon on the cars, chilled champagne and an immaculately presented, uniformed chauffeur who looks after your bridal party from the first pick-up to the last.</p>
+          <h2 class="prose__h2">Wedding Vehicles That Stand Out From The Crowd</h2>
+          <p>From a single bridal car to a full fleet, we tailor affordable wedding packages to suit small, medium and large weddings across Sydney and Wollongong. Need a getaway car? We will whisk the newlyweds away in a luxury sedan or stretch limousine once the reception winds down. Tell us what you have in mind and we will build a package around your budget — call our team on <a href="tel:${TEL}" style="color:var(--color-accent);">${PHONE}</a> to start planning your perfect arrival.</p>
+      </div>
+    </section>`;
+  const wantDifferent = `    <section class="prose">
+      <div class="beam" aria-hidden="true"></div>
+      <div class="prose__inner reveal">
+          <h2 class="prose__h2">Want something different?</h2>
+          <p>We can create custom wedding car packages to suit any style, party size and budget. Every car in our fleet is available for wedding hire across Sydney and Wollongong — get in touch and we will make your grand entrance unforgettable.</p>
+      </div>
+    </section>`;
+  return emit(slug, [
+    head(fm, slug), header(pathFor(slug)), mobileNav(pathFor(slug)), '  <main>',
+    pageHero('Wedding Cars', h1, sub, bannerFor(slug)),
+    whyChoose(),
+    prose,
+    weddingPackages(),
+    fleetGrid('Browse Our Luxury Fleet.', 'The cars and limousines couples book for weddings across Sydney & Wollongong — tap any vehicle for full details.', weddingFleet),
+    wantDifferent,
+    TESTIMONIALS,
+    howItWorks(),
+    faq(WEDDING_FAQ),
+    quoteForm('Get a quick quote.', 'Leave your wedding details below and we will get back to you as soon as possible.'),
     '  </main>', footer(), FOOT_SCRIPT,
   ]);
 }
@@ -615,7 +958,7 @@ const SERVICES = [
   ['concert-limo-transfers-sydney', 'Services'], ['school-formal-limousine-hire-sydney', 'Services'], ['corporate-transfers', 'Services'],
   ['party-limousine-hire-sydney', 'Services'], ['hens-party-limo-sydney', 'Services'], ['funeral-limo-hire', 'Services'],
 ];
-SERVICES.forEach(([s, e]) => servicePage(s, e));
+SERVICES.forEach(([s, e]) => { if (s === 'wedding-limousine-sydney') weddingSydneyPage(s); else servicePage(s, e); });
 
 ['limo-hire-bankstown', 'limo-hire-campbelltown', 'limo-hire-eastern-suburbs', 'limo-hire-inner-west', 'limo-hire-liverpool', 'limo-hire-marrickville', 'limo-hire-northern-beaches', 'limo-hire-parramatta', 'limo-hire-penrith', 'limo-hire-sutherland-shire', 'limo-hire-wollongong'].forEach(locationPage);
 
@@ -631,7 +974,7 @@ categoryPage('vehicles', 'Fleet', VEHICLES);
 (function () {
   const { fm, lines } = parseMd('services');
   emit('services', [head(fm, 'services'), header('/services/'), mobileNav('/services/'), '  <main>',
-    pageHero('Services', 'Limousine services for every occasion.', fm.description),
+    pageHero('Services', 'Limousine services for every occasion.', fm.description, bannerFor('services')),
     proseSection('Show Limousines', lines, { dropFirstH1: true }),
     quoteForm('Get a quick quote.'), '  </main>', footer(), FOOT_SCRIPT]);
 })();
@@ -652,7 +995,7 @@ infoPage('reviews', 'Reviews', [googleBadge(), TESTIMONIALS]);
   ];
   const cards = POSTS.map(([s, t], i) => `          <article class="fleet-card reveal"><div class="fleet-card__media"><img class="fleet-card__img" src="/fleet-chrysler-${['white','black','gullwing','black-edition'][i % 4]}-v2.jpg" alt="${attr(t)}" loading="lazy"><span class="fleet-card__badge">Blog</span></div><div class="fleet-card__body"><span class="fleet-card__model">${esc(t)}</span><div class="fleet-card__footer"><a href="${pathFor(s)}" class="btn-outline-sm">Read Article</a></div></div></article>`).join('\n');
   emit('blog', [head(fm, 'blog'), header('/blog/'), mobileNav('/blog/'), '  <main>',
-    pageHero('About Us · Blog', 'From the blog.', fm.description),
+    pageHero('About Us · Blog', 'From the blog.', fm.description, bannerFor('blog')),
     `    <section class="fleet"><div class="beam" aria-hidden="true"></div><div class="fleet__inner"><div class="fleet__header reveal"><div><span class="label-bracket">Blog</span><h2 class="fleet__heading">Latest articles.</h2></div></div><div class="fleet__grid">\n${cards}\n        </div></div></section>`,
     '  </main>', footer(), FOOT_SCRIPT]);
   POSTS.forEach(([s]) => infoPage(s, 'Blog'));
@@ -662,7 +1005,7 @@ infoPage('reviews', 'Reviews', [googleBadge(), TESTIMONIALS]);
 (function () {
   const { fm } = parseMd('contact');
   emit('contact', [head(fm, 'contact'), header('/contact/'), mobileNav('/contact/'), '  <main>',
-    pageHero('Contact Us', "Let's plan your arrival.", fm.description || 'Tell us your event details and we’ll put together a tailored package.'),
+    pageHero('Contact Us', "Let's plan your arrival.", fm.description || 'Tell us your event details and we’ll put together a tailored package.', bannerFor('contact')),
     quoteForm('Tell us about your event.', 'Fill in the details below and we will get back to you as soon as possible.'),
     mapSection('Servicing Sydney & Wollongong.'), '  </main>', footer(), FOOT_SCRIPT]);
 })();
@@ -672,7 +1015,7 @@ infoPage('reviews', 'Reviews', [googleBadge(), TESTIMONIALS]);
   const { fm } = parseMd('thank-you');
   emit('thank-you', [head(fm.title ? fm : { title: 'Thank You | Show Limousines', description: 'Thanks for your enquiry — we’ll be in touch shortly.' }, 'thank-you'),
     header('#'), mobileNav('#'), '  <main>',
-    pageHero('Thank You', 'Thank you — we’ll be in touch.', 'Your enquiry has been received. Our team will get back to you as soon as possible. For anything urgent call ' + PHONE + '.'),
+    pageHero('Thank You', 'Thank you — we’ll be in touch.', 'Your enquiry has been received. Our team will get back to you as soon as possible. For anything urgent call ' + PHONE + '.', bannerFor('thank-you')),
     `    <section class="home-cta"><div class="home-cta__inner reveal"><span class="label-bracket">Show Limousines</span><h2 class="home-cta__title">While you wait, explore the fleet</h2><div class="home-cta__actions"><a href="/fleet/" class="btn-pill btn-pill--gold">View the Fleet <span class="btn-pill__arrow" aria-hidden="true">${ARROW}</span></a><a href="/" class="btn-outline-sm">Back to Home</a></div></div></section>`,
     '  </main>', footer(), FOOT_SCRIPT]);
 })();
@@ -687,7 +1030,7 @@ infoPage('reviews', 'Reviews', [googleBadge(), TESTIMONIALS]);
   ];
   const html = groups.map(g => `          <div class="prose"><h2 class="prose__h2">${g[0]}</h2><ul class="prose__list">${g[1].map(l => `<li><a href="${l[1]}">${esc(l[0])}</a></li>`).join('')}</ul></div>`).join('\n');
   emit('sitemap', [head({ title: 'Sitemap | Show Limousines', description: 'All pages on the Show Limousines website.' }, 'sitemap'),
-    header('/sitemap/'), mobileNav('/sitemap/'), '  <main>', pageHero('Sitemap', 'Sitemap.', 'Every page on the Show Limousines site.'),
+    header('/sitemap/'), mobileNav('/sitemap/'), '  <main>', pageHero('Sitemap', 'Sitemap.', 'Every page on the Show Limousines site.', bannerFor('sitemap')),
     `    <section class="prose"><div class="prose__inner reveal">\n${html}\n      </div></section>`, '  </main>', footer(), FOOT_SCRIPT]);
 })();
 
@@ -696,7 +1039,7 @@ infoPage('reviews', 'Reviews', [googleBadge(), TESTIMONIALS]);
   let h = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
   h = h.replace(/<header class="nav-wrap"[\s\S]*?<\/header>/, header('/'));
   h = h.replace(/<div class="nav-mobile"[\s\S]*?<\/div>\s*(?=<main>)/, mobileNav('/') + '\n  ');
-  h = h.replace(/<footer class="foot"[\s\S]*?<\/footer>/, footer());
+  h = h.replace(/<footer class="foot"[\s\S]*?<\/footer>(\s*<aside class="sub-foot"[\s\S]*?<\/aside>)?/, footer());
   // point the home quote <form> at Web3Forms
   h = h.replace(/<form class="quote-form[^"]*"[^>]*id="quoteForm"[^>]*>/, `<form class="quote-form reveal" id="quoteForm" action="https://api.web3forms.com/submit" method="POST">\n            <input type="hidden" name="access_key" value="${WEB3FORMS_KEY}">\n            <input type="hidden" name="subject" value="New Show Limousines enquiry">\n            <input type="hidden" name="from_name" value="Show Limousines Website">\n            <input type="hidden" name="redirect" value="${SITE}/thank-you/">\n            <input type="checkbox" name="botcheck" class="visually-hidden" style="display:none" tabindex="-1" autocomplete="off">`);
   // root-relative shared assets

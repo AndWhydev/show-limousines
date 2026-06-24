@@ -16,7 +16,7 @@ Get a quick quote by leaving your details below
 ## Book Wedding Cars and Limos in Shellharbour
 You deserve the best for your big day. Show Limousines provides wedding cars and limos for hire in Shellharbour, to add a touch of glamour to the event. Our fleet of wedding limos includes the extravagant Rolls-Royce Phantom Sedans, Stretch Hummer Limousines, and Chrysler Super Stretch Limousines. We also have wedding cars like the ever-popular Mercedes Luxury Sedans to whisk you and your beloved away after the wedding.
 Each Shellharbour wedding limo will be professionally driven by an experienced and uniformed chauffeur. Once you’re at the wedding venue, your chauffeur will roll out the red carpet and you’re picked up right on schedule.
-Show Limousines is backed by 5-star Google ratings from over 115+ satisfied customers – we service weddings across Shellharbour, Illawarra, and the Southern Highlands. Book your wedding transportation with us for a luxurious experience on your special day.
+Show Limousines is backed by 5-star Google ratings from over 165+ satisfied customers – we service weddings across Shellharbour, Illawarra, and the Southern Highlands. Book your wedding transportation with us for a luxurious experience on your special day.
 ## Start Your Happily Ever After in Style
 Whether it’s an intimate beachside wedding or a grand celebration, the luxury of our Shellharbour wedding limos will make your big day feel magical.
 All wedding limousines for hire in Shellharbour are immaculately presented with all no expense spared; air conditioning, leather seating, music and the provision of champagne flutes for some bubbly. The wedding car will also be dressed with white satin ribbons to announce your newlywed status.

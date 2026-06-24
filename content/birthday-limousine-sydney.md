@@ -18,7 +18,10 @@ Or get a quick quote
 ## Birthday Limousine & Luxury Car Hire
 Are you planning a special occasion? Is your birthday coming up? Our birthday limousine hire in Sydney and Wollongong is one of the best ways to make the most of your big day and celebrate in style, with memories to last a lifetime.
 Show Limousines provide birthday limo hire in Sydney, but can also be your designated driver for any event or function you have in mind, including a local concert, theatre, event opening, engagement party or celebration, any time of the day or night. If you have any special requests that are not mentioned on our website, give us a call on 0422 023 413 to discuss your requirements – we’ll be more than happy to accommodate.
-For birthday parties with all your favourite people – we’ve got your transport covered. Our Chrysler Super Stretch Limousines can comfortably seat up to 10 passengers, while our Hummer Sydney Limousines can seat up to 14 or 16 passengers with ample space to relax and enjoy a drink or two. Whether you’re celebrating with a few friends or a larger group, there’s nothing better than enjoying being chauffeured like a VIP celebrity for a few hours!
+For birthday parties with all your favourite people – we’ve got your transport covered. Choose the limo to suit your group:
+- Chrysler Super Stretch Limousine – comfortably seats up to 10 passengers
+- Hummer Sydney Limousine – seats up to 14 or 16 passengers, with space to relax and enjoy a drink or two
+Whether you’re celebrating with a few friends or a larger group, there’s nothing better than being chauffeured like a VIP celebrity for a few hours!
 ## Get a Free Quote
 ## Book Stretch Limos or Hummer Limousines For Birthday Celebrations
 Show Limousines is a family-owned business specialising in birthday party limo hire and chauffeured birthday party limousines across Sydney and Wollongong. Available for hire 365 days a year – there’s nothing quite like the feeling of being treated like royalty for a few hours. Just imagine sipping on some French champagne, listening to your favourite tunes and enjoying the positive vibes with your close family and friends.

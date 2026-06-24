@@ -3190,3 +3190,85 @@
 
 /* Responsive <picture> wrappers should not generate a box (Commit 2) */
 picture{display:contents}
+
+/* ============================================================
+   Wedding Car Hire Sydney — bespoke page sections
+   (why-choose strip header, package cards, sub-footer)
+   ============================================================ */
+
+/* "Why couples choose" — a standard .fleet section (header + heading scale,
+   container width, spacing all inherited) wrapping the .trust icon-card grid. */
+.trust--why .trust__inner { margin-top: 4px; }
+
+/* Wedding package cards — built on .fleet-card; just the inclusions list is new */
+.pkg-card__list { list-style: none; display: flex; flex-direction: column; gap: 9px; margin: 12px 0 0; padding: 0; }
+.pkg-card__list li {
+  position: relative;
+  padding-left: 26px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  line-height: 1.45;
+  color: rgba(240, 240, 240, 0.72);
+}
+.pkg-card__list li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 1px;
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: rgba(var(--accent-rgb), 0.12);
+  border: 1px solid rgba(var(--accent-rgb), 0.45);
+}
+.pkg-card__list li::after {
+  content: '';
+  position: absolute;
+  left: 5px; top: 4px;
+  width: 5px; height: 9px;
+  border: solid var(--color-accent);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.pkg__cta { display: flex; justify-content: center; margin-top: 48px; }
+/* Service-page fleet section: prominent "View Fleet" button (replaces the subtle link) */
+.fleet__cta { display: flex; justify-content: center; margin-top: 48px; }
+
+/* Sub-footer link block — two columns (Services + Locations), site-wide */
+.sub-foot {
+  background: #08080a;
+  border-top: 1px solid var(--color-border);
+  padding: 48px 28px;
+}
+.sub-foot__inner {
+  max-width: 1320px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px 56px;
+}
+.sub-foot__title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 18px;
+}
+.sub-foot__list {
+  list-style: none; margin: 0; padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 11px 24px;
+}
+.sub-foot__list a {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: rgba(240, 240, 240, 0.62);
+  transition: color 200ms ease;
+}
+.sub-foot__list a:hover { color: #fff; }
+@media (max-width: 640px) {
+  .sub-foot { padding: 40px 20px; }
+  .sub-foot__inner { grid-template-columns: 1fr; gap: 32px; }
+  .sub-foot__list { grid-template-columns: 1fr; }
+}

@@ -24,7 +24,7 @@ module.exports = `    <section class="testi" id="testimonials" aria-labelledby="
 ${slides}
             </div>
             <div class="testi__nav">
-              <div class="testi__trust"><span>Trusted by</span>160+ Five-Star reviews</div>
+              <div class="testi__trust"><span>Trusted by</span>165+ Five-Star reviews</div>
               <button class="testi__nav-btn" id="testiPrev" aria-label="Previous testimonial"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></button>
               <button class="testi__nav-btn" id="testiNext" aria-label="Next testimonial"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
               <span class="testi__counter"><strong id="testiCur">01</strong> / 05</span>

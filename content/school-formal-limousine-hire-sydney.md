@@ -16,8 +16,15 @@ Arrive in style with Show Limousines – we provide school formal car hire acros
 ## Call 0422 023 413
 Or get a quick quote
 ## Limousine & Car Hire For School Formals
-Affordable yet luxurious Sydney limo hire for school formals, so you and your mates can get the party started before the big event. Enjoy a range of awesome features inside your luxury limo including multiple TV screens, music sound systems and comfortable seating for up to 16 of your mates.
-Our school formal limo hire includes a fleet of luxury vehicles to suit both small and big groups. For larger groups, our Chrysler Super Stretch Limousine seats 10 passengers, and our Hummer Stretch Limousine has room for 16 passengers. For smaller groups, book our Mercedes Line Sedan or Rolls-Royce Phantom Sedan, which accommodates up to four passengers. Check out hire cost guide out for a full breakdown on how these options compare.
+Affordable yet luxurious Sydney limo hire for school formals, so you and your mates can get the party started before the big event. Enjoy a range of awesome features inside your luxury limo:
+- Multiple TV screens
+- Music sound systems
+- Comfortable seating for up to 16 of your mates
+Our fleet suits both small and big groups:
+- Chrysler Super Stretch Limousine – seats 10 passengers
+- Hummer Stretch Limousine – room for up to 16 passengers
+- Mercedes Line Sedan or Rolls-Royce Phantom Sedan – up to 4 passengers
+Check out our hire cost guide for a full breakdown of how these options compare.
 Contact Show Limousines today for luxury car or limousine hire for the big day with Show Limousines.
 ## Get a Free Quote
 ## Services We Provide

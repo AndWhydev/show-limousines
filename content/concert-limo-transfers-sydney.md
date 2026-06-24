@@ -17,7 +17,12 @@ Feel like a VIP when you arrive at your next concert by travelling in style in o
 Or get a quick quote
 ## The Best Sydney Limo Concert Transfers
 Forget worrying about traffic or finding a parking space, one of our uniformed drivers will pick you up from your chosen starting place and get you to your concert venue safely and on time.
-Our vehicles have a range of stylish features including TV screens, LED lights, high-quality Bluetooth sound systems, and plush leather interiors. So let loose, have a drink and sing your heart out to your favourite music while we do all the work.
+Our vehicles come with a range of stylish features:
+- TV screens
+- LED lights
+- High-quality Bluetooth sound systems
+- Plush leather interiors
+So let loose, have a drink and sing your heart out to your favourite music while we do all the work.
 Show Limousines is a family-run business with a fleet of more than 10 limos, luxury cars, and minivans available for hire all year round.
 We specialise in party limo hire and event transfers across Sydney, Wollongong and the surrounding areas and love nothing more than giving you an awesome experience to remember. We can take you to all the big concert destinations – from Qudos Bank Arena, to Accor Stadium, the State Theatre, Enmore Theatre, Hordern Pavillion, or the Sydney Opera House.
 Whether you need one-way transport or return services, Show Limousines will be happy to accommodate you.

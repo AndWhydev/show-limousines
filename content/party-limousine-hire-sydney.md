@@ -15,7 +15,14 @@ images: 114
 Get a quick quote by leaving your details below
 ## Party Limousine & Stretch Hummer Hire
 For Sydney's ultimate party limousine hire, choose Show Limousines. We offer a luxury fleet designed to take your celebration to the next level – whether it be a birthday party, a hens or bucks night, a school formal, or our dedicated wedding care hire Sydney service. Show Limousines has got your VIP party limo covered.
-Our stretch limousines feature premium sound systems, LED lighting, plush leather seating, and on-board entertainment. Our most popular party limo, the Hummer stretch limousine hire in Sydney is ideal for larger groups; if you’re after something sleek and sophisticated, the Chrysler super stretch limousine offers the perfect mix of luxury.
+Our stretch limousines come fully loaded:
+- Premium sound systems
+- LED lighting
+- Plush leather seating
+- On-board entertainment
+Pick the party limo to match your group:
+- Hummer stretch limousine – our most popular, ideal for larger groups
+- Chrysler super stretch limousine – sleek, sophisticated and the perfect mix of luxury
 # our collection
 ## Browse OurLuxury Fleet
 ### Hummer Stretch Limousine
