@@ -87,8 +87,9 @@ function apply(slug, main, C) {
     '$1160+ Five-Star reviews');
   // K4 quote field rename
   main = main.replace(/>Additional Comments</g, '>Additional Details<');
-  // K7 add the wedding-cars FAQ (keep page-specific items; insert as first)
-  if (main.includes('class="faq__list"') && !main.includes(WEDDING_FAQ_Q)) {
+  // K7 add the wedding-cars FAQ (keep page-specific items; insert as first) —
+  // EXCEPT service pages, which take the full uniform Home-page FAQ below.
+  if (!SERVICE_SLUGS.has(slug) && main.includes('class="faq__list"') && !main.includes(WEDDING_FAQ_Q)) {
     main = main.replace(/(<div class="faq__list">\s*)/, `$1\n${faqItem(WEDDING_FAQ_Q, WEDDING_FAQ_A)}\n`);
   }
   // K2 fleet card order (only fires where a fleet__grid exists)
@@ -108,8 +109,11 @@ function apply(slug, main, C) {
     if (slug === 'airport-limo-transfers-sydney') main = airportValenteToWhiteStretch(main);
     // today: View Fleet button in the vehicles ("Best for") section
     main = addViewFleetButton(main, C);
-    // K3 How It Works -> yesterday's version (replaces OLD svc-steps)
+    // K3 How It Works -> yesterday's version (replaces OLD svc-steps) — already == Home page
     if (C.howItWorks) main = main.replace(/<section class="svc-steps"[\s\S]*?<\/section>/, C.howItWorks());
+    // Part B: Testimonials + FAQ match the Home page across all Services pages
+    if (C.HOME_TESTI) main = main.replace(/<section class="testi"[\s\S]*?<\/section>/, String(C.HOME_TESTI).replace(/^\s+/, ''));
+    if (C.HOME_FAQ) main = main.replace(/<section class="faq"[\s\S]*?<\/section>/, String(C.HOME_FAQ).replace(/^\s+/, ''));
   }
 
   /* ---------- wedding pages: re-integrate today's bespoke sections ---------- */
@@ -142,11 +146,63 @@ function statsStrip() {
     </section>`;
 }
 
+/* Walk balanced <div> blocks (the OLD intro uses nested divs the regex engine
+   can't span on its own). */
+function spanDiv(html, openMarker) {
+  const start = html.indexOf(openMarker);
+  if (start < 0) return null;
+  let depth = 1; const re = /<\/?div\b[^>]*>/g; re.lastIndex = html.indexOf('>', start) + 1;
+  let m;
+  while ((m = re.exec(html))) {
+    if (m[0].slice(0, 2) === '</') { if (--depth === 0) return { start, end: m.index + m[0].length }; }
+    else depth++;
+  }
+  return { start, end: html.length };
+}
+function extractBalancedDiv(html, openMarker) { const s = spanDiv(html, openMarker); return s ? html.slice(s.start, s.end) : ''; }
+function removeBalancedDiv(html, openMarker) { const s = spanDiv(html, openMarker); return s ? html.slice(0, s.start) + html.slice(s.end) : html; }
+
+/* Recover the OLD wvshow intro VERBATIM: the slideshow + "Book Your … Wedding Cars"
+   two-column block (.wedintro) and the "Wedding Vehicles That Stand Out" text (.wstandout
+   with its vehicle carousel removed). Drops the OLD packages-as-text. */
+function weddingIntroSection(prose) {
+  const wedintro = extractBalancedDiv(prose, '<div class="testi__grid wedintro">');
+  let wstandout = extractBalancedDiv(prose, '<div class="wstandout">');
+  wstandout = removeBalancedDiv(wstandout, '<div class="fleetcar"'); // drop the vehicle carousel — cards own that
+  let inner = wedintro + '\n' + wstandout;
+  // sharpness: explicit sizes on the slideshow imgs (~half-width two-col) before responsify
+  inner = inner.replace(/(<img src="\/wedding-[^"]+\.png")/g, '$1 sizes="(max-width:900px) 92vw, 46vw"');
+  return `    <section class="prose">
+      <div class="beam" aria-hidden="true"></div>
+      <div class="prose__inner reveal">
+${inner}
+      </div>
+    </section>`;
+}
+
+const WOLLONGONG = 'wedding-limousine-hire-wollongong';
+const FLEET_INTRO = 'Slide through our full wedding fleet — limousines, stretch Hummers, sedans and people-movers.';
+function ourFleet(slug, C) {
+  // Wollongong shows no Hummer stretch images, so its carousel drops both Hummers.
+  const cars = slug === WOLLONGONG ? C.VEHICLES.filter(v => v.badge !== 'Hummer') : C.VEHICLES;
+  return C.fleetCarousel('Our Fleet', FLEET_INTRO, cars);
+}
+
 function applyWedding(slug, main, C) {
   // Sydney only: today's exact hero subheading (others keep OLD)
   if (slug === SYDNEY) main = main.replace(/(class="page-hero__sub">)[^<]*/, `$1${SYDNEY_SUB}`);
-  // Sydney + Wollongong: OLD packages-as-text prose -> today's photographed cards (Gullwing rule)
-  if (PKG_PAGES.has(slug)) main = main.replace(/<section class="prose">[\s\S]*?<\/section>/, C.weddingPackages());
+  // Sydney + Wollongong: recovered wvshow intro ABOVE the photographed package cards, then the
+  // Our-Fleet carousel beneath the cards. Wollongong drops the Hummer Stretch package + uses a
+  // white-sedan photo for Platinum (no Hummer imagery).
+  if (PKG_PAGES.has(slug)) {
+    const pkgOpts = slug === WOLLONGONG ? { noHummerStretch: true, platinumImg: 'fleet-mercedes-s-class-v2.jpg' } : {};
+    main = main.replace(/<section class="prose">[\s\S]*?<\/section>/, (prose) =>
+      weddingIntroSection(prose) + '\n' + C.weddingPackages(pkgOpts) + '\n' + ourFleet(slug, C));
+  }
+  // wedding-cars-limousines: convert the OLD static "Vehicles for your day" grid into the carousel
+  if (slug === 'wedding-cars-limousines') {
+    main = main.replace(/<section class="fleet" aria-labelledby="fleetGridHeading">[\s\S]*?<\/section>/, ourFleet(slug, C));
+  }
   // All 3: stats strip + why-couples strip, directly under the hero (in that order)
   main = main.replace(/(<section class="page-hero[\s\S]*?<\/section>)/, `$1\n${statsStrip()}\n${C.whyChoose()}`);
   // All 3: How It Works, placed after the testimonials section

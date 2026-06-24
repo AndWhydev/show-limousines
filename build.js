@@ -501,6 +501,11 @@ function quoteForm(heading, sub) {
 }
 
 const TESTIMONIALS = require('./content/_testimonials.js');
+/* Verbatim snapshot of the Home page's testimonials section — used (unchanged) on the
+   Services pages so they match the Home page exactly (the _testimonials.js component has
+   since diverged, e.g. 165+ vs the Home page's 160+). */
+const HOME_TESTI = '    ' + fs.readFileSync(path.join(ROOT, 'content', '_home-testi.html'), 'utf8').trim();
+const HOME_FAQ = '    ' + fs.readFileSync(path.join(ROOT, 'content', '_home-faq.html'), 'utf8').trim();
 const FAQ_ITEMS = [
   ['How much does it cost to hire a limousine?', "The costs involved to hire a limo will vary depending on the vehicle, location, and pick up/drop off requirements. Most limousine hire companies will charge by the hour. At Show Limousines, all of our limousine hire services start at $399 per booking. For a more accurate quote, get in touch with our team and we'll send it over via email."],
   ["What's included when I book a limo?", 'For all transfers and events, we include a uniformed chauffeur, bottled water, and a luxurious modern vehicle. For weddings, we roll out the red carpet for the bride, the cars are laced with satin ribbon and sparkling wine. Each car is fitted with air conditioning, bluetooth, drink holders, party lights, and comfortable, luxurious seating.'],
@@ -546,6 +551,32 @@ function fleetGrid(heading, intro, vehicles, opts) {
 ${vehicles.map(fleetCard).join('\n')}
         </div>
 ${foot}
+      </div>
+    </section>`;
+}
+
+/* "Our Fleet" sliding carousel — shows ~3 cards at a time and slides through the rest
+   (the same .fleetcar component used in the service-page vehicle section; init by main.js). */
+const CAR_ARROW_L = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>';
+const CAR_ARROW_R = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>';
+function fleetCarousel(heading, intro, vehicles) {
+  const cards = vehicles.map(v => `              <article class="fleet-card">
+                <div class="fleet-card__media"><img class="fleet-card__img" src="/${v.img}" alt="${attr(v.name)}" loading="lazy" decoding="async"><span class="fleet-card__badge">${esc(v.badge)}</span></div>
+                <div class="fleet-card__body"><span class="fleet-card__brand">${esc(v.badge)}</span><span class="fleet-card__model">${esc(v.name)}</span><span class="fleet-card__capacity">Up to ${v.pax} passengers</span><div class="fleet-card__footer"><a href="${v.url}" class="btn-outline-sm">View Details</a></div></div>
+              </article>`).join('\n');
+  return `    <section class="fleet" aria-labelledby="ourFleetHead">
+      <div class="beam" aria-hidden="true"></div>
+      <div class="fleet__inner">
+        <div class="fleet__header reveal"><div><span class="label-bracket">Our Fleet</span><h2 class="fleet__heading" id="ourFleetHead">${esc(heading)}</h2></div><p class="fleet__intro">${esc(intro)}</p></div>
+        <div class="fleetcar" role="group" aria-roledescription="carousel" aria-label="Our fleet">
+          <div class="fleetcar__viewport">
+            <div class="fleetcar__track">
+${cards}
+            </div>
+          </div>
+          <button class="fleetcar__btn fleetcar__btn--prev" type="button" aria-label="Previous vehicles">${CAR_ARROW_L}</button>
+          <button class="fleetcar__btn fleetcar__btn--next" type="button" aria-label="Next vehicles">${CAR_ARROW_R}</button>
+        </div>
       </div>
     </section>`;
 }
@@ -820,14 +851,33 @@ ${cards}
     </section>`;
 }
 
-function weddingPackages() {
-  const PKGS = [
+/* Standard inclusions every package gets — appended only where not already present
+   (semantic match), so existing wording is left untouched and nothing is duplicated. */
+const PKG_STD = [
+  ['Uniformed Chauffeurs', /uniformed chauffeur/i],
+  ['Red carpet', /red carpet/i],
+  ['White satin ribbon on all cars', /satin ribbon/i],
+  ['Chilled bottled water', /bottled water/i],
+  ['2 bottles of sparkling wine', /sparkling wine/i],
+];
+function withStdInclusions(list) {
+  const have = list.join(' | ');
+  return list.concat(PKG_STD.filter(([, re]) => !re.test(have)).map(([txt]) => txt));
+}
+/* opts.noHummerStretch — drop the Hummer Stretch Limousine package (Wollongong).
+   opts.platinumImg — override the Platinum photo (Wollongong: white sedan, no Hummer photo). */
+function weddingPackages(opts) {
+  opts = opts || {};
+  let PKGS = [
     { title: 'Chrysler Limousine Package', badge: 'Chrysler', img: 'fleet-chrysler-gullwing-v2.jpg', alt: 'Chrysler Super Stretch Gullwing wedding limousine', list: ['Chrysler Super Stretch Gullwing seating up to 10 passengers', 'Uniformed chauffeur', 'Red carpet', 'White satin ribbon on the limousine', 'Chilled bottled water', '2 bottles of sparkling wine'] },
-    { title: 'Just Married Package', badge: 'Rolls Royce', img: 'fleet-rolls-royce-phantom-v2.jpg', alt: 'Rolls Royce Phantom luxury wedding sedan', list: ['Any sedan of your choice seating up to 4 passengers', 'Uniformed chauffeurs', 'White satin ribbon on each vehicle'] },
-    { title: 'Diamond Package', badge: 'Mercedes', img: 'fleet-mercedes-s-class-v2.jpg', alt: 'Mercedes S Class AMG luxury wedding sedan', list: ['2 x luxury sedans seating up to 4 passengers each', 'Getaway vehicle at night for bride and groom'] },
-    { title: 'Platinum Package', badge: 'Hummer', img: 'fleet-hummer-white-v2.jpg', alt: 'White Hummer stretch wedding limousine', list: ['1 x white Hummer stretch limousine seating up to 14 or 16 passengers', '1 x white sedan of your choice up to 4 passengers', 'White satin ribbon on all cars'] },
+    { title: 'Just Married Package', badge: 'Rolls Royce', img: 'fleet-rolls-royce-phantom-v2.jpg', alt: 'Rolls Royce Phantom luxury wedding sedan', list: ['1 limousine seating up to 10 passengers', '1 sedan of your choice seating up to 4 passengers', 'Uniformed chauffeurs', 'White satin ribbon on each vehicle'] },
+    { title: 'Diamond Package', badge: 'Mercedes', img: 'fleet-mercedes-s-class-v2.jpg', alt: 'Mercedes S Class AMG luxury wedding sedan', list: ['1 limousine seating up to 10 passengers', '1 Rolls Royce', '1 Mercedes sedan', 'Getaway vehicle at night for bride and groom'] },
+    { title: 'Platinum Package', badge: 'Hummer', img: opts.platinumImg || 'fleet-hummer-white-v2.jpg', alt: 'White Hummer stretch wedding limousine', list: ['1 x white Hummer stretch limousine seating up to 14 or 16 passengers', '1 x white sedan of your choice up to 4 passengers', 'White satin ribbon on all cars'] },
     { title: 'Hummer Stretch Limousine Package', badge: 'Hummer', img: 'fleet-hummer-green-v2.jpg', alt: 'Hummer stretch wedding limousine', list: ['Hummer Stretch Limousine seating up to 14 or 16 passengers'] },
   ];
+  if (opts.noHummerStretch) PKGS = PKGS.filter(p => p.title !== 'Hummer Stretch Limousine Package');
+  if (opts.platinumImg) { const pl = PKGS.find(p => p.title === 'Platinum Package'); if (pl) { pl.badge = 'Mercedes'; pl.alt = 'White Mercedes sedan wedding car'; } }
+  PKGS.forEach(p => { p.list = withStdInclusions(p.list); });
   const cards = PKGS.map(p => `          <article class="fleet-card reveal">
             <div class="fleet-card__media"><img class="fleet-card__img" src="/${p.img}" alt="${attr(p.alt)}" sizes="(max-width:640px) 100vw, (max-width:1024px) 50vw, 33vw" loading="lazy" decoding="async"><span class="fleet-card__badge">${esc(p.badge)}</span></div>
             <div class="fleet-card__body">
@@ -968,10 +1018,10 @@ function weddingSydneyPage(slug) {
 if (require.main !== module) {
   module.exports = {
     header, mobileNav, footer, subFooter, head, FOOT_SCRIPT, responsify,
-    quoteForm, faq, fleetGrid, fleetCard, googleBadge, mapSection,
+    quoteForm, faq, fleetGrid, fleetCarousel, fleetCard, googleBadge, mapSection,
     pageHero, bannerFor, proseSection, parseMd,
     howItWorks, whyChoose, whyChooseService, weddingPackages,
-    NAV, VEHICLES, VBY, SERVICE_FLEET, SERVICE_INFO, TESTIMONIALS,
+    NAV, VEHICLES, VBY, SERVICE_FLEET, SERVICE_INFO, TESTIMONIALS, HOME_TESTI, HOME_FAQ,
     PHONE, TEL, EMAIL, SITE, ARROW, RESTORE_SLUGS, pathFor,
   };
   return;
@@ -997,12 +1047,73 @@ categoryPage('rolls-royce-hire-sydney', 'Fleet', VEHICLES.filter(v => v.badge ==
 categoryPage('fleet', 'Fleet', VEHICLES);
 categoryPage('vehicles', 'Fleet', VEHICLES);
 
-// services hub
+// services hub — Show Limousines overview + photo Services showcase (Homepage .occasions
+// design) + the Home page's How It Works / Testimonials / FAQ.
+function servicesShowcase() {
+  // Tiles with `href` link to their own page (clickable); tiles without are display-only
+  // (occasions catered for that have no dedicated page). All photos face right.
+  const TILES = [
+    { name: 'Weddings', img: 'service-weddings.jpg', desc: 'Make your special day unforgettable.', href: '/wedding-limousine-sydney/' },
+    { name: 'Airport Transfers', img: 'service-airport.png', desc: 'Door to terminal, in total comfort.', href: '/airport-limo-transfers-sydney/' },
+    { name: 'Cruise Transfers', img: 'service-airport-cruise.jpg', desc: 'Straight to the pier, stress-free.', href: '/cruise-transfer-sydney/' },
+    { name: 'Birthday Limos', img: 'service-birthday.jpg', desc: 'Celebrate the milestone in style.', href: '/birthday-limousine-sydney/' },
+    { name: 'Concert Transfers', img: 'service-concert.jpg', desc: 'Arrive to the show like a star.', href: '/concert-limo-transfers-sydney/' },
+    { name: 'School Formal Limos', img: 'service-formals.jpg', desc: 'Arrive like royalty with your crew.', href: '/school-formal-limousine-hire-sydney/' },
+    { name: 'Corporate Transfers', img: 'service-corporate.jpg', desc: 'First impressions that matter.', href: '/corporate-transfers/' },
+    { name: 'Party Limos', img: 'service-partybus.jpg', desc: 'The whole crew, one big night.', href: '/party-limousine-hire-sydney/' },
+    { name: "Hen's Party Limos", img: 'service-hensbucks.jpg', desc: 'The big night out, sorted.', href: '/hens-party-limo-sydney/' },
+    { name: 'Engagements', img: 'service-engagements.jpg', desc: 'Pop the question in pure luxury.' },
+    { name: 'Anniversaries', img: 'service-anniversaries.jpg', desc: 'Celebrate the years in style.' },
+    { name: 'Red Carpet VIP', img: 'service-redcarpet.jpg', desc: 'The full A-list arrival treatment.' },
+  ];
+  const cards = TILES.map((t, i) => {
+    const idx = String(i + 1).padStart(2, '0');
+    const inner = `<div class="occ-card__media" style="--card-img:url('/${t.img}')"><span class="occ-card__index">${idx}</span></div>
+          <h3 class="occ-card__name">${esc(t.name)}</h3>
+          <p class="occ-card__desc">${esc(t.desc)}</p>`;
+    return t.href
+      ? `        <a href="${t.href}" class="occ-card reveal" aria-label="${attr(t.name)} — view service">
+          ${inner}
+          <span class="occ-card__more">Learn more <span aria-hidden="true">→</span></span>
+        </a>`
+      : `        <div class="occ-card occ-card--static reveal" aria-label="${attr(t.name)}">
+          ${inner}
+          <span class="occ-card__more occ-card__more--static">Available on request</span>
+        </div>`;
+  }).join('\n');
+  return `    <section class="occasions" id="services" aria-labelledby="svcShowcaseHeading">
+      <div class="beam beam--reverse" aria-hidden="true"></div>
+      <div class="occasions__inner">
+        <div class="occasions__header reveal">
+          <div>
+            <span class="label-bracket">Services</span>
+            <h2 class="occasions__heading" id="svcShowcaseHeading">Every occasion, covered.</h2>
+          </div>
+          <p class="occasions__intro">From weddings and airport runs to birthdays, formals and red-carpet VIP arrivals, Show Limousines caters for every occasion across Sydney &amp; Wollongong.</p>
+        </div>
+        <div class="occasions__grid">
+${cards}
+        </div>
+      </div>
+    </section>`;
+}
 (function () {
-  const { fm, lines } = parseMd('services');
+  const { fm } = parseMd('services');
+  const showLimo = `    <section class="prose">
+      <div class="beam" aria-hidden="true"></div>
+      <div class="prose__inner reveal">
+        <span class="label-bracket">Show Limousines</span>
+          <h2 class="prose__h2">Luxury chauffeured transport for every occasion</h2>
+          <p>From weddings and airport runs to birthdays, school formals, corporate events and milestone celebrations, Show Limousines provides chauffeured luxury cars and stretch limousines across Sydney and Wollongong. Whatever you're celebrating and wherever you need to be, our uniformed chauffeurs and immaculate fleet get you there in style — on time, every time.</p>
+      </div>
+    </section>`;
   emit('services', [head(fm, 'services'), header('/services/'), mobileNav('/services/'), '  <main>',
     pageHero('Services', 'Limousine services for every occasion.', fm.description, bannerFor('services')),
-    proseSection('Show Limousines', lines, { dropFirstH1: true }),
+    showLimo,
+    servicesShowcase(),
+    howItWorks(),
+    HOME_TESTI,
+    HOME_FAQ,
     quoteForm('Get a quick quote.'), '  </main>', footer(), FOOT_SCRIPT]);
 })();
 

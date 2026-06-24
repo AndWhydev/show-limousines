@@ -19,9 +19,10 @@ fs.mkdirSync(OUT, { recursive: true });
 // larger feature-media usage. Any width above a source's own width is dropped.
 const WIDTHS = [400, 640, 960, 1280, 1600];
 
-// Source set: the real high-res fleet photos (1600x893). banner-service-*.jpg
-// are intentionally excluded — they are not referenced anywhere on the site.
-const SOURCES = fs.readdirSync(ROOT).filter((f) => /^fleet-.*-v2\.jpg$/.test(f));
+// Source set: the real high-res fleet photos (1600x893) + the wedding slideshow
+// photos (2528x1696 PNGs, used by the restored wvshow carousel on the wedding pages).
+// banner-service-*.jpg are intentionally excluded — not referenced anywhere.
+const SOURCES = fs.readdirSync(ROOT).filter((f) => /^fleet-.*-v2\.jpg$/.test(f) || /^wedding-.*\.png$/.test(f));
 
 (async () => {
   const manifest = {};

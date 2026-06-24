@@ -130,5 +130,77 @@
       1280,
       1600
     ]
+  },
+  "wedding-chrysler-black.png": {
+    "base": "wedding-chrysler-black.png",
+    "w": 2528,
+    "h": 1696,
+    "widths": [
+      400,
+      640,
+      960,
+      1280,
+      1600
+    ]
+  },
+  "wedding-chrysler-gullwing.png": {
+    "base": "wedding-chrysler-gullwing.png",
+    "w": 2528,
+    "h": 1696,
+    "widths": [
+      400,
+      640,
+      960,
+      1280,
+      1600
+    ]
+  },
+  "wedding-chrysler-white.png": {
+    "base": "wedding-chrysler-white.png",
+    "w": 2528,
+    "h": 1696,
+    "widths": [
+      400,
+      640,
+      960,
+      1280,
+      1600
+    ]
+  },
+  "wedding-hummer-white.png": {
+    "base": "wedding-hummer-white.png",
+    "w": 2528,
+    "h": 1696,
+    "widths": [
+      400,
+      640,
+      960,
+      1280,
+      1600
+    ]
+  },
+  "wedding-mercedes-s-class.png": {
+    "base": "wedding-mercedes-s-class.png",
+    "w": 2528,
+    "h": 1696,
+    "widths": [
+      400,
+      640,
+      960,
+      1280,
+      1600
+    ]
+  },
+  "wedding-rolls-royce.png": {
+    "base": "wedding-rolls-royce.png",
+    "w": 2528,
+    "h": 1696,
+    "widths": [
+      400,
+      640,
+      960,
+      1280,
+      1600
+    ]
   }
 }
