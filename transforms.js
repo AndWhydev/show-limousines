@@ -112,6 +112,47 @@ function apply(slug, main, C) {
     if (C.howItWorks) main = main.replace(/<section class="svc-steps"[\s\S]*?<\/section>/, C.howItWorks());
   }
 
+  /* ---------- wedding pages: re-integrate today's bespoke sections ---------- */
+  if (WEDDING_SLUGS.has(slug)) main = applyWedding(slug, main, C);
+
+  return main;
+}
+
+/* --- wedding re-integration (see approved merge plan) --- */
+const WEDDING_SLUGS = new Set([
+  'wedding-limousine-sydney', 'wedding-cars-limousines', 'wedding-limousine-hire-wollongong',
+]);
+const PKG_PAGES = new Set(['wedding-limousine-sydney', 'wedding-limousine-hire-wollongong']);
+const SYDNEY = 'wedding-limousine-sydney';
+const SYDNEY_SUB = 'Luxury wedding cars, stretch limousines and professional chauffeurs for your special day.';
+
+/* "165+ 5-Star Google Reviews | 10+ Years | 365 Days a year" trust bar under the hero,
+   reusing the homepage hero stat typography (.hero__stat-num/.hero__stat-label/.hero__stat-sep). */
+function statsStrip() {
+  const stat = (n, l) => `<div class="hero__stat"><span class="hero__stat-num">${n}</span><span class="hero__stat-label">${l}</span></div>`;
+  const sep = '<span class="hero__stat-sep" aria-hidden="true"></span>';
+  return `    <section class="wstat" aria-label="Show Limousines at a glance">
+      <div class="wstat__inner reveal">
+        ${stat('165+', '5-Star Google Reviews')}
+        ${sep}
+        ${stat('10+', 'Years')}
+        ${sep}
+        ${stat('365', 'Days a year')}
+      </div>
+    </section>`;
+}
+
+function applyWedding(slug, main, C) {
+  // Sydney only: today's exact hero subheading (others keep OLD)
+  if (slug === SYDNEY) main = main.replace(/(class="page-hero__sub">)[^<]*/, `$1${SYDNEY_SUB}`);
+  // Sydney + Wollongong: OLD packages-as-text prose -> today's photographed cards (Gullwing rule)
+  if (PKG_PAGES.has(slug)) main = main.replace(/<section class="prose">[\s\S]*?<\/section>/, C.weddingPackages());
+  // All 3: stats strip + why-couples strip, directly under the hero (in that order)
+  main = main.replace(/(<section class="page-hero[\s\S]*?<\/section>)/, `$1\n${statsStrip()}\n${C.whyChoose()}`);
+  // All 3: How It Works, placed after the testimonials section
+  main = main.replace(/(<section class="testi"[\s\S]*?<\/section>)/, `$1\n${C.howItWorks()}`);
+  // Unify testimonials label to 165+ on wedding pages (overrides keep-item #5 here only)
+  main = main.replace(/(<div class="testi__trust"><span>Trusted by<\/span>)160\+ Five-Star reviews/, '$1165+ Five-Star reviews');
   return main;
 }
 

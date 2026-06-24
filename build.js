@@ -970,7 +970,7 @@ if (require.main !== module) {
     header, mobileNav, footer, subFooter, head, FOOT_SCRIPT, responsify,
     quoteForm, faq, fleetGrid, fleetCard, googleBadge, mapSection,
     pageHero, bannerFor, proseSection, parseMd,
-    howItWorks, whyChooseService, weddingPackages,
+    howItWorks, whyChoose, whyChooseService, weddingPackages,
     NAV, VEHICLES, VBY, SERVICE_FLEET, SERVICE_INFO, TESTIMONIALS,
     PHONE, TEL, EMAIL, SITE, ARROW, RESTORE_SLUGS, pathFor,
   };

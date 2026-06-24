@@ -3272,3 +3272,9 @@ picture{display:contents}
   .sub-foot__inner { grid-template-columns: 1fr; gap: 32px; }
   .sub-foot__list { grid-template-columns: 1fr; }
 }
+
+/* Wedding pages: under-hero stats strip (reuses .hero__stat typography) */
+.wstat { background: var(--color-bg); border-bottom: 1px solid var(--color-border); padding: 30px 28px; }
+.wstat__inner { max-width: 1320px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: clamp(22px, 5vw, 64px); flex-wrap: wrap; }
+.wstat .hero__stat { align-items: center; text-align: center; }
+@media (max-width: 560px) { .wstat .hero__stat-sep { display: none; } .wstat__inner { gap: 24px; } }
