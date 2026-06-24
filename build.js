@@ -229,14 +229,6 @@ ${items}
   </div>`;
 }
 
-/* When this file is required by a tooling script (e.g. nav-update.js) rather
-   than run directly, expose the shared nav generators and stop here — do NOT
-   run the full site build (which would also rewrite the home page form, etc.). */
-if (require.main !== module) {
-  module.exports = { header, mobileNav, NAV, VEHICLES };
-  return;
-}
-
 const FOOT_LINKS = [
   ['Home', '/'], ['Gallery', '/gallery/'], ['Contact', '/contact/'], ['About Us', '/about-us/'],
   ['Our Vehicles', '/vehicles/'], ['Limo Hire', '/'], ['Hummer Hire', '/hummer-limo-hire-sydney/'], ['Sitemap', '/sitemap/'],
@@ -649,7 +641,26 @@ function pathFor(slug) {
   return '/' + slug + '/';
 }
 const written = [];
+/* Pages restored to their OLD (5ca3cb4) hand-built layout and EJECTED from this
+   generator — their static index.html is owned by restore.js. emit() skips them so
+   `node build.js` can never re-flatten them. Shared chrome on them is kept in sync by
+   stamp-chrome.js, which uses this same module's header()/footer()/subFooter(). */
+const RESTORE_SLUGS = new Set([
+  'wedding-cars-limousines', 'wedding-limousine-sydney', 'wedding-limousine-hire-wollongong',
+  'airport-limo-transfers-sydney', 'cruise-transfer-sydney', 'birthday-limousine-sydney',
+  'concert-limo-transfers-sydney', 'school-formal-limousine-hire-sydney', 'corporate-transfers',
+  'party-limousine-hire-sydney', 'hens-party-limo-sydney',
+  'fleet', 'vehicles', 'chrysler-limo-hire-sydney', 'hummer-limo-hire-sydney', 'rolls-royce-hire-sydney',
+  ...VEHICLES.map(v => v.slug),
+  'about-us', 'gallery', 'blog', 'reviews', 'term-conditions',
+  'limo-hire-bankstown', 'limo-hire-campbelltown', 'limo-hire-eastern-suburbs', 'limo-hire-inner-west',
+  'limo-hire-liverpool', 'limo-hire-marrickville', 'limo-hire-northern-beaches', 'limo-hire-parramatta',
+  'limo-hire-penrith', 'limo-hire-sutherland-shire', 'limo-hire-wollongong',
+  'contact',
+]);
+
 function emit(slug, parts) {
+  if (RESTORE_SLUGS.has(slug)) return; // ejected — owned by restore.js (static OLD layout)
   const p = pathFor(slug);
   const dir = p === '/' ? ROOT : path.join(ROOT, p.replace(/^\/|\/$/g, ''));
   fs.mkdirSync(dir, { recursive: true });
@@ -948,6 +959,22 @@ function weddingSydneyPage(slug) {
     quoteForm('Get a quick quote.', 'Leave your wedding details below and we will get back to you as soon as possible.'),
     '  </main>', footer(), FOOT_SCRIPT,
   ]);
+}
+
+/* When required by a tooling script (restore.js / stamp-chrome.js / nav-update.js)
+   rather than run directly, expose the shared generators and stop here — do NOT
+   run the full site build. By this point every chrome + section builder and its
+   constants are defined, so importers get a single source of truth for chrome. */
+if (require.main !== module) {
+  module.exports = {
+    header, mobileNav, footer, subFooter, head, FOOT_SCRIPT, responsify,
+    quoteForm, faq, fleetGrid, fleetCard, googleBadge, mapSection,
+    pageHero, bannerFor, proseSection, parseMd,
+    howItWorks, whyChooseService, weddingPackages,
+    NAV, VEHICLES, VBY, SERVICE_FLEET, SERVICE_INFO, TESTIMONIALS,
+    PHONE, TEL, EMAIL, SITE, ARROW, RESTORE_SLUGS, pathFor,
+  };
+  return;
 }
 
 /* ----- Build everything ----- */
