@@ -690,18 +690,28 @@ const RESTORE_SLUGS = new Set([
   'contact',
 ]);
 
-/* PINNED — the Fleet pages, frozen verbatim at commit 8bc9c70 (2026-06-21) by request.
-   They stay in RESTORE_SLUGS so emit() below still skips them (build.js never regenerates
-   them), and restore.js + stamp-chrome.js additionally skip these, so NOTHING in the build
-   pipeline rewrites them. Their index.html on disk is the committed 06-21 version, period.
-   To bring a fleet page back under the generator, remove its slug from PINNED. */
+/* PINNED — pages frozen verbatim at commit 8bc9c70 (2026-06-21) by request. NOTHING in the
+   build pipeline rewrites them: emit() skips PINNED (so build.js never regenerates them, incl.
+   the generator-built blog posts), and restore.js + stamp-chrome.js also skip PINNED. Their
+   index.html on disk is the committed 06-21 version, period. To bring a page back under the
+   generator, remove its slug from PINNED. */
 const PINNED = new Set([
+  // Fleet pages (frozen earlier)
   'fleet', 'vehicles', 'chrysler-limo-hire-sydney', 'hummer-limo-hire-sydney', 'rolls-royce-hire-sydney',
   ...VEHICLES.map(v => v.slug),
+  // About Us group (static + the 4 generator-built blog posts)
+  'about-us', 'gallery', 'blog', 'reviews', 'term-conditions',
+  'blog-dont-get-too-drunk', 'blog-limousine-hire-costs-sydney', 'blog-dos-and-donts', 'blog-wedding-limo-checklist',
+  // Locations group
+  'limo-hire-bankstown', 'limo-hire-campbelltown', 'limo-hire-eastern-suburbs', 'limo-hire-inner-west',
+  'limo-hire-liverpool', 'limo-hire-marrickville', 'limo-hire-northern-beaches', 'limo-hire-parramatta',
+  'limo-hire-penrith', 'limo-hire-sutherland-shire', 'limo-hire-wollongong',
+  // Contact
+  'contact',
 ]);
 
 function emit(slug, parts) {
-  if (RESTORE_SLUGS.has(slug)) return; // ejected — owned by restore.js (static OLD layout)
+  if (RESTORE_SLUGS.has(slug) || PINNED.has(slug)) return; // frozen/ejected — build.js must not write these
   const p = pathFor(slug);
   const dir = p === '/' ? ROOT : path.join(ROOT, p.replace(/^\/|\/$/g, ''));
   fs.mkdirSync(dir, { recursive: true });
