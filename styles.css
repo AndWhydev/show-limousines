@@ -2270,6 +2270,23 @@
       .foot__contact-info { justify-self: start; }
       .foot__top { grid-template-columns: 1fr; gap: 32px; align-items: start; }
       .foot__grid { grid-template-columns: repeat(2, 1fr); gap: 36px; }
+      /* Mobile/tablet only: the "Any Event" (services) and "Locations" footer
+         lists split into two balanced columns instead of one tall column.
+         Living inside this max-width:1024px block means the desktop footer is
+         untouched. Targets the 2nd and 3rd .foot-col (Any Event, Locations);
+         the 1st (Links) stays a single column. Order reads down the left
+         column then the right (column-fill: balance is the default). */
+      .foot-col:nth-child(2) ul,
+      .foot-col:nth-child(3) ul {
+        display: block;
+        columns: 2;
+        column-gap: 24px;
+      }
+      .foot-col:nth-child(2) li,
+      .foot-col:nth-child(3) li {
+        margin-bottom: 10px;
+        break-inside: avoid;
+      }
     }
     @media (max-width: 520px) {
       .foot { padding: 64px 20px 32px; }
