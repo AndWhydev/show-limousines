@@ -3320,47 +3320,6 @@ picture{display:contents}
 /* Service-page fleet section: prominent "View Fleet" button (replaces the subtle link) */
 .fleet__cta { display: flex; justify-content: center; margin-top: 48px; }
 
-/* Sub-footer link block — two columns (Services + Locations), site-wide */
-.sub-foot {
-  background: #08080a;
-  border-top: 1px solid var(--color-border);
-  padding: 48px 28px;
-}
-.sub-foot__inner {
-  max-width: 1320px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 36px 56px;
-}
-.sub-foot__title {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--color-accent);
-  margin: 0 0 18px;
-}
-.sub-foot__list {
-  list-style: none; margin: 0; padding: 0;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 11px 24px;
-}
-.sub-foot__list a {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 14px;
-  color: rgba(240, 240, 240, 0.62);
-  transition: color 200ms ease;
-}
-.sub-foot__list a:hover { color: #fff; }
-@media (max-width: 640px) {
-  .sub-foot { padding: 40px 20px; }
-  .sub-foot__inner { grid-template-columns: 1fr; gap: 32px; }
-  .sub-foot__list { grid-template-columns: 1fr; }
-}
-
 /* Wedding pages: under-hero stats strip (reuses .hero__stat typography) */
 .wstat { background: var(--color-bg); border-bottom: 1px solid var(--color-border); padding: 30px 28px; }
 .wstat__inner { max-width: 1320px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: clamp(22px, 5vw, 64px); flex-wrap: wrap; }

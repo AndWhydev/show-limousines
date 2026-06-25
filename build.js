@@ -283,8 +283,7 @@ ${footCol('Locations', FOOT_LOC)}
           <div class="foot__credit">Powered by <a href="https://awlabs.com.au" target="_blank" rel="noopener noreferrer">All Webbed Labs</a></div>
         </div>
       </div>
-    </footer>
-${subFooter()}`;
+    </footer>`;
 }
 
 /* ---------------- Sub-footer link block (site-wide, identical on every page) ----
