@@ -864,6 +864,21 @@
       transition: transform 0.5s ease;
     }
     .occ-card:hover .occ-card__media::before { transform: scale(1.05); }
+    /* Homepage service cards use a real responsive <img> (srcset) instead of
+       the CSS background, so they stay sharp on desktop/retina. Same cover
+       fill, position and hover-zoom as ::before. Other pages still use the
+       ::before background above, so they are unaffected. */
+    .occ-card__img {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 0.5s ease;
+    }
+    .occ-card:hover .occ-card__img { transform: scale(1.05); }
     .occ-card__media::after {
       content: '';
       position: absolute;
