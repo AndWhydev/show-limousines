@@ -681,15 +681,22 @@
        Appended after the earlier mobile rules so these win by source
        order. Desktop (>768px) is intentionally untouched. */
     @media (max-width: 768px) {
-      /* Lift the copy to the top; the car is anchored low in the video. */
-      .hero { align-items: flex-start; }
-      .hero__inner { align-content: start; }
+      /* Fill the hero height so the copy stays at the top while the Trust
+         Bar is pushed to the bottom — i.e. below the car, which is a
+         lower-anchored background video layer (the car itself is untouched). */
+      .hero { align-items: stretch; }
+      .hero__inner { display: flex; flex-direction: column; }
+      .hero__text {
+        max-width: none; margin: 0 auto; text-align: center;
+        flex: 1 1 auto; display: flex; flex-direction: column;
+      }
 
       /* Centre the content. */
-      .hero__text { max-width: none; margin: 0 auto; text-align: center; }
       .hero__label { justify-content: center; }
       .hero__ctas { justify-content: center; }
-      .hero__stats { justify-content: center; }
+      /* Trust Bar drops below the car: pushed to the bottom of the hero,
+         keeping the order CTAs → car → Trust Bar on mobile. */
+      .hero__stats { justify-content: center; margin-top: auto; }
 
       /* Hide the SEO H1 visually but keep it in the DOM for crawlers,
          so the visible stack is exactly the three requested lines. */
