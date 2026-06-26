@@ -2448,6 +2448,30 @@
 .spec-chip__ic { width: 15px; height: 15px; flex-shrink: 0; color: var(--color-accent); }
 @media (max-width: 480px) { .spec-chips { gap: 8px; } .spec-chip { padding: 7px 13px 7px 11px; font-size: 12.5px; } }
 
+/* Localized services grid — per-location "Our Services in {Suburb}" section.
+   Responsive card grid; each card links to the matching Sydney-wide service page. */
+.loc-services { padding: 16px 28px 96px; position: relative; }
+.loc-services__inner { max-width: 1320px; margin: 0 auto; }
+.loc-services__inner > .label-bracket { margin-bottom: 12px; }
+.loc-services__heading { font-family: 'Bebas Neue', sans-serif; font-size: clamp(28px, 4.4vw, 46px); letter-spacing: 0.01em; color: #fff; margin: 0 0 30px; line-height: 1.04; }
+.loc-services__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(258px, 1fr)); gap: 18px; }
+.loc-card {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 11px;
+  padding: 26px 24px; border-radius: 16px;
+  background: var(--color-bg-raised); border: 1px solid var(--color-border);
+  text-decoration: none; color: inherit;
+  transition: border-color 0.25s ease, transform 0.25s ease, background 0.25s ease;
+}
+.loc-card:hover { border-color: rgba(var(--accent-rgb), 0.45); background: var(--color-surface); transform: translateY(-3px); }
+.loc-card__ic { display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 11px; background: rgba(var(--accent-rgb), 0.1); border: 1px solid rgba(var(--accent-rgb), 0.22); }
+.loc-card__ic svg { width: 20px; height: 20px; color: var(--color-accent); }
+.loc-card__title { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.02em; line-height: 1.08; color: #fff; margin: 3px 0 0; }
+.loc-card__desc { font-family: 'DM Sans', sans-serif; font-size: 14.5px; line-height: 1.6; color: rgba(255,255,255,0.6); margin: 0; }
+.loc-card__more { margin-top: auto; display: inline-flex; align-items: center; gap: 7px; padding-top: 4px; font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-accent); }
+.loc-card__more svg { width: 13px; height: 13px; transition: transform 0.25s ease; }
+.loc-card:hover .loc-card__more svg { transform: translate(2px, -2px); }
+@media (max-width: 560px) { .loc-services { padding: 6px 20px 72px; } .loc-services__grid { grid-template-columns: 1fr; gap: 14px; } .loc-card { padding: 22px 20px; } }
+
 /* Gallery link strip (About page) */
 .gallery-cta { padding: 70px 28px; text-align: center; border-top: 1px solid var(--color-border); }
 .gallery-cta__inner { max-width: 700px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 18px; }
