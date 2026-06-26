@@ -318,6 +318,10 @@
     }
     .nav-mobile a:hover { color: var(--color-accent); }
     .nav-mobile .nav-mobile__cta { margin-top: 28px; }
+    /* Mobile-menu footer CTA only: arrow removed (in markup) and label centred.
+       Scoped to this instance — shared .btn-pill and every other button keep
+       their arrows and padding. */
+    .nav-mobile__cta .btn-pill { justify-content: center; text-align: center; }
 
     @media (max-width: 1240px) {
       .nav-pills { display: none; }
