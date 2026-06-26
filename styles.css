@@ -302,7 +302,11 @@
       overflow-y: auto;
     }
     .nav-mobile.is-open { transform: translateX(0); }
-    .nav-mobile a {
+    /* Non-link group labels (no landing page, so rendered as <span>: Locations,
+       Mercedes, Volkswagen) inherit the same Bebas Neue label typography as their
+       <a> siblings — keeps every mobile menu label consistent. */
+    .nav-mobile a,
+    .nav-mobile__grouptop > span {
       display: block;
       font-family: 'Bebas Neue', sans-serif;
       font-size: 30px;
@@ -2579,7 +2583,8 @@
 /* ---- Mobile submenu groups ---- */
 .nav-mobile__group { border-bottom: 1px solid var(--color-border); }
 .nav-mobile__grouptop { display: flex; align-items: center; justify-content: space-between; }
-.nav-mobile__grouptop > a {
+.nav-mobile__grouptop > a,
+.nav-mobile__grouptop > span {
   flex: 1;
   border-bottom: none;
 }
