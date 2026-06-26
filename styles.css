@@ -343,35 +343,29 @@
       }
       /* Row 2: Call + Get a Quote side by side, hamburger next to them */
       .nav-right { flex: 1 0 100%; gap: 10px; }
-      /* Call button restyled to match the gold "Get a Quote" pill (mobile only).
-         Mirrors .btn-pill--gold's fill/text/shadow/hover; the phone icon keeps its
-         glyph but gains the same circular treatment as the Get a Quote arrow. */
+      /* Call button: original COLOURS restored (white text/icon, faint dark fill,
+         subtle gold 1px outline, no glow) while the SIZE stays uniform with the
+         gold "Get a Quote" pill beside it — same flex, font-size, gap, pill radius
+         (from base .btn-pill) and 32px icon box. Vertical padding is 10px (not 11px)
+         to offset the restored 1px border under border-box, so both pills render the
+         same height. Mobile only — desktop header and Get a Quote are untouched.
+         Hover falls back to base .btn-pill:hover (opacity), the original behaviour. */
       .nav-call {
         display: inline-flex;
         flex: 1;
         justify-content: center;
-        padding: 11px 16px;
+        padding: 10px 16px;
         gap: 12px;
         font-size: 12.5px;
-        color: #1a1206;
-        background: var(--gold-gradient);
-        background-size: 140% 140%;
-        border: none;
-        box-shadow: 0 6px 22px rgba(var(--accent-rgb), 0.28);
-        transition: background-position 600ms ease, box-shadow 300ms ease, transform 300ms ease;
-      }
-      .nav-call:hover {
-        opacity: 1;
-        background-position: 100% 100%;
-        box-shadow: 0 8px 30px rgba(var(--accent-rgb), 0.45);
-        transform: translateY(-1px);
+        color: #fff;
+        background: rgba(var(--accent-rgb), 0.08);
+        border: 1px solid rgba(var(--accent-rgb), 0.55);
       }
       .nav-call svg {
         width: 32px; height: 32px;
         padding: 9px;
         border-radius: 50%;
-        background: rgba(0, 0, 0, 0.18);
-        color: #1a1206;
+        color: #fff;
         box-sizing: border-box;
         flex-shrink: 0;
       }
