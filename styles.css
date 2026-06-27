@@ -229,10 +229,10 @@
     .nav-brand__mark svg { width: 100%; height: 100%; }
     .nav-brand__name { color: #fff; }
     .nav-brand__name span { color: var(--color-accent); }
-    /* The logo is a wide wordmark lockup (S monogram + SHOW LIMOUSINES + tagline),
-       cropped to its content in the SVG so it fills the header like the old
-       wordmark did — same footprint (~175x50). */
-    .nav-brand__logo { height: 50px; width: auto; display: block; }
+    /* The logo is a wide lockup (S monogram + SHOW LIMOUSINES + tagline baked in),
+       ~5.4:1, cropped to its content in the SVG. Height drives the size; width
+       auto-scales to preserve aspect ratio (~48px tall ≈ 260px wide). */
+    .nav-brand__logo { height: 48px; width: auto; display: block; }
 
     .nav-pills {
       display: inline-flex;
@@ -339,7 +339,7 @@
       .nav-inner { flex-wrap: wrap; gap: 12px 10px; padding: 12px 18px; }
       /* Row 1: logo lockup + one-line tagline */
       .nav-brand { flex: 1 0 100%; flex-direction: column; align-items: flex-start; gap: 5px; }
-      .nav-brand__logo { height: 40px; }
+      .nav-brand__logo { height: 42px; max-width: 100%; }
       .nav-brand__tag {
         display: block;
         font-family: 'DM Sans', sans-serif;
@@ -2175,7 +2175,7 @@
     .foot__brand-mark { width: 36px; height: 36px; color: var(--color-accent); }
     .foot__brand-mark svg { width: 100%; height: 100%; }
     .foot__brand span { color: var(--color-accent); }
-    .foot__brand-logo { height: 56px; width: auto; display: block; }
+    .foot__brand-logo { height: 52px; width: auto; max-width: 100%; display: block; }
     .foot__tag {
       font-family: 'DM Sans', sans-serif;
       font-size: 14px;
