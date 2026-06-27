@@ -337,8 +337,10 @@
     /* ---- Mobile two-row header (Commit 7) — phones only; PC/tablet unchanged ---- */
     @media (max-width: 640px) {
       .nav-inner { flex-wrap: wrap; gap: 12px 10px; padding: 12px 18px; }
-      /* Row 1: logo lockup + one-line tagline */
-      .nav-brand { flex: 1 0 100%; flex-direction: column; align-items: flex-start; gap: 5px; }
+      /* Row 1: logo lockup on its own full-width row — centred so it doesn't hug
+         the left edge (logo sits on its own row, so this can't crowd the row-2
+         Call / Get a Quote / hamburger buttons). Mobile only; desktop unchanged. */
+      .nav-brand { flex: 1 0 100%; flex-direction: column; align-items: center; gap: 5px; }
       .nav-brand__logo { height: 42px; max-width: 100%; }
       .nav-brand__tag {
         display: block;
