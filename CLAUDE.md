@@ -53,7 +53,7 @@ The full site is complete with these sections:
 2. Hero — Three.js 3D car, GSAP scroll-scrub, "Arrive in Style" heading, 3 CTAs
 3. Trust Strip — 4 columns: Google Rating, Serving Sydney, Red Carpet, Available 365 Days
 4. Services Grid — 8 cards, dark background, all link to #quote
-5. About — company description, Google review badge (5.0 stars, 160+ reviews)
+5. About — company description, Google review badge (5.0 stars, 165+ reviews)
 6. Fleet — 11 vehicles in single grid with real client photos
 7. How It Works — 4 steps
 8. Quote Form — full booking form, mailto:info@showlimousines.com.au
