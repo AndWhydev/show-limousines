@@ -84,7 +84,7 @@ function apply(slug, main, C) {
   /* ---------- universal keep-items (any page that has the section) ---------- */
   // K5 testimonials label
   main = main.replace(/(<div class="testi__trust"><span>Trusted by<\/span>)160\+ Sydney clients/g,
-    '$1160+ Five-Star reviews');
+    '$1165+ Five-Star reviews');
   // K4 quote field rename
   main = main.replace(/>Additional Comments</g, '>Additional Details<');
   // K7 add the wedding-cars FAQ (keep page-specific items; insert as first) —
@@ -213,7 +213,7 @@ function applyWedding(slug, main, C) {
   // All 3: How It Works, placed after the testimonials section
   main = main.replace(/(<section class="testi"[\s\S]*?<\/section>)/, `$1\n${C.howItWorks()}`);
   // Unify testimonials label to 165+ on wedding pages (overrides keep-item #5 here only)
-  main = main.replace(/(<div class="testi__trust"><span>Trusted by<\/span>)160\+ Five-Star reviews/, '$1165+ Five-Star reviews');
+  main = main.replace(/(<div class="testi__trust"><span>Trusted by<\/span>)16[05]\+ Five-Star reviews/, '$1165+ Five-Star reviews');
   return main;
 }
 
