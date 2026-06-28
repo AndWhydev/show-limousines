@@ -2512,17 +2512,16 @@
   -webkit-mask-image: none;
   mask-image: none;
 }
-/* Readability over a photographic scene: a top-weighted dark gradient (text is
-   anchored near the top) that fades to clear through the middle so the scene
-   shows, with a gentle floor — subtle, never a black box. Keeps the site-wide
-   --edge-fade so the band still blends into the page like every other banner. */
+/* Readability over a photographic scene: a SINGLE soft pool of shade behind the
+   top-centred headline/subheading only — a radial gradient anchored at top-centre
+   that fades fully clear toward the sides and through the middle/bottom. No
+   --edge-fade and no bottom floor, so the photo reaches the left/right/top edges
+   and the lower area at full brightness with no vignette. */
 .page-hero.page-hero--scene::after {
   background:
-    var(--edge-fade),
-    linear-gradient(180deg,
-      rgba(10, 10, 12, 0.62) 0%, rgba(10, 10, 12, 0.30) 34%,
-      rgba(10, 10, 12, 0.0) 56%, rgba(10, 10, 12, 0.0) 76%,
-      rgba(10, 10, 12, 0.38) 100%);
+    radial-gradient(ellipse 78% 58% at 50% 0%,
+      rgba(10, 10, 12, 0.60) 0%, rgba(10, 10, 12, 0.34) 38%,
+      rgba(10, 10, 12, 0.0) 72%);
 }
 
 /* Home CTA band */
