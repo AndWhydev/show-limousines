@@ -98,6 +98,11 @@ function apply(slug, main, C) {
   /* ---------- service pages: keep-item How It Works + today's work ---------- */
   if (SERVICE_SLUGS.has(slug)) {
     const info = (C.SERVICE_INFO || {})[slug] || {};
+    // today: full-bleed scene hero — the service photo IS the background (adds the
+    // page-hero--scene modifier; CSS makes it cover the whole band, no black box).
+    if (!/page-hero--scene/.test(main)) {
+      main = main.replace('class="page-hero page-hero--toptext"', 'class="page-hero page-hero--toptext page-hero--scene"');
+    }
     // today: rename svc-why heading -> "Why Choose Our <Service> Service"
     if (info.why) main = main.replace('Why Choose Show Limousines', info.why);
     // today: exact hero subheading (airport / cruise only)

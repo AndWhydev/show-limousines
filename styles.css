@@ -2359,9 +2359,18 @@
   justify-content: center;
   padding: 40px 24px;
   text-align: center;
-  border-bottom: 1px solid var(--color-border);
+  /* No border/strip on the banner — the edge-fade overlay (below) dissolves the
+     image's four edges straight into the page background, so there is no box. */
   background: var(--color-bg);
   overflow: hidden;
+  /* Reusable four-edge fade: opaque page-bg exactly at each edge ramping to fully
+     transparent a short way in, so all four edges of the banner dissolve into the
+     page. Uses rgba(10,10,12,0) (bg colour at 0 alpha, NOT `transparent`) to avoid
+     a grey/black tinge from premultiplied interpolation. Painted as an OVERLAY on
+     ::after — it changes no image geometry (size/position/aspect untouched). */
+  --edge-fade:
+    linear-gradient(to right,  var(--color-bg) 0, rgba(10, 10, 12, 0) 7%, rgba(10, 10, 12, 0) 93%, var(--color-bg) 100%),
+    linear-gradient(to bottom, var(--color-bg) 0, rgba(10, 10, 12, 0) 9%, rgba(10, 10, 12, 0) 91%, var(--color-bg) 100%);
 }
 /* Single full-bleed banner image — fills the whole header, no gaps, no duplicate */
 .page-hero::before {
@@ -2374,13 +2383,16 @@
   background-position: center;
   background-repeat: no-repeat;
 }
-/* Subtle overlay so the centered title stays readable over the car */
+/* Subtle overlay so the centered title stays readable over the car, PLUS the
+   edge-fade frame on top so the banner's four edges blend into the page (no box). */
 .page-hero::after {
   content: '';
   position: absolute;
   inset: 0;
   z-index: 1;
+  pointer-events: none;
   background:
+    var(--edge-fade),
     radial-gradient(ellipse 78% 72% at 50% 50%, transparent 0%, rgba(10, 10, 12, 0.30) 100%),
     linear-gradient(180deg, rgba(10, 10, 12, 0.52) 0%, rgba(10, 10, 12, 0.22) 42%, rgba(10, 10, 12, 0.46) 100%);
 }
@@ -2423,6 +2435,7 @@
 }
 .page-hero--showcase::after {
   background:
+    var(--edge-fade),
     radial-gradient(ellipse 90% 50% at 50% 0%, rgba(var(--accent-rgb), 0.18) 0%, transparent 55%),
     linear-gradient(180deg, rgba(10, 10, 12, 0.88) 0%, rgba(10, 10, 12, 0.50) 18%, rgba(10, 10, 12, 0.0) 40%, rgba(10, 10, 12, 0.0) 78%, rgba(10, 10, 12, 0.30) 100%);
 }
@@ -2435,6 +2448,7 @@
   .page-hero--showcase .page-hero__title { font-size: clamp(34px, 9vw, 52px); }
   .page-hero--showcase::after {
     background:
+      var(--edge-fade),
       radial-gradient(ellipse 95% 45% at 50% 0%, rgba(var(--accent-rgb), 0.16) 0%, transparent 55%),
       linear-gradient(180deg, rgba(10, 10, 12, 0.90) 0%, rgba(10, 10, 12, 0.55) 22%, rgba(10, 10, 12, 0.0) 42%, rgba(10, 10, 12, 0.0) 72%, rgba(10, 10, 12, 0.28) 100%);
   }
@@ -2481,6 +2495,34 @@
     -webkit-mask-composite: source-in;
     mask-composite: intersect;
   }
+}
+
+/* Individual service pages (airport, cruise, birthday, concert, school formal,
+   corporate, party, hen's) — the service SCENE photo IS the hero background:
+   full-bleed cover at every width so it reaches the band edges (no letterbox /
+   black box). Higher specificity (.page-hero.page-hero--scene) overrides the
+   toptext studio-margin sizing + mask above, so the image is never shrunk. The
+   image file, its --hero-pos framing and the band dimensions are unchanged. */
+.page-hero.page-hero--scene::before {
+  background-image: var(--hero-img);
+  background-size: cover;
+  background-position: center var(--hero-pos, 50%);
+  background-repeat: no-repeat;
+  /* no studio-margin mask — the scene fills the whole band */
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+/* Readability over a photographic scene: a top-weighted dark gradient (text is
+   anchored near the top) that fades to clear through the middle so the scene
+   shows, with a gentle floor — subtle, never a black box. Keeps the site-wide
+   --edge-fade so the band still blends into the page like every other banner. */
+.page-hero.page-hero--scene::after {
+  background:
+    var(--edge-fade),
+    linear-gradient(180deg,
+      rgba(10, 10, 12, 0.62) 0%, rgba(10, 10, 12, 0.30) 34%,
+      rgba(10, 10, 12, 0.0) 56%, rgba(10, 10, 12, 0.0) 76%,
+      rgba(10, 10, 12, 0.38) 100%);
 }
 
 /* Home CTA band */
