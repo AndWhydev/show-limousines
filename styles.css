@@ -2394,7 +2394,17 @@
 .page-hero--toptext::before { background-position: center var(--hero-pos, 42%); }
 .page-hero--toptext .page-hero__title { white-space: nowrap; font-size: clamp(16px, 5vw, 50px); margin: 0; }
 .page-hero--toptext .page-hero__sub { font-size: clamp(14px, 1.9vw, 18px); margin: 12px auto 0; color: #fff; }
-@media (max-width: 768px) { .page-hero--toptext .page-hero__sub { display: none; } }
+@media (max-width: 768px) {
+  /* Reveal the desktop subheading on mobile too (matches desktop copy),
+     sized/spaced for small screens so it clears the title and the car. */
+  .page-hero--toptext .page-hero__sub {
+    display: block;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 10px auto 0;
+    max-width: 40ch;
+  }
+}
 /* Wedding banners only: zoom the car photo out (smaller) and sit it lower so the
    heading + subtext clear the vehicle. Frame size + dark backdrop unchanged.
    A left/right dark gradient (color-matched to the bg) is layered over the photo so
