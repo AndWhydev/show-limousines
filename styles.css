@@ -2134,6 +2134,16 @@
       transition: color 300ms;
     }
     .foot__contact-value:hover { color: var(--color-accent); }
+    .foot__socials-label {
+      display: block;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-top: 18px;
+    }
     .foot__socials {
       display: flex;
       gap: 10px;
