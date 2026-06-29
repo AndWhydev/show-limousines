@@ -44,7 +44,7 @@ Contact Show Limousines today for luxury car or limousine hire for the big day w
 ### Chrysler Super Stretch Limousine
 10 Passengers | Learn more >
 ### Chrysler Super Stretch Limousine Black
-### Mercedes S Class AMG Line sedan
+### Mercedes S Class AMG Line Sedan
 ### Mercedes Sprinter Limo Van
 14 Passengers | Learn more >
 ### Rolls Royce Phantom Sedan
@@ -56,7 +56,7 @@ We offer our school formal transportation throughout Sydney, including the North
 ### Can we play my own music?
 Yes, you can. All Show Limousine vehicles are equipped with Bluetooth and sound systems, allowing you to connect your phone and play your own playlist for the entire ride.
 ### How many people can your limos fit?
-Our largest limousine, the Hummer H2 Stretch, seats 16 passengers. Our Hummer H2 Stretch features air conditioning, a leather interior, four bars with ice-cold refreshments, Bluetooth phone connectivity, and LED lights for a fun and luxurious journey to the school formal. For groups that aren’t as large, we offer smaller limousines and cars, including our Chrysler Super Stretch Limousine, which seats 10 passengers, and the Mercedes S-Class AMG Line sedan, which seats 4. Each features premium amenities, making for an unforgettable experience.
+Our largest limousine, the Hummer H2 Stretch, seats 16 passengers. Our Hummer H2 Stretch features air conditioning, a leather interior, four bars with ice-cold refreshments, Bluetooth phone connectivity, and LED lights for a fun and luxurious journey to the school formal. For groups that aren’t as large, we offer smaller limousines and cars, including our Chrysler Super Stretch Limousine, which seats 10 passengers, and the Mercedes S-Class AMG Line Sedan, which seats 4. Each features premium amenities, making for an unforgettable experience.
 ### How do I book a limo?
 To book a limousine, please fill out our online enquiry form, and our team will contact you to arrange a limousine or car hire that suits your event. Alternatively, call us on 0422 023 413 and we can discuss the details of your event and help choose the right vehicle.
 ### What other events do you service?

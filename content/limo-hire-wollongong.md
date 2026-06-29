@@ -26,7 +26,7 @@ Enhance the birthday celebrations with a limousine hire from Show Limousines. Ou
 ## Hens and Bucks Party Limo Hire Wollongong
 Celebrate your night out with your close friends before tying the knot with our hens and bucks party limo hire. We offer limo hire in both large and small sizes to suit your group's needs, each accompanied by our professional chauffeur who ensures your experience is comfortable, fun, and safe.
 ## Luxury Transfers Wollongong
-Whether you’re heading to a concert, the airport, or a cruise, our Wollongong limo and car hire services offer a comfortable transfer to your destination. From our Mercedes Valente minivan, offering spacious seats for seven passengers, to our Mercedes S-Class AMG Line sedan seating four passengers, we provide safe and reliable transfers for all purposes.
+Whether you’re heading to a concert, the airport, or a cruise, our Wollongong limo and car hire services offer a comfortable transfer to your destination. From our Mercedes Valente minivan, offering spacious seats for seven passengers, to our Mercedes S-Class AMG Line Sedan seating four passengers, we provide safe and reliable transfers for all purposes.
 ## Get a Free Quote
 ## Services We Provide
 ### Weddings
@@ -45,7 +45,7 @@ Whether you’re heading to a concert, the airport, or a cruise, our Wollongong 
 ### Chrysler Super Stretch Limousine
 10 Passengers | Learn more >
 ### Chrysler Super Stretch Limousine Black
-### Mercedes S Class AMG Line sedan
+### Mercedes S Class AMG Line Sedan
 ### Mercedes Sprinter Limo Van
 14 Passengers | Learn more >
 ### Rolls Royce Phantom Sedan

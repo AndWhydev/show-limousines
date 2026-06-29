@@ -59,14 +59,14 @@ Black / Blue interior
 Jet Door
 10 Passengers – Black / Blue Interior – Jet Door – Bluetooth – Air Conditioned – 2 Bars – 20 inch wheels – LED Lights
 Our black Chrysler super stretch limousine is very special. It can seat up to 10 passengers in style and comfort. Features a unique middle jet door, Bluetooth connectivity, 2 bars, LED lights and air conditioning. An absolute stunning looking limousine.
-Mercedes S Class AMG Line sedan
+Mercedes S Class AMG Line Sedan
 4 passengers
 Rear privacy blinds
 Elegant
 20 inch AMG wheels
 Panorama sunroof
 4 Passengers – Black Leather Interior – Rear Privacy Blinds – Elegant – 20 inch AMG Wheels – Air Conditioned – Panorama Sunroof
-Our stunning Mercedes S Class AMG Line luxury sedan is the pinnacle of elegance and beauty. It will ensure that you arrive in style and comfort. With features like full black leather interior, Panoramic sunroof and 20-inch wheels, it makes the ideal vehicle for the bride and parents or groom and groomsmen to arrive to church or wedding ceremony. It is also the ideal vehicle for transfers or as a getaway car at end of night for bride and groom.
+Our stunning Mercedes S Class AMG Line Sedan is the pinnacle of elegance and beauty. It will ensure that you arrive in style and comfort. With features like full black leather interior, Panoramic sunroof and 20-inch wheels, it makes the ideal vehicle for the bride and parents or groom and groomsmen to arrive to church or wedding ceremony. It is also the ideal vehicle for transfers or as a getaway car at end of night for bride and groom.
 Bentley Flying Spur W12 Sedan
 V12 6.75L engine
 Twin Turbo
@@ -116,7 +116,7 @@ Mercedes Sprinter Limo Van seating up to 14 passengers. Perfect to travel in com
 ### Chrysler Super Stretch Limousine
 10 Passengers | Learn more >
 ### Chrysler Super Stretch Limousine Black
-### Mercedes S Class AMG Line sedan
+### Mercedes S Class AMG Line Sedan
 ### Mercedes Sprinter Limo Van
 14 Passengers | Learn more >
 ### Rolls Royce Phantom Sedan

@@ -18,7 +18,7 @@ Or get a quick quote
 ## Northern Beaches Chauffeured Limousines
 Experience true luxury with Show Limousines professional limo rental in the Northern Beaches. Our fleet of luxury cars for hire includes Chrysler Super Stretch Limos, Rolls-Royce Phantom Sedans, Mercedes Sprinters, and the iconic Stretch Hummers. All chauffeurs are fully-insured and committed to making your transit as luxurious as possible.
 ## Wedding Car & Limo Hire
-Make your dream wedding a reality with a luxury limo hire for your arrival at the wedding venue and grand exit as a happily-wedded couple. From waterfront ceremonies in Newport to Hamptons-inspired weddings at Miramare Gardens, our Northern Beaches limo hire ensures your bridal party travels in comfort and arrives on time. The Rolls-Royce Phantom and the Mercedes S-Class AMG are our top picks for wedding limo hire.
+Make your dream wedding a reality with a luxury limo hire for your arrival at the wedding venue and grand exit as a happily-wedded couple. From waterfront ceremonies in Newport to Hamptons-inspired weddings at Miramare Gardens, our Northern Beaches limo hire ensures your bridal party travels in comfort and arrives on time. The Rolls-Royce Phantom and the Mercedes S-Class AMG Line Sedan are our top picks for wedding limo hire.
 ## Hens & Bucks Party Limo Hire
 Treat the bride or groom-to-be to an unforgettable celebration with limo hire – our Mercedes Sprinters are equipped with a state-of-the-art sound and lighting system that sets the mood for the rest of the night. We can pick your party up at the Manly Pacific Hotel, take you to the Elanora Heights Country Club for drinks, and Ripples Chowder Bay for dinner.
 ## Northern Beaches Formal Limo Hire
@@ -45,7 +45,7 @@ Have an upcoming gala, concert, or formal event to attend? Show Limousines offer
 ### Chrysler Super Stretch Limousine
 10 Passengers | Learn more >
 ### Chrysler Super Stretch Limousine Black
-### Mercedes S Class AMG Line sedan
+### Mercedes S Class AMG Line Sedan
 ### Mercedes Sprinter Limo Van
 14 Passengers | Learn more >
 ### Rolls Royce Phantom Sedan

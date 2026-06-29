@@ -19,7 +19,7 @@ Or get a quick quote
 ## Limousine Hire in the Eastern Suburbs
 Elevate your next event in the Eastern Suburbs with limousine hire. A luxury ride is the perfect way to arrive at a wedding, a school formal, a private party, or a red carpet event. The Show Limousines fleet includes Rolls-Royce Phantoms, Stretch Hummers, Chrysler Super Stretch, and Mercedes Sprinters. All limos are driven by professional, fully-insured chauffeurs who arrive on time for pickup and drop-off.
 ## Wedding Limo & Car Hire
-Our luxury limousines are the perfect transport option for weddings, with Rolls Royce wedding car hire Sydney among our most requested. From transporting the bridal party in comfort to the venue to the grand exit of the newlyweds, every moment is elevated with a sense of opulence. Our most popular car hires in the Eastern Suburbs for weddings include the Rolls-Royce Phantom sedan and the Mercedes S-Class AMG.
+Our luxury limousines are the perfect transport option for weddings, with Rolls Royce wedding car hire Sydney among our most requested. From transporting the bridal party in comfort to the venue to the grand exit of the newlyweds, every moment is elevated with a sense of opulence. Our most popular car hires in the Eastern Suburbs for weddings include the Rolls-Royce Phantom sedan and the Mercedes S-Class AMG Line Sedan.
 ## Hens Parties Limo Hire
 We provide limousine hire for hens and bucks parties in the Eastern Suburbs and across Sydney. We can pick you up from The Intercontinental in Double Bay, drop you off at Bondi Icebergs for a long lunch, and take you to the Catalina in Rose Bay for a sunset dinner and drinks. The Mercedes Sprinter is the perfect vehicle for a hens party – it seats up to 14 passengers with a disco floor and a state-of-the-art sound system.
 ## Eastern Suburbs Birthday Limo Hire
@@ -44,7 +44,7 @@ If you’re heading to a formal, black-tie event, or gala evening, our limo hire
 ### Chrysler Super Stretch Limousine
 10 Passengers | Learn more >
 ### Chrysler Super Stretch Limousine Black
-### Mercedes S Class AMG Line sedan
+### Mercedes S Class AMG Line Sedan
 ### Mercedes Sprinter Limo Van
 14 Passengers | Learn more >
 ### Rolls Royce Phantom Sedan

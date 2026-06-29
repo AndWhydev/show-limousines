@@ -9,7 +9,7 @@
 
 /* --- K7: the one FAQ item added yesterday (verbatim from 90123a4) --- */
 const WEDDING_FAQ_Q = 'Do you offer wedding cars in Sydney?';
-const WEDDING_FAQ_A = 'Yes. We offer a range of wedding cars and stretch limousines including Rolls Royce Phantom, Chrysler Super Stretch Limousines, Hummer Stretch Limousines, Mercedes S Class AMG line sedan and Mercedes Sprinter Limo Vans throughout Sydney.';
+const WEDDING_FAQ_A = 'Yes. We offer a range of wedding cars and stretch limousines including Rolls Royce Phantom, Chrysler Super Stretch Limousines, Hummer Stretch Limousines, Mercedes S Class AMG Line Sedan and Mercedes Sprinter Limo Vans throughout Sydney.';
 function faqItem(q, a) {
   return `          <div class="faq-item reveal">
             <div class="faq-item__top" role="button" tabindex="0" aria-expanded="false">

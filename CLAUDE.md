@@ -74,7 +74,7 @@ The full site is complete with these sections:
 5. Chrysler Gullwing — 10 pax — fleet-chrysler-gullwing-v2.jpg
 6. Hummer H2 14 pax — fleet-hummer-green-v2.jpg
 7. Hummer H2 16 pax — fleet-hummer-white-v2.jpg
-8. Mercedes S Class AMG — 4 pax — fleet-mercedes-s-class-v2.jpg
+8. Mercedes S Class AMG Line Sedan — 4 pax — fleet-mercedes-s-class-v2.jpg
 9. Mercedes Sprinter Limo Van — 14 pax — fleet-mercedes-sprinter-v2.jpg
 10. Mercedes Valente — 7 pax — fleet-mercedes-valente-v2.jpg
 11. VW Crafter Premium Minibus — 11 pax — fleet-vw-crafter-v2.jpg

@@ -28,7 +28,7 @@ images: 5
 - Chrysler Super Stretch Gullwing
 - Hummer Stretch Hummer (14pax)
 - Stretch Hummer (16pax)
-- Mercedes Mercedes S Class AMG Sedan
+- Mercedes Mercedes S Class AMG Line Sedan
 - Mercedes Valente Luxury Minivan
 - Mercedes Sprinter Limo Van
 - Rolls Royce Rolls Royce Phantom
@@ -72,7 +72,7 @@ H3: Number of vehicles
 Limousine hires are perfect for big events like weddings, milestone birthday celebrations, and school formals. Generally, weddings will want to book more than one vehicle.
 Depending on the vehicle chosen, limousines can comfortably seat up to 15 guests, meaning most events will only need ~3 limos max. More vehicles will also drive up the costs, but a limousine hire company will be able to offer packages/bundles for special events.
 H3: Choice of vehicles
-Limousine hire goes beyond the traditional stretch limousine – at Show Limousines, we class all vehicles as ‘limos’ but really, we have a number of hummers, super stretch chryslers, luxury cars like Mercedes S Class AMG, Rolls Royce, and luxury party buses.
+Limousine hire goes beyond the traditional stretch limousine – at Show Limousines, we class all vehicles as ‘limos’ but really, we have a number of hummers, super stretch chryslers, luxury cars like Mercedes S Class AMG Line Sedan, Rolls Royce, and luxury party buses.
 The Chrysler Super Stretch and the Rolls-Royce Phantom are popular hires for formal events like a wedding. These limos are top of the line models with a higher cost to match.
 For parties and celebrations like a hens party or a school formal, the Mercedes Sprinter fits the bill.
 Do your research on what each vehicle offers in terms of features and style – at Show Limousines, we have a fleet of limos to suit every occasion.

@@ -21,7 +21,7 @@ Our limousines are equipped with the full suite of amenities, including state-of
 Call us today on 0422 023 413 to book your car or limo hire in Penrith.
 ## Wedding Car Hire Penrith
 Show Limousines’ wedding cars and limousines for hire in Penrith add a touch of elegance to your big day. We can arrange wedding transportation to and from the venue for the bride, groom, and bridal party, complete with a red carpet rollout upon arrival.
-Our most popular vehicles for weddings are the Mercedes S Class AMG sedan and the Chrysler Super Stretch limousine, which will be appropriately decorated with bows that match your ceremony’s aesthetic.
+Our most popular vehicles for weddings are the Mercedes S Class AMG Line Sedan and the Chrysler Super Stretch limousine, which will be appropriately decorated with bows that match your ceremony’s aesthetic.
 ## Hen’s Night Limo Hire
 Treat the bride (or groom)-to-be the full VIP treatment with luxury transport for an unforgettable night. Your Penrith limo hire can take you anywhere across Greater Western Sydney, from day spas along High Street to dinner and drinks at The Orchard. Your dedicated chauffeur will pick up and drop off your party according to your itinerary, so you can worry less about transport and spend more time making memories.
 Our Mercedes Sprinter vehicles can comfortably seat up to 14 passengers, and are our go-to recommendation for hens and bucks parties.
@@ -48,7 +48,7 @@ Our Penrith limos are available for airport transfers to and from Sydney Airport
 ### Chrysler Super Stretch Limousine
 10 Passengers | Learn more >
 ### Chrysler Super Stretch Limousine Black
-### Mercedes S Class AMG Line sedan
+### Mercedes S Class AMG Line Sedan
 ### Mercedes Sprinter Limo Van
 14 Passengers | Learn more >
 ### Rolls Royce Phantom Sedan

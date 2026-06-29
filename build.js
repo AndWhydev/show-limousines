@@ -64,7 +64,7 @@ const VEHICLES = [
   { slug: 'vehicle-chrysler-super-stretch-limousine', name: 'White Chrysler Super Stretch', img: 'fleet-chrysler-white-v2.jpg', badge: 'Chrysler', pax: 10 },
   { slug: 'vehicle-black-chrysler-super-stretch-limousine', name: 'Black Chrysler Super Stretch', img: 'fleet-chrysler-black-v2.jpg', badge: 'Chrysler', pax: 10 },
   { slug: 'vehicle-rolls-royce-phantom-sedan', name: 'Rolls Royce Phantom', img: 'fleet-rolls-royce-phantom-v2.jpg', badge: 'Rolls Royce', pax: 4 },
-  { slug: 'vehicle-mercedes-s-class-amg-sedan', name: 'Mercedes S Class AMG Sedan', img: 'fleet-mercedes-s-class-v2.jpg', badge: 'Mercedes', pax: 4 },
+  { slug: 'vehicle-mercedes-s-class-amg-sedan', name: 'Mercedes S Class AMG Line Sedan', img: 'fleet-mercedes-s-class-v2.jpg', badge: 'Mercedes', pax: 4 },
   { slug: 'vehicle-volkswagen-crafter-premium-minibus', name: 'VW Crafter Luxury Minibus', img: 'fleet-vw-crafter-v2.jpg', badge: 'Volkswagen', pax: 11 },
   { slug: 'vehicle-mercedes-valente-premium-minibus', name: 'Mercedes Valente Luxury Minivan', img: 'fleet-mercedes-valente-v2.jpg', badge: 'Mercedes', pax: 7 },
 ];
@@ -890,7 +890,7 @@ function weddingPackages(opts) {
   let PKGS = [
     { title: 'Chrysler Limousine Package', badge: 'Chrysler', img: 'fleet-chrysler-gullwing-v2.jpg', alt: 'Chrysler Super Stretch Gullwing wedding limousine', list: ['Chrysler Super Stretch Gullwing seating up to 10 passengers', 'Uniformed chauffeur', 'Red carpet', 'White satin ribbon on the limousine', 'Chilled bottled water', '2 bottles of sparkling wine'] },
     { title: 'Just Married Package', badge: 'Rolls Royce', img: 'fleet-rolls-royce-phantom-v2.jpg', alt: 'Rolls Royce Phantom luxury wedding sedan', list: ['1 limousine seating up to 10 passengers', '1 sedan of your choice seating up to 4 passengers', 'Uniformed chauffeurs', 'White satin ribbon on each vehicle'] },
-    { title: 'Diamond Package', badge: 'Mercedes', img: 'fleet-mercedes-s-class-v2.jpg', alt: 'Mercedes S Class AMG luxury wedding sedan', list: ['1 limousine seating up to 10 passengers', '1 Rolls Royce', '1 Mercedes sedan', 'Getaway vehicle at night for bride and groom'] },
+    { title: 'Diamond Package', badge: 'Mercedes', img: 'fleet-mercedes-s-class-v2.jpg', alt: 'Mercedes S Class AMG Line Sedan', list: ['1 limousine seating up to 10 passengers', '1 Rolls Royce', '1 Mercedes sedan', 'Getaway vehicle at night for bride and groom'] },
     { title: 'Platinum Package', badge: 'Hummer', img: opts.platinumImg || 'fleet-hummer-white-v2.jpg', alt: 'White Hummer stretch wedding limousine', list: ['1 x white Hummer stretch limousine seating up to 14 or 16 passengers', '1 x white sedan of your choice up to 4 passengers', 'White satin ribbon on all cars'] },
     { title: 'Hummer Stretch Limousine Package', badge: 'Hummer', img: 'fleet-hummer-green-v2.jpg', alt: 'Hummer stretch wedding limousine', list: ['Hummer Stretch Limousine seating up to 14 or 16 passengers'] },
   ];

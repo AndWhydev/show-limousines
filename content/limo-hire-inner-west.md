@@ -18,7 +18,7 @@ Or get a quick quote
 ## Chauffeured Limos in Sydney’s Inner West
 Add a touch of glamour to your upcoming special event in the Inner West with a limousine hire – Show Limousines has a fleet of luxury cars for hire including Chrysler Super Stretch Limos, Rolls-Royce Phantom Sedans, Mercedes Sprinters, and our popular Stretch Hummers. All our drivers are insured and committed to providing timely transit to your destination.
 ## Wedding Car Hire
-Arrive and depart from your wedding ceremony in fashion with a chauffeured luxury car hire. Our Inner West limo hire can transport the entire bridal party to wedding venues in Strathfield, Leichhardt, or Five Dock for a comfortable and luxurious experience. The Rolls-Royce Phantom and Mercedes S-Class AMG are our most sought-after vehicles for wedding transport.
+Arrive and depart from your wedding ceremony in fashion with a chauffeured luxury car hire. Our Inner West limo hire can transport the entire bridal party to wedding venues in Strathfield, Leichhardt, or Five Dock for a comfortable and luxurious experience. The Rolls-Royce Phantom and Mercedes S-Class AMG Line Sedan are our most sought-after vehicles for wedding transport.
 ## Hens & Bucks Party Limo Hire
 Celebrate the upcoming wedding with a night to remember! A limo hire pulls out all the stops for your friends and the bride/groom-to-be with integrated sound and lighting systems. Our chauffeurs can take you anywhere in the Inner West and across Sydney, from the initial pick-up at Pullman Hotel in Sydney Olympic Park to a warehouse party in Marrickville. The Mercedes Sprinter is our recommendation for hens/bucks parties, seating up to 15 passengers.
 ## Inner West Birthday Limo Hire
@@ -45,7 +45,7 @@ As one of the most trusted providers of limousines Sydney wide, Show Limousines 
 ### Chrysler Super Stretch Limousine
 10 Passengers | Learn more >
 ### Chrysler Super Stretch Limousine Black
-### Mercedes S Class AMG Line sedan
+### Mercedes S Class AMG Line Sedan
 ### Mercedes Sprinter Limo Van
 14 Passengers | Learn more >
 ### Rolls Royce Phantom Sedan

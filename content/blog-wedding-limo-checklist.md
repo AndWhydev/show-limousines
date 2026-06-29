@@ -28,7 +28,7 @@ images: 5
 - Chrysler Super Stretch Gullwing
 - Hummer Stretch Hummer (14pax)
 - Stretch Hummer (16pax)
-- Mercedes Mercedes S Class AMG Sedan
+- Mercedes Mercedes S Class AMG Line Sedan
 - Mercedes Valente Luxury Minivan
 - Mercedes Sprinter Limo Van
 - Rolls Royce Rolls Royce Phantom
