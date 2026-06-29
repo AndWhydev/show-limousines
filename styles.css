@@ -2393,7 +2393,7 @@
   pointer-events: none;
   background:
     var(--edge-fade),
-    radial-gradient(ellipse 78% 72% at 50% 50%, transparent 0%, rgba(10, 10, 12, 0.30) 100%),
+    radial-gradient(ellipse 72% 64% at 50% 60%, rgba(10, 10, 12, 0) 0%, rgba(10, 10, 12, 0) 30%, rgba(10, 10, 12, 0.82) 100%),
     linear-gradient(180deg, rgba(10, 10, 12, 0.52) 0%, rgba(10, 10, 12, 0.22) 42%, rgba(10, 10, 12, 0.46) 100%);
 }
 .page-hero__inner { position: relative; z-index: 2; max-width: 880px; margin: 0 auto; }
@@ -2482,11 +2482,11 @@
        gentle feather; the centre (incl. the whole vehicle) stays fully opaque.
        Mask tracks the image (same size/position). */
     -webkit-mask-image:
-      linear-gradient(90deg, transparent 0, #000 11%, #000 89%, transparent 100%),
-      linear-gradient(180deg, transparent 0, #000 14%, #000 86%, transparent 100%);
+      linear-gradient(90deg, transparent 0, #000 10%, #000 90%, transparent 100%),
+      linear-gradient(180deg, transparent 0, #000 22%, #000 80%, transparent 100%);
     mask-image:
-      linear-gradient(90deg, transparent 0, #000 11%, #000 89%, transparent 100%),
-      linear-gradient(180deg, transparent 0, #000 14%, #000 86%, transparent 100%);
+      linear-gradient(90deg, transparent 0, #000 10%, #000 90%, transparent 100%),
+      linear-gradient(180deg, transparent 0, #000 22%, #000 80%, transparent 100%);
     -webkit-mask-size: auto 72%, auto 72%;
     mask-size: auto 72%, auto 72%;
     -webkit-mask-position: center bottom, center bottom;
@@ -2509,8 +2509,8 @@
    specificity), so the individual service pages are untouched. */
 @media (max-width: 768px) {
   .page-hero--toptext::before {
-    -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 11%, #000 89%, transparent 100%);
-    mask-image: linear-gradient(180deg, transparent 0, #000 11%, #000 89%, transparent 100%);
+    -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 14%, #000 86%, transparent 100%);
+    mask-image: linear-gradient(180deg, transparent 0, #000 14%, #000 86%, transparent 100%);
     -webkit-mask-size: 100% 100%;
     mask-size: 100% 100%;
     -webkit-mask-position: center;
@@ -2520,11 +2520,11 @@
   }
   .page-hero--toptext.page-hero--carzoom::before {
     -webkit-mask-image:
-      linear-gradient(90deg, transparent 0, #000 12%, #000 88%, transparent 100%),
-      linear-gradient(180deg, transparent 0, #000 12%, #000 88%, transparent 100%);
+      linear-gradient(90deg, transparent 0, #000 11%, #000 89%, transparent 100%),
+      linear-gradient(180deg, transparent 0, #000 19%, #000 81%, transparent 100%);
     mask-image:
-      linear-gradient(90deg, transparent 0, #000 12%, #000 88%, transparent 100%),
-      linear-gradient(180deg, transparent 0, #000 12%, #000 88%, transparent 100%);
+      linear-gradient(90deg, transparent 0, #000 11%, #000 89%, transparent 100%),
+      linear-gradient(180deg, transparent 0, #000 19%, #000 81%, transparent 100%);
     -webkit-mask-size: 78% auto, 78% auto;
     mask-size: 78% auto, 78% auto;
     -webkit-mask-position: center bottom, center bottom;
