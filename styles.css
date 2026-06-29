@@ -2476,18 +2476,57 @@
     background-size: auto 72%;
     background-position: center bottom;
     background-repeat: no-repeat;
-    /* Fade the banner's built-in studio margins (sides + top) to transparent so
-       the smaller, bottom-anchored car blends seamlessly into the page background
-       at any viewport width — without dimming the (full-width) vehicle itself.
+    /* Feather ALL FOUR edges of the studio photo to transparent so the image
+       dissolves into the page background on every side (no hard rectangle) — and
+       the two intersecting fades round the corners softly. Generous bands give a
+       gentle feather; the centre (incl. the whole vehicle) stays fully opaque.
        Mask tracks the image (same size/position). */
     -webkit-mask-image:
-      linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%),
-      linear-gradient(180deg, transparent 0, #000 18%, #000 100%);
+      linear-gradient(90deg, transparent 0, #000 11%, #000 89%, transparent 100%),
+      linear-gradient(180deg, transparent 0, #000 14%, #000 86%, transparent 100%);
     mask-image:
-      linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%),
-      linear-gradient(180deg, transparent 0, #000 18%, #000 100%);
+      linear-gradient(90deg, transparent 0, #000 11%, #000 89%, transparent 100%),
+      linear-gradient(180deg, transparent 0, #000 14%, #000 86%, transparent 100%);
     -webkit-mask-size: auto 72%, auto 72%;
     mask-size: auto 72%, auto 72%;
+    -webkit-mask-position: center bottom, center bottom;
+    mask-position: center bottom, center bottom;
+    -webkit-mask-repeat: no-repeat, no-repeat;
+    mask-repeat: no-repeat, no-repeat;
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+  }
+}
+
+/* Mobile: feather the studio-photo banners into the page too (no box at any width).
+   Two geometries on small screens:
+   • plain toptext  = full-bleed cover photo → feather top + bottom only (the sides
+     already reach the screen edges, so leave them flush — no new black margins).
+   • carzoom        = contained 78%-wide photo → feather all four edges with the mask
+     tracking the image (78% auto, bottom-anchored) so its real edges dissolve and
+     the corners round softly.
+   Scene pages keep mask-image:none (their .page-hero.page-hero--scene rule has higher
+   specificity), so the individual service pages are untouched. */
+@media (max-width: 768px) {
+  .page-hero--toptext::before {
+    -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 11%, #000 89%, transparent 100%);
+    mask-image: linear-gradient(180deg, transparent 0, #000 11%, #000 89%, transparent 100%);
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+  }
+  .page-hero--toptext.page-hero--carzoom::before {
+    -webkit-mask-image:
+      linear-gradient(90deg, transparent 0, #000 12%, #000 88%, transparent 100%),
+      linear-gradient(180deg, transparent 0, #000 12%, #000 88%, transparent 100%);
+    mask-image:
+      linear-gradient(90deg, transparent 0, #000 12%, #000 88%, transparent 100%),
+      linear-gradient(180deg, transparent 0, #000 12%, #000 88%, transparent 100%);
+    -webkit-mask-size: 78% auto, 78% auto;
+    mask-size: 78% auto, 78% auto;
     -webkit-mask-position: center bottom, center bottom;
     mask-position: center bottom, center bottom;
     -webkit-mask-repeat: no-repeat, no-repeat;
