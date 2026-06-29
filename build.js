@@ -1071,32 +1071,45 @@ categoryPage('vehicles', 'Fleet', VEHICLES);
 function servicesShowcase() {
   // Tiles with `href` link to their own page (clickable); tiles without are display-only
   // (occasions catered for that have no dedicated page). All photos face right.
+  // Canonical service order (1→8), then display-only extras after Corporate.
+  // `base` derives the responsive set /base-{400,800,1200}.jpg; `src` is a single fixed image.
   const TILES = [
-    { name: 'Weddings', img: 'service-weddings.jpg', desc: 'Make your special day unforgettable.', href: '/wedding-limousine-sydney/' },
-    { name: 'Airport Transfers', img: 'service-airport.png', desc: 'Door to terminal, in total comfort.', href: '/airport-limo-transfers-sydney/' },
-    { name: 'Cruise Transfers', img: 'service-airport-cruise.jpg', desc: 'Straight to the pier, stress-free.', href: '/cruise-transfer-sydney/' },
-    { name: 'Birthday Limos', img: 'service-birthday.jpg', desc: 'Celebrate the milestone in style.', href: '/birthday-limousine-sydney/' },
-    { name: 'Concert Transfers', img: 'service-concert.jpg', desc: 'Arrive to the show like a star.', href: '/concert-limo-transfers-sydney/' },
-    { name: 'School Formal Limos', img: 'service-formals.jpg', desc: 'Arrive like royalty with your crew.', href: '/school-formal-limousine-hire-sydney/' },
-    { name: 'Corporate Transfers', img: 'service-corporate.jpg', desc: 'First impressions that matter.', href: '/corporate-transfers/' },
-    { name: 'Party Limos', img: 'service-partybus.jpg', desc: 'The whole crew, one big night.', href: '/party-limousine-hire-sydney/' },
-    { name: "Hen's Party Limos", img: 'service-hensbucks.jpg', desc: 'The big night out, sorted.', href: '/hens-party-limo-sydney/' },
-    { name: 'Engagements', img: 'service-engagements.jpg', desc: 'Pop the question in pure luxury.' },
-    { name: 'Anniversaries', img: 'service-anniversaries.jpg', desc: 'Celebrate the years in style.' },
-    { name: 'Red Carpet VIP', img: 'service-redcarpet.jpg', desc: 'The full A-list arrival treatment.' },
+    { name: 'Weddings', desc: 'Make your special day unforgettable.', href: '/wedding-limousine-sydney/', src: '/assets/service-weddings-gullwing.jpg' },
+    { name: 'Birthday Celebrations', desc: 'Because you deserve it.', href: '/birthday-limousine-sydney/', base: 'service-birthday' },
+    { name: 'Parties & Limousines', desc: 'The whole crew, one unforgettable ride.', href: '/party-limousine-hire-sydney/', base: 'service-partybus' },
+    { name: 'School Formals', desc: 'Arrive like royalty with your crew.', href: '/school-formal-limousine-hire-sydney/', base: 'service-formals' },
+    { name: 'Hens & Bucks Parties', desc: 'The big night out, sorted.', href: '/hens-party-limo-sydney/', base: 'service-hensbucks' },
+    { name: 'Concert Transfers', desc: 'Arrive to the show in style.', href: '/concert-limo-transfers-sydney/', base: 'service-concert' },
+    { name: 'Airport & Cruise Transfers', desc: 'Door to terminal or pier, in total comfort.', href: '/airport-limo-transfers-sydney/', base: 'service-airport-cruise' },
+    { name: 'Corporate Transfers', desc: 'First impressions that matter.', href: '/corporate-transfers/', base: 'service-corporate' },
+    { name: 'Engagements', desc: 'Pop the question in pure luxury.', base: 'service-engagements' },
+    { name: 'Anniversaries', desc: 'Celebrate the years in style.', base: 'service-anniversaries' },
+    { name: 'Red Carpet VIP', desc: 'The full A-list arrival treatment.', base: 'service-redcarpet' },
   ];
   const cards = TILES.map((t, i) => {
     const idx = String(i + 1).padStart(2, '0');
-    const inner = `<div class="occ-card__media" style="--card-img:url('/${t.img}')"><span class="occ-card__index">${idx}</span></div>
-          <h3 class="occ-card__name">${esc(t.name)}</h3>
+    const img = t.src
+      ? `            <img class="occ-card__img" alt="" loading="lazy" decoding="async" width="800" height="597"
+                 src="${t.src}">`
+      : `            <img class="occ-card__img" alt="" loading="lazy" decoding="async" width="800" height="597"
+                 src="/${t.base}-800.jpg"
+                 srcset="/${t.base}-400.jpg 400w, /${t.base}-800.jpg 800w, /${t.base}-1200.jpg 1200w"
+                 sizes="(min-width: 1025px) 340px, 47vw">`;
+    const media = `          <div class="occ-card__media">
+${img}
+            <span class="occ-card__index">${idx}</span>
+          </div>`;
+    const body = `          <h3 class="occ-card__name">${esc(t.name)}</h3>
           <p class="occ-card__desc">${esc(t.desc)}</p>`;
     return t.href
       ? `        <a href="${t.href}" class="occ-card reveal" aria-label="${attr(t.name)} — view service">
-          ${inner}
+${media}
+${body}
           <span class="occ-card__more">Learn more <span aria-hidden="true">→</span></span>
         </a>`
       : `        <div class="occ-card occ-card--static reveal" aria-label="${attr(t.name)}">
-          ${inner}
+${media}
+${body}
           <span class="occ-card__more occ-card__more--static">Available on request</span>
         </div>`;
   }).join('\n');
