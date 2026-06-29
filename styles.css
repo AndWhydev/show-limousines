@@ -916,11 +916,11 @@
       transition: transform 0.5s ease;
     }
     .occ-card:hover .occ-card__img { transform: scale(1.05); }
-    /* Homepage cards only (they contain .occ-card__img): use the photos'
-       native ~4:3 framing so the full limousine is visible — the near-square
-       1/1.1 ratio clipped the long stretch vehicles. Scoped via :has() so the
-       services page cards (no <img>) keep their original 1/1.1 ratio. */
-    .occ-card__media:has(.occ-card__img) { aspect-ratio: 4800 / 3584; }
+    /* Cards with a real <img>: use the photos' native 16:9 framing so the full
+       limousine is visible end to end — long stretch vehicles span the frame and
+       object-fit:cover (centred) no longer clips the front or rear. Scoped via
+       :has() so any card without an <img> keeps its original 1/1.1 ratio. */
+    .occ-card__media:has(.occ-card__img) { aspect-ratio: 1400 / 781; }
     .occ-card__media::after {
       content: '';
       position: absolute;
