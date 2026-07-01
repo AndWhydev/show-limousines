@@ -23,7 +23,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script src="https://unpkg.com/lenis@1.0.45/dist/lenis.min.js"></script>
   <script src="https://unpkg.com/split-type"></script>
-  <link rel="stylesheet" href="/styles.css?v=20260630a">
+  <link rel="stylesheet" href="/styles.css?v=20260701b">
 </head>
 <body>
           <header class="nav-wrap" id="navWrap" role="banner">
@@ -287,7 +287,29 @@
       </div>
     </section>
     <section class="feature"><div class="feature__inner">
-        <div class="feature__media reveal"><img src="/fleet-mercedes-sprinter-black.jpg" alt="Mercedes Sprinter Limo Van" loading="lazy" decoding="async"></div>
+        <div class="feature__media reveal">
+      <div class="gallery" data-gallery data-autoplay="6000" aria-roledescription="carousel" aria-label="Mercedes Sprinter Limo Van photo gallery">
+      <div class="gallery__viewport">
+        <ul class="gallery__track">
+        <li class="gallery__slide" role="group" aria-roledescription="slide" aria-label="1 of 11"><img src="/assets/gallery-sprinter-1.jpg" alt="Mercedes Sprinter Limo Van — exterior, side profile in the city" loading="eager" fetchpriority="high" decoding="async" width="1600" height="900"></li>
+        <li class="gallery__slide" role="group" aria-roledescription="slide" aria-label="2 of 11"><img src="/assets/gallery-sprinter-2.jpg" alt="Mercedes Sprinter Limo Van — exterior, illuminated at night" loading="lazy" decoding="async" width="1600" height="900"></li>
+        <li class="gallery__slide" role="group" aria-roledescription="slide" aria-label="3 of 11"><img src="/assets/gallery-sprinter-3.jpg" alt="Mercedes Sprinter Limo Van — exterior, front three-quarter" loading="lazy" decoding="async" width="1600" height="900"></li>
+        <li class="gallery__slide" role="group" aria-roledescription="slide" aria-label="4 of 11"><img src="/assets/gallery-sprinter-4.jpg" alt="Mercedes Sprinter Limo Van — exterior, night with blue cabin glow" loading="lazy" decoding="async" width="1600" height="900"></li>
+        <li class="gallery__slide" role="group" aria-roledescription="slide" aria-label="5 of 11"><img src="/assets/gallery-sprinter-5.jpg" alt="Mercedes Sprinter Limo Van — exterior, side door open, cabin lit" loading="lazy" decoding="async" width="1600" height="900"></li>
+        <li class="gallery__slide" role="group" aria-roledescription="slide" aria-label="6 of 11"><img src="/assets/gallery-sprinter-6.jpg" alt="Mercedes Sprinter Limo Van — interior, party lounge cabin with TV screen" loading="lazy" decoding="async" width="1600" height="900"></li>
+        <li class="gallery__slide" role="group" aria-roledescription="slide" aria-label="7 of 11"><img src="/assets/gallery-sprinter-7.jpg" alt="Mercedes Sprinter Limo Van — interior, LED lounge seating" loading="lazy" decoding="async" width="1600" height="900"></li>
+        <li class="gallery__slide" role="group" aria-roledescription="slide" aria-label="8 of 11"><img src="/assets/gallery-sprinter-8.jpg" alt="Mercedes Sprinter Limo Van — interior, LED lounge and floor lighting" loading="lazy" decoding="async" width="1600" height="900"></li>
+        <li class="gallery__slide" role="group" aria-roledescription="slide" aria-label="9 of 11"><img src="/assets/gallery-sprinter-9.jpg" alt="Mercedes Sprinter Limo Van — interior, guests enjoying the cabin" loading="lazy" decoding="async" width="1600" height="900"></li>
+        <li class="gallery__slide" role="group" aria-roledescription="slide" aria-label="10 of 11"><img src="/assets/gallery-sprinter-10.jpg" alt="Mercedes Sprinter Limo Van — interior, party group in the cabin" loading="lazy" decoding="async" width="1600" height="900"></li>
+        <li class="gallery__slide" role="group" aria-roledescription="slide" aria-label="11 of 11"><img src="/assets/gallery-sprinter-11.jpg" alt="Mercedes Sprinter Limo Van — bar, champagne bar and glassware" loading="lazy" decoding="async" width="1600" height="900"></li>
+        </ul>
+      </div>
+      <button class="gallery__nav gallery__nav--prev" type="button" aria-label="Previous photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+      <button class="gallery__nav gallery__nav--next" type="button" aria-label="Next photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+      <span class="gallery__count" aria-hidden="true">1 / 11</span>
+      <div class="gallery__dots" role="tablist" aria-label="Choose photo"></div>
+      </div>
+      </div>
         <div class="feature__copy reveal">
           <span class="label-bracket">Mercedes</span>
           <h2 class="prose__h2">Mercedes Sprinter Limo Van Hire in Sydney</h2>
@@ -528,5 +550,6 @@
       </div>
     </footer>
   <script src="/main.js"></script>
+  <script src="/assets/gallery.js?v=20260701b" defer></script>
 </body>
 </html>
