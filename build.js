@@ -56,8 +56,8 @@ function responsify(html) {
 /* Canonical fleet order (Commit 3) — used everywhere the fleet is listed.
    Home grid is auto-sorted to this order in patchHome(). */
 const VEHICLES = [
-  { slug: 'vehicle-hummer-stretch-limousine', name: 'Stretch Hummer (14 Pax)', img: 'fleet-hummer-green-v2.jpg', badge: 'Hummer', pax: 14 },
   { slug: 'vehicle-hummer-h2-stretch-limousine', name: 'Stretch Hummer (16 Pax)', img: 'fleet-hummer-white-v2.jpg', badge: 'Hummer', pax: 16 },
+  { slug: 'vehicle-hummer-stretch-limousine', name: 'Stretch Hummer (14 Pax)', img: 'fleet-hummer-green-v2.jpg', badge: 'Hummer', pax: 14 },
   { slug: 'vehicle-mercedes-sprinter-limo-van', name: 'Mercedes Sprinter Limo Van', img: 'fleet-mercedes-sprinter-v2.jpg', badge: 'Mercedes', pax: 14 },
   { slug: 'vehicle-gullwing-chrysler-super-stretch-limousine', name: 'Chrysler Super Stretch Gullwing', img: 'fleet-chrysler-gullwing-v2.jpg', badge: 'Chrysler', pax: 10 },
   { slug: 'vehicle-black-edition-chrysler-super-stretch-limousine', name: 'Chrysler Super Stretch (Black Edition)', img: 'fleet-chrysler-black-edition-v2.jpg', badge: 'Chrysler', pax: 10 },
