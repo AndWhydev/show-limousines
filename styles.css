@@ -2666,7 +2666,19 @@
 .feature__list li::before { content: ''; position: absolute; left: 0; top: 7px; width: 8px; height: 8px; border-radius: 50%; background: var(--color-accent); }
 .feature__media { border-radius: 20px; overflow: hidden; border: 1px solid var(--color-border); }
 .feature__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
-@media (max-width: 900px) { .feature__inner { grid-template-columns: 1fr; gap: 32px; } .feature { padding: 70px 20px; } }
+@media (max-width: 900px) {
+  .feature { padding: 70px 20px; }
+  .feature__inner { grid-template-columns: 1fr; gap: 32px; }
+  /* Mobile-only section reorder (vehicle pages): show the FEATURES text box first
+     and push the photo GALLERY to the very bottom. .feature__media (carousel) and
+     .feature__copy (label, FEATURES chips, heading, description, the "Any Occasion"
+     copy and the enquire CTA — all nested inside .feature__copy) are the only two
+     grid items, so swapping their `order` gives: hero → features text → Any Occasion
+     → enquire CTA → gallery. Desktop (>900px, 2-col grid) sets no order, so the
+     photo-beside-copy layout is untouched. One carousel instance — no duplication. */
+  .feature__copy { order: 0; }
+  .feature__media { order: 1; }
+}
 
 /* ===== Vehicle photo gallery / carousel (fills the feature media slot) ===== */
 .gallery { position: relative; width: 100%; }
