@@ -2607,15 +2607,17 @@
    NOTE: --hero-img is set inline on the element, so a stylesheet custom-property
    override can't win — we override background-image on the ::before directly. */
 @media (max-width: 768px) {
-  /* Prominent hero height (not the ~260px 3:2 strip); fleet grid sits clearly below. */
-  .page-hero.page-hero--fleetmontage { aspect-ratio: auto; min-height: 60vh; }
+  /* Match the hero box to the Gullwing banner's aspect (1800×1005) so a CONTAIN
+     fit fills the full width with the WHOLE car visible — nothing cropped — and no
+     tall black bands above/below. Drop the old 60vh min-height so it sits snugly. */
+  .page-hero.page-hero--fleetmontage { aspect-ratio: 1800 / 1005; min-height: 0; }
   .page-hero--fleetmontage.page-hero--toptext.page-hero--carzoom::before {
     background-image: url('/assets/banner-gullwing-cinematic.jpg');
-    background-size: cover;
+    background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
     /* Drop the contained 78% carzoom framing + edge-feather mask so the single car
-       fills the hero edge-to-edge — no letterbox bars. */
+       fills the hero — no letterbox bars, no crop. */
     -webkit-mask-image: none;
     mask-image: none;
   }
