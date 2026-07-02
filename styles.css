@@ -2599,22 +2599,25 @@
     mask-size: 1222px auto, auto 72%;
   }
 }
+/* MOBILE ONLY — /fleet/ hero swaps the wide 6-car montage for ONE bright hero car.
+   The montage shrinks to a tiny dark, contained strip on phones and clashes with the
+   bright single-car fleet cards below; here we cover-fill the hero with a single
+   centred car (reusing the existing Gullwing cinematic banner). Desktop (>768px) is
+   untouched — it keeps the montage, its 2400/1018 sizing and the edge-feather masks.
+   NOTE: --hero-img is set inline on the element, so a stylesheet custom-property
+   override can't win — we override background-image on the ::before directly. */
 @media (max-width: 768px) {
+  /* Prominent hero height (not the ~260px 3:2 strip); fleet grid sits clearly below. */
+  .page-hero.page-hero--fleetmontage { aspect-ratio: auto; min-height: 60vh; }
   .page-hero--fleetmontage.page-hero--toptext.page-hero--carzoom::before {
-    -webkit-mask-image:
-      linear-gradient(90deg,  transparent 0, #000 11%, #000 89%, transparent 100%),
-      linear-gradient(180deg, transparent 0, #000 12%, #000 94%, transparent 100%);
-    mask-image:
-      linear-gradient(90deg,  transparent 0, #000 11%, #000 89%, transparent 100%),
-      linear-gradient(180deg, transparent 0, #000 12%, #000 94%, transparent 100%);
-    -webkit-mask-size: 78% auto, 78% auto;
-    mask-size: 78% auto, 78% auto;
-    -webkit-mask-position: center bottom, center bottom;
-    mask-position: center bottom, center bottom;
-    -webkit-mask-repeat: no-repeat, no-repeat;
-    mask-repeat: no-repeat, no-repeat;
-    -webkit-mask-composite: source-in;
-    mask-composite: intersect;
+    background-image: url('/assets/banner-gullwing-cinematic.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* Drop the contained 78% carzoom framing + edge-feather mask so the single car
+       fills the hero edge-to-edge — no letterbox bars. */
+    -webkit-mask-image: none;
+    mask-image: none;
   }
 }
 
