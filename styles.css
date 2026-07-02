@@ -2607,20 +2607,39 @@
    NOTE: --hero-img is set inline on the element, so a stylesheet custom-property
    override can't win — we override background-image on the ::before directly. */
 @media (max-width: 768px) {
-  /* Match the hero box to the Gullwing banner's aspect (1800×1005) so a CONTAIN
-     fit fills the full width with the WHOLE car visible — nothing cropped — and no
-     tall black bands above/below. Drop the old 60vh min-height so it sits snugly. */
-  .page-hero.page-hero--fleetmontage { aspect-ratio: 1800 / 1005; min-height: 0; }
+  /* MOBILE ONLY — /fleet/ hero: clean STACKED layout, no text-on-car overlay.
+     The hero becomes a flex column: heading + sub-heading sit in the black at the
+     top, then the single Gullwing banner is shown WHOLE (contain) full-bleed below,
+     then the fleet grid. The image pseudo (::before) is turned into a normal flex
+     item and ordered BELOW the text; the ::after darkening scrim is dropped since
+     nothing overlays the car now. Desktop (>768px) is untouched — it keeps the
+     montage and the overlaid-text hero. */
+  .page-hero.page-hero--fleetmontage {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    aspect-ratio: auto;
+    min-height: 0;
+    padding: 26px 0 0;                 /* no side padding → image is full-bleed */
+  }
+  .page-hero--fleetmontage .page-hero__inner {
+    order: 0;
+    padding: 0 20px;                   /* keep the text off the screen edges */
+  }
   .page-hero--fleetmontage.page-hero--toptext.page-hero--carzoom::before {
+    order: 1;                          /* image below the text */
+    position: static;                  /* was absolute inset:0 (overlay) */
+    width: 100%;
+    aspect-ratio: 1800 / 1005;         /* banner ratio → whole car fills width, no bands */
+    margin-top: 18px;
     background-image: url('/assets/banner-gullwing-cinematic.jpg');
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    /* Drop the contained 78% carzoom framing + edge-feather mask so the single car
-       fills the hero — no letterbox bars, no crop. */
-    -webkit-mask-image: none;
+    -webkit-mask-image: none;          /* drop the 78% carzoom framing + feather */
     mask-image: none;
   }
+  .page-hero--fleetmontage::after { display: none; }  /* no overlay scrim needed */
 }
 
 /* Individual service pages (airport, cruise, birthday, concert, school formal,
