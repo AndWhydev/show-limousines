@@ -2548,6 +2548,76 @@
   }
 }
 
+/* ── Fleet landing hero ONLY (the 6-car montage) ──────────────────────────
+   Feather ALL FOUR edges of the montage into the black page so no side reads as
+   a hard rectangle. Two mask layers, combined with mask-composite: intersect
+   (the widely-supported pattern used by the other hero masks here — legacy
+   -webkit- source-in plus standard intersect) so a pixel shows only where BOTH
+   are opaque:
+   • 90deg  layer → fades the LEFT and RIGHT edges.
+   • 180deg layer → fades the TOP and BOTTOM edges.
+   The opaque band (11%–89%) is tuned to the montage: the outer cars (white
+   stretch far-left, Phantom far-right) sit inside it and stay fully visible —
+   only the empty margins beyond them fade.
+
+   CRITICAL — the horizontal fade must track the IMAGE width, not the viewport.
+   A gradient has no intrinsic width, so `mask-size: auto 72%` makes the 90deg
+   layer 100%-of-CONTAINER wide. That is fine up to ~1280px (the image is ~95%
+   of the viewport, so its edges sit inside the 11% feather). But the hero caps
+   at max-height:720px, so past 1280px the image FREEZES at a fixed ~1222px and
+   floats with ever-wider side margins — the container-relative feather then
+   stops short of the image's real edge and the left/right sides render as a
+   hard seam (worse the wider the screen). Fix: from 1280px up, size the 90deg
+   layer to that fixed image width (1222px, centred) so it fades exactly at the
+   image edges at every wide width. The 180deg (vertical) layer keeps auto 72%
+   since it tracks the image height. Fleet-only (.page-hero--fleetmontage). */
+@media (min-width: 769px) {
+  .page-hero--fleetmontage.page-hero--toptext::before {
+    -webkit-mask-image:
+      linear-gradient(90deg,  transparent 0, #000 11%, #000 89%, transparent 100%),
+      linear-gradient(180deg, transparent 0, #000 14%, #000 94%, transparent 100%);
+    mask-image:
+      linear-gradient(90deg,  transparent 0, #000 11%, #000 89%, transparent 100%),
+      linear-gradient(180deg, transparent 0, #000 14%, #000 94%, transparent 100%);
+    -webkit-mask-size: auto 72%, auto 72%;
+    mask-size: auto 72%, auto 72%;
+    -webkit-mask-position: center bottom, center bottom;
+    mask-position: center bottom, center bottom;
+    -webkit-mask-repeat: no-repeat, no-repeat;
+    mask-repeat: no-repeat, no-repeat;
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+  }
+}
+/* Wide screens: the image is frozen at ~1222px (hero max-height 720 × 72% × the
+   montage's 2400/1018 aspect). Pin the horizontal feather layer to that width so
+   it fades at the image's real left/right edges instead of at the far-off
+   viewport edges. */
+@media (min-width: 1280px) {
+  .page-hero--fleetmontage.page-hero--toptext::before {
+    -webkit-mask-size: 1222px auto, auto 72%;
+    mask-size: 1222px auto, auto 72%;
+  }
+}
+@media (max-width: 768px) {
+  .page-hero--fleetmontage.page-hero--toptext.page-hero--carzoom::before {
+    -webkit-mask-image:
+      linear-gradient(90deg,  transparent 0, #000 11%, #000 89%, transparent 100%),
+      linear-gradient(180deg, transparent 0, #000 12%, #000 94%, transparent 100%);
+    mask-image:
+      linear-gradient(90deg,  transparent 0, #000 11%, #000 89%, transparent 100%),
+      linear-gradient(180deg, transparent 0, #000 12%, #000 94%, transparent 100%);
+    -webkit-mask-size: 78% auto, 78% auto;
+    mask-size: 78% auto, 78% auto;
+    -webkit-mask-position: center bottom, center bottom;
+    mask-position: center bottom, center bottom;
+    -webkit-mask-repeat: no-repeat, no-repeat;
+    mask-repeat: no-repeat, no-repeat;
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+  }
+}
+
 /* Individual service pages (airport, cruise, birthday, concert, school formal,
    corporate, party, hen's) — the service SCENE photo IS the hero background:
    full-bleed cover at every width so it reaches the band edges (no letterbox /
