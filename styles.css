@@ -231,8 +231,9 @@
     .nav-brand__name span { color: var(--color-accent); }
     /* The logo is a wide lockup (S monogram + SHOW LIMOUSINES + tagline baked in),
        ~5.4:1, cropped to its content in the SVG. Height drives the size; width
-       auto-scales to preserve aspect ratio (~48px tall ≈ 260px wide). */
-    .nav-brand__logo { height: 48px; width: auto; display: block; }
+       auto-scales to preserve aspect ratio (~58px tall ≈ 314px wide). Desktop
+       size bumped ~21% for presence; mobile is overridden to 42px at ≤640px. */
+    .nav-brand__logo { height: 58px; width: auto; display: block; }
 
     .nav-pills {
       display: inline-flex;

@@ -363,7 +363,7 @@ function head(fm, slug) {
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script src="https://unpkg.com/lenis@1.0.45/dist/lenis.min.js"></script>
   <script src="https://unpkg.com/split-type"></script>
-  <link rel="stylesheet" href="/styles.css?v=20260702h">
+  <link rel="stylesheet" href="/styles.css?v=20260703a">
 </head>
 <body>`;
 }
