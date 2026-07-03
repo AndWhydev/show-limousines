@@ -731,7 +731,17 @@
       .hero__ctas { justify-content: center; }
       /* Trust Bar drops below the car: pushed to the bottom of the hero,
          keeping the order CTAs → car → Trust Bar on mobile. */
-      .hero__stats { justify-content: center; margin-top: auto; }
+      /* Top-align the three stats so the gold numbers line up on ONE row no
+         matter how many lines each label wraps to. The long labels ("5-Star
+         Google Reviews", "Days a year") wrap to 2 lines while "Years" stays 1,
+         and WebKit/iOS wraps them differently from Blink/Android — with the
+         base flex-end (bottom) alignment that left the numbers at uneven
+         heights on iOS. flex-start keeps the numbers aligned on every engine;
+         centring each column keeps the number centred over its label. Mobile
+         only — desktop (>768px, single-line labels) is unaffected. */
+      .hero__stats { justify-content: center; align-items: flex-start; margin-top: auto; }
+      .hero__stat { align-items: center; text-align: center; }
+      .hero__stat-sep { align-self: flex-start; margin-bottom: 0; }
 
       /* Hide the SEO H1 visually but keep it in the DOM for crawlers,
          so the visible stack is exactly the three requested lines. */
