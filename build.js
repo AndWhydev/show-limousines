@@ -363,7 +363,7 @@ function head(fm, slug) {
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script src="https://unpkg.com/lenis@1.0.45/dist/lenis.min.js"></script>
   <script src="https://unpkg.com/split-type"></script>
-  <link rel="stylesheet" href="/styles.css?v=20260703c">
+  <link rel="stylesheet" href="/styles.css?v=20260703d">
 </head>
 <body>`;
 }
@@ -1074,8 +1074,8 @@ function servicesShowcase() {
   // Canonical service order (1→8), then display-only extras after Corporate.
   // `base` derives the responsive set /base-{400,800,1200}.jpg; `src` is a single fixed image.
   const TILES = [
-    { name: 'Weddings', desc: 'Make your special day unforgettable.', href: '/wedding-limousine-sydney/', src: '/assets/service-weddings-gullwing.jpg' },
-    { name: 'Birthday Celebrations', desc: 'Because you deserve it.', href: '/birthday-limousine-sydney/', src: '/assets/service-birthday-rolls.jpg' },
+    { name: 'Weddings', desc: 'Make your special day unforgettable.', href: '/wedding-limousine-sydney/', src: '/assets/service-weddings-rolls.jpg' },
+    { name: 'Birthday Celebrations', desc: 'Because you deserve it.', href: '/birthday-limousine-sydney/', src: '/assets/service-birthday-gullwing.jpg' },
     { name: 'Parties & Limousines', desc: 'The whole crew, one unforgettable ride.', href: '/party-limousine-hire-sydney/', src: '/assets/service-parties-hummer16.jpg' },
     { name: 'School Formals', desc: 'Arrive like royalty with your crew.', href: '/school-formal-limousine-hire-sydney/', src: '/assets/service-schoolformals-chrysler.jpg' },
     { name: 'Hens & Bucks Parties', desc: 'The big night out, sorted.', href: '/hens-party-limo-sydney/', src: '/assets/service-hensbucks-hummer14.jpg' },
