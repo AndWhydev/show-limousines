@@ -22,7 +22,16 @@
     *, *::before, *::after { box-sizing: border-box; }
     * { margin: 0; padding: 0; }
     html { scroll-behavior: auto; }
-    html, body { overflow-x: hidden; }
+    /* overflow-x:clip on the root reliably contains horizontal spill on iOS Safari
+       (which ignores overflow-x:hidden on <body>); body hidden kept as a net. */
+    html { overflow-x: clip; }
+    body { overflow-x: hidden; }
+    /* Safe-area: keep content clear of the notch/Dynamic Island edges. env() is 0
+       in portrait and on non-notched devices, so this leaves the current portrait /
+       Android / desktop layout byte-for-byte unchanged; it only insets in landscape. */
+    @media (max-width: 900px) {
+      body { padding-left: env(safe-area-inset-left); padding-right: env(safe-area-inset-right); }
+    }
     body {
       margin: 0;
       background: var(--color-bg);
@@ -337,7 +346,7 @@
 
     /* ---- Mobile two-row header (Commit 7) — phones only; PC/tablet unchanged ---- */
     @media (max-width: 640px) {
-      .nav-inner { flex-wrap: wrap; gap: 12px 10px; padding: 12px 18px; }
+      .nav-inner { flex-wrap: wrap; gap: 12px 10px; padding: 12px max(18px, env(safe-area-inset-right)) 12px max(18px, env(safe-area-inset-left)); }
       /* Row 1: logo lockup on its own full-width row — centred so it doesn't hug
          the left edge (logo sits on its own row, so this can't crowd the row-2
          Call / Get a Quote / hamburger buttons). Mobile only; desktop unchanged. */
@@ -743,9 +752,12 @@
       .hero-heading {
         max-width: none;
         white-space: nowrap;
-        width: 100vw;
-        margin-left: calc(50% - 50vw);
-        margin-right: calc(50% - 50vw);
+        /* Full-bleed to the phone width WITHOUT 100vw (which overflows on iOS):
+           negate the .hero__inner 24px side padding so the box spans the viewport
+           exactly. Same text room as before; can't exceed the screen. */
+        width: auto;
+        margin-left: -24px;
+        margin-right: -24px;
         padding-left: 12px;
         padding-right: 12px;
         box-sizing: border-box;
@@ -839,6 +851,7 @@
       color: #fff;
       padding: 120px 28px 140px;
       position: relative;
+      overflow: hidden; /* clip the rotated decorative .beam so it can't overflow the viewport (iOS) */
       border-top: 1px solid var(--color-border);
     }
     .occasions__inner { max-width: 1320px; margin: 0 auto; }
@@ -2746,7 +2759,7 @@
 
 /* Localized services grid — per-location "Our Services in {Suburb}" section.
    Responsive card grid; each card links to the matching Sydney-wide service page. */
-.loc-services { padding: 16px 28px 96px; position: relative; }
+.loc-services { padding: 16px 28px 96px; position: relative; overflow: hidden; }
 .loc-services__inner { max-width: 1320px; margin: 0 auto; }
 .loc-services__inner > .label-bracket { margin-bottom: 12px; }
 .loc-services__heading { font-family: 'Bebas Neue', sans-serif; font-size: clamp(28px, 4.4vw, 46px); letter-spacing: 0.01em; color: #fff; margin: 0 0 30px; line-height: 1.04; }
@@ -2970,7 +2983,7 @@
    CONTENT REBUILD ADDITIONS — prose blocks + Fleet mega-panel
    Built only from existing tokens; visually native to the shell.
    ============================================================ */
-.prose { padding: 80px 28px; position: relative; }
+.prose { padding: 80px 28px; position: relative; overflow: hidden; }
 .prose__inner { max-width: 920px; margin: 0 auto; }
 .prose__inner > .label-bracket { margin-bottom: 18px; }
 .prose__h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(26px, 4vw, 40px); letter-spacing: 0.01em; color: #fff; margin: 40px 0 14px; line-height: 1.04; }
@@ -3056,9 +3069,11 @@
    Reuses the existing .fleet-card component; only the band + pill tags are new. */
 .wstandout {
   position: relative;
-  width: 100vw;
+  /* Full-bleed breakout using dvw (dynamic viewport) instead of vw so it doesn't
+     overflow on iOS Safari; root overflow-x:clip contains any rounding residue. */
+  width: 100dvw;
   left: 50%; right: 50%;
-  margin-left: -50vw; margin-right: -50vw;
+  margin-left: -50dvw; margin-right: -50dvw;
   margin-top: 64px; margin-bottom: 8px;
   background: var(--color-dark);
   border-top: 1px solid var(--color-border);

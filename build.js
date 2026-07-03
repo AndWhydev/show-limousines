@@ -342,7 +342,7 @@ function head(fm, slug) {
 <html lang="en-AU">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>${esc(title)}</title>
   <meta name="description" content="${attr(desc)}">
   <link rel="canonical" href="${canonical}">
@@ -363,7 +363,7 @@ function head(fm, slug) {
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script src="https://unpkg.com/lenis@1.0.45/dist/lenis.min.js"></script>
   <script src="https://unpkg.com/split-type"></script>
-  <link rel="stylesheet" href="/styles.css?v=20260703a">
+  <link rel="stylesheet" href="/styles.css?v=20260703b">
 </head>
 <body>`;
 }
