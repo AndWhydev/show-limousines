@@ -346,7 +346,10 @@
 
     /* ---- Mobile two-row header (Commit 7) — phones only; PC/tablet unchanged ---- */
     @media (max-width: 640px) {
-      .nav-inner { flex-wrap: wrap; gap: 12px 10px; padding: 12px max(18px, env(safe-area-inset-right)) 12px max(18px, env(safe-area-inset-left)); }
+      /* Row-gap (22px) is the breathing room between the logo lockup (row 1) and
+         the Call / Get a Quote / hamburger row (row 2). Mobile only; both rows stay
+         centred. Bumped from 12px so the buttons no longer read as part of the logo. */
+      .nav-inner { flex-wrap: wrap; gap: 22px 10px; padding: 12px max(18px, env(safe-area-inset-right)) 12px max(18px, env(safe-area-inset-left)); }
       /* Row 1: logo lockup on its own full-width row — centred so it doesn't hug
          the left edge (logo sits on its own row, so this can't crowd the row-2
          Call / Get a Quote / hamburger buttons). Mobile only; desktop unchanged. */
