@@ -2661,10 +2661,13 @@
     order: 1;                          /* image below the text */
     position: static;                  /* was absolute inset:0 (overlay) */
     width: 100%;
-    aspect-ratio: 1800 / 1005;         /* banner ratio → whole car fills width, no bands */
+    /* Use the SAME full fleet-lineup montage as desktop, at its native 2400/1018
+       ratio and full width → the whole lineup reads (all cars visible), no squish,
+       no crop, no letterbox bands; it's just shorter on a narrow phone. */
+    aspect-ratio: 2400 / 1018;
     margin-top: 18px;
-    background-image: url('/assets/banner-gullwing-cinematic.jpg');
-    background-size: contain;
+    background-image: url('/assets/banner-fleet-montage-cinematic.jpg');
+    background-size: cover;            /* ratio matches box → exact fill, no distortion */
     background-position: center;
     background-repeat: no-repeat;
     -webkit-mask-image: none;          /* drop the 78% carzoom framing + feather */
