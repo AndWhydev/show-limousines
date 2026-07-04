@@ -3691,11 +3691,21 @@ picture{display:contents}
 /* Service-page fleet section: prominent "View Fleet" button (replaces the subtle link) */
 .fleet__cta { display: flex; justify-content: center; margin-top: 48px; }
 
-/* Wedding pages: under-hero stats strip (reuses .hero__stat typography) */
+/* Site-wide: under-hero stats strip / trust bar (reuses .hero__stat typography) */
 .wstat { background: var(--color-bg); border-bottom: 1px solid var(--color-border); padding: 30px 28px; }
 .wstat__inner { max-width: 1320px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: clamp(22px, 5vw, 64px); flex-wrap: wrap; }
 .wstat .hero__stat { align-items: center; text-align: center; }
-@media (max-width: 560px) { .wstat .hero__stat-sep { display: none; } .wstat__inner { gap: 24px; } }
+/* Mobile: keep all 3 stats + dividers on ONE centered, balanced row (no 2+1 wrap).
+   nowrap + justify-content:center is engine-agnostic (no flex-basis/min-width tricks),
+   and the sizes below keep the row fitting down to ~320px. Desktop (>560px) unchanged. */
+@media (max-width: 560px) {
+  .wstat { padding: 24px 10px; }
+  .wstat__inner { gap: 10px; flex-wrap: nowrap; }
+  .wstat .hero__stat { min-width: 0; }
+  .wstat .hero__stat-sep { display: block; height: 22px; margin-bottom: 6px; }
+  .wstat .hero__stat-num { font-size: 25px; }
+  .wstat .hero__stat-label { font-size: 8.5px; letter-spacing: 0.05em; }
+}
 
 /* Main Services page — display-only occasion tiles (no page yet, not clickable) */
 .occ-card--static { cursor: default; }
