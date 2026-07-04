@@ -366,16 +366,20 @@
       }
       /* Row 2: Call + Get a Quote side by side, hamburger next to them */
       .nav-right { flex: 1 0 100%; gap: 10px; }
-      /* Call button: original COLOURS restored (white text/icon, faint dark fill,
-         subtle gold 1px outline, no glow) while the SIZE stays uniform with the
-         gold "Get a Quote" pill beside it — same flex, font-size, gap, pill radius
-         (from base .btn-pill) and 32px icon box. Vertical padding is 10px (not 11px)
-         to offset the restored 1px border under border-box, so both pills render the
-         same height. Mobile only — desktop header and Get a Quote are untouched.
-         Hover falls back to base .btn-pill:hover (opacity), the original behaviour. */
+      /* Call + Get a Quote must be an EXACTLY equal pair on mobile (iOS Safari was
+         rendering Call narrower than Android). Root cause: base `flex: 1` (= 1 1 0%)
+         with the default `min-width: auto` floors each pill at its own min-content,
+         so the longer "Get a Quote" text claimed more width and Call got the leftover
+         — and Safari's wider text-metric/percentage-basis handling made the gap worse.
+         Fix (mobile only): both pills use `flex: 1 1 0` + `min-width: 0`, so the row's
+         free space is split 50/50 regardless of content. Both then get the IDENTICAL
+         box model — 10px vertical padding, 16px horizontal, a 1px border (gold on Call,
+         transparent on Get a Quote) — so width AND height match to the pixel. Colours,
+         gradient, text, icons and the 32px icon box are unchanged; desktop is untouched. */
       .nav-call {
         display: inline-flex;
-        flex: 1;
+        flex: 1 1 0;
+        min-width: 0;
         justify-content: center;
         padding: 10px 16px;
         gap: 12px;
@@ -392,7 +396,7 @@
         box-sizing: border-box;
         flex-shrink: 0;
       }
-      .nav-right .btn-pill--gold { flex: 1; justify-content: center; padding: 11px 16px; font-size: 12.5px; }
+      .nav-right .btn-pill--gold { flex: 1 1 0; min-width: 0; justify-content: center; padding: 10px 16px; font-size: 12.5px; border: 1px solid transparent; }
       .nav-burger { flex: 0 0 auto; }
     }
 
