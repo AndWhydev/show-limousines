@@ -2702,6 +2702,34 @@
       rgba(10, 10, 12, 0.60) 0%, rgba(10, 10, 12, 0.34) 38%,
       rgba(10, 10, 12, 0.0) 72%);
 }
+/* Fleet vehicle banners: the whole banner (and the whole vehicle) must be visible
+   on load with no scroll. Fill the viewport height minus the fixed nav so the band
+   bottom lands at the fold; cover + --hero-pos:82% keeps the full vehicle in frame
+   across common window heights (1080/900/800). Desktop only — mobile keeps its
+   short 3:2 band (already well within the fold). The stats live in a separate
+   section below the hero, so height is unaffected. Reusable fleet-banner standard. */
+@media (min-width: 769px) {
+  .page-hero--vehfit {
+    height: calc(100vh - var(--header-height, 91px));
+    height: calc(100dvh - var(--header-height, 91px));
+    max-height: none;
+  }
+}
+/* Keep the heading/subheading in the clear zone at the very top of the vehicle
+   banner, above the car, and readable via a soft dark scrim that fades out before
+   the vehicle — so the text sits above the vehicle, not on it. Overrides the
+   --scene top shade (higher specificity + later in source). Standard for all
+   fleet vehicle banners. */
+.page-hero.page-hero--vehfit::after {
+  background:
+    linear-gradient(180deg,
+      rgba(10, 10, 12, 0.86) 0,
+      rgba(10, 10, 12, 0.66) 64px,
+      rgba(10, 10, 12, 0.30) 116px,
+      rgba(10, 10, 12, 0.0) 176px);
+}
+.page-hero--vehfit.page-hero--toptext { padding-top: 10px; }
+.page-hero--vehfit .page-hero__sub { margin-top: 8px; }
 
 /* Home CTA band */
 .home-cta {
