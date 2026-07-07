@@ -3728,6 +3728,50 @@ picture{display:contents}
 .occ-card__more--static { color: rgba(240,240,240,0.4); letter-spacing: 0.04em; }
 
 /* ================================================================
+   MOBILE-ONLY (≤768px): Services MAIN page banner — stop the text
+   overlapping the car.  Added 2026-07-07.
+   ----------------------------------------------------------------
+   The Services banner is plain --toptext, so on mobile it renders as a
+   fixed 3/2 band with the studio-car photo as a full-bleed `cover`
+   ::before and the heading + paragraph overlaid on top (z-index 2). The
+   Chrysler fills the whole band, so the copy sits on the limo.
+
+   Fix (scoped to a Services-only modifier class, .page-hero--svcstack, so
+   NO other page changes): stack the banner — heading + paragraph in the
+   black at the top, then the whole car photo below, then the stats bar.
+   No overlap, clear spacing, car fully visible. Desktop (>768px) has no
+   rule for this class, so it stays pixel-identical (plain --toptext).
+   ================================================================ */
+@media (max-width: 768px) {
+  .page-hero--svcstack {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    aspect-ratio: auto;
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    padding: 16px 20px 18px;
+  }
+  .page-hero--svcstack .page-hero__inner { order: 0; }
+  /* image pseudo becomes a flow item BELOW the text (was an inset:0 overlay) */
+  .page-hero--svcstack::before {
+    order: 1;
+    position: static;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    margin-top: 12px;
+    background-image: var(--hero-img);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  .page-hero--svcstack::after { display: none; }  /* no overlay scrim; text is off the car now */
+}
+
+/* ================================================================
    MOBILE-ONLY (≤768px): stack the carzoom "floating car" banner.
    Added 2026-07-07.
    ----------------------------------------------------------------
