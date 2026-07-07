@@ -3726,3 +3726,62 @@ picture{display:contents}
 /* Main Services page — display-only occasion tiles (no page yet, not clickable) */
 .occ-card--static { cursor: default; }
 .occ-card__more--static { color: rgba(240,240,240,0.4); letter-spacing: 0.04em; }
+
+/* ================================================================
+   MOBILE-ONLY (≤768px): stack the carzoom "floating car" banner.
+   Added 2026-07-07.
+   ----------------------------------------------------------------
+   The shared .page-hero is a fixed 3/2 band (260px) on mobile. On the
+   carzoom banners the photo is only a 78%-wide, bottom-anchored floating
+   car and the copy is short, so the 260px section towers over its content
+   — leaving dark empty bars above the title and around the car (worst on
+   About, which has a one-line title). Replace the fixed band + overlay
+   with a content-sized STACK (heading → car → stats) so the section hugs
+   its content; the stats bar (.wstat) already follows directly.
+
+   Scope: .page-hero--carzoom ONLY (the floating-car banners = the FIX
+   list: Chrysler/Hummer/Rolls MAIN, Locations, About + subpages, the two
+   Wedding-Cars pages). The individual SERVICE (--scene) and VEHICLE
+   (--scene --vehfit) banners are NOT carzoom, so they are untouched.
+   Fleet is excluded (:not(--fleetmontage)) — it has its own stacked
+   mobile layout. Desktop (>768px) keeps the floating-car banner as-is.
+   ================================================================ */
+@media (max-width: 768px) {
+  /* Stack the banner instead of overlaying text on a floating car: heading +
+     subheading sit in the black at the top, then the whole car photo sits
+     directly below, then the stats bar follows. The section sizes to its
+     content (no fixed 3/2 band), so there is no dark void above/below and the
+     copy never overlaps the car — balanced for a one-line title (About) or a
+     four-line sub (Rolls) alike. Mirrors the /fleet/ mobile hero pattern. */
+  .page-hero--carzoom:not(.page-hero--fleetmontage) {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    aspect-ratio: auto;
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    padding: 16px 20px 18px;
+  }
+  .page-hero--carzoom:not(.page-hero--fleetmontage) .page-hero__inner {
+    order: 0;
+  }
+  /* The image pseudo becomes a normal flow item BELOW the text (was an absolute
+     full-section overlay). Full width, 16:9 (the studio images' ratio) so the
+     WHOLE car shows, no crop, no letterbox. */
+  .page-hero--carzoom:not(.page-hero--fleetmontage)::before {
+    order: 1;
+    position: static;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    margin-top: 12px;
+    background-image: var(--hero-img);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  /* No overlay scrim needed now that the text sits in the black, not on the car. */
+  .page-hero--carzoom:not(.page-hero--fleetmontage)::after { display: none; }
+}
