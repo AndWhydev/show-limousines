@@ -3881,7 +3881,12 @@ picture{display:contents}
    dark bg (var(--color-bg)) instead of cropping the car. */
 .page-hero.page-hero--scene:not(.page-hero--vehfit) {
   aspect-ratio: 16 / 9;
-  max-height: 800px;
+  /* Height capped at 620px so nav (94px) + banner (620px) = 714px fits within a
+     typical laptop viewport (~728px) — the WHOLE car is visible on load with no
+     scroll. `cover` + per-page background-position (below) frames each vehicle so
+     the wheels/lower body stay in the (now shorter) band. Desktop only; the
+     approved mobile rules are in the @media block below and are untouched. */
+  max-height: 620px;
   align-items: flex-start;       /* heading pinned to the top band, above the car */
   padding-top: 0;                /* spacing handled on the text block, below */
 }
