@@ -3736,6 +3736,25 @@ picture{display:contents}
   .wstat .hero__stat-label { font-size: 8.5px; letter-spacing: 0.05em; }
 }
 
+/* ---- Mobile (≤768px): make the site-wide trust bar (.wstat) span full width,
+   matching the HOMEPAGE hero trust bar (.hero__stats) — the reference. The
+   homepage keeps the three stats on ONE nowrap row with 11px labels that wrap
+   to two lines, so the columns shrink to FILL the row edge-to-edge. The interior
+   .wstat above shrank labels to 8.5px on a single line, so the columns stayed
+   narrow and justify-content:center clustered them in the middle (the black side
+   gaps). Adopt the homepage's exact values here (11px wrapping label, 28px num,
+   18px gap, nowrap fill, flex-start). One shared rule → every .wstat page; no
+   per-page overrides. Placed AFTER the ≤560 block so it wins by source order.
+   Desktop (>768px) is untouched. */
+@media (max-width: 768px) {
+  .wstat { padding: 24px; }
+  .wstat__inner { gap: 18px; flex-wrap: nowrap; justify-content: center; align-items: flex-start; }
+  .wstat .hero__stat { align-items: center; text-align: center; min-width: 0; }
+  .wstat .hero__stat-sep { display: block; align-self: flex-start; height: 28px; margin-bottom: 0; }
+  .wstat .hero__stat-num { font-size: 28px; }
+  .wstat .hero__stat-label { font-size: 11px; letter-spacing: 0.18em; }
+}
+
 /* Main Services page — display-only occasion tiles (no page yet, not clickable) */
 .occ-card--static { cursor: default; }
 .occ-card__more--static { color: rgba(240,240,240,0.4); letter-spacing: 0.04em; }
