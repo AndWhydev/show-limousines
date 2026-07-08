@@ -3861,3 +3861,90 @@ picture{display:contents}
   /* No overlay scrim needed now that the text sits in the black, not on the car. */
   .page-hero--carzoom:not(.page-hero--fleetmontage)::after { display: none; }
 }
+
+/* ================================================================
+   INDIVIDUAL SERVICES-PAGE BANNERS — framing fix (scoped to
+   .page-hero--scene only; the 8 dropdown Services pages). Goals:
+   (1) the WHOLE car is always visible, never cropped, on desktop AND
+       phone;  (2) the heading/subtitle never overlap the car;
+       (3) even, balanced space above the heading on every page.
+   CSS-only — images, --hero-img and every other hero/section untouched.
+   Appended last so it wins by source order over the earlier
+   cover / 3:2 / max-height:720 rules.
+   ---------------------------------------------------------------- */
+/* Scope: :not(.page-hero--vehfit) targets the 8 Services pages ONLY. The 11
+   fleet/vehicle pages also carry .page-hero--scene but add .page-hero--vehfit,
+   so they are excluded here and keep their own full-height banner rules. */
+/* Whole image (16:9) shown via `contain`; the element is 16:9 too, so on
+   normal widths it fills edge-to-edge with NO letterbox. On very wide
+   screens the height cap kicks in and `contain` letterboxes into the site
+   dark bg (var(--color-bg)) instead of cropping the car. */
+.page-hero.page-hero--scene:not(.page-hero--vehfit) {
+  aspect-ratio: 16 / 9;
+  max-height: 800px;
+  align-items: flex-start;       /* heading pinned to the top band, above the car */
+  padding-top: 0;                /* spacing handled on the text block, below */
+}
+.page-hero.page-hero--scene:not(.page-hero--vehfit)::before {
+  background-image: var(--hero-img);
+  /* Full-bleed at every width via cover (no dark side-bands on ultra-wide).
+     Airport & Cruise use this default centered crop — their cars sit high
+     enough that center keeps the whole vehicle; the 6 lower-sitting cars
+     override the vertical position below (center 85%). */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: var(--color-bg);
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+/* Even space above the heading + a top scrim band so the title/subtitle read
+   cleanly and sit ABOVE the car (the cars are composed in the lower ~60% of
+   each 16:9 frame, so the top band is clear scene/sky). */
+.page-hero.page-hero--scene:not(.page-hero--vehfit) .page-hero__inner { padding-top: 30px; }
+.page-hero.page-hero--scene:not(.page-hero--vehfit)::after {
+  background: linear-gradient(180deg,
+    rgba(10, 10, 12, 0.82) 0%,
+    rgba(10, 10, 12, 0.60) 15%,
+    rgba(10, 10, 12, 0.28) 28%,
+    rgba(10, 10, 12, 0.0) 42%);
+}
+/* Per-page vertical framing (DESKTOP ONLY). These 6 cars sit lower in their
+   16:9 frame than Airport/Cruise. The shared rule above uses `contain` (whole
+   image, but no vertical overflow to reposition). For these 6 we switch to
+   `cover` — which fills the band edge-to-edge (no side letterbox) AND gives real
+   vertical overflow — then anchor the crop low (center 85%) so the whole vehicle
+   including the wheels stays in frame while only upper sky/building is trimmed.
+   Targeted by each page's unique hero aria-label, so Airport & Cruise (already
+   correct, left on `contain`) are NOT matched and their CSS is unchanged.
+   Wrapped in min-width:769 so the approved mobile rules are untouched. Values
+   are per-page and can be nudged individually. */
+@media (min-width: 769px) {
+  .page-hero.page-hero--scene:not(.page-hero--vehfit)[aria-label*="Birthday"]::before      { background-size: cover; background-position: center 85%; }
+  .page-hero.page-hero--scene:not(.page-hero--vehfit)[aria-label*="Concert"]::before        { background-size: cover; background-position: center 85%; }
+  .page-hero.page-hero--scene:not(.page-hero--vehfit)[aria-label*="School Formal"]::before   { background-size: cover; background-position: center 85%; }
+  .page-hero.page-hero--scene:not(.page-hero--vehfit)[aria-label*="Corporate"]::before      { background-size: cover; background-position: center 85%; }
+  .page-hero.page-hero--scene:not(.page-hero--vehfit)[aria-label*="Party Limousine"]::before { background-size: cover; background-position: center 85%; }
+  .page-hero.page-hero--scene:not(.page-hero--vehfit)[aria-label*="Hen"]::before            { background-size: cover; background-position: center 85%; }
+}
+@media (max-width: 768px) {
+  /* Phone: a fixed DARK text band on top + the full 16:9 image below it, so the
+     heading/subtitle sit in the dark band (never on the car) AND the whole car is
+     shown with no crop. Element height = text band + a 16:9 image area (100vw wide
+     => 56.25vw tall), so the ::before area is exactly 16:9 (cover == whole image). */
+  .page-hero.page-hero--scene:not(.page-hero--vehfit) {
+    box-sizing: border-box;
+    aspect-ratio: auto;
+    height: calc(120px + 56.25vw);
+    max-height: none;
+    padding: 0 20px;
+  }
+  .page-hero.page-hero--scene:not(.page-hero--vehfit)::before {
+    top: 120px;                       /* image occupies the lower 16:9 area only */
+    background-size: cover;           /* area is exactly 16:9 => whole car, no crop */
+    background-position: center;
+  }
+  /* Top band is the element's dark bg; no image tint needed below it. */
+  .page-hero.page-hero--scene:not(.page-hero--vehfit)::after { display: none; }
+  .page-hero.page-hero--scene:not(.page-hero--vehfit) .page-hero__inner { padding-top: 16px; }
+}
