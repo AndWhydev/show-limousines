@@ -400,6 +400,19 @@
       .nav-burger { flex: 0 0 auto; }
     }
 
+    /* ---- Mobile-only top breathing room above the logo/header ----
+       The logo was sitting flush under the status bar / notch. Add top spacing to
+       the .nav-inner (the flex parent of BOTH the logo row and the Call/Quote/burger
+       row), so the WHOLE header shifts down together and stays aligned. Padding is on
+       .nav-inner (inside .nav-main), so the dark blurred header background fills up
+       into the safe-area too. env(safe-area-inset-top) respects the iPhone notch /
+       Dynamic Island (needs viewport-fit=cover, already set); the +20px is the
+       Android/no-inset breathing room. Placed AFTER the ≤640px block so this
+       padding-top wins across all mobile widths. Desktop (>768px) is untouched. */
+    @media (max-width: 768px) {
+      .nav-inner { padding-top: calc(env(safe-area-inset-top) + 20px); }
+    }
+
     /* ============================================================
        HERO — Three.js 3D car + GSAP pinned scroll
        ============================================================ */
