@@ -3914,23 +3914,19 @@ picture{display:contents}
     rgba(10, 10, 12, 0.28) 28%,
     rgba(10, 10, 12, 0.0) 42%);
 }
-/* Per-page vertical framing (DESKTOP ONLY). These 6 cars sit lower in their
-   16:9 frame than Airport/Cruise. The shared rule above uses `contain` (whole
-   image, but no vertical overflow to reposition). For these 6 we switch to
-   `cover` — which fills the band edge-to-edge (no side letterbox) AND gives real
-   vertical overflow — then anchor the crop low (center 85%) so the whole vehicle
-   including the wheels stays in frame while only upper sky/building is trimmed.
-   Targeted by each page's unique hero aria-label, so Airport & Cruise (already
-   correct, left on `contain`) are NOT matched and their CSS is unchanged.
-   Wrapped in min-width:769 so the approved mobile rules are untouched. Values
-   are per-page and can be nudged individually. */
+/* Per-page vertical framing (DESKTOP ONLY). Concert, School Formal and Corporate
+   sit higher in their 16:9 frame than Airport/Cruise, so each is nudged to the
+   value that shows the whole car (wheels + a little road) with the heading clear
+   above it — verified whole-car + no-overlap at 1366x728 and 1440x789. Targeted by
+   each page's hero aria-label, so Airport & Cruise (correct on the default centre
+   crop) are NOT matched. Birthday, Party & Hens are intentionally NOT listed here:
+   their banner images are composed with headroom above the van, so they render on
+   the SAME standard default crop as Airport/Cruise with no per-page rule — all 8
+   Service banners share one style. Wrapped in min-width:769 so mobile is untouched. */
 @media (min-width: 769px) {
-  .page-hero.page-hero--scene:not(.page-hero--vehfit)[aria-label*="Birthday"]::before      { background-size: cover; background-position: center 85%; }
-  .page-hero.page-hero--scene:not(.page-hero--vehfit)[aria-label*="Concert"]::before        { background-size: cover; background-position: center 85%; }
-  .page-hero.page-hero--scene:not(.page-hero--vehfit)[aria-label*="School Formal"]::before   { background-size: cover; background-position: center 85%; }
+  .page-hero.page-hero--scene:not(.page-hero--vehfit)[aria-label*="Concert"]::before        { background-size: cover; background-position: center 62%; }
+  .page-hero.page-hero--scene:not(.page-hero--vehfit)[aria-label*="School Formal"]::before   { background-size: cover; background-position: center 56%; }
   .page-hero.page-hero--scene:not(.page-hero--vehfit)[aria-label*="Corporate"]::before      { background-size: cover; background-position: center 85%; }
-  .page-hero.page-hero--scene:not(.page-hero--vehfit)[aria-label*="Party Limousine"]::before { background-size: cover; background-position: center 85%; }
-  .page-hero.page-hero--scene:not(.page-hero--vehfit)[aria-label*="Hen"]::before            { background-size: cover; background-position: center 85%; }
 }
 @media (max-width: 768px) {
   /* Phone: a fixed DARK text band on top + the full 16:9 image below it, so the
