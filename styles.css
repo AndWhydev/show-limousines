@@ -3648,6 +3648,40 @@
 }
 
 /* ============================================================
+   Service mid-section: intro text block + photo gallery carousel
+   (matches the [ LABEL ] + Bebas heading + intro pattern used by
+   "Four steps…" / "What our clients say" and the fleet carousel)
+   ============================================================ */
+.svc-intro { position: relative; padding: 84px 24px 24px; background: var(--color-bg); border-top: 1px solid var(--color-border); }
+.svc-intro__inner { max-width: 780px; margin: 0 auto; text-align: center; }
+.svc-intro .label-bracket { justify-content: center; }
+.svc-intro__heading { font-family: 'Bebas Neue', sans-serif; font-size: clamp(30px, 5vw, 52px); line-height: 1; letter-spacing: .01em; color: #fff; margin: 14px 0 0; }
+.svc-intro__lead { font-family: 'DM Sans', sans-serif; font-size: 16px; line-height: 1.72; color: rgba(255,255,255,0.64); max-width: 660px; margin: 20px auto 0; }
+/* Intro flows straight into the feature grid — drop the divider line + top gap */
+.svc-intro + .svc-why { border-top: none; padding-top: 12px; }
+
+.svc-gallery { position: relative; padding: 84px 24px; background: var(--color-bg); border-top: 1px solid var(--color-border); overflow: hidden; }
+.svc-gallery__inner { max-width: 1180px; margin: 0 auto; }
+.svc-gallery__head { text-align: center; margin-bottom: 34px; }
+.svc-gallery__head .label-bracket { justify-content: center; }
+.svc-gallery__heading { font-family: 'Bebas Neue', sans-serif; font-size: clamp(30px, 5vw, 52px); line-height: 1; letter-spacing: .01em; color: #fff; margin: 14px 0 0; }
+.svc-gallery__intro { font-family: 'DM Sans', sans-serif; font-size: 15px; line-height: 1.5; color: rgba(255,255,255,0.6); max-width: 600px; margin: 14px auto 0; }
+
+.galcar { position: relative; margin-top: 8px; }
+.galcar__viewport { overflow: hidden; padding: 12px 2px; }
+.galcar__track { display: flex; gap: 20px; transition: transform .55s cubic-bezier(.2,.7,.2,1); will-change: transform; touch-action: pan-y; }
+.galcar__slide { flex: 0 0 calc((100% - 40px) / 3); margin: 0; border-radius: 16px; overflow: hidden; border: 1px solid var(--color-border); background: var(--color-bg-raised); aspect-ratio: 3 / 2; }
+.galcar__slide img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s cubic-bezier(.2,.7,.2,1); }
+.galcar__slide:hover img { transform: scale(1.05); }
+.galcar__btn { position: absolute; top: 50%; transform: translateY(-50%); z-index: 5; width: 46px; height: 46px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; background: rgba(10,10,12,0.72); border: 1px solid var(--color-border); color: #fff; cursor: pointer; transition: background .3s, border-color .3s, color .3s; }
+.galcar__btn:hover { background: var(--color-accent); border-color: var(--color-accent); color: #0a0a0c; }
+.galcar__btn--prev { left: 6px; }
+.galcar__btn--next { right: 6px; }
+@media (max-width: 1024px) { .galcar__slide { flex-basis: calc((100% - 20px) / 2); } }
+@media (max-width: 768px) { .svc-intro { padding: 56px 20px 18px; } .svc-gallery { padding: 56px 20px; } }
+@media (max-width: 640px) { .galcar__slide { flex-basis: 100%; } }
+
+/* ============================================================
    Uniform soft, rounded image frames site-wide.
    Matches the Homepage occasion photo cards: consistent 18px
    corner radius + overflow:hidden + a subtle soft drop shadow,

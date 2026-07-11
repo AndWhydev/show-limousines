@@ -226,6 +226,43 @@
           resetTimer();
         })();
 
+        // -------- Photo gallery carousel(s): manual arrows + swipe --------
+        (function initGalleryCarousels() {
+          document.querySelectorAll('.galcar').forEach(function (root) {
+            var viewport = root.querySelector('.galcar__viewport');
+            var track = root.querySelector('.galcar__track');
+            var slides = track ? track.querySelectorAll('.galcar__slide') : [];
+            if (!slides.length) return;
+            var prevBtn = root.querySelector('.galcar__btn--prev');
+            var nextBtn = root.querySelector('.galcar__btn--next');
+            var i = 0;
+            function step() {
+              var gap = parseFloat(getComputedStyle(track).columnGap) || 20;
+              return slides[0].getBoundingClientRect().width + gap;
+            }
+            function perView() { return Math.max(1, Math.round(viewport.clientWidth / step())); }
+            function maxIndex() { return Math.max(0, slides.length - perView()); }
+            function go(n) {
+              var mx = maxIndex();
+              i = n > mx ? 0 : (n < 0 ? mx : n);
+              track.style.transform = 'translateX(' + (-i * step()) + 'px)';
+            }
+            if (prevBtn) prevBtn.addEventListener('click', function () { go(i - 1); });
+            if (nextBtn) nextBtn.addEventListener('click', function () { go(i + 1); });
+            window.addEventListener('resize', function () { go(Math.min(i, maxIndex())); });
+            // Touch / swipe support
+            var x0 = null;
+            viewport.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+            viewport.addEventListener('touchend', function (e) {
+              if (x0 === null) return;
+              var dx = e.changedTouches[0].clientX - x0;
+              if (Math.abs(dx) > 40) { go(dx < 0 ? i + 1 : i - 1); }
+              x0 = null;
+            });
+            go(0);
+          });
+        })();
+
         // -------- Review cards: per-card "Read more" toggle --------
         (function initReviewCards() {
           var cards = document.querySelectorAll('.wrev-card');
