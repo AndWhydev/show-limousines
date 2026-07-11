@@ -84,6 +84,10 @@ The full site is complete with these sections:
 ## What Is Still Outstanding
 
 - Client review and approval of the full site
+- Service-page galleries use CURATED PLACEHOLDER photos — client to supply real
+  occasion photos to swap in (just change the /gallery-photos/ filenames in each
+  page's .svc-gallery block). Cruise is the weakest set (only the VW Crafter shot
+  shows a cruise ship); Party + Hens each use one low-res 265x195 image.
 - Black Chrysler Super Stretch: client asked to remove the white ribbons on
   the bonnet (source supplied with them still on) — not yet done
 - 3D car model upgrade (current model is a low-poly generic sedan, not a limo)
@@ -92,6 +96,17 @@ The full site is complete with these sections:
 
 ## Recently Completed
 
+- Service-page mid-section rebuild rolled out to all 8 service pages (Airport is
+  the template, commit f7267da; the other 7 in cc2b59b — Cruise, Birthday,
+  Concert, School Formal, Corporate, Party, Hens & Bucks). Per page: removed the
+  old text-heavy prose block; added a [ LABEL ] + heading + intro block
+  (.svc-intro) below the trust bar; removed the "Why Choose Us" heading above the
+  feature boxes (boxes kept); added a sliding photo gallery (.svc-gallery /
+  .galcar, dark theme + gold arrows + swipe). Shared styles/JS live in styles.css
+  + main.js (guarded, no-op where the gallery HTML is absent).
+- NOTE: the gallery-photos/ folder still contains wedding-couple shots
+  (e.g. chrysler-super-stretch-limo-black-edition.jpg + -2.jpg) — these were
+  deliberately EXCLUDED from the service-page galleries to keep them on-theme.
 - Real client fleet photos swapped in for all 11 vehicles (replaced the
   AI-generated images); normalised to 1536x864 JPEGs
 - Black Edition fleet photo: bride & groom removed and the full limousine
