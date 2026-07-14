@@ -1233,6 +1233,12 @@
       transform: scale(1.06);
       filter: brightness(1.05);
     }
+    /* Package showcase composites fill the media frame edge-to-edge (the image
+       is already a finished dark-studio scene, so no contain/padding). */
+    .fleet-card__media--showcase .fleet-card__img {
+      object-fit: cover;
+      padding: 0;
+    }
     .fleet-card__badge { z-index: 3; }
     .fleet-card__badge {
       position: absolute;
