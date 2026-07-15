@@ -3952,6 +3952,13 @@ picture{display:contents}
   .page-hero.page-hero--scene:not(.page-hero--vehfit)[aria-label*="Concert"]::before        { background-size: cover; background-position: center 62%; }
   .page-hero.page-hero--scene:not(.page-hero--vehfit)[aria-label*="School Formal"]::before   { background-size: cover; background-position: center 56%; }
   .page-hero.page-hero--scene:not(.page-hero--vehfit)[aria-label*="Corporate"]::before      { background-size: cover; background-position: center 85%; }
+  /* Cruise & Birthday: the vehicle sits low in these scenes, so the default
+     centre crop cuts its wheels off at the band bottom. Weight the crop toward
+     the image bottom so the whole vehicle (wheels included) shows; the scene has
+     ample headroom (ship/sky, house/sky) above, so the heading still clears it.
+     Scoped by aria-label to these two Services pages only — the other 6 untouched. */
+  .page-hero.page-hero--scene:not(.page-hero--vehfit)[aria-label*="Cruise"]::before          { background-size: cover; background-position: center 64%; }
+  .page-hero.page-hero--scene:not(.page-hero--vehfit)[aria-label*="Birthday"]::before        { background-size: cover; background-position: center 82%; }
 }
 @media (max-width: 768px) {
   /* Phone: a fixed DARK text band on top + the full 16:9 image below it, so the
