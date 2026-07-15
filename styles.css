@@ -3974,3 +3974,29 @@ picture{display:contents}
   .page-hero.page-hero--scene:not(.page-hero--vehfit)::after { display: none; }
   .page-hero.page-hero--scene:not(.page-hero--vehfit) .page-hero__inner { padding-top: 16px; }
 }
+
+/* ── Studio VEHICLE scene banners (About Us group, all Locations, Contact) ──────
+   These reuse the full-bleed .page-hero--scene treatment but their photos are
+   STUDIO CAR shots (car centred, grey headroom above) rather than real-world
+   scenes with sky. At the capped 620px band the centred `cover` crop pulls the
+   car up so a long (3-line) subheading runs onto the windscreen/bonnet. Fix,
+   DESKTOP ONLY (mobile already stacks the text in a dark band above the image):
+   (1) lift the heading/subheading block up a touch, (2) push the car DOWN via a
+   lower background-position (--hero-pos, tuned per page) so the whole text block
+   clears the roofline, (3) extend the readability scrim to cover the raised text.
+   Scoped to .page-hero--vehscene so the 8 Services SCENE banners are untouched.
+   Same (0,3,1) specificity as the shared scene::before but declared later, so it
+   wins for vehscene pages only. */
+@media (min-width: 769px) {
+  .page-hero.page-hero--scene.page-hero--vehscene .page-hero__inner { padding-top: 12px; }
+  .page-hero.page-hero--scene.page-hero--vehscene::before {
+    background-position: center var(--hero-pos, 30%);
+  }
+  .page-hero.page-hero--scene.page-hero--vehscene::after {
+    background: linear-gradient(180deg,
+      rgba(10, 10, 12, 0.86) 0%,
+      rgba(10, 10, 12, 0.70) 16%,
+      rgba(10, 10, 12, 0.40) 30%,
+      rgba(10, 10, 12, 0.0) 48%);
+  }
+}
