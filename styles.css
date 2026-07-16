@@ -3662,8 +3662,8 @@
 .galcar__viewport { overflow: hidden; padding: 12px 2px; }
 .galcar__track { display: flex; gap: 20px; transition: transform .55s cubic-bezier(.2,.7,.2,1); will-change: transform; touch-action: pan-y; }
 .galcar__slide { flex: 0 0 calc((100% - 40px) / 3); margin: 0; border-radius: 16px; overflow: hidden; border: 1px solid var(--color-border); background: var(--color-bg-raised); aspect-ratio: 3 / 2; }
-.galcar__slide img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s cubic-bezier(.2,.7,.2,1); }
-.galcar__slide:hover img { transform: scale(1.05); }
+.galcar__slide img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; transition: filter .4s cubic-bezier(.2,.7,.2,1); }
+.galcar__slide:hover img { filter: brightness(1.08); }
 .galcar__btn { position: absolute; top: 50%; transform: translateY(-50%); z-index: 5; width: 46px; height: 46px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; background: rgba(10,10,12,0.72); border: 1px solid var(--color-border); color: #fff; cursor: pointer; transition: background .3s, border-color .3s, color .3s; }
 .galcar__btn:hover { background: var(--color-accent); border-color: var(--color-accent); color: #0a0a0c; }
 .galcar__btn--prev { left: 6px; }
