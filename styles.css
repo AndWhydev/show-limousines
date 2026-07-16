@@ -2788,6 +2788,9 @@
 .gallery__dot:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
 .gallery__count { position: absolute; top: 10px; right: 12px; z-index: 3; font: 600 12px/1 'DM Sans', sans-serif; letter-spacing: .04em; color: #fff; background: rgba(10,10,12,0.5); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); padding: 6px 9px; border-radius: 999px; }
 .gallery[data-single] .gallery__nav, .gallery[data-single] .gallery__dots, .gallery[data-single] .gallery__count { display: none; }
+/* --fit: gallery mixes landscape + portrait photos; show the whole car (never crop). */
+.gallery--fit .gallery__viewport { aspect-ratio: 3 / 2; background: #0a0a0c; }
+.gallery--fit .gallery__slide img { object-fit: contain; }
 @media (max-width: 900px) { .gallery__nav { width: 40px; height: 40px; } }
 @media (prefers-reduced-motion: reduce) { .gallery__track { transition: none; } }
 
