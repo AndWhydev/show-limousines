@@ -3654,13 +3654,17 @@
 /* Venue list — lead-in + two content-width columns.
    The wrapper shrink-wraps to its content and auto-centres, so the whole
    lead-in-plus-two-columns block centres on the page as one unit. */
-.svc-intro__venues-wrap { width: -moz-fit-content; width: fit-content; max-width: 100%; margin-left: auto; margin-right: auto; margin-top: 30px; }
-.svc-intro__leadin { font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 600; letter-spacing: .02em; color: rgba(255,255,255,0.82); text-align: center; margin: 0 0 16px; }
-.svc-intro__venues { display: flex; justify-content: center; gap: 4rem; }
-.svc-intro__venue-col { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 11px; text-align: left; width: 227px; }
-.svc-intro__venue-col li { position: relative; padding-left: 20px; font-family: 'DM Sans', sans-serif; font-size: 15px; line-height: 1.45; color: rgba(255,255,255,0.72); }
-.svc-intro__venue-col li::before { content: ''; position: absolute; left: 2px; top: 0.52em; width: 6px; height: 6px; border-radius: 50%; background: var(--color-accent, #C9A84C); }
-@media (max-width: 640px) { .svc-intro__venues { flex-direction: column; align-items: center; gap: 11px; } }
+/* Container spans the centred content width; the lead-in centres on it and the two
+   columns are distributed space-evenly, so the left margin, centre gap and right margin
+   are all equal and the block is symmetric about the section's centre. */
+.svc-intro__venues-wrap { width: 100%; max-width: 660px; margin-left: auto; margin-right: auto; margin-top: 30px; }
+.svc-intro__leadin { display: block; text-align: center; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 600; letter-spacing: .02em; color: rgba(255,255,255,0.82); margin: 0 0 16px; }
+/* Two columns, each sized to its own content, spread evenly across the container. */
+.svc-intro__venues { display: grid; grid-template-columns: max-content max-content; justify-content: space-evenly; row-gap: 11px; }
+.svc-intro__venue-col { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 11px; }
+.svc-intro__venue-col li { display: flex; align-items: center; white-space: nowrap; font-family: 'DM Sans', sans-serif; font-size: 15px; line-height: 1.45; color: rgba(255,255,255,0.72); }
+.svc-intro__venue-col li::before { content: ''; flex: 0 0 6px; height: 6px; border-radius: 50%; background: var(--color-accent, #C9A84C); margin-right: 10px; }
+@media (max-width: 640px) { .svc-intro__venues { grid-template-columns: max-content; justify-content: center; } }
 /* Intro flows straight into the feature grid — drop the divider line + top gap */
 .svc-intro + .svc-why { border-top: none; padding-top: 12px; }
 
