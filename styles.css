@@ -346,11 +346,11 @@
 
     /* ---- Mobile two-row header (Commit 7) — phones only; PC/tablet unchanged ---- */
     @media (max-width: 640px) {
-      /* Row-gap (40px) is the breathing room between the logo lockup (row 1) and
+      /* Row-gap (24px) is the breathing room between the logo lockup (row 1) and
          the Call / Get a Quote / hamburger row (row 2). Mobile only; both rows stay
-         centred. Bumped to 40px so there's a clear gap and the buttons don't crowd
-         the logo lockup. */
-      .nav-inner { flex-wrap: wrap; gap: 40px 10px; padding: 12px max(18px, env(safe-area-inset-right)) 12px max(18px, env(safe-area-inset-left)); }
+         centred. Trimmed from 40px to 24px to make the phone header more compact
+         while still keeping the buttons clear of the logo lockup. */
+      .nav-inner { flex-wrap: wrap; gap: 24px 10px; padding: 12px max(18px, env(safe-area-inset-right)) 12px max(18px, env(safe-area-inset-left)); }
       /* Row 1: logo lockup on its own full-width row — centred so it doesn't hug
          the left edge (logo sits on its own row, so this can't crowd the row-2
          Call / Get a Quote / hamburger buttons). Mobile only; desktop unchanged. */
@@ -407,11 +407,11 @@
        row), so the WHOLE header shifts down together and stays aligned. Padding is on
        .nav-inner (inside .nav-main), so the dark blurred header background fills up
        into the safe-area too. env(safe-area-inset-top) respects the iPhone notch /
-       Dynamic Island (needs viewport-fit=cover, already set); the +40px is the
+       Dynamic Island (needs viewport-fit=cover, already set); the +20px is the
        Android/no-inset breathing room. Placed AFTER the ≤640px block so this
        padding-top wins across all mobile widths. Desktop (>768px) is untouched. */
     @media (max-width: 768px) {
-      .nav-inner { padding-top: calc(env(safe-area-inset-top) + 40px); }
+      .nav-inner { padding-top: calc(env(safe-area-inset-top) + 20px); }
     }
 
     /* ============================================================
