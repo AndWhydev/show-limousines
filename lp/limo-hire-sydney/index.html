@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Limousine Hire Sydney | Wedding Car Hire Sydney | Show Limousines</title>
+  <meta name="description" content="Limousine hire and wedding car hire across Sydney. Rolls Royce, Chrysler Super Stretch, Mercedes S Class, red carpet and uniformed chauffeurs. From $399 — call 0422 023 413.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+  <script src="https://unpkg.com/lenis@1.0.45/dist/lenis.min.js" defer></script>
+  <link rel="stylesheet" href="/styles.css?v=20260703e">
+  <style>
+    /* Landing-page-only chrome. All section styles inherit from /styles.css. */
+    body { padding-bottom: 0; }
+    .lp-header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(10,10,12,0.92);
+      -webkit-backdrop-filter: saturate(1.1) blur(10px);
+      backdrop-filter: saturate(1.1) blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .lp-header__inner {
+      max-width: 1280px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 24px; gap: 16px;
+    }
+    .lp-header__brand { display: inline-flex; align-items: center; }
+    .lp-header__logo { height: 34px; width: auto; display: block; }
+    .lp-header__right { display: flex; align-items: center; gap: 10px; }
+    .lp-header__phone {
+      display: inline-flex; align-items: center; gap: 8px;
+      color: #fff; font: 600 14px/1 'DM Sans', sans-serif;
+      text-decoration: none; padding: 10px 14px;
+      border: 1px solid rgba(255,255,255,0.14); border-radius: 999px;
+      transition: border-color .2s, background .2s;
+    }
+    .lp-header__phone:hover { border-color: rgba(201,168,76,0.5); }
+    .lp-header__phone svg { color: #C9A84C; }
+    .lp-header__cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #C9A84C; color: #0a0a0c;
+      font: 700 14px/1 'DM Sans', sans-serif; text-decoration: none;
+      padding: 12px 18px; border-radius: 999px;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .lp-header__cta:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(201,168,76,0.28); }
+    @media (max-width: 640px) {
+      .lp-header__inner { padding: 10px 14px; gap: 10px; }
+      .lp-header__logo { height: 28px; }
+      .lp-header__phone-label { display: none; }
+      .lp-header__phone { padding: 10px; }
+      .lp-header__cta { padding: 10px 14px; font-size: 13px; }
+    }
+
+    /* Hero CTAs + trust badges */
+    .lp-hero__ctas {
+      display: flex; flex-wrap: wrap; justify-content: center;
+      gap: 12px; margin-top: 22px;
+    }
+    .lp-hero__cta-primary,
+    .lp-hero__cta-secondary {
+      display: inline-flex; align-items: center; gap: 8px;
+      font: 700 15px/1 'DM Sans', sans-serif; text-decoration: none;
+      padding: 14px 22px; border-radius: 999px;
+      transition: transform .2s, box-shadow .2s, background .2s, color .2s;
+    }
+    .lp-hero__cta-primary { background: #C9A84C; color: #0a0a0c; }
+    .lp-hero__cta-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(201,168,76,0.32); }
+    .lp-hero__cta-secondary { color: #fff; border: 1px solid rgba(255,255,255,0.28); background: rgba(0,0,0,0.28); }
+    .lp-hero__cta-secondary:hover { background: rgba(201,168,76,0.14); border-color: rgba(201,168,76,0.6); }
+    .lp-hero__cta-secondary svg { color: #C9A84C; }
+    .lp-badges {
+      display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
+      gap: 8px 14px; margin: 22px auto 0; max-width: 780px;
+      color: rgba(255,255,255,0.78);
+      font: 500 13px/1.5 'DM Sans', sans-serif;
+    }
+    .lp-badges__dot { color: #C9A84C; opacity: 0.8; }
+    @media (max-width: 640px) {
+      .lp-hero__ctas { gap: 10px; }
+      .lp-hero__cta-primary, .lp-hero__cta-secondary { padding: 13px 18px; font-size: 14px; }
+      .lp-badges { font-size: 12px; gap: 6px 10px; margin-top: 18px; }
+    }
+
+    /* Social proof strip: 5.0 line + 3 testimonial cards */
+    .lp-social { padding: 72px 0 40px; background: #0a0a0c; }
+    .lp-social__inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .lp-social__rating {
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      text-align: center; margin-bottom: 36px;
+    }
+    .lp-social__stars { color: #C9A84C; font-size: 22px; letter-spacing: 2px; }
+    .lp-social__rating-text {
+      color: rgba(255,255,255,0.72);
+      font: 500 14px/1.4 'DM Sans', sans-serif;
+    }
+    .lp-social__rating-text strong { color: #fff; }
+    .lp-social__grid {
+      display: grid; gap: 16px;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .lp-social__card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px; padding: 22px;
+      display: flex; flex-direction: column; gap: 14px;
+    }
+    .lp-social__card-stars { color: #C9A84C; font-size: 14px; letter-spacing: 2px; }
+    .lp-social__quote {
+      color: rgba(255,255,255,0.86);
+      font: 400 15px/1.55 'DM Sans', sans-serif;
+      margin: 0;
+    }
+    .lp-social__attr { display: flex; flex-direction: column; gap: 2px; margin-top: auto; }
+    .lp-social__name { color: #fff; font: 600 14px/1.2 'DM Sans', sans-serif; }
+    .lp-social__meta { color: rgba(255,255,255,0.5); font: 500 12px/1.3 'DM Sans', sans-serif; letter-spacing: 0.06em; text-transform: uppercase; }
+    @media (max-width: 900px) {
+      .lp-social__grid { grid-template-columns: 1fr; }
+      .lp-social { padding: 52px 0 24px; }
+    }
+
+    /* Below-form direct-call line */
+    .lp-quote-direct {
+      text-align: center; margin-top: 22px;
+      color: rgba(255,255,255,0.7);
+      font: 500 14px/1.5 'DM Sans', sans-serif;
+    }
+    .lp-quote-direct a { color: #C9A84C; text-decoration: none; font-weight: 700; }
+
+    /* Minimal footer */
+    .lp-foot {
+      background: #08080a; border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 40px 24px 28px;
+    }
+    .lp-foot__inner {
+      max-width: 1120px; margin: 0 auto;
+      display: flex; flex-wrap: wrap; gap: 22px 32px;
+      align-items: center; justify-content: space-between;
+    }
+    .lp-foot__brand img { height: 34px; width: auto; display: block; }
+    .lp-foot__contact {
+      display: flex; flex-wrap: wrap; gap: 8px 18px;
+      color: rgba(255,255,255,0.7);
+      font: 500 14px/1.4 'DM Sans', sans-serif;
+    }
+    .lp-foot__contact a { color: #C9A84C; text-decoration: none; }
+    .lp-foot__contact a:hover { text-decoration: underline; }
+    .lp-foot__copy {
+      width: 100%; text-align: center; margin-top: 22px;
+      padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.05);
+      color: rgba(255,255,255,0.44);
+      font: 400 12px/1.4 'DM Sans', sans-serif;
+    }
+
+    /* Mobile fixed bottom bar */
+    .lp-bottombar { display: none; }
+    @media (max-width: 900px) {
+      body { padding-bottom: 72px; }
+      .lp-bottombar {
+        display: grid; grid-template-columns: 1fr 1fr;
+        position: fixed; left: 0; right: 0; bottom: 0; z-index: 99;
+        background: rgba(10,10,12,0.96);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        border-top: 1px solid rgba(255,255,255,0.08);
+        padding: 10px 10px calc(10px + env(safe-area-inset-bottom, 0px));
+        gap: 10px;
+      }
+      .lp-bottombar__btn {
+        display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+        text-decoration: none; padding: 14px 12px; border-radius: 999px;
+        font: 700 15px/1 'DM Sans', sans-serif;
+        min-height: 48px;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .lp-bottombar__call {
+        color: #fff; background: rgba(255,255,255,0.06);
+        border: 1px solid rgba(255,255,255,0.14);
+      }
+      .lp-bottombar__call svg { color: #C9A84C; }
+      .lp-bottombar__quote { color: #0a0a0c; background: #C9A84C; }
+    }
+
+    /* iOS Safari zooms into form fields when input font-size < 16px.
+       Shared styles.css uses 15px — override to 16px on mobile only. */
+    @media (max-width: 768px) {
+      #quoteForm input,
+      #quoteForm select,
+      #quoteForm textarea { font-size: 16px; }
+    }
+
+    /* Small phones: stack hero CTAs full-width for easier tap targets */
+    @media (max-width: 480px) {
+      .lp-hero__ctas { flex-direction: column; align-items: stretch; width: 100%; }
+      .lp-hero__cta-primary,
+      .lp-hero__cta-secondary {
+        width: 100%; justify-content: center;
+        padding: 14px 18px; min-height: 48px;
+      }
+    }
+
+    /* Mobile: tighten section vertical padding + bigger tap targets on FAQ / how-it-works rows.
+       Also stops sticky header from feeling too tall on small phones. */
+    @media (max-width: 640px) {
+      .lp-header__inner { padding: 8px 14px; }
+      .lp-header__logo { height: 26px; }
+      .lp-header__cta,
+      .lp-header__phone { min-height: 42px; }
+      .lp-social { padding: 44px 0 20px; }
+    }
+
+    /* Universal tap-highlight cleanup on LP interactive elements */
+    .lp-header__cta,
+    .lp-header__phone,
+    .lp-hero__cta-primary,
+    .lp-hero__cta-secondary,
+    .lp-bottombar__btn { -webkit-tap-highlight-color: transparent; }
+  </style>
+</head>
+<body>
+  <header class="lp-header" role="banner">
+    <div class="lp-header__inner">
+      <a href="#" class="lp-header__brand" aria-label="Show Limousines">
+        <img src="/assets/show-logo-new.svg" alt="Show Limousines" class="lp-header__logo" width="1472" height="272">
+      </a>
+      <div class="lp-header__right">
+        <a href="tel:0422023413" class="lp-header__phone" aria-label="Call Show Limousines on 0422 023 413">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span class="lp-header__phone-label">0422 023 413</span>
+        </a>
+        <a href="#quote" class="lp-header__cta">Get a Free Quote</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero page-hero--toptext page-hero--scene" style="--hero-img:url('/banner-svc-weddings.jpg');--hero-pos:52%" aria-label="Limousine Hire Sydney">
+      <div class="page-hero__inner reveal">
+        <h1 class="page-hero__title">Limousine Hire Sydney</h1>
+        <p class="page-hero__sub">Wedding Cars, Stretch Limos &amp; Chauffeur Services</p>
+        <p class="page-hero__sub" style="margin-top:6px;color:rgba(255,255,255,0.72);font-size:clamp(13px,1.6vw,15px);">Weddings · School Formals · Birthdays · Parties · Airport Transfers</p>
+        <div class="lp-hero__ctas">
+          <a href="#quote" class="lp-hero__cta-primary">Get a Free Quote
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>
+          </a>
+          <a href="tel:0422023413" class="lp-hero__cta-secondary">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Call 0422 023 413
+          </a>
+        </div>
+        <div class="lp-badges" aria-label="Trust badges">
+          <span>165+ Five-Star Google Reviews</span>
+          <span class="lp-badges__dot" aria-hidden="true">·</span>
+          <span>10+ Years Experience</span>
+          <span class="lp-badges__dot" aria-hidden="true">·</span>
+          <span>Available 365 Days a Year</span>
+          <span class="lp-badges__dot" aria-hidden="true">·</span>
+          <span>From $399 per booking</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="wstat" aria-label="Show Limousines at a glance">
+      <div class="wstat__inner reveal">
+        <div class="hero__stat"><span class="hero__stat-num">165+</span><span class="hero__stat-label">5-Star Google Reviews</span></div>
+        <span class="hero__stat-sep" aria-hidden="true"></span>
+        <div class="hero__stat"><span class="hero__stat-num">10+</span><span class="hero__stat-label">Years</span></div>
+        <span class="hero__stat-sep" aria-hidden="true"></span>
+        <div class="hero__stat"><span class="hero__stat-num">365</span><span class="hero__stat-label">Days a year</span></div>
+      </div>
+    </section>
+
+    <section class="lp-social" aria-labelledby="lpSocialHead">
+      <div class="lp-social__inner">
+        <div class="lp-social__rating">
+          <div class="lp-social__stars" aria-label="Rated 5 out of 5 stars">★★★★★</div>
+          <div class="lp-social__rating-text"><strong>5.0</strong> · 165+ verified Google reviews</div>
+          <h2 class="visually-hidden" id="lpSocialHead">What our wedding clients say</h2>
+        </div>
+        <div class="lp-social__grid">
+          <article class="lp-social__card">
+            <div class="lp-social__card-stars" aria-label="Rated 5 out of 5 stars">★★★★★</div>
+            <p class="lp-social__quote">We couldn't recommend Show Limousines more for wedding transport. They handled both our bridal party pick-up and our getaway car at the end of the night, and everything ran absolutely seamlessly.</p>
+            <div class="lp-social__attr">
+              <span class="lp-social__name">Kaelee</span>
+              <span class="lp-social__meta">Wedding · Google Review</span>
+            </div>
+          </article>
+          <article class="lp-social__card">
+            <div class="lp-social__card-stars" aria-label="Rated 5 out of 5 stars">★★★★★</div>
+            <p class="lp-social__quote">I had Mick and his team provide the transport for my wedding and we were extremely happy with absolutely everything. From booking through to the wedding day, Mick was always happy to help and replied very quickly.</p>
+            <div class="lp-social__attr">
+              <span class="lp-social__name">Matikka Ismail</span>
+              <span class="lp-social__meta">Wedding · Google Review</span>
+            </div>
+          </article>
+          <article class="lp-social__card">
+            <div class="lp-social__card-stars" aria-label="Rated 5 out of 5 stars">★★★★★</div>
+            <p class="lp-social__quote">Fantastic experience! Mick was great to deal with. The vehicle used on the day not only looked amazing, but the driver was on time and was friendly with the entire bridal party.</p>
+            <div class="lp-social__attr">
+              <span class="lp-social__name">Daniel Keenahan</span>
+              <span class="lp-social__meta">Wedding · Google Review</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="svc-intro" aria-labelledby="lpSvcHead">
+      <div class="svc-intro__inner reveal">
+        <span class="label-bracket">Services</span>
+        <h2 class="svc-intro__heading" id="lpSvcHead">Any occasion, one number to call</h2>
+        <p class="svc-intro__lead">From weddings and school formals to birthdays, airport runs and corporate transfers — Show Limousines has the right vehicle, and a uniformed chauffeur, for every occasion across Sydney.</p>
+      </div>
+    </section>
+
+    <section class="svc-why" aria-label="Occasions we cover">
+      <div class="svc-why__inner">
+        <div class="svc-why__grid">
+          <div class="svc-why__card reveal"><span class="svc-why__icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-4.5-7-11a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 6.5-7 11-7 11z"/></svg></span><span class="svc-why__label">Weddings</span><span class="svc-why__sub">Red carpet &amp; ribbon</span></div>
+          <div class="svc-why__card reveal"><span class="svc-why__icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10L12 4 2 10l10 6 10-6zM6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg></span><span class="svc-why__label">School Formals</span><span class="svc-why__sub">Safe &amp; on time</span></div>
+          <div class="svc-why__card reveal"><span class="svc-why__icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v6M4.9 4.9l4.2 4.2M2 12h6M4.9 19.1l4.2-4.2M12 22v-6M19.1 19.1l-4.2-4.2M22 12h-6M19.1 4.9l-4.2 4.2"/></svg></span><span class="svc-why__label">Birthdays</span><span class="svc-why__sub">Make it iconic</span></div>
+          <div class="svc-why__card reveal"><span class="svc-why__icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2h8l-1 7a3 3 0 0 1-6 0L8 2zM12 12v8M8.5 21h7"/></svg></span><span class="svc-why__label">Hen's Parties</span><span class="svc-why__sub">Celebrate in style</span></div>
+          <div class="svc-why__card reveal"><span class="svc-why__icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.3h6c0-1 .4-1.8 1-2.3A7 7 0 0 0 12 2z"/></svg></span><span class="svc-why__label">Party Limos</span><span class="svc-why__sub">Up to 16 pax</span></div>
+          <div class="svc-why__card reveal"><span class="svc-why__icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M8 4v4M16 4v4"/></svg></span><span class="svc-why__label">Corporate</span><span class="svc-why__sub">Discreet &amp; punctual</span></div>
+          <div class="svc-why__card reveal"><span class="svc-why__icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 22l10-20 10 20-10-6-10 6z"/></svg></span><span class="svc-why__label">Airport Transfers</span><span class="svc-why__sub">Meet &amp; greet</span></div>
+          <div class="svc-why__card reveal"><span class="svc-why__icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V6l11-2v12"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg></span><span class="svc-why__label">Concert Transfers</span><span class="svc-why__sub">Door to door</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="svc-show" aria-labelledby="lpFleetHead">
+      <div class="svc-show__inner">
+        <div class="svc-show__head reveal">
+          <span class="label-bracket">Our Fleet</span>
+          <h2 class="svc-show__heading" id="lpFleetHead">Our Fleet</h2>
+          <p class="svc-show__intro">Wedding-day favourites, from the Rolls Royce Phantom to the Chrysler Super Stretch.</p>
+        </div>
+        <div class="fleetcar" role="group" aria-roledescription="carousel" aria-label="Wedding &amp; luxury vehicles">
+          <div class="fleetcar__viewport">
+            <div class="fleetcar__track">
+              <article class="fleet-card">
+                <div class="fleet-card__media"><picture><source type="image/avif" srcset="/assets/img/fleet-rolls-royce-phantom-v2-400.avif 400w, /assets/img/fleet-rolls-royce-phantom-v2-640.avif 640w, /assets/img/fleet-rolls-royce-phantom-v2-960.avif 960w, /assets/img/fleet-rolls-royce-phantom-v2-1280.avif 1280w, /assets/img/fleet-rolls-royce-phantom-v2-1600.avif 1600w" sizes="(max-width:700px) 100vw, 33vw"><source type="image/webp" srcset="/assets/img/fleet-rolls-royce-phantom-v2-400.webp 400w, /assets/img/fleet-rolls-royce-phantom-v2-640.webp 640w, /assets/img/fleet-rolls-royce-phantom-v2-960.webp 960w, /assets/img/fleet-rolls-royce-phantom-v2-1280.webp 1280w, /assets/img/fleet-rolls-royce-phantom-v2-1600.webp 1600w" sizes="(max-width:700px) 100vw, 33vw"><img width="1600" height="893" sizes="(max-width:700px) 100vw, 33vw" data-r class="fleet-card__img" src="/fleet-rolls-royce-phantom-v2.jpg" alt="Rolls Royce Phantom" loading="lazy" decoding="async"></picture><span class="fleet-card__badge">Rolls Royce</span></div>
+                <div class="fleet-card__body"><span class="fleet-card__brand">Rolls Royce</span><span class="fleet-card__model">Rolls Royce Phantom</span><span class="fleet-card__capacity">Up to 4 passengers</span><div class="fleet-card__footer"><a href="#quote" class="btn-outline-sm">Enquire</a></div></div>
+              </article>
+              <article class="fleet-card">
+                <div class="fleet-card__media"><picture><source type="image/avif" srcset="/assets/img/fleet-chrysler-gullwing-v2-400.avif 400w, /assets/img/fleet-chrysler-gullwing-v2-640.avif 640w, /assets/img/fleet-chrysler-gullwing-v2-960.avif 960w, /assets/img/fleet-chrysler-gullwing-v2-1280.avif 1280w, /assets/img/fleet-chrysler-gullwing-v2-1600.avif 1600w" sizes="(max-width:700px) 100vw, 33vw"><source type="image/webp" srcset="/assets/img/fleet-chrysler-gullwing-v2-400.webp 400w, /assets/img/fleet-chrysler-gullwing-v2-640.webp 640w, /assets/img/fleet-chrysler-gullwing-v2-960.webp 960w, /assets/img/fleet-chrysler-gullwing-v2-1280.webp 1280w, /assets/img/fleet-chrysler-gullwing-v2-1600.webp 1600w" sizes="(max-width:700px) 100vw, 33vw"><img width="1600" height="893" sizes="(max-width:700px) 100vw, 33vw" data-r class="fleet-card__img" src="/fleet-chrysler-gullwing-v2.jpg" alt="Chrysler Super Stretch Gullwing" loading="lazy" decoding="async"></picture><span class="fleet-card__badge">Chrysler</span></div>
+                <div class="fleet-card__body"><span class="fleet-card__brand">Chrysler</span><span class="fleet-card__model">Chrysler Super Stretch Gullwing</span><span class="fleet-card__capacity">Up to 10 passengers</span><div class="fleet-card__footer"><a href="#quote" class="btn-outline-sm">Enquire</a></div></div>
+              </article>
+              <article class="fleet-card">
+                <div class="fleet-card__media"><picture><source type="image/avif" srcset="/assets/img/fleet-chrysler-white-v2-400.avif 400w, /assets/img/fleet-chrysler-white-v2-640.avif 640w, /assets/img/fleet-chrysler-white-v2-960.avif 960w, /assets/img/fleet-chrysler-white-v2-1280.avif 1280w, /assets/img/fleet-chrysler-white-v2-1600.avif 1600w" sizes="(max-width:700px) 100vw, 33vw"><source type="image/webp" srcset="/assets/img/fleet-chrysler-white-v2-400.webp 400w, /assets/img/fleet-chrysler-white-v2-640.webp 640w, /assets/img/fleet-chrysler-white-v2-960.webp 960w, /assets/img/fleet-chrysler-white-v2-1280.webp 1280w, /assets/img/fleet-chrysler-white-v2-1600.webp 1600w" sizes="(max-width:700px) 100vw, 33vw"><img width="1600" height="893" sizes="(max-width:700px) 100vw, 33vw" data-r class="fleet-card__img" src="/fleet-chrysler-white-v2.jpg" alt="White Chrysler Super Stretch" loading="lazy" decoding="async"></picture><span class="fleet-card__badge">Chrysler</span></div>
+                <div class="fleet-card__body"><span class="fleet-card__brand">Chrysler</span><span class="fleet-card__model">White Chrysler Super Stretch</span><span class="fleet-card__capacity">Up to 10 passengers</span><div class="fleet-card__footer"><a href="#quote" class="btn-outline-sm">Enquire</a></div></div>
+              </article>
+              <article class="fleet-card">
+                <div class="fleet-card__media"><picture><source type="image/avif" srcset="/assets/img/fleet-mercedes-s-class-v2-400.avif 400w, /assets/img/fleet-mercedes-s-class-v2-640.avif 640w, /assets/img/fleet-mercedes-s-class-v2-960.avif 960w, /assets/img/fleet-mercedes-s-class-v2-1280.avif 1280w, /assets/img/fleet-mercedes-s-class-v2-1600.avif 1600w" sizes="(max-width:700px) 100vw, 33vw"><source type="image/webp" srcset="/assets/img/fleet-mercedes-s-class-v2-400.webp 400w, /assets/img/fleet-mercedes-s-class-v2-640.webp 640w, /assets/img/fleet-mercedes-s-class-v2-960.webp 960w, /assets/img/fleet-mercedes-s-class-v2-1280.webp 1280w, /assets/img/fleet-mercedes-s-class-v2-1600.webp 1600w" sizes="(max-width:700px) 100vw, 33vw"><img width="1600" height="893" sizes="(max-width:700px) 100vw, 33vw" data-r class="fleet-card__img" src="/fleet-mercedes-s-class-v2.jpg" alt="Mercedes S Class AMG Line Sedan" loading="lazy" decoding="async"></picture><span class="fleet-card__badge">Mercedes</span></div>
+                <div class="fleet-card__body"><span class="fleet-card__brand">Mercedes</span><span class="fleet-card__model">Mercedes S Class AMG Line Sedan</span><span class="fleet-card__capacity">Up to 4 passengers</span><div class="fleet-card__footer"><a href="#quote" class="btn-outline-sm">Enquire</a></div></div>
+              </article>
+            </div>
+          </div>
+          <button class="fleetcar__btn fleetcar__btn--prev" type="button" aria-label="Previous vehicles"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+          <button class="fleetcar__btn fleetcar__btn--next" type="button" aria-label="Next vehicles"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+        </div>
+      </div>
+      <div class="fleet__cta"><a href="#quote" class="btn-pill btn-pill--gold btn-magnetic">Enquire about a vehicle <span class="btn-pill__arrow" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></span></a></div>
+    </section>
+
+    <section class="how" id="how" aria-labelledby="lpHowHead">
+      <div class="beam beam--reverse" aria-hidden="true"></div>
+      <div class="how__inner">
+        <div class="how__header reveal">
+          <span class="label-bracket">How It Works</span>
+          <h2 class="how__heading" id="lpHowHead">Four steps to your perfect ride.</h2>
+        </div>
+        <div class="how__list">
+          <div class="how-row reveal is-open" data-row="1">
+            <div class="how-row__top" role="button" tabindex="0" aria-expanded="true" aria-controls="lp-how-panel-1">
+              <span class="how-row__num">01 /</span>
+              <h3 class="how-row__title">Submit your enquiry</h3>
+              <span class="how-row__arrow" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></span>
+            </div>
+            <div class="how-row__panel" id="lp-how-panel-1">
+              <div class="how-row__panel-inner">
+                <p class="how-row__body">Send us your details — date, pick-up, drop-off, passengers and occasion. Use the quote form on this page or call us direct.</p>
+                <div class="how-row__tags"><span class="how-row__tag">Quote Form</span><span class="how-row__tag">Call</span><span class="how-row__tag">Email</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="how-row reveal" data-row="2">
+            <div class="how-row__top" role="button" tabindex="0" aria-expanded="false" aria-controls="lp-how-panel-2">
+              <span class="how-row__num">02 /</span>
+              <h3 class="how-row__title">We send a quote</h3>
+              <span class="how-row__arrow" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></span>
+            </div>
+            <div class="how-row__panel" id="lp-how-panel-2">
+              <div class="how-row__panel-inner">
+                <p class="how-row__body">A written quote back to you fast, confirming vehicle options and total price — no hidden extras.</p>
+                <div class="how-row__tags"><span class="how-row__tag">Written Quote</span><span class="how-row__tag">No Surprises</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="how-row reveal" data-row="3">
+            <div class="how-row__top" role="button" tabindex="0" aria-expanded="false" aria-controls="lp-how-panel-3">
+              <span class="how-row__num">03 /</span>
+              <h3 class="how-row__title">Confirm your booking</h3>
+              <span class="how-row__arrow" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></span>
+            </div>
+            <div class="how-row__panel" id="lp-how-panel-3">
+              <div class="how-row__panel-inner">
+                <p class="how-row__body">Small deposit locks in your date and rate. You'll get a confirmation pack with every detail.</p>
+                <div class="how-row__tags"><span class="how-row__tag">Small Deposit</span><span class="how-row__tag">Locked-In Rate</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="how-row reveal" data-row="4">
+            <div class="how-row__top" role="button" tabindex="0" aria-expanded="false" aria-controls="lp-how-panel-4">
+              <span class="how-row__num">04 /</span>
+              <h3 class="how-row__title">Arrive in style</h3>
+              <span class="how-row__arrow" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></span>
+            </div>
+            <div class="how-row__panel" id="lp-how-panel-4">
+              <div class="how-row__panel-inner">
+                <p class="how-row__body">Your uniformed chauffeur arrives early, immaculately presented, and gets you to every stop on time — red carpet ready for weddings.</p>
+                <div class="how-row__tags"><span class="how-row__tag">Uniformed Chauffeur</span><span class="how-row__tag">Red Carpet</span><span class="how-row__tag">On Time</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a href="#quote" class="how__book">Get a free quote today <span class="arrow" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></span></a>
+      </div>
+    </section>
+
+    <section class="quote" id="quote" aria-labelledby="lpQuoteHead">
+      <div class="beam" aria-hidden="true"></div>
+      <div class="quote__inner">
+        <div class="quote__header reveal">
+          <span class="label-bracket">Get a Quote</span>
+          <h2 class="quote__heading" id="lpQuoteHead">Get a Free Quote</h2>
+          <p class="quote__sub">Tell us your date, pick-up and passenger count — we'll come back with a written quote fast. Or call <a href="tel:0422023413" style="color:var(--color-accent);">0422 023 413</a>.</p>
+        </div>
+        <div class="quote__grid">
+          <form class="quote-form reveal" id="quoteForm" action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="WEB3FORMS_ACCESS_KEY_HERE">
+            <input type="hidden" name="subject" value="New Show Limousines enquiry (LP: Limo Hire Sydney)">
+            <input type="hidden" name="from_name" value="Show Limousines LP — Limo Hire Sydney">
+            <input type="hidden" name="redirect" value="https://www.showlimousines.com.au/thank-you/">
+            <input type="checkbox" name="botcheck" class="visually-hidden" style="display:none" tabindex="-1" autocomplete="off">
+            <div class="quote-field"><label for="qName">Name <span class="req">*</span></label><input type="text" id="qName" name="name" required autocomplete="name"></div>
+            <div class="quote-field"><label for="qPhone">Phone <span class="req">*</span></label><input type="tel" id="qPhone" name="phone" required autocomplete="tel"></div>
+            <div class="quote-field"><label for="qEmail">Email <span class="req">*</span></label><input type="email" id="qEmail" name="email" required autocomplete="email"></div>
+            <div class="quote-field"><label for="qDate">Date <span class="req">*</span></label><input type="date" id="qDate" name="date" required></div>
+            <div class="quote-field"><label for="qPickupTime">Pick up time</label><select id="qPickupTime" name="pickup_time"></select></div>
+            <div class="quote-field"><label for="qDropoffTime">Drop off time</label><select id="qDropoffTime" name="dropoff_time"></select></div>
+            <div class="quote-field full"><label for="qPickupLoc">Pick up location</label><input type="text" id="qPickupLoc" name="pickup_location" placeholder="Suburb or full address"></div>
+            <div class="quote-field full"><label for="qDropoffLoc">Drop off location</label><input type="text" id="qDropoffLoc" name="dropoff_location" placeholder="Suburb or full address"></div>
+            <div class="quote-field"><label for="qPax">Number of passengers</label><input type="number" id="qPax" name="passengers" min="1" max="20" placeholder="e.g. 8"></div>
+            <div class="quote-field"><label for="qOccasion">Occasion</label><select id="qOccasion" name="occasion"><option value="">Select an occasion</option><option>Wedding</option><option>Airport transfer</option><option>School Formal</option><option>Hen's Party</option><option>Buck's Party</option><option>Birthday</option><option>Corporate Event</option><option>Concert Transfer</option><option>General Hire</option><option>Christmas Party</option><option>Cruise Transfer</option><option>Other – please specify</option></select></div>
+            <div class="quote-field full"><label for="qComments">Additional Details</label><textarea id="qComments" name="comments" placeholder="Run sheet, special requests, anything we should know…"></textarea></div>
+            <div class="quote-submit"><button type="submit" class="btn-pill btn-pill--gold btn-magnetic" style="width:100%; justify-content:center;">Send Message <span class="btn-pill__arrow" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></span></button></div>
+          </form>
+          <aside class="quote-aside reveal" aria-label="Contact information">
+            <h3 class="quote-aside__title">Talk to us direct.</h3>
+            <div class="quote-aside__row"><span class="quote-aside__icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><div><span class="quote-aside__label">Phone</span> <a href="tel:0422023413" class="quote-aside__value">0422 023 413</a></div></div>
+            <div class="quote-aside__row"><span class="quote-aside__icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg></span><div><span class="quote-aside__label">Email</span> <a href="mailto:info@showlimousines.com.au" class="quote-aside__value">info@showlimousines.com.au</a></div></div>
+            <div class="quote-aside__row"><span class="quote-aside__icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-7 8-13a8 8 0 1 0-16 0c0 6 8 13 8 13z"/><circle cx="12" cy="9" r="3"/></svg></span><div><span class="quote-aside__label">Service area</span> <span class="quote-aside__value">Greater Sydney &amp; Wollongong</span></div></div>
+            <div class="quote-aside__row"><span class="quote-aside__icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><div><span class="quote-aside__label">Reviews</span> <span class="quote-aside__value">165+ five-star Google reviews</span></div></div>
+            <div class="quote-aside__row"><span class="quote-aside__icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span><div><span class="quote-aside__label">Hours</span> <span class="quote-aside__value">Open 24/7 — 365 days a year</span></div></div>
+          </aside>
+        </div>
+        <p class="lp-quote-direct">Or call us direct — <a href="tel:0422023413">0422 023 413</a> · Open 365 days a year</p>
+      </div>
+    </section>
+
+    <section class="faq" aria-labelledby="lpFaqHead">
+      <div class="beam" aria-hidden="true"></div>
+      <div class="faq__inner">
+        <div class="faq__header reveal">
+          <span class="label-bracket">FAQs</span>
+          <h2 class="faq__heading" id="lpFaqHead">Common questions</h2>
+        </div>
+        <div class="faq__list">
+          <div class="faq-item reveal">
+            <div class="faq-item__top" role="button" tabindex="0" aria-expanded="false">
+              <h3 class="faq-item__q">Do you offer wedding cars in Sydney?</h3>
+              <span class="faq-item__arrow" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></span>
+            </div>
+            <div class="faq-item__panel"><p class="faq-item__a">Yes — Rolls Royce Phantom, Chrysler Super Stretch, Hummer Stretch, Mercedes S Class AMG and Mercedes Sprinter Limo Vans, all across Sydney.</p></div>
+          </div>
+          <div class="faq-item reveal">
+            <div class="faq-item__top" role="button" tabindex="0" aria-expanded="false">
+              <h3 class="faq-item__q">How much does it cost to hire a limousine?</h3>
+              <span class="faq-item__arrow" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></span>
+            </div>
+            <div class="faq-item__panel"><p class="faq-item__a">From $399 per booking — varies by vehicle, location, and hours. Get in touch for an exact quote.</p></div>
+          </div>
+          <div class="faq-item reveal">
+            <div class="faq-item__top" role="button" tabindex="0" aria-expanded="false">
+              <h3 class="faq-item__q">What's included when I book?</h3>
+              <span class="faq-item__arrow" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></span>
+            </div>
+            <div class="faq-item__panel"><p class="faq-item__a">Uniformed chauffeur, bottled water, air conditioning, Bluetooth. For weddings: red carpet for the bride, satin ribbon, sparkling wine.</p></div>
+          </div>
+          <div class="faq-item reveal">
+            <div class="faq-item__top" role="button" tabindex="0" aria-expanded="false">
+              <h3 class="faq-item__q">How far in advance do I need to book?</h3>
+              <span class="faq-item__arrow" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></span>
+            </div>
+            <div class="faq-item__panel"><p class="faq-item__a">As early as possible — weddings are often booked 12 months ahead. Last-minute bookings also welcome.</p></div>
+          </div>
+          <div class="faq-item reveal">
+            <div class="faq-item__top" role="button" tabindex="0" aria-expanded="false">
+              <h3 class="faq-item__q">What areas do you service?</h3>
+              <span class="faq-item__arrow" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></span>
+            </div>
+            <div class="faq-item__panel"><p class="faq-item__a">Greater Sydney and Wollongong, including Eastern Suburbs, Inner West, Parramatta, Penrith, Campbelltown, Sutherland Shire, Northern Beaches, and the Illawarra.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="lp-foot" role="contentinfo">
+    <div class="lp-foot__inner">
+      <div class="lp-foot__brand"><img src="/assets/show-logo-new.svg" alt="Show Limousines" width="1472" height="272"></div>
+      <div class="lp-foot__contact">
+        <a href="tel:0422023413">0422 023 413</a>
+        <span aria-hidden="true">·</span>
+        <a href="mailto:info@showlimousines.com.au">info@showlimousines.com.au</a>
+      </div>
+      <div class="lp-foot__copy">© 2025 Show Limousines · Serving Sydney &amp; Wollongong</div>
+    </div>
+  </footer>
+
+  <div class="lp-bottombar" aria-label="Quick actions">
+    <a href="tel:0422023413" class="lp-bottombar__btn lp-bottombar__call">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      Call Now
+    </a>
+    <a href="#quote" class="lp-bottombar__btn lp-bottombar__quote">Get a Quote</a>
+  </div>
+
+  <script src="/main.js" defer></script>
+</body>
+</html>
