@@ -1,3 +1,7 @@
 {
-  "trailingSlash": true
+  "trailingSlash": true,
+  "redirects": [
+    { "source": "/funeral-limo-hire", "destination": "/", "permanent": true },
+    { "source": "/funeral-limo-hire/", "destination": "/", "permanent": true }
+  ]
 }

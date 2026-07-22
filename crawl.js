@@ -41,7 +41,6 @@ const PAGES = [
   ['corporate-transfers', 'corporate-transfers/'],
   ['party-limousine-hire-sydney', 'party-limousine-hire-sydney/'],
   ['hens-party-limo-sydney', 'hens-party-limo-sydney/'],
-  ['funeral-limo-hire', 'funeral-limo-hire/'],
   ['chrysler-limo-hire-sydney', 'chrysler-limo-hire-sydney/'],
   ['hummer-limo-hire-sydney', 'hummer-limo-hire-sydney/'],
   ['rolls-royce-hire-sydney', 'rolls-royce-hire-sydney/'],

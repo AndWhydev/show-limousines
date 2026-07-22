@@ -393,7 +393,6 @@ const BANNER = {
   'corporate-transfers': ['banner-service-corporate.jpg', '50%', false],
   'party-limousine-hire-sydney': ['banner-service-partybus.jpg', '58%', false],
   'hens-party-limo-sydney': ['banner-service-hensbucks.jpg', '58%', false],
-  'funeral-limo-hire': ['banner-service-funeral.jpg', null, false],
   // Location pages
   'limo-hire-bankstown': ['banner-fleet-chrysler-white-v2.jpg', '50%', true],
   'limo-hire-campbelltown': ['banner-fleet-chrysler-black-v2.jpg', '50%', true],
@@ -676,7 +675,7 @@ const written = [];
    `node build.js` can never re-flatten them. Shared chrome on them is kept in sync by
    stamp-chrome.js, which uses this same module's header()/footer()/subFooter(). */
 const RESTORE_SLUGS = new Set([
-  'wedding-cars-limousines', 'wedding-limousine-sydney', 'wedding-limousine-hire-wollongong',
+  'wedding-cars-limousines', 'wedding-limousine-sydney', 'wedding-limousine-hire-wollongong', 'wedding-limousine-shellharbour',
   'airport-limo-transfers-sydney', 'cruise-transfer-sydney', 'birthday-limousine-sydney',
   'concert-limo-transfers-sydney', 'school-formal-limousine-hire-sydney', 'corporate-transfers',
   'party-limousine-hire-sydney', 'hens-party-limo-sydney',
@@ -1052,7 +1051,7 @@ const SERVICES = [
   ['wedding-limousine-shellharbour', 'Wedding Limousines'], ['wedding-cars-limousines', 'Wedding Limousines'],
   ['airport-limo-transfers-sydney', 'Services'], ['cruise-transfer-sydney', 'Services'], ['birthday-limousine-sydney', 'Services'],
   ['concert-limo-transfers-sydney', 'Services'], ['school-formal-limousine-hire-sydney', 'Services'], ['corporate-transfers', 'Services'],
-  ['party-limousine-hire-sydney', 'Services'], ['hens-party-limo-sydney', 'Services'], ['funeral-limo-hire', 'Services'],
+  ['party-limousine-hire-sydney', 'Services'], ['hens-party-limo-sydney', 'Services'],
 ];
 SERVICES.forEach(([s, e]) => { if (s === 'wedding-limousine-sydney') weddingSydneyPage(s); else servicePage(s, e); });
 
@@ -1194,7 +1193,7 @@ infoPage('reviews', 'Reviews', [googleBadge(), TESTIMONIALS]);
 (function () {
   const groups = [
     ['Main', [['Home', '/'], ['Services', '/services/'], ['Fleet', '/fleet/'], ['Our Vehicles', '/vehicles/'], ['About Us', '/about-us/'], ['Gallery', '/gallery/'], ['Reviews', '/reviews/'], ['Blog', '/blog/'], ['Terms & Conditions', '/term-conditions/'], ['Contact', '/contact/']]],
-    ['Services', NAV[2].children.map(c => [c.label, c.href]).concat([['Wedding Car Hire Sydney', '/wedding-limousine-sydney/'], ['Wedding Car Hire Wollongong', '/wedding-limousine-hire-wollongong/'], ['Wedding Limousine Shellharbour', '/wedding-limousine-shellharbour/'], ['Funeral Limo Hire', '/funeral-limo-hire/']])],
+    ['Services', NAV[2].children.map(c => [c.label, c.href]).concat([['Wedding Car Hire Sydney', '/wedding-limousine-sydney/'], ['Wedding Car Hire Wollongong', '/wedding-limousine-hire-wollongong/'], ['Wedding Limousine Shellharbour', '/wedding-limousine-shellharbour/']])],
     ['Fleet', [['Chrysler', '/chrysler-limo-hire-sydney/'], ['Hummer', '/hummer-limo-hire-sydney/'], ['Rolls Royce', '/rolls-royce-hire-sydney/']].concat(VEHICLES.map(v => [v.name, v.url]))],
     ['Locations', NAV[5].children.map(c => [c.label, c.href])],
   ];
