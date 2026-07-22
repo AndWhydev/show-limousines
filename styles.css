@@ -4078,3 +4078,39 @@ picture{display:contents}
      trimming the hero content's top padding (was clamp(20px,3vh,40px)). */
   .home .hero__inner { padding-top: 10px; }
 }
+
+/* ============================================================
+   HOMEPAGE HERO CAR — PHONES ONLY: close the gap under the CTAs and
+   enlarge the limo so it sits just beneath the "VIEW OUR FLEET" button.
+   ------------------------------------------------------------
+   The car is the background <video> (z-index:0, BEHIND the z-index:3 copy).
+   On phones it was object-fit:contain anchored low (center 72%), so it floated
+   as a small 16:9 band with a big empty gap above it. Here (homepage only) we
+   turn it into a taller band pinned just below the CTAs, using object-fit:cover
+   so it stays full-width and full-bleed (never stretched) — the extra height
+   crops only the empty top of the frame, keeping the whole limo. Because the
+   video sits behind the opaque copy, a few px of top overlap just tucks the car
+   behind the buttons (no collision). The stats row still sits at the bottom,
+   unchanged. Capped at ≤430px (phones): the copy stack — hence the CTA baseline
+   this `top` targets — is stable across 320–430px, but the hero layout shifts
+   above that, so tablets/phablets (>430px) and desktop keep the original hero.
+   ============================================================ */
+@media (max-width: 430px) {
+  /* Cap the hero on very tall phones so the enlarged car + stats sit as a tight
+     group instead of leaving a big void below the car (stats stay pinned at the
+     hero's bottom via their existing margin-top:auto). Shorter phones fall under
+     the cap and keep their natural, smaller hero height. */
+  .home .hero { height: min(calc(100svh - var(--header-height)), 690px); }
+
+  .home .hero__video {
+    top: 255px;              /* just under the CTAs (heading/sub/CTAs are a stable one-line stack, ~249–254px tall) */
+    bottom: auto;
+    /* Enlarged band (was ~219px at contain). Height fills the room between the
+       CTAs and the stats but is capped at 300px — taller would crop the limo's
+       ends — and shrinks on short phones so it never runs into the stats row.
+       351px = 255px top + ~96px reserved for the stats zone at the bottom. */
+    height: min(300px, calc(min(690px, 100svh - var(--header-height)) - 351px));
+    object-fit: cover;       /* full-bleed, no distortion; crops the empty top, not the limo */
+    object-position: center 38%;
+  }
+}
