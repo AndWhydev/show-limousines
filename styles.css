@@ -4040,3 +4040,41 @@ picture{display:contents}
   .page-hero.page-hero--scene.page-hero--tallband { height: calc(184px + 56.25vw); }
   .page-hero.page-hero--scene.page-hero--tallband::before { top: 184px; }
 }
+
+/* ============================================================
+   HOMEPAGE HERO — PHONES ONLY: reclaim vertical space above the hero
+   ------------------------------------------------------------
+   Scoped to .home (the homepage <body> class) so ONLY the homepage is
+   affected, and wrapped in a phone-only media query (≤640px) so the
+   PC/tablet view (>640px) stays pixel-identical. Every rule here just
+   trims padding / shrinks the header controls; nothing is enlarged.
+   The fixed nav's real height is mirrored into --header-height by JS
+   (main.js syncHeaderHeight), and .hero uses margin-top/height off that
+   variable — so slimming the header automatically lifts the hero up and
+   grows it by the same amount. Other pages and all other heroes: untouched.
+   ============================================================ */
+@media (max-width: 640px) {
+  /* Header: sit the logo as high as possible and slim the bar.
+     Trim the top breathing room (was safe-area+20px) and the bottom
+     padding, and tighten the gap between the logo row and the button row. */
+  .home .nav-inner {
+    padding-top: calc(env(safe-area-inset-top) + 6px);
+    padding-bottom: 8px;
+    row-gap: 14px;
+  }
+  /* Logo lockup: keep the logo the SAME size (do not enlarge — that would
+     cost space); just pull the tagline closer so the block is more compact. */
+  .home .nav-brand { gap: 3px; }
+
+  /* CALL + GET A QUOTE: reduce height so they take less vertical room.
+     Both stay an equal pair — shrink the round icon/arrow (32→26px) and
+     trim the vertical padding (10→6px) on both; widths/colours unchanged. */
+  .home .nav-call,
+  .home .nav-right .btn-pill--gold { padding-top: 6px; padding-bottom: 6px; }
+  .home .nav-call svg { width: 26px; height: 26px; padding: 7px; }
+  .home .nav-right .btn-pill--gold .btn-pill__arrow { width: 26px; height: 26px; }
+
+  /* Hero copy: lift the heading/subheading higher within the hero by
+     trimming the hero content's top padding (was clamp(20px,3vh,40px)). */
+  .home .hero__inner { padding-top: 10px; }
+}
