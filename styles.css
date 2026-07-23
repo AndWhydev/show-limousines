@@ -4114,3 +4114,46 @@ picture{display:contents}
     object-position: center 38%;
   }
 }
+
+/* ================================================================
+   SCENE BANNERS — WIDTH-INDEPENDENT FRAMING (DESKTOP ONLY)
+   ----------------------------------------------------------------
+   Problem this fixes: the scene hero was `aspect-ratio:16/9` with a
+   hard `max-height:620px`. Below ~1102px wide the 16:9 ratio governs
+   and `cover` shows the WHOLE 16:9 photo; above it the cap binds, the
+   band turns letterbox-wide (up to 4.13:1 at 2560px) and `cover` crops
+   the photo vertically — 86% of the image visible at 1280px, but only
+   57% at 1920px and 43% at 2560px. Result: the same page framed
+   differently per window width, with the car's roof/wheels/ends cut
+   off on wider desktops.
+
+   Fix: drop the pixel cap on desktop so the band keeps the SOURCE
+   IMAGE'S OWN 16:9 ratio at every width (height scales with width).
+   Element ratio == image ratio, so `cover` has nothing to crop: the
+   entire photo — whole car, whole scene — is shown, full-bleed, with
+   no letterbox/pillarbox bars, identically at 1280/1440/1680/1920/2560.
+   Every banner image behind these heroes is 16:9 (the banner-svc- set is
+   3072x1728; the banner-fleet-, banner-wedding- and banner-hero- sets are
+   1920x1080), so one ratio covers all of them.
+
+   Covers every scene banner: the 8 individual Services pages and the
+   2 /lp/ landing pages (.page-hero--scene alone) AND all Location pages
+   plus the other studio-photo banners (.page-hero--scene.--vehscene).
+   The 11 vehicle pages are excluded via :not(.page-hero--vehfit) — they
+   already have their own viewport-fit banner standard.
+
+   Side effect (intended): with no overflow left to slide, the per-page
+   `background-position` / `--hero-pos` nudges above become inert on
+   desktop. They were only ever compensation for this crop, and they stay
+   live on mobile, so they are left in place rather than deleted.
+
+   Scoped to min-width:769px — the approved phone banner (fixed dark text
+   band + 16:9 image below) is untouched.
+   ---------------------------------------------------------------- */
+@media (min-width: 769px) {
+  .page-hero.page-hero--scene:not(.page-hero--vehfit) {
+    aspect-ratio: 16 / 9;   /* == the source image's ratio, so `cover` never crops */
+    height: auto;
+    max-height: none;       /* was 620px — the cap is what created the width-dependent crop */
+  }
+}
