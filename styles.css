@@ -4174,33 +4174,8 @@ picture{display:contents}
   }
 }
 
-/* ── HELD BACK from fit-to-screen: 3 photos with too little road under the car ──
-   Fit-to-screen crops by the MONITOR's ratio. At a real maximised window the
-   deepest crop is 9.8% off the bottom (1920-wide window, ~960px viewport).
-   These three photos have less clearance than that beneath the tyres, measured
-   from the source files:
-
-     Birthday       ~5.5% of frame height below the tyres  -> clipped at 1280/1440/1920/2560
-     Corporate      ~6.5%                                  -> clipped at 1280/1440/1920/2560
-     School Formal  ~9%                                    -> clipped at 1920
-
-   Rather than cut the wheels or letterbox, these three keep the full-image
-   sizing: the band takes the photo's own 16:9 ratio, so `cover` crops nothing
-   and the whole car always shows. Cost is that the band is taller than the
-   screen, so the bottom strip of road sits below the fold — the same trade-off
-   the other pages just moved off. TEMPORARY: once these three hero images are
-   recomposed with more margin under the car (>=10% of frame height), delete
-   this block and they join the shared fit-to-screen standard automatically.
-
-   Targeted by hero aria-label — the pattern this stylesheet already uses for
-   per-page banner framing — so no page HTML changes. (0,4,0) beats the shared
-   (0,2,0) height rule above. Desktop only. */
-@media (min-width: 769px) {
-  .page-hero.page-hero--scene:not(.page-hero--vehfit)[aria-label*="Birthday"],
-  .page-hero.page-hero--scene:not(.page-hero--vehfit)[aria-label*="Corporate"],
-  .page-hero.page-hero--scene:not(.page-hero--vehfit)[aria-label*="School Formal"] {
-    height: auto;
-    aspect-ratio: 16 / 9;   /* whole photo, nothing cropped */
-    max-height: none;
-  }
-}
+/* (The Birthday / Corporate / School Formal hold block that used to sit here is
+   gone. Those three hero photos were recomposed with more road beneath the car
+   — clearance is now 12.1% / 14.4% / 12.2% of frame height, all clear of the
+   9.9% worst-case bottom crop — so all three join the shared fit-to-screen
+   rule above with no per-page exception.) */
