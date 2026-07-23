@@ -2717,7 +2717,14 @@
    short 3:2 band (already well within the fold). The stats live in a separate
    section below the hero, so height is unaffected. Reusable fleet-banner standard. */
 @media (min-width: 769px) {
-  .page-hero--vehfit {
+  /* One fit-to-screen banner standard, shared by the 11 vehicle pages
+     (--vehfit) AND the Services + Location scene banners (--scene): the
+     band bottom lands at the fold, so the whole hero and the whole car
+     are on screen at load with no scrolling, and the framing is the same
+     on every desktop. Explicit height also disables the base
+     .page-hero aspect-ratio/max-height sizing for these heroes. */
+  .page-hero--vehfit,
+  .page-hero--scene {
     height: calc(100vh - var(--header-height, 91px));
     height: calc(100dvh - var(--header-height, 91px));
     max-height: none;
@@ -3919,18 +3926,15 @@ picture{display:contents}
 /* Scope: :not(.page-hero--vehfit) targets the 8 Services pages ONLY. The 11
    fleet/vehicle pages also carry .page-hero--scene but add .page-hero--vehfit,
    so they are excluded here and keep their own full-height banner rules. */
-/* Whole image (16:9) shown via `contain`; the element is 16:9 too, so on
-   normal widths it fills edge-to-edge with NO letterbox. On very wide
-   screens the height cap kicks in and `contain` letterboxes into the site
-   dark bg (var(--color-bg)) instead of cropping the car. */
+/* NOTE: the desktop SIZING that used to live here (aspect-ratio:16/9 +
+   max-height:620px) is gone. Both produced a band whose height did not track
+   the viewport — the 620px cap cropped the photo more and more as the window
+   widened, and the 16:9 ratio that replaced it made the band TALLER than the
+   screen so the bottom of the car fell below the fold. These heroes now share
+   the vehicle pages' fit-to-screen rule (100dvh - header, further up), which
+   is viewport-relative and needs no cap. Only the text alignment below is
+   still set here; the mobile block further down keeps its own sizing. */
 .page-hero.page-hero--scene:not(.page-hero--vehfit) {
-  aspect-ratio: 16 / 9;
-  /* Height capped at 620px so nav (94px) + banner (620px) = 714px fits within a
-     typical laptop viewport (~728px) — the WHOLE car is visible on load with no
-     scroll. `cover` + per-page background-position (below) frames each vehicle so
-     the wheels/lower body stay in the (now shorter) band. Desktop only; the
-     approved mobile rules are in the @media block below and are untouched. */
-  max-height: 620px;
   align-items: flex-start;       /* heading pinned to the top band, above the car */
   padding-top: 0;                /* spacing handled on the text block, below */
 }
@@ -4116,44 +4120,87 @@ picture{display:contents}
 }
 
 /* ================================================================
-   SCENE BANNERS — WIDTH-INDEPENDENT FRAMING (DESKTOP ONLY)
+   SCENE BANNERS — FIT-TO-SCREEN, SAME AS THE VEHICLE PAGES (DESKTOP)
    ----------------------------------------------------------------
-   Problem this fixes: the scene hero was `aspect-ratio:16/9` with a
-   hard `max-height:620px`. Below ~1102px wide the 16:9 ratio governs
-   and `cover` shows the WHOLE 16:9 photo; above it the cap binds, the
-   band turns letterbox-wide (up to 4.13:1 at 2560px) and `cover` crops
-   the photo vertically — 86% of the image visible at 1280px, but only
-   57% at 1920px and 43% at 2560px. Result: the same page framed
-   differently per window width, with the car's roof/wheels/ends cut
-   off on wider desktops.
+   The Services + Location banners now use the SAME hero rule as the 11
+   vehicle pages: height = 100dvh - header, so the whole banner lands at
+   the fold and the whole car is visible on load with NO scrolling. The
+   height rule itself lives with the vehicle-page standard above
+   (.page-hero--vehfit, .page-hero--scene) rather than being duplicated
+   here — these two groups are one banner standard now.
 
-   Fix: drop the pixel cap on desktop so the band keeps the SOURCE
-   IMAGE'S OWN 16:9 ratio at every width (height scales with width).
-   Element ratio == image ratio, so `cover` has nothing to crop: the
-   entire photo — whole car, whole scene — is shown, full-bleed, with
-   no letterbox/pillarbox bars, identically at 1280/1440/1680/1920/2560.
-   Every banner image behind these heroes is 16:9 (the banner-svc- set is
-   3072x1728; the banner-fleet-, banner-wedding- and banner-hero- sets are
-   1920x1080), so one ratio covers all of them.
+   This block only supplies the two things the scene pages need to match
+   the vehicle-page look inside that shared frame:
 
-   Covers every scene banner: the 8 individual Services pages and the
-   2 /lp/ landing pages (.page-hero--scene alone) AND all Location pages
-   plus the other studio-photo banners (.page-hero--scene.--vehscene).
-   The 11 vehicle pages are excluded via :not(.page-hero--vehfit) — they
-   already have their own viewport-fit banner standard.
+   (1) background-position: center — the CSS-background equivalent of
+       object-position:center (these heroes paint the photo on
+       .page-hero::before, there is no <img>). This deliberately
+       OVERRIDES every per-page --hero-pos / aria-label vertical nudge
+       above, which existed only to compensate for the old fixed-height
+       band: one centred frame, so a page looks the same on every
+       desktop. :not(.page-hero--vehfit) keeps the vehicle pages on
+       their own tuned --hero-pos:82%.
 
-   Side effect (intended): with no overflow left to slide, the per-page
-   `background-position` / `--hero-pos` nudges above become inert on
-   desktop. They were only ever compensation for this crop, and they stay
-   live on mobile, so they are left in place rather than deleted.
+   (2) The vehicle pages' fixed-PIXEL top scrim, replacing the
+       percentage-based --vehscene scrim. Percentages would scale the
+       shade with the now much taller band and darken half the photo;
+       pixels keep the heading/subheading legible in a constant ~176px
+       band at every height.
 
-   Scoped to min-width:769px — the approved phone banner (fixed dark text
-   band + 16:9 image below) is untouched.
+   Selector carries .page-hero--toptext (every one of these heroes has
+   it) purely to reach (0,4,1) specificity, so it wins over the
+   [aria-label] per-page crops and the --vehscene block above.
+
+   CAVEAT this creates, by design: filling the screen means `cover` crops
+   by the MONITOR's ratio, not the image's. Images with the car centred
+   with margin stay whole at every width; images where the car is large
+   or sits low/off-centre would clip. Those pages are listed for an image
+   recompose rather than being cropped or letterboxed.
+
+   Scoped to min-width:769px — the phone banner is untouched.
    ---------------------------------------------------------------- */
 @media (min-width: 769px) {
-  .page-hero.page-hero--scene:not(.page-hero--vehfit) {
-    aspect-ratio: 16 / 9;   /* == the source image's ratio, so `cover` never crops */
+  .page-hero.page-hero--scene.page-hero--toptext:not(.page-hero--vehfit)::before {
+    background-size: cover;
+    background-position: center;   /* == object-position: center */
+  }
+  .page-hero.page-hero--scene.page-hero--toptext:not(.page-hero--vehfit)::after {
+    background:
+      linear-gradient(180deg,
+        rgba(10, 10, 12, 0.86) 0,
+        rgba(10, 10, 12, 0.66) 64px,
+        rgba(10, 10, 12, 0.30) 116px,
+        rgba(10, 10, 12, 0.0) 176px);
+  }
+}
+
+/* ── HELD BACK from fit-to-screen: 3 photos with too little road under the car ──
+   Fit-to-screen crops by the MONITOR's ratio. At a real maximised window the
+   deepest crop is 9.8% off the bottom (1920-wide window, ~960px viewport).
+   These three photos have less clearance than that beneath the tyres, measured
+   from the source files:
+
+     Birthday       ~5.5% of frame height below the tyres  -> clipped at 1280/1440/1920/2560
+     Corporate      ~6.5%                                  -> clipped at 1280/1440/1920/2560
+     School Formal  ~9%                                    -> clipped at 1920
+
+   Rather than cut the wheels or letterbox, these three keep the full-image
+   sizing: the band takes the photo's own 16:9 ratio, so `cover` crops nothing
+   and the whole car always shows. Cost is that the band is taller than the
+   screen, so the bottom strip of road sits below the fold — the same trade-off
+   the other pages just moved off. TEMPORARY: once these three hero images are
+   recomposed with more margin under the car (>=10% of frame height), delete
+   this block and they join the shared fit-to-screen standard automatically.
+
+   Targeted by hero aria-label — the pattern this stylesheet already uses for
+   per-page banner framing — so no page HTML changes. (0,4,0) beats the shared
+   (0,2,0) height rule above. Desktop only. */
+@media (min-width: 769px) {
+  .page-hero.page-hero--scene:not(.page-hero--vehfit)[aria-label*="Birthday"],
+  .page-hero.page-hero--scene:not(.page-hero--vehfit)[aria-label*="Corporate"],
+  .page-hero.page-hero--scene:not(.page-hero--vehfit)[aria-label*="School Formal"] {
     height: auto;
-    max-height: none;       /* was 620px — the cap is what created the width-dependent crop */
+    aspect-ratio: 16 / 9;   /* whole photo, nothing cropped */
+    max-height: none;
   }
 }
