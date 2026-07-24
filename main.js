@@ -386,20 +386,65 @@
           populate(dropSel);
 
           if (form) {
-            form.addEventListener('submit', function (e) {
-              // Web3Forms handles delivery + redirect to /thank-you/ server-side.
-              // While the access key is still the placeholder, intercept so we
-              // don't POST to a dead key — show a friendly note instead.
-              var keyEl = form.querySelector('input[name="access_key"]');
-              var key = keyEl ? keyEl.value : '';
-              if (!key || /ACCESS_KEY_HERE/.test(key)) {
-                e.preventDefault();
-                window.alert("Thanks! (Demo mode — add your Web3Forms key to enable live delivery.) We'll be in touch.");
-                form.reset();
-                if (pickupSel) pickupSel.selectedIndex = 0;
-                if (dropSel) dropSel.selectedIndex = 0;
+            var submitBtn = form.querySelector('button[type="submit"]');
+            var btnHTML = submitBtn ? submitBtn.innerHTML : '';
+
+            // Show an inline message in place of the form (success) or above the
+            // button (error), styled to match the surrounding dark form.
+            function showConfirmation(msg) {
+              var box = document.createElement('div');
+              box.className = 'quote-confirm';
+              box.setAttribute('role', 'status');
+              box.setAttribute('aria-live', 'polite');
+              box.style.cssText = 'padding:28px 24px;text-align:center;border:1px solid rgba(201,168,76,0.35);border-radius:14px;background:rgba(201,168,76,0.06);color:#fff;font:500 16px/1.55 "DM Sans",sans-serif;';
+              box.innerHTML = '<div style="font-size:26px;line-height:1;margin-bottom:10px;color:#C9A84C;">✓</div>' + msg;
+              form.replaceWith(box);
+            }
+            function showError() {
+              var existing = form.querySelector('.quote-error');
+              if (!existing) {
+                existing = document.createElement('div');
+                existing.className = 'quote-error';
+                existing.setAttribute('role', 'alert');
+                existing.style.cssText = 'margin:0 0 4px;padding:12px 14px;border:1px solid rgba(220,80,80,0.5);border-radius:10px;background:rgba(220,80,80,0.08);color:#ffd7d7;font:500 14px/1.5 "DM Sans",sans-serif;';
+                var submitWrap = form.querySelector('.quote-submit');
+                if (submitWrap) form.insertBefore(existing, submitWrap);
+                else form.appendChild(existing);
               }
-              // else: let the form POST natively to Web3Forms.
+              existing.innerHTML = 'Sorry — something went wrong sending your request. Please try again, or call us on <a href="tel:0422023413" style="color:#C9A84C;font-weight:700;">0422 023 413</a>.';
+            }
+
+            form.addEventListener('submit', function (e) {
+              e.preventDefault();
+              // Keep the existing required-field validation.
+              if (typeof form.reportValidity === 'function' && !form.reportValidity()) return;
+
+              var oldErr = form.querySelector('.quote-error');
+              if (oldErr) oldErr.remove();
+
+              if (submitBtn) { submitBtn.disabled = true; submitBtn.innerHTML = 'Sending…'; }
+
+              fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: { 'Accept': 'application/json' },
+                body: new FormData(form)
+              })
+                .then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })
+                .then(function (r) {
+                  if (r.ok && r.data && r.data.success) {
+                    form.reset();
+                    if (pickupSel) pickupSel.selectedIndex = 0;
+                    if (dropSel) dropSel.selectedIndex = 0;
+                    showConfirmation("Thanks! We've received your request and will be in touch shortly.");
+                  } else {
+                    if (submitBtn) { submitBtn.disabled = false; submitBtn.innerHTML = btnHTML; }
+                    showError();
+                  }
+                })
+                .catch(function () {
+                  if (submitBtn) { submitBtn.disabled = false; submitBtn.innerHTML = btnHTML; }
+                  showError();
+                });
             });
           }
         })();
