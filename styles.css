@@ -1576,6 +1576,63 @@
       margin-top: 8px;
     }
 
+    /* Inline thank-you card + fresh second form after submit */
+    .quote-thankyou {
+      background: linear-gradient(180deg, rgba(201,168,76,0.08), rgba(201,168,76,0.02));
+      border: 1px solid rgba(201,168,76,0.35);
+      border-radius: 22px;
+      padding: 40px 36px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 24px;
+      animation: quoteThanksIn 0.5s ease-out both;
+    }
+    .quote-thankyou__badge {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--color-accent);
+      color: #0a0a0c;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 22px rgba(201,168,76,0.35);
+    }
+    .quote-thankyou__title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 34px;
+      letter-spacing: 0.02em;
+      color: #fff;
+      margin: 0;
+    }
+    .quote-thankyou__body {
+      color: rgba(255,255,255,0.85);
+      margin: 0;
+      line-height: 1.55;
+    }
+    .quote-thankyou__body a { color: var(--color-accent); }
+    .quote-thankyou__hint {
+      color: rgba(255,255,255,0.55);
+      font-size: 14px;
+      margin: 6px 0 0;
+    }
+    @keyframes quoteThanksIn {
+      from { opacity: 0; transform: translateY(-8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .quote-form__error {
+      grid-column: 1 / -1;
+      background: rgba(255,90,80,0.08);
+      border: 1px solid rgba(255,90,80,0.45);
+      border-radius: 10px;
+      padding: 12px 14px;
+      color: #ffbdb5;
+      font-size: 14px;
+    }
+
     .quote-aside {
       background: var(--color-dark);
       border: 1px solid var(--color-border);

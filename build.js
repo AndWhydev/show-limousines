@@ -466,12 +466,9 @@ function quoteForm(heading, sub) {
           <p class="quote__sub">${esc(sub || 'Leave your details below and we’ll send a personalised quote.')} Or call <a href="tel:${TEL}" style="color:var(--color-accent);">${PHONE}</a>.</p>
         </div>
         <div class="quote__grid">
-          <form class="quote-form reveal" id="quoteForm" action="https://api.web3forms.com/submit" method="POST">
-            <input type="hidden" name="access_key" value="${WEB3FORMS_KEY}">
-            <input type="hidden" name="subject" value="New Show Limousines enquiry">
-            <input type="hidden" name="from_name" value="Show Limousines Website">
-            <input type="hidden" name="redirect" value="${SITE}/thank-you/">
+          <form class="quote-form reveal" id="quoteForm" action="/api/enquiry" method="POST" novalidate>
             <input type="checkbox" name="botcheck" class="visually-hidden" style="display:none" tabindex="-1" autocomplete="off">
+            <input type="hidden" name="submitted_from" id="qSubmittedFrom" value="">
             <div class="quote-field"><label for="qName">Name <span class="req">*</span></label><input type="text" id="qName" name="name" required autocomplete="name"></div>
             <div class="quote-field"><label for="qPhone">Phone <span class="req">*</span></label><input type="tel" id="qPhone" name="phone" required autocomplete="tel"></div>
             <div class="quote-field"><label for="qEmail">Email <span class="req">*</span></label><input type="email" id="qEmail" name="email" required autocomplete="email"></div>
@@ -1209,8 +1206,13 @@ infoPage('reviews', 'Reviews', [googleBadge(), TESTIMONIALS]);
   h = h.replace(/<header class="nav-wrap"[\s\S]*?<\/header>/, header('/'));
   h = h.replace(/<div class="nav-mobile"[\s\S]*?<\/div>\s*(?=<main>)/, mobileNav('/') + '\n  ');
   h = h.replace(/<footer class="foot"[\s\S]*?<\/footer>(\s*<aside class="sub-foot"[\s\S]*?<\/aside>)?/, footer());
-  // point the home quote <form> at Web3Forms
-  h = h.replace(/<form class="quote-form[^"]*"[^>]*id="quoteForm"[^>]*>/, `<form class="quote-form reveal" id="quoteForm" action="https://api.web3forms.com/submit" method="POST">\n            <input type="hidden" name="access_key" value="${WEB3FORMS_KEY}">\n            <input type="hidden" name="subject" value="New Show Limousines enquiry">\n            <input type="hidden" name="from_name" value="Show Limousines Website">\n            <input type="hidden" name="redirect" value="${SITE}/thank-you/">\n            <input type="checkbox" name="botcheck" class="visually-hidden" style="display:none" tabindex="-1" autocomplete="off">`);
+  // Idempotent form retrofit — matches the <form> open tag PLUS any following
+  // <input> lines up to (but not including) the first <div class="quote-field">.
+  // Lets us re-run the build without piling on duplicate hidden fields.
+  h = h.replace(
+    /<form class="quote-form[^"]*"[^>]*id="quoteForm"[^>]*>[\s\S]*?(?=<div class="quote-field")/,
+    `<form class="quote-form reveal" id="quoteForm" action="/api/enquiry" method="POST" novalidate>\n            <input type="checkbox" name="botcheck" class="visually-hidden" style="display:none" tabindex="-1" autocomplete="off">\n            <input type="hidden" name="submitted_from" id="qSubmittedFrom" value="">\n            `
+  );
   // root-relative shared assets
   h = h.replace('href="styles.css"', 'href="/styles.css"').replace('src="main.js"', 'src="/main.js"');
 

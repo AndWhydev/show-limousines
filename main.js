@@ -344,109 +344,130 @@
           });
         })();
 
-        // -------- Quote form: populate time dropdowns + alert on submit --------
+        // -------- Quote form: fetch-based submit with inline thank-you + second form --------
         (function initQuoteForm() {
-          var pickupSel = document.getElementById('qPickupTime');
-          var dropSel = document.getElementById('qDropoffTime');
-          var form = document.getElementById('quoteForm');
           // 15-min intervals from 06:00 → 05:45 next day (24-hr cycle).
           function buildTimes() {
             var list = [];
-            // 6am → 11:45pm
-            for (var h = 6; h < 24; h++) {
-              for (var m = 0; m < 60; m += 15) list.push({ h: h, m: m });
-            }
-            // 12am → 5:45am
-            for (var h2 = 0; h2 < 6; h2++) {
-              for (var m2 = 0; m2 < 60; m2 += 15) list.push({ h: h2, m: m2 });
-            }
+            for (var h = 6; h < 24; h++) for (var m = 0; m < 60; m += 15) list.push({ h: h, m: m });
+            for (var h2 = 0; h2 < 6; h2++) for (var m2 = 0; m2 < 60; m2 += 15) list.push({ h: h2, m: m2 });
             return list;
           }
-          function fmt(t) {
-            var h = t.h;
+          function fmtTime(t) {
             var mm = t.m < 10 ? '0' + t.m : String(t.m);
-            var period = h >= 12 ? 'PM' : 'AM';
-            var h12 = h % 12; if (h12 === 0) h12 = 12;
+            var period = t.h >= 12 ? 'PM' : 'AM';
+            var h12 = t.h % 12; if (h12 === 0) h12 = 12;
             return h12 + ':' + mm + ' ' + period;
           }
-          function populate(sel) {
-            if (!sel) return;
+          function populateTimes(sel) {
+            if (!sel || sel.dataset.timesPopulated === '1') return;
+            sel.dataset.timesPopulated = '1';
             var opt0 = document.createElement('option');
-            opt0.value = '';
-            opt0.textContent = 'Select a time';
+            opt0.value = ''; opt0.textContent = 'Select a time';
             sel.appendChild(opt0);
             buildTimes().forEach(function (t) {
               var o = document.createElement('option');
-              o.value = fmt(t);
-              o.textContent = fmt(t);
+              o.value = fmtTime(t); o.textContent = fmtTime(t);
               sel.appendChild(o);
             });
           }
-          populate(pickupSel);
-          populate(dropSel);
 
-          if (form) {
-            var submitBtn = form.querySelector('button[type="submit"]');
-            var btnHTML = submitBtn ? submitBtn.innerHTML : '';
+          function wireForm(form) {
+            if (!form || form.dataset.wired === '1') return;
+            form.dataset.wired = '1';
 
-            // Show an inline message in place of the form (success) or above the
-            // button (error), styled to match the surrounding dark form.
-            function showConfirmation(msg) {
-              var box = document.createElement('div');
-              box.className = 'quote-confirm';
-              box.setAttribute('role', 'status');
-              box.setAttribute('aria-live', 'polite');
-              box.style.cssText = 'padding:28px 24px;text-align:center;border:1px solid rgba(201,168,76,0.35);border-radius:14px;background:rgba(201,168,76,0.06);color:#fff;font:500 16px/1.55 "DM Sans",sans-serif;';
-              box.innerHTML = '<div style="font-size:26px;line-height:1;margin-bottom:10px;color:#C9A84C;">✓</div>' + msg;
-              form.replaceWith(box);
-            }
-            function showError() {
-              var existing = form.querySelector('.quote-error');
-              if (!existing) {
-                existing = document.createElement('div');
-                existing.className = 'quote-error';
-                existing.setAttribute('role', 'alert');
-                existing.style.cssText = 'margin:0 0 4px;padding:12px 14px;border:1px solid rgba(220,80,80,0.5);border-radius:10px;background:rgba(220,80,80,0.08);color:#ffd7d7;font:500 14px/1.5 "DM Sans",sans-serif;';
-                var submitWrap = form.querySelector('.quote-submit');
-                if (submitWrap) form.insertBefore(existing, submitWrap);
-                else form.appendChild(existing);
-              }
-              existing.innerHTML = 'Sorry — something went wrong sending your request. Please try again, or call us on <a href="tel:0422023413" style="color:#C9A84C;font-weight:700;">0422 023 413</a>.';
+            populateTimes(form.querySelector('select[name="pickup_time"]'));
+            populateTimes(form.querySelector('select[name="dropoff_time"]'));
+
+            // Stamp the page the enquiry was sent from (before submit fires).
+            var fromEl = form.querySelector('input[name="submitted_from"]');
+            if (fromEl) {
+              var label = (document.title || 'Show Limousines').replace(/\s*[|—-]\s*Show Limousines.*/i, '').trim();
+              fromEl.value = label + ' (' + window.location.pathname + ')';
             }
 
             form.addEventListener('submit', function (e) {
               e.preventDefault();
-              // Keep the existing required-field validation.
+              // Native required-field validation first.
               if (typeof form.reportValidity === 'function' && !form.reportValidity()) return;
+              // Honeypot: if a bot ticks the hidden botcheck, silently pretend success.
+              var bot = form.querySelector('input[name="botcheck"]');
+              if (bot && bot.checked) { showThankYou(form, null); return; }
 
-              var oldErr = form.querySelector('.quote-error');
-              if (oldErr) oldErr.remove();
+              var submitBtn = form.querySelector('button[type="submit"]');
+              if (submitBtn) { submitBtn.disabled = true; submitBtn.dataset.originalText = submitBtn.innerHTML; submitBtn.textContent = 'Sending…'; }
 
-              if (submitBtn) { submitBtn.disabled = true; submitBtn.innerHTML = 'Sending…'; }
+              var data = {};
+              new FormData(form).forEach(function (v, k) { data[k] = v; });
 
-              fetch('https://api.web3forms.com/submit', {
+              fetch('/api/enquiry', {
                 method: 'POST',
-                headers: { 'Accept': 'application/json' },
-                body: new FormData(form)
-              })
-                .then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })
-                .then(function (r) {
-                  if (r.ok && r.data && r.data.success) {
-                    form.reset();
-                    if (pickupSel) pickupSel.selectedIndex = 0;
-                    if (dropSel) dropSel.selectedIndex = 0;
-                    showConfirmation("Thanks! We've received your request and will be in touch shortly.");
-                  } else {
-                    if (submitBtn) { submitBtn.disabled = false; submitBtn.innerHTML = btnHTML; }
-                    showError();
-                  }
-                })
-                .catch(function () {
-                  if (submitBtn) { submitBtn.disabled = false; submitBtn.innerHTML = btnHTML; }
-                  showError();
-                });
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify(data)
+              }).then(function (r) {
+                return r.json().then(function (j) { return { ok: r.ok, body: j }; })
+                  .catch(function () { return { ok: r.ok, body: { success: r.ok } }; });
+              }).then(function (res) {
+                if (res.ok && res.body && res.body.success) {
+                  showThankYou(form, res.body);
+                } else {
+                  showError(form, (res.body && res.body.message) || 'Something went wrong — please try again or call us on 0422 023 413.');
+                  if (submitBtn) { submitBtn.disabled = false; submitBtn.innerHTML = submitBtn.dataset.originalText || 'Send Message'; }
+                }
+              }).catch(function () {
+                showError(form, 'Network error — please try again or call us on 0422 023 413.');
+                if (submitBtn) { submitBtn.disabled = false; submitBtn.innerHTML = submitBtn.dataset.originalText || 'Send Message'; }
+              });
             });
           }
+
+          function showError(form, message) {
+            var existing = form.querySelector('.quote-form__error');
+            if (existing) existing.remove();
+            var box = document.createElement('div');
+            box.className = 'quote-form__error';
+            box.setAttribute('role', 'alert');
+            box.textContent = message;
+            form.insertBefore(box, form.firstChild);
+          }
+
+          function showThankYou(oldForm, res) {
+            var refText = (res && res.ref) ? (' Your reference is #' + res.ref + '.') : '';
+            var card = document.createElement('div');
+            card.className = 'quote-thankyou reveal is-in';
+            card.setAttribute('role', 'status');
+            card.innerHTML =
+              '<div class="quote-thankyou__badge" aria-hidden="true">'
+              + '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>'
+              + '</div>'
+              + '<h3 class="quote-thankyou__title">Thanks — we’ve got your enquiry.</h3>'
+              + '<p class="quote-thankyou__body">A member of our team will be in touch shortly.'
+              + refText
+              + ' For anything urgent, call us direct on <a href="tel:0422023413">0422 023 413</a>.</p>'
+              + '<p class="quote-thankyou__hint">Need to send another enquiry, or missed something? Use the form below.</p>';
+
+            var freshForm = oldForm.cloneNode(true);
+            freshForm.dataset.wired = '';
+            freshForm.reset();
+            var freshBtn = freshForm.querySelector('button[type="submit"]');
+            if (freshBtn) { freshBtn.disabled = false; freshBtn.innerHTML = freshBtn.dataset.originalText || freshBtn.innerHTML; }
+            freshForm.querySelectorAll('select[data-times-populated]').forEach(function (s) {
+              while (s.firstChild) s.removeChild(s.firstChild);
+              s.dataset.timesPopulated = '';
+            });
+            freshForm.querySelectorAll('.quote-form__error').forEach(function (n) { n.remove(); });
+
+            // Second-submit hygiene: drop any prior thank-you card so we don't stack them.
+            document.querySelectorAll('.quote-thankyou').forEach(function (n) { n.remove(); });
+
+            oldForm.replaceWith(card);
+            card.insertAdjacentElement('afterend', freshForm);
+            wireForm(freshForm);
+
+            try { card.scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch (e) {}
+          }
+
+          wireForm(document.getElementById('quoteForm'));
         })();
 
         // -------- Navigation --------
