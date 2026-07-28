@@ -400,7 +400,7 @@
               var data = {};
               new FormData(form).forEach(function (v, k) { data[k] = v; });
 
-              fetch('/api/enquiry', {
+              fetch('/api/enquiry/', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
                 body: JSON.stringify(data)

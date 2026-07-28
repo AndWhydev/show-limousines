@@ -1,5 +1,8 @@
 {
   "trailingSlash": true,
+  "rewrites": [
+    { "source": "/api/enquiry/", "destination": "/api/enquiry" }
+  ],
   "redirects": [
     { "source": "/funeral-limo-hire", "destination": "/", "permanent": true },
     { "source": "/funeral-limo-hire/", "destination": "/", "permanent": true }
