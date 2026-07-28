@@ -35,12 +35,12 @@ function isoToAuDate(iso) {
 
 function trim(v) { return String(v == null ? '' : v).trim(); }
 
-async function incrCounter() {
+async function upstash(command) {
   var url = process.env.KV_REST_API_URL;
   var token = process.env.KV_REST_API_TOKEN;
   if (!url || !token) return null;
   try {
-    var r = await fetch(url + '/incr/' + encodeURIComponent(COUNTER_KEY), {
+    var r = await fetch(url + '/' + command.map(encodeURIComponent).join('/'), {
       method: 'POST',
       headers: { Authorization: 'Bearer ' + token }
     });
@@ -65,6 +65,13 @@ module.exports = async function handler(req, res) {
   }
   body = body || {};
 
+  // Rollback branch — called by main.js on Web3Forms failure so we don't leak
+  // counter gaps for enquiries that never actually landed in Mick's inbox.
+  if (body.action === 'rollback') {
+    await upstash(['decr', COUNTER_KEY]);
+    return res.status(200).json({ success: true });
+  }
+
   // Honeypot — silently pretend success so the bot moves on.
   if (body.botcheck) {
     return res.status(200).json({ success: true, ref: null });
@@ -77,7 +84,7 @@ module.exports = async function handler(req, res) {
     return res.status(400).json({ success: false, message: 'Name, phone and email are required.' });
   }
 
-  var ref = await incrCounter();
+  var ref = await upstash(['incr', COUNTER_KEY]);
 
   var occasion = trim(body.occasion) || 'General enquiry';
   var auDate = isoToAuDate(trim(body.date));

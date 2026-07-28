@@ -402,7 +402,20 @@
 
               // Two hops: (1) reserve a sequential ref + compose email body on the server,
               // (2) relay to Web3Forms from the browser (their free tier requires client-side POST).
-              function fail(msg) {
+              function rollback() {
+                // Fire-and-forget DECR so an unsent enquiry doesn't leave a gap in the numbering.
+                // keepalive: true lets the request survive page unload if the user rage-closes the tab.
+                try {
+                  fetch('/api/enquiry/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ action: 'rollback' }),
+                    keepalive: true
+                  });
+                } catch (e) {}
+              }
+              function fail(msg, doRollback) {
+                if (doRollback) rollback();
                 showError(form, msg);
                 if (submitBtn) { submitBtn.disabled = false; submitBtn.innerHTML = submitBtn.dataset.originalText || 'Send Message'; }
               }
@@ -416,7 +429,8 @@
                   .catch(function () { return { ok: r.ok, body: { success: r.ok } }; });
               }).then(function (res) {
                 if (!res.ok || !res.body || !res.body.success || !res.body.submit_to) {
-                  fail((res.body && res.body.message) || 'Something went wrong — please try again or call us on 0422 023 413.');
+                  // Server didn't reserve a ref → nothing to roll back.
+                  fail((res.body && res.body.message) || 'Something went wrong — please try again or call us on 0422 023 413.', false);
                   return;
                 }
                 var st = res.body.submit_to;
@@ -431,11 +445,14 @@
                   if (r2.ok && r2.body && r2.body.success) {
                     showThankYou(form, res.body);
                   } else {
-                    fail((r2.body && r2.body.message) || 'Email delivery failed — please try again or call us on 0422 023 413.');
+                    // Web3Forms rejected — the ref was reserved but never used, so roll it back.
+                    fail((r2.body && r2.body.message) || 'Email delivery failed — please try again or call us on 0422 023 413.', true);
                   }
+                }).catch(function () {
+                  fail('Email delivery failed — please try again or call us on 0422 023 413.', true);
                 });
               }).catch(function () {
-                fail('Network error — please try again or call us on 0422 023 413.');
+                fail('Network error — please try again or call us on 0422 023 413.', false);
               });
             });
           }

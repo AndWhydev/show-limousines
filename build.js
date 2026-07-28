@@ -1236,3 +1236,8 @@ infoPage('reviews', 'Reviews', [googleBadge(), TESTIMONIALS]);
 
 console.log('Emitted ' + written.length + ' pages.');
 written.forEach(w => console.log('  ' + w));
+
+// Ensure any newly-emitted or hand-restored PINNED pages carry the current
+// /api/enquiry form open tag. patch-quote-form.js is idempotent — safe to
+// run on every build.
+require('./patch-quote-form.js');
