@@ -111,7 +111,9 @@ module.exports = async function handler(req, res) {
   if (occasion) subjectParts.push('(' + occasion + ')');
   var subject = subjectParts.join(' ');
 
-  // Payload to Web3Forms — insertion order controls email field order.
+  // Web3Forms free tier blocks server-to-server POSTs — the browser must be the
+  // client. We return the fully-composed Web3Forms payload so main.js can relay
+  // it from the browser in a second hop.
   var payload = {
     access_key: WEB3FORMS_KEY,
     subject: subject,
@@ -122,21 +124,9 @@ module.exports = async function handler(req, res) {
     Enquiry: enquiryBody,
   };
 
-  try {
-    var wr = await fetch(WEB3FORMS_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify(payload)
-    });
-    var wjson = await wr.json().catch(function () { return {}; });
-    if (!wr.ok || !wjson.success) {
-      return res.status(502).json({
-        success: false,
-        message: (wjson && wjson.message) || 'Email delivery failed. Please call us on 0422 023 413.',
-      });
-    }
-    return res.status(200).json({ success: true, ref: ref });
-  } catch (e) {
-    return res.status(502).json({ success: false, message: 'Email delivery failed. Please call us on 0422 023 413.' });
-  }
+  return res.status(200).json({
+    success: true,
+    ref: ref,
+    submit_to: { url: WEB3FORMS_URL, payload: payload }
+  });
 };

@@ -400,6 +400,13 @@
               var data = {};
               new FormData(form).forEach(function (v, k) { data[k] = v; });
 
+              // Two hops: (1) reserve a sequential ref + compose email body on the server,
+              // (2) relay to Web3Forms from the browser (their free tier requires client-side POST).
+              function fail(msg) {
+                showError(form, msg);
+                if (submitBtn) { submitBtn.disabled = false; submitBtn.innerHTML = submitBtn.dataset.originalText || 'Send Message'; }
+              }
+
               fetch('/api/enquiry/', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
@@ -408,15 +415,27 @@
                 return r.json().then(function (j) { return { ok: r.ok, body: j }; })
                   .catch(function () { return { ok: r.ok, body: { success: r.ok } }; });
               }).then(function (res) {
-                if (res.ok && res.body && res.body.success) {
-                  showThankYou(form, res.body);
-                } else {
-                  showError(form, (res.body && res.body.message) || 'Something went wrong — please try again or call us on 0422 023 413.');
-                  if (submitBtn) { submitBtn.disabled = false; submitBtn.innerHTML = submitBtn.dataset.originalText || 'Send Message'; }
+                if (!res.ok || !res.body || !res.body.success || !res.body.submit_to) {
+                  fail((res.body && res.body.message) || 'Something went wrong — please try again or call us on 0422 023 413.');
+                  return;
                 }
+                var st = res.body.submit_to;
+                return fetch(st.url, {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                  body: JSON.stringify(st.payload)
+                }).then(function (r2) {
+                  return r2.json().then(function (j2) { return { ok: r2.ok, body: j2 }; })
+                    .catch(function () { return { ok: r2.ok, body: { success: r2.ok } }; });
+                }).then(function (r2) {
+                  if (r2.ok && r2.body && r2.body.success) {
+                    showThankYou(form, res.body);
+                  } else {
+                    fail((r2.body && r2.body.message) || 'Email delivery failed — please try again or call us on 0422 023 413.');
+                  }
+                });
               }).catch(function () {
-                showError(form, 'Network error — please try again or call us on 0422 023 413.');
-                if (submitBtn) { submitBtn.disabled = false; submitBtn.innerHTML = submitBtn.dataset.originalText || 'Send Message'; }
+                fail('Network error — please try again or call us on 0422 023 413.');
               });
             });
           }
