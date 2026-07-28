@@ -468,6 +468,20 @@
           }
 
           function showThankYou(oldForm, res) {
+            // Push /thank-you/ into the URL bar so Google Ads (and any GTM
+            // History Change trigger) can attribute the conversion. Doesn't
+            // navigate — the inline thank-you card + fresh form stay put.
+            try {
+              if (window.history && typeof window.history.pushState === 'function'
+                  && window.location.pathname !== '/thank-you/') {
+                window.history.pushState({ slThanks: true, ref: (res && res.ref) || null }, '', '/thank-you/');
+                // Nudge analytics: if GTM/dataLayer is installed later, this virtual page-view will fire.
+                if (window.dataLayer && typeof window.dataLayer.push === 'function') {
+                  window.dataLayer.push({ event: 'enquiry_success', ref: (res && res.ref) || null, virtualPath: '/thank-you/' });
+                }
+              }
+            } catch (e) {}
+
             var refText = (res && res.ref) ? (' Your reference is #' + res.ref + '.') : '';
             var card = document.createElement('div');
             card.className = 'quote-thankyou reveal is-in';
