@@ -341,6 +341,13 @@ function head(fm, slug) {
   return `<!DOCTYPE html>
 <html lang="en-AU">
 <head>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TRNBVN7N');</script>
+  <!-- End Google Tag Manager -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>${esc(title)}</title>
@@ -365,7 +372,11 @@ function head(fm, slug) {
   <script src="https://unpkg.com/split-type"></script>
   <link rel="stylesheet" href="/styles.css?v=20260703e">
 </head>
-<body>`;
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TRNBVN7N"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->`;
 }
 const FOOT_SCRIPT = `  <script src="/main.js"></script>\n</body>\n</html>`;
 
@@ -1241,3 +1252,7 @@ written.forEach(w => console.log('  ' + w));
 // /api/enquiry form open tag. patch-quote-form.js is idempotent — safe to
 // run on every build.
 require('./patch-quote-form.js');
+
+// Same idea for the Google Tag Manager snippets — idempotent, skips files
+// that already contain the container ID.
+require('./patch-gtm.js');
