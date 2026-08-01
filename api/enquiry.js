@@ -90,17 +90,15 @@ module.exports = async function handler(req, res) {
   var auDate = isoToAuDate(trim(body.date));
   var submittedFrom = trim(body.submitted_from) || '(unknown page)';
 
-  // Summary line — this is what mobile inboxes surface as the preview snippet.
-  var summary = name + ' · ' + phone + ' · ' + email;
-
-  // Full body — ordered, human-readable, ends with the referrer page.
+  // Body starts with the name/phone/email line so mobile inbox previews surface
+  // the useful data first. Name/phone/email are skipped in the field loop below
+  // to avoid duplicating them.
   var lines = [];
-  lines.push('Enquiry ' + (ref ? '#' + ref : '(ref unavailable)'));
-  lines.push('');
-  lines.push('Summary: ' + summary);
+  lines.push(name + ' · ' + phone + ' · ' + email);
   lines.push('');
   FIELD_ORDER.forEach(function (pair) {
     var key = pair[0], label = pair[1];
+    if (key === 'name' || key === 'phone' || key === 'email') return;
     var val = trim(body[key]);
     if (!val) return;
     if (key === 'date') val = auDate;
@@ -108,7 +106,7 @@ module.exports = async function handler(req, res) {
   });
   lines.push('');
   lines.push('— — —');
-  lines.push('Submitted from: ' + submittedFrom);
+  lines.push('Enquiry ' + (ref ? '#' + ref : '(ref unavailable)') + ' · Submitted from: ' + submittedFrom);
   var enquiryBody = lines.join('\n');
 
   // Unique subject — kills Gmail desktop threading.
@@ -121,14 +119,15 @@ module.exports = async function handler(req, res) {
   // Web3Forms free tier blocks server-to-server POSTs — the browser must be the
   // client. We return the fully-composed Web3Forms payload so main.js can relay
   // it from the browser in a second hop.
+  // from_name = customer's name so the inbox sender reads "Alice" not "Show
+  // Limousines Website". replyto (not email) keeps the customer's address out
+  // of the rendered body while still wiring Gmail's Reply button correctly.
   var payload = {
     access_key: WEB3FORMS_KEY,
     subject: subject,
-    from_name: 'Show Limousines Website',
-    email: email,
+    from_name: name,
     replyto: email,
-    Summary: summary,
-    Enquiry: enquiryBody,
+    message: enquiryBody,
   };
 
   return res.status(200).json({
