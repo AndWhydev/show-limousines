@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Show Limousines — Email Signature</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<style>
+  body { font-family: -apple-system, 'Segoe UI', Arial, sans-serif; background: #f4f4f4; margin: 0; padding: 40px 20px; color: #222; }
+  .wrap { max-width: 720px; margin: 0 auto; }
+  h1 { font-size: 22px; margin: 0 0 8px; }
+  h2 { font-size: 16px; margin: 32px 0 12px; }
+  p { line-height: 1.5; margin: 0 0 12px; }
+  ol li { line-height: 1.6; margin-bottom: 6px; }
+  .card { background: #fff; padding: 32px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,.08); margin: 20px 0; }
+  .signature-block { background: #fff; padding: 24px; border: 1px dashed #ccc; border-radius: 4px; margin: 12px 0 24px; }
+  code { background: #eee; padding: 2px 6px; border-radius: 3px; font-size: 13px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Show Limousines — Email Signature</h1>
+  <p>Hi Mick — here's your new signature. Follow the three steps below to install it in Gmail.</p>
+
+  <div class="card">
+    <h2>Step 1 — Copy the signature below</h2>
+    <p>Click anywhere inside the dashed box, then press <code>Ctrl + A</code> to select all, then <code>Ctrl + C</code> to copy.</p>
+
+    <div class="signature-block" id="signature">
+      <table cellpadding="0" cellspacing="0" border="0" style="font-family: Arial, Helvetica, sans-serif; color: #333333; font-size: 14px; line-height: 1.5;">
+        <tr>
+          <td valign="middle" style="padding-right: 18px; border-right: 1px solid #dddddd;">
+            <a href="https://www.showlimousines.com.au" style="text-decoration: none;">
+              <img src="https://showlimousines.com.au/email/logo-signature-wordmark.png" width="170" alt="Show Limousines" style="display: block; border: 0;">
+            </a>
+          </td>
+          <td valign="middle" style="padding-left: 18px;">
+            <div style="font-size: 16px; font-weight: bold; color: #1a1a1a; margin-bottom: 2px;">Mick</div>
+            <div style="font-size: 13px; color: #777777; margin-bottom: 8px;">Director</div>
+            <div style="margin-bottom: 2px;">
+              <a href="tel:+61422823413" style="color: #333333; text-decoration: none;">0422 823 413</a>
+            </div>
+            <div style="margin-bottom: 2px;">
+              <a href="mailto:info@showlimousines.com.au" style="color: #333333; text-decoration: none;">info@showlimousines.com.au</a>
+            </div>
+            <div style="margin-bottom: 8px;">
+              <a href="https://www.showlimousines.com.au" style="color: #333333; text-decoration: none;">www.showlimousines.com.au</a>
+            </div>
+            <div style="font-size: 12px; color: #888888; font-style: italic; margin-bottom: 10px;">Professional Limousine &amp; Wedding Car Hire</div>
+            <div>
+              <a href="https://www.facebook.com/showlimousines" style="text-decoration: none; margin-right: 6px;">
+                <img src="https://showlimousines.com.au/email/icon-facebook.png" width="26" height="26" alt="Facebook" style="display: inline-block; vertical-align: middle; border: 0;">
+              </a>
+              <a href="https://www.instagram.com/showlimousines" style="text-decoration: none;">
+                <img src="https://showlimousines.com.au/email/icon-instagram.png" width="26" height="26" alt="Instagram" style="display: inline-block; vertical-align: middle; border: 0;">
+              </a>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <p><button onclick="copySig()" style="background: #1a1a1a; color: white; border: 0; padding: 12px 20px; border-radius: 4px; cursor: pointer; font-size: 14px;">Copy signature to clipboard</button> <span id="copied" style="color: green; margin-left: 12px; display: none;">Copied.</span></p>
+  </div>
+
+  <div class="card">
+    <h2>Step 2 — Open Gmail signature settings</h2>
+    <ol>
+      <li>Open Gmail on your computer (this doesn't work on mobile).</li>
+      <li>Click the gear icon (top right) &rarr; <strong>See all settings</strong>.</li>
+      <li>Scroll down to the <strong>Signature</strong> section.</li>
+      <li>If you already have a signature, click it to edit. Otherwise click <strong>+ Create new</strong> and name it "Show Limousines".</li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h2>Step 3 — Paste and save</h2>
+    <ol>
+      <li>Click inside the signature editor box to place your cursor.</li>
+      <li>Delete anything already there (select all with <code>Ctrl + A</code>, press <code>Delete</code>).</li>
+      <li>Paste with <code>Ctrl + V</code>.</li>
+      <li>You should see the logo, your details, and the Facebook / Instagram buttons appear.</li>
+      <li>Under <strong>Signature defaults</strong>, set both "For new emails" and "On reply/forward" to this signature.</li>
+      <li>Scroll to the bottom and click <strong>Save Changes</strong>.</li>
+    </ol>
+    <p>To test it, compose a new email and check the signature appears with the logo and social icons visible. If anything looks off, let Andy know and we'll sort it.</p>
+  </div>
+</div>
+
+<script>
+function copySig() {
+  var sig = document.getElementById('signature');
+  var range = document.createRange();
+  range.selectNodeContents(sig);
+  var sel = window.getSelection();
+  sel.removeAllRanges();
+  sel.addRange(range);
+  try {
+    document.execCommand('copy');
+    document.getElementById('copied').style.display = 'inline';
+    setTimeout(function() { document.getElementById('copied').style.display = 'none'; }, 2500);
+  } catch (e) {
+    alert('Copy failed — select the signature manually with Ctrl+A then Ctrl+C.');
+  }
+  sel.removeAllRanges();
+}
+</script>
+</body>
+</html>
