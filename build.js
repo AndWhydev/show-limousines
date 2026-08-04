@@ -435,7 +435,10 @@ const BANNER = {
   'fleet': ['banner-fleet-chrysler-gullwing-v2.jpg', '50%', true],
   'vehicles': ['banner-fleet-chrysler-gullwing-v2.jpg', '50%', false],
   // Hubs / informational
-  'services': ['banner-fleet-chrysler-white-v2.jpg', null, false],
+  // Full-bleed scene treatment (4th flag) — restores 673a661. /services/ is the only
+  // page in the scene-banner family that is NOT in RESTORE_SLUGS/PINNED, so it is the
+  // only one the generator can overwrite; ffab8e1 did exactly that by running the build.
+  'services': ['banner-fleet-chrysler-white-v2.jpg', '30%', false, true],
   'about-us': ['banner-fleet-rolls-royce-phantom-v2.jpg', '50%', true],
   'term-conditions': ['banner-fleet-mercedes-s-class-v2.jpg', '50%', true],
   'gallery': ['banner-hero-gullwing-poster.jpg', '50%', true],
@@ -450,13 +453,17 @@ const BANNER = {
   'blog-dos-and-donts': ['banner-fleet-chrysler-gullwing-v2.jpg', '50%', false],
   'blog-wedding-limo-checklist': ['banner-wedding-chrysler-gullwing.jpg', '50%', false],
 };
-function bannerFor(slug) { const b = BANNER[slug]; return b ? { img: b[0], pos: b[1], zoom: b[2] } : null; }
+function bannerFor(slug) { const b = BANNER[slug]; return b ? { img: b[0], pos: b[1], zoom: b[2], scene: !!b[3] } : null; }
 
 /* Page header banner — exact structure/classes from the restore commit (no eyebrow;
    h1 forced to wrap; optional sub). `banner` is the bannerFor(slug) config. */
 function pageHero(eyebrow, h1, sub, banner) {
   const b = banner && banner.img ? banner : null;
-  const cls = 'page-hero' + (b ? ' page-hero--toptext' + (b.zoom ? ' page-hero--carzoom' : '') : '');
+  // scene => the full-bleed background-cover treatment (--scene) plus the desktop
+  // crop/scrim tuning (--vehscene) used by the other studio-car pages. Mutually
+  // exclusive with carzoom, which is the older shrink-to-fit banner.
+  const variant = b ? (b.scene ? ' page-hero--scene page-hero--vehscene' : (b.zoom ? ' page-hero--carzoom' : '')) : '';
+  const cls = 'page-hero' + (b ? ' page-hero--toptext' + variant : '');
   const style = b ? ` style="--hero-img:url('/${b.img}')${b.pos ? `;--hero-pos:${b.pos}` : ''}"` : '';
   return `    <section class="${cls}"${style} aria-label="${attr(h1)}">
       <div class="page-hero__inner reveal">
@@ -1228,13 +1235,25 @@ infoPage('reviews', 'Reviews', [googleBadge(), TESTIMONIALS]);
   h = h.replace('href="styles.css"', 'href="/styles.css"').replace('src="main.js"', 'src="/main.js"');
 
   // Reorder the home fleet grid to the canonical VEHICLES order (Commit 3).
-  const ORDER = VEHICLES.map(v => v.img.replace(/\.jpg$/, ''));
+  // Rank on the card's /vehicle/<slug>/ "View Details" href, NOT on the image
+  // filename: photo swaps rename the image (19b3b0c gave the Sprinter
+  // fleet-mercedes-sprinter-black.jpg while VEHICLES still says -v2), which made
+  // the old /fleet-...-v2/ probe miss, score 999 and silently sort that card last
+  // on every build. The vehicle URL is stable across photo changes.
+  const ORDER = VEHICLES.map(v => v.url);
+  const IMG_ORDER = VEHICLES.map(v => v.img.replace(/\.jpg$/, ''));
   h = h.replace(/(<div class="fleet__grid" id="fleetGrid">)([\s\S]*?)(<\/section>)/, (full, open, body, end) => {
     const lastEnd = body.lastIndexOf('</article>') + '</article>'.length;
     if (lastEnd < '</article>'.length) return full; // no cards found — leave as-is
     const tail = body.slice(lastEnd);
     const blocks = body.slice(0, lastEnd).split(/(?=<!--\s*\d+\.)/).filter(s => s.trim());
-    const rank = (b) => { const m = b.match(/fleet-[a-z0-9-]+-v2/); const i = m ? ORDER.indexOf(m[0]) : -1; return i < 0 ? 999 : i; };
+    const rank = (b) => {
+      const u = b.match(/\/vehicle\/[a-z0-9-]+\//);
+      let i = u ? ORDER.indexOf(u[0]) : -1;
+      if (i < 0) { const m = b.match(/fleet-[a-z0-9-]+-v2/); i = m ? IMG_ORDER.indexOf(m[0]) : -1; }
+      if (i < 0) console.warn('  ! fleet card did not match any vehicle — left at end:', (b.match(/fleet-card__model">\s*([^<]+)/) || [, '?'])[1].trim());
+      return i < 0 ? 999 : i;
+    };
     blocks.sort((a, b) => rank(a) - rank(b));
     const renum = blocks.map((b, i) => b.trim().replace(/<!--\s*\d+\.\s*/, `<!-- ${i + 1}. `));
     return open + '\n\n          ' + renum.join('\n\n          ') + tail + end;
