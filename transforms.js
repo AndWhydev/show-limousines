@@ -52,7 +52,7 @@ function airportValenteToWhiteStretch(main) {
     /<article class="fleet-card">\s*<div class="fleet-card__media"><img class="fleet-card__img" src="\/fleet-mercedes-valente-v2\.jpg"[\s\S]*?<\/article>/,
     `<article class="fleet-card">
             <div class="fleet-card__media"><img class="fleet-card__img" src="/fleet-chrysler-white-v2.jpg" alt="White Chrysler Super Stretch" loading="lazy" decoding="async"><span class="fleet-card__badge">Chrysler</span></div>
-            <div class="fleet-card__body"><span class="fleet-card__brand">Chrysler</span><span class="fleet-card__model">White Chrysler Super Stretch</span><span class="fleet-card__capacity">Up to 10 passengers</span><div class="fleet-card__footer"><a href="/vehicle/chrysler-super-stretch-limousine/" class="btn-outline-sm">View Details</a></div></div>
+            <div class="fleet-card__body"><span class="fleet-card__brand">Chrysler</span> <span class="fleet-card__model">White Chrysler Super Stretch</span> <span class="fleet-card__capacity">Up to 10 passengers</span><div class="fleet-card__footer"><a href="/vehicle/chrysler-super-stretch-limousine/" class="btn-outline-sm">View Details</a></div></div>
           </article>`);
 }
 
@@ -138,7 +138,7 @@ const SYDNEY_SUB = 'Luxury wedding cars, stretch limousines and professional cha
 /* "165+ 5-Star Google Reviews | 10+ Years | 365 Days a year" trust bar under the hero,
    reusing the homepage hero stat typography (.hero__stat-num/.hero__stat-label/.hero__stat-sep). */
 function statsStrip() {
-  const stat = (n, l) => `<div class="hero__stat"><span class="hero__stat-num">${n}</span><span class="hero__stat-label">${l}</span></div>`;
+  const stat = (n, l) => `<div class="hero__stat"><span class="hero__stat-num">${n}</span> <span class="hero__stat-label">${l}</span></div>`;
   const sep = '<span class="hero__stat-sep" aria-hidden="true"></span>';
   return `    <section class="wstat" aria-label="Show Limousines at a glance">
       <div class="wstat__inner reveal">
