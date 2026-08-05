@@ -50,7 +50,6 @@ Have an upcoming gala, concert, or formal event to attend? Show Limousines offer
 14 Passengers | Learn more >
 ### Rolls Royce Phantom Sedan
 ### Mercedes Valente Minivan
-### Volkswagen Crafter Premium Minibus
 ## Frequently Asked Questions
 ### Is there a BYO policy?
 Yes, we can arrange for you to bring your favourite drinks on board to enjoy during your transit. However, we are unable to serve alcohol due to regulations.

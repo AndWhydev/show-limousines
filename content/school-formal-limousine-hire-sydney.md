@@ -49,7 +49,6 @@ Contact Show Limousines today for luxury car or limousine hire for the big day w
 14 Passengers | Learn more >
 ### Rolls Royce Phantom Sedan
 ### Mercedes Valente Minivan
-### Volkswagen Crafter Premium Minibus
 ## FAQs – School Formal Limo Hire
 ### What areas do you service?
 We offer our school formal transportation throughout Sydney, including the Northern Beaches, Eastern Suburbs, Sydney CBD, Wollongong, Marrickville, Campbelltown, Parramatta, the Sutherland Shire, and everywhere in between.

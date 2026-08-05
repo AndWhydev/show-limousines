@@ -119,18 +119,6 @@
       1600
     ]
   },
-  "fleet-vw-crafter-v2.jpg": {
-    "base": "fleet-vw-crafter-v2",
-    "w": 1600,
-    "h": 893,
-    "widths": [
-      400,
-      640,
-      960,
-      1280,
-      1600
-    ]
-  },
   "wedding-chrysler-black.png": {
     "base": "wedding-chrysler-black.png",
     "w": 2528,

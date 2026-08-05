@@ -49,12 +49,11 @@ Contact us today or fill out our online enquiry form so we can help you choose a
 14 Passengers | Learn more >
 ### Rolls Royce Phantom Sedan
 ### Mercedes Valente Minivan
-### Volkswagen Crafter Premium Minibus
 ## Frequently Asked Questions
 #### Can we play our music in the limo?
 Absolutely. Our fleet of over 10 vehicles each comes with Bluetooth and a high-quality sound system. Our driver will help you connect your device to the sound system so that you can play your music and get the party going.
 #### How many people can your limos fit?
-Our limousines seat between 10 and 16 passengers, depending on the vehicle you choose. Our Chrysler Super Stretch Limousine can seat up to 10 people, and our Hummer Stretch Limousines seat 14 to 16 passengers. For a smaller party, hire our Volkswagen Minibus or Mercedes Sprinter, which seats between 7 to 11 passengers.
+Our limousines seat between 10 and 16 passengers, depending on the vehicle you choose. Our Chrysler Super Stretch Limousine can seat up to 10 people, and our Hummer Stretch Limousines seat 14 to 16 passengers. For a smaller party, hire our Mercedes Valente or Mercedes Sprinter, which seats between 7 to 14 passengers.
 #### What areas do you service?
 We offer our Birthday limousine hire services across Sydney, Wollongong, and all surrounding areas, including Campbelltown, Penrith, Marrickville, Parramatta, Bulli, Woonona, Thirroul, and Port Kembla. Whether you need limo hire in Eastern Surburbs or the Sutherland Shire – we have it covered!
 #### Do you provide limousine chauffeuring services for other events?

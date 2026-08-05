@@ -19,7 +19,6 @@ Or get a quick quote
 Get to the airport in comfortable style with Show Limousines. Backed by a five-star Google rating from 165+ happy customers, we are Sydney and Wollongong’s trusted car and limo hire transfer company, with a fleet of over 10 vehicles and experienced, professional chauffeurs.
 Choose the right vehicle for your group:
 - White Chrysler Super Stretch Limousine – seats up to 10 passengers
-- Volkswagen Crafter Minibus – seats up to 11 passengers
 - Mercedes Sedan – seats up to 4 passengers
 Every airport transfer includes:
 - Uniformed, professional chauffeur
@@ -34,7 +33,6 @@ Whether you’re travelling interstate or overseas for a family holiday, work co
 ## Book Your Sydney Limo Transfer with Show Limousines
 We offer reliable, affordable and timely transfers that get you where you need to be, quickly and efficiently — whether it’s a pick-up from the airport or from your home to the terminal. Every vehicle is clean, fully air-conditioned and chauffeured, with ample luggage space.
 While our whole fleet is available for airport transfers — including our Chrysler Stretch Limousines — our most popular options are:
-- Volkswagen Minibus – navigates traffic easily and accommodates luggage
 - Mercedes Sedan – sleek, comfortable and great for solo or small-group travel
 If you have a holiday coming up or are coming home for a trip, book a luxury airport transfer service from Show Limousines today.
 ## Services We Provide
@@ -59,11 +57,10 @@ If you have a holiday coming up or are coming home for a trip, book a luxury air
 14 Passengers | Learn more >
 ### Rolls Royce Phantom Sedan
 ### Mercedes Valente Minivan
-### Volkswagen Crafter Premium Minibus
 ## Frequently Asked Questions
 ### What areas do you service?
 We offer our Airport and Cruise Transfer services across Sydney, Wollongong, and all surrounding areas, including the Eastern Suburbs, inner west, Western Sydney, Penrith, Campbelltown, Marrickville, Parramatta, the Sutherland Shire, Bulli, Woonona, Thirroul, and Port Kembla.
 ### How many people can you fit?
-Our vehicles can seat between four and 16 passengers comfortably, depending on which vehicle you choose. For example, our Volkswagen Crafter Minibus seats up to 11 passengers, while our Mercedes Sedan seats up to 4 passengers. Explore our fleet to see the comforts our vehicles offer.
+Our vehicles can seat between four and 16 passengers comfortably, depending on which vehicle you choose. For example, our Mercedes Sprinter Limo Van seats up to 14 passengers, while our Mercedes Sedan seats up to 4 passengers. Explore our fleet to see the comforts our vehicles offer.
 ### What other services do you provide?
 In addition to our airport & cruise transfer services, we also provide car and limousine hire and transfer services for weddings, concert transfers, hen’s parties, birthday parties, school formals, cruise transfers, and other events. Regardless of the occasion, our professional drivers are experienced to make sure you get to your destination on time and in style.

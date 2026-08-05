@@ -65,7 +65,6 @@ const VEHICLES = [
   { slug: 'vehicle-black-chrysler-super-stretch-limousine', name: 'Black Chrysler Super Stretch', img: 'fleet-chrysler-black-v2.jpg', badge: 'Chrysler', pax: 10 },
   { slug: 'vehicle-rolls-royce-phantom-sedan', name: 'Rolls Royce Phantom', img: 'fleet-rolls-royce-phantom-v2.jpg', badge: 'Rolls Royce', pax: 4 },
   { slug: 'vehicle-mercedes-s-class-amg-sedan', name: 'Mercedes S Class AMG Line Sedan', img: 'fleet-mercedes-s-class-v2.jpg', badge: 'Mercedes', pax: 4 },
-  { slug: 'vehicle-volkswagen-crafter-premium-minibus', name: 'VW Crafter Luxury Minibus', img: 'fleet-vw-crafter-v2.jpg', badge: 'Volkswagen', pax: 11 },
   { slug: 'vehicle-mercedes-valente-premium-minibus', name: 'Mercedes Valente Luxury Minivan', img: 'fleet-mercedes-valente-v2.jpg', badge: 'Mercedes', pax: 7 },
 ];
 const VBY = {}; VEHICLES.forEach(v => { VBY[v.slug] = v; v.url = '/vehicle/' + v.slug.replace(/^vehicle-/, '') + '/'; });
@@ -93,7 +92,6 @@ const NAV = [
     { label: 'Hummer', href: '/hummer-limo-hire-sydney/', items: VEHICLES.filter(v => v.badge === 'Hummer').map(v => ({ label: v.name, href: v.url })) },
     { label: 'Mercedes', href: '#', items: VEHICLES.filter(v => v.badge === 'Mercedes').map(v => ({ label: v.name, href: v.url })) },
     { label: 'Rolls Royce', href: '/rolls-royce-hire-sydney/', items: VEHICLES.filter(v => v.badge === 'Rolls Royce').map(v => ({ label: v.name, href: v.url })) },
-    { label: 'Volkswagen', href: '#', items: VEHICLES.filter(v => v.badge === 'Volkswagen').map(v => ({ label: v.name, href: v.url })) },
   ] },
   { label: 'About Us', href: '/about-us/', children: [
     { label: 'Gallery', href: '/gallery/' },
@@ -426,7 +424,6 @@ const BANNER = {
   'vehicle-black-chrysler-super-stretch-limousine': ['banner-fleet-chrysler-black-v2.jpg', '50%', true],
   'vehicle-rolls-royce-phantom-sedan': ['banner-fleet-rolls-royce-phantom-v2.jpg', '50%', true],
   'vehicle-mercedes-s-class-amg-sedan': ['banner-fleet-mercedes-s-class-v2.jpg', '50%', true],
-  'vehicle-volkswagen-crafter-premium-minibus': ['banner-fleet-vw-crafter-v2.jpg', '50%', true],
   'vehicle-mercedes-valente-premium-minibus': ['banner-fleet-mercedes-valente-v2.jpg', '50%', true],
   // Fleet category pages
   'chrysler-limo-hire-sydney': ['banner-fleet-chrysler-black-v2.jpg', '50%', true],
@@ -736,7 +733,9 @@ function emit(slug, parts) {
 const SERVICE_FLEET = {
   'wedding-limousine-sydney': ['vehicle-rolls-royce-phantom-sedan', 'vehicle-chrysler-super-stretch-limousine', 'vehicle-mercedes-s-class-amg-sedan'],
   // Airport: white Chrysler super stretch replaces the Mercedes Valente as the featured vehicle.
-  'airport-limo-transfers-sydney': ['vehicle-mercedes-s-class-amg-sedan', 'vehicle-chrysler-super-stretch-limousine', 'vehicle-volkswagen-crafter-premium-minibus'],
+  // Crafter removed (vehicle sold, 2026-08) — no substitute added: the Mercedes
+  // Sprinter is already shown on this page, so promoting it here would duplicate a card.
+  'airport-limo-transfers-sydney': ['vehicle-mercedes-s-class-amg-sedan', 'vehicle-chrysler-super-stretch-limousine'],
   default: ['vehicle-chrysler-super-stretch-limousine', 'vehicle-hummer-h2-stretch-limousine', 'vehicle-rolls-royce-phantom-sedan'],
 };
 
@@ -1004,7 +1003,6 @@ function weddingSydneyPage(slug) {
     'vehicle-mercedes-sprinter-limo-van',
     'vehicle-rolls-royce-phantom-sedan',
     'vehicle-mercedes-valente-premium-minibus',
-    'vehicle-volkswagen-crafter-premium-minibus',
   ].map(s => VBY[s]);
   const WEDDING_FAQ = [
     ['How far in advance should I book?', 'We recommend booking as far in advance as possible — like your other wedding vendors, most couples book 6 to 18 months out. That secures your dream wedding car without stressing over limited options. We can often help with last-minute requests too, so get in touch and we will do our best.'],
@@ -1094,7 +1092,7 @@ function servicesShowcase() {
     { name: 'School Formals', desc: 'Arrive like royalty with your crew.', href: '/school-formal-limousine-hire-sydney/', src: '/assets/service-schoolformals-chrysler.jpg' },
     { name: 'Hens & Bucks Parties', desc: 'The big night out, sorted.', href: '/hens-party-limo-sydney/', src: '/assets/service-hensbucks-hummer14.jpg' },
     { name: 'Concert Transfers', desc: 'Arrive to the show in style.', href: '/concert-limo-transfers-sydney/', src: '/assets/service-concert-sprinter.jpg' },
-    { name: 'Airport & Cruise Transfers', desc: 'Door to terminal or pier, in total comfort.', href: '/airport-limo-transfers-sydney/', src: '/assets/service-airportcruise-crafter.jpg' },
+    { name: 'Airport & Cruise Transfers', desc: 'Door to terminal or pier, in total comfort.', href: '/airport-limo-transfers-sydney/', src: '/assets/service-airportcruise-sprinter.jpg' },
     { name: 'Corporate Transfers', desc: 'First impressions that matter.', href: '/corporate-transfers/', src: '/assets/service-corporate-sclass.jpg' },
     { name: 'Engagements', desc: 'Pop the question in pure luxury.', base: 'service-engagements' },
     { name: 'Anniversaries', desc: 'Celebrate the years in style.', base: 'service-anniversaries' },

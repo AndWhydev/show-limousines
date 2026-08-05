@@ -33,7 +33,6 @@ As a leading limousine service Sydney company, we offer flexible corporate packa
 ## Book Limo Corporate Transfers in Sydney
 Our limo corporate transfers offer an affordable and effective solution for transferring you and your team around Sydney and Wollongong, with space to take calls, send emails and store your work or travel bag comfortably. Choose from our most popular transfer vehicles:
 - Chrysler Stretch Limousines
-- Volkswagen Minibus
 - Mercedes Sedan
 Regardless of the vehicle you choose for your corporate transfer, we ensure that it is meticulously maintained, clean, fully air-conditioned, and has ample room for your comfort and safety.
 ## Services We Provide
@@ -58,7 +57,6 @@ Regardless of the vehicle you choose for your corporate transfer, we ensure that
 14 Passengers | Learn more >
 ### Rolls Royce Phantom Sedan
 ### Mercedes Valente Minivan
-### Volkswagen Crafter Premium Minibus
 ## Frequently Asked Questions
 #### What areas do you service?
 Our corporate transfer services are available across Sydney, Wollongong, and all surrounding areas, including Campbelltown, Marrickville, Parramatta, the Eastern Suburbs, Western Sydney, the Sutherland Shire, Bulli, Woonona, Thirroul, and Port Kembla.

@@ -60,7 +60,6 @@ We provide Limousine Hire and Wedding Car Hire in the following areas:
 14 Passengers | Learn more >
 ### Rolls Royce Phantom Sedan
 ### Mercedes Valente Minivan
-### Volkswagen Crafter Premium Minibus
 # Our services include:
 - Limo Hire Sydney
 - Limos for Hire

@@ -49,7 +49,6 @@ Looking for a stylish way to get to your next event or destination? Our limo hir
 14 Passengers | Learn more >
 ### Rolls Royce Phantom Sedan
 ### Mercedes Valente Minivan
-### Volkswagen Crafter Premium Minibus
 ## FAQs
 #### Where can I go with a limo hire?
 Our luxury limos provide pickup and drop-off anywhere in the Sutherland Shire – Cronulla, Miranda, Caringbah, Gymea, Sutherland, Engadine, Menai and can take you anywhere within Sydney. Your assigned chauffeur will arrive on time and drive you safely based on your itinerary.

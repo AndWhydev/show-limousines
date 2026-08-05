@@ -21,7 +21,6 @@ const MAP = {
   'banner-fleet-mercedes-sprinter-v2.jpg': 'fleet-mercedes-sprinter-v2.jpg',
   'banner-fleet-hummer-white-v2.jpg': 'fleet-hummer-white-v2.jpg',
   'banner-fleet-hummer-green-v2.jpg': 'fleet-hummer-green-v2.jpg',
-  'banner-fleet-vw-crafter-v2.jpg': 'fleet-vw-crafter-v2.jpg',
   'banner-hero-gullwing-poster.jpg': 'hero-gullwing-poster.jpg',
   'banner-wedding-rolls-royce.jpg': 'wedding-rolls-royce.png',
   'banner-wedding-mercedes-s-class.jpg': 'wedding-mercedes-s-class.png',

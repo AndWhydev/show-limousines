@@ -58,7 +58,6 @@ Enquire now
 14 Passengers | Learn more >
 ### Rolls Royce Phantom Sedan
 ### Mercedes Valente Minivan
-### Volkswagen Crafter Premium Minibus
 # Want something different?
 We can create custom wedding car packages to suit individual needs and budget, please contact us for more info. All our cars and limousines are available for wedding car hire and wedding limousine hire throughout Sydney and Wollongong. Make your grand entrance unforgettable with our stunning selection of wedding cars and limousines.
 ### Frequently Asked Questions

@@ -50,7 +50,6 @@ Whether you’re heading to a concert, the airport, or a cruise, our Wollongong 
 14 Passengers | Learn more >
 ### Rolls Royce Phantom Sedan
 ### Mercedes Valente Minivan
-### Volkswagen Crafter Premium Minibus
 ## FAQs – Show Limousines Wollongong
 ### What areas do you service?
 We offer luxury car and limousine hire to Wollongong, Illawarra, the Southern Highlands, and all surrounding suburbs, including Bulli, Woonona, Thirroul, Warilla, Port Kembla, and Figtree.

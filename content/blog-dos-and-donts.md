@@ -32,7 +32,6 @@ images: 5
 - Mercedes Valente Luxury Minivan
 - Mercedes Sprinter Limo Van
 - Rolls Royce Rolls Royce Phantom
-- Volkswagen VW Crafter Luxury Minibus
 - About us Gallery
 - Blog
 - Reviews

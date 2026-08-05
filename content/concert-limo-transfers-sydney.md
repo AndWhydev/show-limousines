@@ -34,7 +34,6 @@ Our fleet of luxury vehicles can fit both big and small groups and are perfect f
 - Hummer Stretch Limo for Hire – up to 14 or 16 passengers
 - Mercedes Sprinter Limo Van – 14 passengers
 - Mercedes Valente Minibus – 7 passengers
-- Volkswagen Crafter Minibus – 11 passengers
 Contact us today or fill out our online enquiry form so we can find the ideal vehicle for you.
 ## Services We Provide
 ### Weddings
@@ -58,7 +57,6 @@ Contact us today or fill out our online enquiry form so we can find the ideal ve
 14 Passengers | Learn more >
 ### Rolls Royce Phantom Sedan
 ### Mercedes Valente Minivan
-### Volkswagen Crafter Premium Minibus
 ## Frequently Asked Questions
 #### Can we play our own music in the limo?
 Absolutely! All our limousines come with Bluetooth and high-quality speakers. Your friendly driver will help you to connect your phone to the sound system so that you can play your own music and enjoy the ride.

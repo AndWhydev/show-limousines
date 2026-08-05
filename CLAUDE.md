@@ -54,7 +54,7 @@ The full site is complete with these sections:
 3. Trust Strip — 4 columns: Google Rating, Serving Sydney, Red Carpet, Available 365 Days
 4. Services Grid — 8 cards, dark background, all link to #quote
 5. About — company description, Google review badge (5.0 stars, 165+ reviews)
-6. Fleet — 11 vehicles in single grid with real client photos
+6. Fleet — 10 vehicles in single grid with real client photos
 7. How It Works — 4 steps
 8. Quote Form — full booking form, mailto:info@showlimousines.com.au
 9. Testimonials — 5 real Google reviews in a carousel
@@ -65,7 +65,7 @@ The full site is complete with these sections:
 
 ---
 
-## Fleet Vehicles (11 total, all have real client photos)
+## Fleet Vehicles (10 total, all have real client photos)
 
 1. Rolls Royce Phantom — 4 pax — fleet-rolls-royce-phantom-v2.jpg
 2. White Chrysler Super Stretch — 10 pax — fleet-chrysler-white-v2.jpg
@@ -77,7 +77,10 @@ The full site is complete with these sections:
 8. Mercedes S Class AMG Line Sedan — 4 pax — fleet-mercedes-s-class-v2.jpg
 9. Mercedes Sprinter Limo Van — 14 pax — fleet-mercedes-sprinter-v2.jpg
 10. Mercedes Valente — 7 pax — fleet-mercedes-valente-v2.jpg
-11. VW Crafter Premium Minibus — 11 pax — fleet-vw-crafter-v2.jpg
+
+NOTE: the VW Crafter Premium Minibus was REMOVED site-wide in August 2026 — the
+client sold the vehicle. Its page 301-redirects to /vehicle/mercedes-sprinter-limo-van/.
+Do not reinstate it.
 
 ---
 
@@ -86,8 +89,7 @@ The full site is complete with these sections:
 - Client review and approval of the full site
 - Service-page galleries use CURATED PLACEHOLDER photos — client to supply real
   occasion photos to swap in (just change the /gallery-photos/ filenames in each
-  page's .svc-gallery block). Cruise is the weakest set (only the VW Crafter shot
-  shows a cruise ship); Party + Hens each use one low-res 265x195 image.
+  page's .svc-gallery block). Party + Hens each use one low-res 265x195 image.
 - Black Chrysler Super Stretch: client asked to remove the white ribbons on
   the bonnet (source supplied with them still on) — not yet done
 - 3D car model upgrade (current model is a low-poly generic sedan, not a limo)

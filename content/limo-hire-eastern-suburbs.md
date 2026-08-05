@@ -49,7 +49,6 @@ If you’re heading to a formal, black-tie event, or gala evening, our limo hire
 14 Passengers | Learn more >
 ### Rolls Royce Phantom Sedan
 ### Mercedes Valente Minivan
-### Volkswagen Crafter Premium Minibus
 ## FAQs For Eastern Suburbs Limo Hire
 ### Where do you service in the Eastern Suburbs?
 Our limo hire services can pick guests up from Double Bay, Rose Bay, Bellevue Hill, Bondi, Coogee, Clovelly, Maroubra, Vaucluse and the surrounding suburbs. We can transport you to any destination across Sydney.

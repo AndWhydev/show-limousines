@@ -72,12 +72,6 @@ Elegant and stunning
 21 inch wheels
 4 Passengers – Beige Leather Interior – Very Spacious – Classic and Luxurious – V12 6.75 Litre – Air Conditioned – Elegant and Stunning – 21 inch wheels
 Our Rolls Royce Phantom sedan is a hand built limousine. a luxurious and spacious vehicle, that is known for its distinctive exterior design. It has a modern sleek appearance, which gives the car a sophisticated look. The interior of the Phantom is a masterpiece of craftmanship, including only the highest quality materials. When only the best will do.
-Volkswagen Crafter Premium Minibus 11 passengers
-11 pasengers ( plus Chauffeur )
-Leather seats
-Black in colour
-11 Passengers – Leather Seats – Bluetooth – Air Conditoned – Black in Colour
-Our black Volkswagen Crafter minibus can seat up to 11 passengers in comfort. It is the ideal vehicle for Airport transfers, cruise transfers, concert transfers and dinner transfers. It is also great for weddings, to transport parents, grandparents, interstate or overseas family etc.
 Mercedes Valente premium people movers x 2
 7 passengers ( plus Chauffeur )
 Spacious interior
@@ -107,6 +101,5 @@ Mercedes Sprinter Limo Van can seat up to 14 passengers. The perfect vehicle to 
 14 Passengers | Learn more >
 ### Rolls Royce Phantom Sedan
 ### Mercedes Valente Minivan
-### Volkswagen Crafter Premium Minibus
 # Any Occassion
 Our Limousines and Wedding Cars are available for all Wedding Car Hire, Wedding Limousine Hire, School Formal Limousine Hire, Hens Night Limousine Hire, Birthday Limousine Hire and any other special occasion hire throughout Sydney, Wollongong and surrounds.

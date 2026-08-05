@@ -50,7 +50,6 @@ As one of the most trusted providers of limousines Sydney wide, Show Limousines 
 14 Passengers | Learn more >
 ### Rolls Royce Phantom Sedan
 ### Mercedes Valente Minivan
-### Volkswagen Crafter Premium Minibus
 ## Show Limousines Liverpool FAQs
 ### What areas do you service?
 We provide luxury car and limousine services in Liverpool, the entire south-west suburbs, and can transport you anywhere in Sydney.

@@ -77,4 +77,3 @@ Add a touch of elegance to the Year 12 formal with a limo hire. Our Chrysler Sup
 14 Passengers | Learn more >
 ### Rolls Royce Phantom Sedan
 ### Mercedes Valente Minivan
-### Volkswagen Crafter Premium Minibus

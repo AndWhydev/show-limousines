@@ -80,7 +80,6 @@ Our Hummer Stretch Limos are our largest vehicles for hire in Sydney and can sea
 14 Passengers | Learn more >
 ### Rolls Royce Phantom Sedan
 ### Mercedes Valente Minivan
-### Volkswagen Crafter Premium Minibus
 ## Frequently Asked Questions
 ### Can we play our own music in the Hummer Limousine?
 Of course! All our Hummer Limos come with Bluetooth connectivity and high-quality speakers so that you can get your special occasion off to a fun start. Your helpful driver will gladly connect your phone to the sound system before you set off.

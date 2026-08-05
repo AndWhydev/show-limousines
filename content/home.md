@@ -50,8 +50,6 @@ At Show Limousines, there’s nothing more we enjoy than bringing your special e
 #### Rolls royce phantom sedan
 #### Mercedes Valente Minivan
 7 Passengers
-#### Volkswagen Crafter Premium Minibus
-11 Passengers
 ### Booking with Show Limousines
 ## How It Works
 #### Submit Your Enquiry

@@ -28,8 +28,7 @@ const FLEET_RANK = [
   'fleet-chrysler-white-v2', 'fleet-chrysler-black-v2',     // 3) Chryslers (gullwing,BE,white,black)
   'fleet-rolls-royce-phantom-v2',                           // 4) Rolls
   'fleet-mercedes-s-class-v2',                              // 5) S Class
-  'fleet-vw-crafter-v2',                                    // 6) Crafter
-  'fleet-mercedes-valente-v2',                              // 7) Valente
+  'fleet-mercedes-valente-v2',                              // 6) Valente
 ];
 function rankOf(article) {
   const m = article.match(/fleet-[a-z0-9-]+-v2/);

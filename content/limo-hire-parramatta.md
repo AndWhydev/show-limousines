@@ -64,7 +64,6 @@ At Show Limousines, we combine experience, professionalism and a standout fleet 
 14 Passengers | Learn more >
 ### Rolls Royce Phantom Sedan
 ### Mercedes Valente Minivan
-### Volkswagen Crafter Premium Minibus
 ## Limo Hire Parramatta FAQs
 Our fleet includes the Rolls Royce Phantom, Chrysler Super Stretch Limousines (white and black), and Stretch Hummers seating up to 16 passengers.
 Yes, we offer both one-way and return transfers depending on your needs.

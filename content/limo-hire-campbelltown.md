@@ -52,7 +52,6 @@ When you hire a limo with Show Limousines, we make transport part of the celebra
 14 Passengers | Learn more >
 ### Rolls Royce Phantom Sedan
 ### Mercedes Valente Minivan
-### Volkswagen Crafter Premium Minibus
 ## FAQs – Show Limousines Campbelltown
 #### What areas do you service?
 We service Campbelltown and nearby suburbs including Ingleburn, Glen Alpine, Raby, Narellan, and Macarthur.

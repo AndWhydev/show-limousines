@@ -53,7 +53,6 @@ Whether you’re heading to the airport, a concert, or an important corporate ev
 14 Passengers | Learn more >
 ### Rolls Royce Phantom Sedan
 ### Mercedes Valente Minivan
-### Volkswagen Crafter Premium Minibus
 ## FAQs – Show Limousines Bankstown
 #### What areas do you service?
 We offer luxury car and limousine hire to Bankstown, its surrounding suburbs, and can drive you anywhere in Sydney.

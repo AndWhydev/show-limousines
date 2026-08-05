@@ -60,7 +60,6 @@ We offer hen’s party limo hire services to the entirety of the metropolitan ar
 14 Passengers | Learn more >
 ### Rolls Royce Phantom Sedan
 ### Mercedes Valente Minivan
-### Volkswagen Crafter Premium Minibus
 ## Frequently Asked Questions
 #### Can we play our own music?
 Yes, you can. Each of our party vehicles features Bluetooth and a sound system with an aux cord. Connect or plug in your phone and play your own music for the entire ride.

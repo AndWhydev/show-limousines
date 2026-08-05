@@ -51,7 +51,6 @@ At Show Limousines, your transportation becomes part of the celebration. For exc
 14 Passengers | Learn more >
 ### Rolls Royce Phantom Sedan
 ### Mercedes Valente Minivan
-### Volkswagen Crafter Premium Minibus
 ## Frequently Asked Questions
 #### What areas do you service?
 We service Marrickville and the entire Inner West and can transport you to anywhere in Sydney.

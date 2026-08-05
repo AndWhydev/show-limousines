@@ -53,4 +53,3 @@ Our Penrith limos are available for airport transfers to and from Sydney Airport
 14 Passengers | Learn more >
 ### Rolls Royce Phantom Sedan
 ### Mercedes Valente Minivan
-### Volkswagen Crafter Premium Minibus

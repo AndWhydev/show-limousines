@@ -54,7 +54,6 @@ const PAGES = [
   ['vehicle-mercedes-valente-premium-minibus', 'vehicle/mercedes-valente-premium-minibus/'],
   ['vehicle-mercedes-sprinter-limo-van', 'vehicle/mercedes-sprinter-limo-van/'],
   ['vehicle-rolls-royce-phantom-sedan', 'vehicle/rolls-royce-phantom-sedan/'],
-  ['vehicle-volkswagen-crafter-premium-minibus', 'vehicle/volkswagen-crafter-premium-minibus/'],
   ['limo-hire-bankstown', 'limo-hire-bankstown/'],
   ['limo-hire-campbelltown', 'limo-hire-campbelltown/'],
   ['limo-hire-eastern-suburbs', 'limo-hire-eastern-suburbs/'],

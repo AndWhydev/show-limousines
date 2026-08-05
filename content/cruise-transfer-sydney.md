@@ -18,7 +18,6 @@ Or get a quick quote
 ## Sydney Cruise Terminal Transfers
 Arrive at the cruise terminal on time and in style with Show Limousines. As Sydney and Wollongong’s trusted car and limo hire transfer company, we have a fleet of over 10 vehicles seating from four to 16 passengers, each with a professional chauffeur who has the local knowledge to get you there smoothly.
 Choose the right vehicle for your group:
-- Volkswagen Crafter Minibus – seats up to 11 passengers
 - Mercedes Valente – seats up to 7 passengers
 - Mercedes Sedan – seats up to 4 passengers
 Every cruise transfer includes:
@@ -34,7 +33,6 @@ Whether for a family vacation, a business event or a solo holiday, our premium c
 Show Limousines offers luxurious yet affordable limousine and car transfer services to the cruise terminal or home from your on-board holiday. Our experienced chauffeurs are reliable and possess local knowledge to ensure the most efficient route to your destination.
 Every vehicle is clean, fully air-conditioned and stocked with refreshments, with ample luggage space that doesn’t compromise your comfort. Our most popular transfer vehicles are:
 - Chrysler Stretch Limousines
-- Volkswagen Minibus
 - Mercedes Sedan
 Have something else in mind? Explore our fleet of over 10 luxury vehicles.
 Whether you have a large group or a small group, we can tailor our cruise transfer services to your needs. Book your luxury Wollongong or Sydney Cruise terminal transfers with Show Limousines today.
@@ -60,7 +58,6 @@ Whether you have a large group or a small group, we can tailor our cruise transf
 14 Passengers | Learn more >
 ### Rolls Royce Phantom Sedan
 ### Mercedes Valente Minivan
-### Volkswagen Crafter Premium Minibus
 ## Frequently Asked Questions
 #### What areas do you service?
 We provide cruise ship transfers across Sydney, Wollongong, and all surrounding areas, including the inner west, Eastern Suburbs, Campbelltown, Western Sydney, North Sydney, Marrickville, Parramatta, the Sutherland Shire, Thirroul, and Port Kembla.
