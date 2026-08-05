@@ -1088,23 +1088,37 @@ function servicesShowcase() {
   // Tiles with `href` link to their own page (clickable); tiles without are display-only
   // (occasions catered for that have no dedicated page). All photos face right.
   // Canonical service order (1→8), then display-only extras after Corporate.
-  // `base` derives the responsive set /base-{400,800,1200}.jpg; `src` is a single fixed image.
+  // `hbase` derives the SAME sharp responsive set the homepage cards use:
+  //   /hbase-{400w,800w,1200w}.jpg + /hbase-final.jpg (1600w), 16:9.
+  // `base` derives the older /base-{400,800,1200}.jpg set (display-only extras).
+  // `src` is a single fixed image (no responsive set).
+  //
+  // REGRESSION GUARD (2026-08-05): 67dfc9a added the sharp 400w/800w/1200w/1600w set and
+  // pointed BOTH grids at it, but only in the built HTML — this template was left on the
+  // older single-size /assets/service-*.jpg photos. The next rebuild (6647450) therefore
+  // reverted /services/ to the soft set while the homepage kept the sharp one. Keep the 8
+  // real service tiles on `hbase` so homepage and /services/ stay identical through rebuilds.
   const TILES = [
-    { name: 'Weddings', desc: 'Make your special day unforgettable.', href: '/wedding-limousine-sydney/', src: '/assets/service-weddings-rolls.jpg' },
-    { name: 'Birthday Celebrations', desc: 'Because you deserve it.', href: '/birthday-limousine-sydney/', src: '/assets/service-birthday-gullwing.jpg' },
-    { name: 'Parties & Limousines', desc: 'The whole crew, one unforgettable ride.', href: '/party-limousine-hire-sydney/', src: '/assets/service-parties-hummer16.jpg' },
-    { name: 'School Formals', desc: 'Arrive like royalty with your crew.', href: '/school-formal-limousine-hire-sydney/', src: '/assets/service-schoolformals-chrysler.jpg' },
-    { name: 'Hens & Bucks Parties', desc: 'The big night out, sorted.', href: '/hens-party-limo-sydney/', src: '/assets/service-hensbucks-hummer14.jpg' },
-    { name: 'Concert Transfers', desc: 'Arrive to the show in style.', href: '/concert-limo-transfers-sydney/', src: '/assets/service-concert-sprinter.jpg' },
-    { name: 'Airport & Cruise Transfers', desc: 'Door to terminal or pier, in total comfort.', href: '/airport-limo-transfers-sydney/', src: '/assets/service-airportcruise-sprinter.jpg' },
-    { name: 'Corporate Transfers', desc: 'First impressions that matter.', href: '/corporate-transfers/', src: '/assets/service-corporate-sclass.jpg' },
+    { name: 'Weddings', desc: 'Make your special day unforgettable.', href: '/wedding-limousine-sydney/', hbase: 'service-weddings' },
+    { name: 'Birthday Celebrations', desc: 'Because you deserve it.', href: '/birthday-limousine-sydney/', hbase: 'service-birthday' },
+    { name: 'Parties & Limousines', desc: 'The whole crew, one unforgettable ride.', href: '/party-limousine-hire-sydney/', hbase: 'service-parties' },
+    { name: 'School Formals', desc: 'Arrive like royalty with your crew.', href: '/school-formal-limousine-hire-sydney/', hbase: 'service-schoolformals' },
+    { name: 'Hens & Bucks Parties', desc: 'The big night out, sorted.', href: '/hens-party-limo-sydney/', hbase: 'service-hensbucks' },
+    { name: 'Concert Transfers', desc: 'Arrive to the show in style.', href: '/concert-limo-transfers-sydney/', hbase: 'service-concert' },
+    { name: 'Airport & Cruise Transfers', desc: 'Door to terminal or pier, in total comfort.', href: '/airport-limo-transfers-sydney/', hbase: 'service-airportcruise-sprinter' },
+    { name: 'Corporate Transfers', desc: 'First impressions that matter.', href: '/corporate-transfers/', hbase: 'service-corporate' },
     { name: 'Engagements', desc: 'Pop the question in pure luxury.', base: 'service-engagements' },
     { name: 'Anniversaries', desc: 'Celebrate the years in style.', base: 'service-anniversaries' },
     { name: 'Red Carpet VIP', desc: 'The full A-list arrival treatment.', base: 'service-redcarpet' },
   ];
   const cards = TILES.map((t, i) => {
     const idx = String(i + 1).padStart(2, '0');
-    const img = t.src
+    const img = t.hbase
+      ? `            <img class="occ-card__img" alt="" loading="lazy" decoding="async" width="1600" height="900"
+                 src="/${t.hbase}-800w.jpg"
+                 srcset="/${t.hbase}-400w.jpg 400w, /${t.hbase}-800w.jpg 800w, /${t.hbase}-1200w.jpg 1200w, /${t.hbase}-final.jpg 1600w"
+                 sizes="(max-width: 560px) 100vw, (max-width: 1024px) 50vw, 25vw">`
+      : t.src
       ? `            <img class="occ-card__img" alt="" loading="lazy" decoding="async" width="1400" height="781"
                  src="${t.src}">`
       : `            <img class="occ-card__img" alt="" loading="lazy" decoding="async" width="800" height="597"
