@@ -6,7 +6,7 @@
   "redirects": [
     { "source": "/funeral-limo-hire", "destination": "/", "permanent": true },
     { "source": "/funeral-limo-hire/", "destination": "/", "permanent": true },
-    { "source": "/vehicle/volkswagen-crafter-premium-minibus", "destination": "/vehicle/mercedes-sprinter-limo-van/", "permanent": true },
-    { "source": "/vehicle/volkswagen-crafter-premium-minibus/", "destination": "/vehicle/mercedes-sprinter-limo-van/", "permanent": true }
+    { "source": "/vehicle/volkswagen-crafter-premium-minibus", "destination": "/vehicle/mercedes-sprinter-limo-van/", "statusCode": 301 },
+    { "source": "/vehicle/volkswagen-crafter-premium-minibus/", "destination": "/vehicle/mercedes-sprinter-limo-van/", "statusCode": 301 }
   ]
 }
