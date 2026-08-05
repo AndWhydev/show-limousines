@@ -733,9 +733,13 @@ function emit(slug, parts) {
 const SERVICE_FLEET = {
   'wedding-limousine-sydney': ['vehicle-rolls-royce-phantom-sedan', 'vehicle-chrysler-super-stretch-limousine', 'vehicle-mercedes-s-class-amg-sedan'],
   // Airport: white Chrysler super stretch replaces the Mercedes Valente as the featured vehicle.
-  // Crafter removed (vehicle sold, 2026-08) — no substitute added: the Mercedes
-  // Sprinter is already shown on this page, so promoting it here would duplicate a card.
-  'airport-limo-transfers-sydney': ['vehicle-mercedes-s-class-amg-sedan', 'vehicle-chrysler-super-stretch-limousine'],
+  // Crafter removed (vehicle sold, 2026-08); the Mercedes Valente takes the third slot as the
+  // replacement people-mover. NOT the Sprinter — it is already the lead card in this page's
+  // .svc-show section, so promoting it here would render two Sprinter cards.
+  // NOTE: this array is currently inert for this page — 'airport-limo-transfers-sydney' is in
+  // RESTORE_SLUGS, so emit() skips it and restore.js builds the page from a frozen <main>.
+  // It only takes effect if the slug is ever removed from RESTORE_SLUGS.
+  'airport-limo-transfers-sydney': ['vehicle-mercedes-s-class-amg-sedan', 'vehicle-chrysler-super-stretch-limousine', 'vehicle-mercedes-valente-premium-minibus'],
   default: ['vehicle-chrysler-super-stretch-limousine', 'vehicle-hummer-h2-stretch-limousine', 'vehicle-rolls-royce-phantom-sedan'],
 };
 
