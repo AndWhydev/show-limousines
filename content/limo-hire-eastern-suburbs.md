@@ -3,7 +3,7 @@ slug: limo-hire-eastern-suburbs
 source: https://www.showlimousines.com.au/limo-hire-eastern-suburbs/
 status: 200
 title: "Limo Hire Eastern Suburbs | Weddings, Special Events, Formals"
-description: "Show Limousines offers luxury limo hires in the Eastern Suburbs for weddings, hens parties, birthdays, and formals."
+description: "Luxury limo hire across Sydney's Eastern Suburbs for weddings, formals, hens & bucks nights and birthdays. Chauffeured stretch limos. Call 0422 023 413."
 canonical: https://www.showlimousines.com.au/limo-hire-eastern-suburbs/
 og_title: ""
 og_description: ""

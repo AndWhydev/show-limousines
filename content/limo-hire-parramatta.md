@@ -3,7 +3,7 @@ slug: limo-hire-parramatta
 source: https://www.showlimousines.com.au/limo-hire-parramatta/
 status: 200
 title: "Limo Hire Parramatta | Weddings, School Formals, Corporate Transfers, Events"
-description: "Whether you're planning a wedding, heading to your school formal, or organising a big celebration, Show Limousines Parramatta makes the trip unforgettable."
+description: "Chauffeured limousine hire in Parramatta for weddings, school formals, hens & bucks nights and celebrations. Stretch limos across Sydney. Call 0422 023 413."
 canonical: https://www.showlimousines.com.au/limo-hire-parramatta/
 og_title: ""
 og_description: ""

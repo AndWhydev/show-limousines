@@ -3,7 +3,7 @@ slug: limo-hire-campbelltown
 source: https://www.showlimousines.com.au/limo-hire-campbelltown/
 status: 200
 title: "Limo Hire Campbelltown | Weddings, Formals, Birthdays"
-description: "Whether it’s your wedding day, a school formal, or a birthday you want to remember, Show Limousines is here to help with premium limo hire in Campbelltown."
+description: "Chauffeured limo hire in Campbelltown for weddings, school formals, birthdays and hens & bucks nights. Stretch limousines and luxury cars. Call 0422 023 413."
 canonical: https://www.showlimousines.com.au/limo-hire-campbelltown/
 og_title: ""
 og_description: ""

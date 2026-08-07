@@ -3,7 +3,7 @@ slug: limo-hire-wollongong
 source: https://www.showlimousines.com.au/limo-hire-wollongong/
 status: 200
 title: "Limousine & Car Hire Wollongong | Weddings, Birthdays, Special Occasions"
-description: "Private car and limousine hire in Wollongong and surrounding suburbs for weddings, birthdays, hen’s parties, luxury transfers, and other special occasions."
+description: "Luxury limo hire in Wollongong for weddings, school formals, hens & bucks nights and special occasions. Chauffeured stretch limos. Call 0422 023 413."
 canonical: https://www.showlimousines.com.au/limo-hire-wollongong/
 og_title: ""
 og_description: ""

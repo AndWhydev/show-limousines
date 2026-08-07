@@ -3,7 +3,7 @@ slug: limo-hire-penrith
 source: https://www.showlimousines.com.au/limo-hire-penrith/
 status: 200
 title: "Limousine & Car Hire Penrith | Weddings, Birthdays, Special Occasions"
-description: "Show Limousines offers limo and luxury car hire services in Penrith and surrounding suburbs for weddings, birthdays, and special occasions."
+description: "Luxury limo hire in Penrith for weddings, school formals, hens & bucks nights and milestone birthdays. Chauffeured stretch limousines. Call 0422 023 413."
 canonical: https://www.showlimousines.com.au/limo-hire-penrith/
 og_title: ""
 og_description: ""

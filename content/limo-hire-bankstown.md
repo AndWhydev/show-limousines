@@ -3,7 +3,7 @@ slug: limo-hire-bankstown
 source: https://www.showlimousines.com.au/limo-hire-bankstown/
 status: 200
 title: "Limo Hire Bankstown | School Formal, Wedding, Hen Party"
-description: "Limousine and luxury car hire in Bankstown and Sydney’s surrounding suburbs for weddings, school formals, hen parties, birthdays, and other special occasions."
+description: "Luxury limo hire in Bankstown for weddings, school formals, hens & bucks nights and special occasions. Chauffeured stretch limousines. Call 0422 023 413."
 canonical: https://www.showlimousines.com.au/limo-hire-bankstown/
 og_title: ""
 og_description: ""

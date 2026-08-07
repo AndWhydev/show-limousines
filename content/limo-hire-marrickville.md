@@ -3,7 +3,7 @@ slug: limo-hire-marrickville
 source: https://www.showlimousines.com.au/limo-hire-marrickville/
 status: 200
 title: "Limo Hire Marrickville | Weddings, Formals, Special Occasions"
-description: "Show Limo offers luxurious limousine services in Marrickville for Weddings, School Formals, Special Occasions, and much more."
+description: "Chauffeured limo hire in Marrickville for weddings, school formals, hens & bucks nights and special occasions. Stretch limos and luxury cars. Call 0422 023 413."
 canonical: https://www.showlimousines.com.au/limo-hire-marrickville/
 og_title: ""
 og_description: ""

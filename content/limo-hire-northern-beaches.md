@@ -3,7 +3,7 @@ slug: limo-hire-northern-beaches
 source: https://www.showlimousines.com.au/limo-hire-northern-beaches/
 status: 200
 title: "Limo Hire Northern Beaches | Weddings, Hens Parties, Luxury Transfers"
-description: "Show Limousines provides limousine hire services in the Northern Beaches for weddings, birthdays, formals, and other special events."
+description: "Luxury limo hire across Sydney's Northern Beaches for weddings, school formals, birthdays and hens & bucks nights. Chauffeured stretch limos. Call 0422 023 413."
 canonical: https://www.showlimousines.com.au/limo-hire-northern-beaches/
 og_title: ""
 og_description: ""

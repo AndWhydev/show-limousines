@@ -3,7 +3,7 @@ slug: limo-hire-liverpool
 source: https://www.showlimousines.com.au/limo-hire-liverpool/
 status: 200
 title: "Limo Hire Liverpool | School Formals, Weddings, Birthdays"
-description: "Luxury car and limousine hire in Liverpool and the surrounding suburbs for weddings, school formals, hen parties, birthdays, and other special occasions."
+description: "Luxury limo hire in Liverpool for weddings, school formals, hens & bucks nights and birthdays. Chauffeured stretch limousines across Sydney. Call 0422 023 413."
 canonical: https://www.showlimousines.com.au/limo-hire-liverpool/
 og_title: ""
 og_description: ""

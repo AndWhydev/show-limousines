@@ -3,7 +3,7 @@ slug: limo-hire-sutherland-shire
 source: https://www.showlimousines.com.au/limo-hire-sutherland-shire/
 status: 200
 title: "Limo Hire Sutherland Shire | Weddings, Formals, Special Occasions"
-description: "Travel in style with limousine hire services in the Sutherland Shire for special occasions, weddings, hen’s parties, and formals."
+description: "Chauffeured limo hire across the Sutherland Shire for weddings, school formals, hens & bucks nights and birthdays. Premium stretch limos. Call 0422 023 413."
 canonical: https://www.showlimousines.com.au/limo-hire-sutherland-shire/
 og_title: ""
 og_description: ""

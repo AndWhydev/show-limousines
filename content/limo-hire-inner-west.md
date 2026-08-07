@@ -3,7 +3,7 @@ slug: limo-hire-inner-west
 source: https://www.showlimousines.com.au/limo-hire-inner-west/
 status: 200
 title: "Limo Hire Inner West | Weddings, Birthdays, Luxury Transfers"
-description: "Show Limousines offers chauffeured limousine and luxury car hire services across the Inner West for weddings, hens parties, birthdays, and special occasions."
+description: "Chauffeured limousine hire in Sydney's Inner West for weddings, school formals, hens & bucks nights and special occasions. Premium limos. Call 0422 023 413."
 canonical: https://www.showlimousines.com.au/limo-hire-inner-west/
 og_title: ""
 og_description: ""
