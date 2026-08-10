@@ -520,6 +520,46 @@
           wireForm(document.getElementById('quoteForm'));
         })();
 
+        // -------- Date fields: open the calendar from anywhere in the field --------
+        /* Desktop Chrome/Edge/Safari only open a type="date" picker when the tiny
+           calendar glyph is clicked — clicking the text just focuses it, so people
+           end up typing the date by hand. showPicker() lets us open it from a click
+           (or a keyboard tab) anywhere in the field. Notes:
+           - Delegated on document, so it also covers the fresh form cloned in after
+             a successful submit, and any date field added to a page later.
+           - Desktop only (hover + fine pointer): phones and tablets already open
+             their native picker on tap, so their behaviour is left untouched.
+           - Guarded on every side — no showPicker() (older Firefox/Safari), no
+             transient activation (keyboard tab), disabled field: the native glyph
+             still works and nothing throws. */
+        (function initDatePickers() {
+          var lastEl = null, lastAt = 0;
+          function now() {
+            return (window.performance && performance.now) ? performance.now() : new Date().getTime();
+          }
+          function isDesktop() {
+            try { return window.matchMedia('(hover: hover) and (pointer: fine)').matches; }
+            catch (e) { return false; }
+          }
+          function openPicker(el) {
+            if (!el || el.disabled || el.readOnly) return;
+            if (typeof el.showPicker !== 'function') return;
+            if (!isDesktop()) return;
+            // focusin and click both fire on the same tap — only open once.
+            var t = now();
+            if (el === lastEl && t - lastAt < 250) return;
+            lastEl = el; lastAt = t;
+            try { el.showPicker(); } catch (e) { /* no user activation, or unsupported */ }
+          }
+          function dateField(e) {
+            var t = e.target;
+            if (!t || !t.closest) return null;
+            return t.closest('input[type="date"]');
+          }
+          document.addEventListener('click', function (e) { openPicker(dateField(e)); });
+          document.addEventListener('focusin', function (e) { openPicker(dateField(e)); });
+        })();
+
         // -------- Navigation --------
         (function initNav() {
           var navWrap = document.getElementById('navWrap');
