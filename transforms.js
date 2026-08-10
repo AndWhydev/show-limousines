@@ -128,7 +128,7 @@ function apply(slug, main, C) {
 
 /* --- wedding re-integration (see approved merge plan) --- */
 const WEDDING_SLUGS = new Set([
-  'wedding-limousine-sydney', 'wedding-cars-limousines', 'wedding-limousine-hire-wollongong',
+  'wedding-limousine-sydney', 'wedding-limousine-hire-wollongong',
 ]);
 const PKG_PAGES = new Set(['wedding-limousine-sydney', 'wedding-limousine-hire-wollongong']);
 const SYDNEY = 'wedding-limousine-sydney';
@@ -203,13 +203,9 @@ function applyWedding(slug, main, C) {
     main = main.replace(/<section class="prose">[\s\S]*?<\/section>/, (prose) =>
       weddingIntroSection(prose) + '\n' + C.weddingPackages(pkgOpts) + '\n' + ourFleet(slug, C));
   }
-  // wedding-cars-limousines: convert the OLD static "Vehicles for your day" grid into the carousel
-  if (slug === 'wedding-cars-limousines') {
-    main = main.replace(/<section class="fleet" aria-labelledby="fleetGridHeading">[\s\S]*?<\/section>/, ourFleet(slug, C));
-  }
-  // All 3: stats strip + why-couples strip, directly under the hero (in that order)
+  // Both: stats strip + why-couples strip, directly under the hero (in that order)
   main = main.replace(/(<section class="page-hero[\s\S]*?<\/section>)/, `$1\n${statsStrip()}\n${C.whyChoose()}`);
-  // All 3: How It Works, placed after the testimonials section
+  // Both: How It Works, placed after the testimonials section
   main = main.replace(/(<section class="testi"[\s\S]*?<\/section>)/, `$1\n${C.howItWorks()}`);
   // Unify testimonials label to 165+ on wedding pages (overrides keep-item #5 here only)
   main = main.replace(/(<div class="testi__trust"><span>Trusted by<\/span>)16[05]\+ Five-Star reviews/, '$1165+ Five-Star reviews');

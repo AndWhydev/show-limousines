@@ -392,7 +392,6 @@ const BANNER = {
   'wedding-limousine-sydney': ['fleet-chrysler-gullwing-v2.jpg', '50%', true],
   'wedding-limousine-hire-wollongong': ['banner-wedding-chrysler-white.jpg', '50%', true],
   'wedding-limousine-shellharbour': ['banner-wedding-mercedes-s-class.jpg', '50%', false],
-  'wedding-cars-limousines': ['banner-wedding-rolls-royce.jpg', '50%', false],
   // Service pages
   'airport-limo-transfers-sydney': ['banner-service-airport-cruise.jpg', '66%', false],
   'cruise-transfer-sydney': ['banner-service-airport-cruise.jpg', '74%', false],
@@ -687,7 +686,7 @@ const written = [];
    `node build.js` can never re-flatten them. Shared chrome on them is kept in sync by
    stamp-chrome.js, which uses this same module's header()/footer()/subFooter(). */
 const RESTORE_SLUGS = new Set([
-  'wedding-cars-limousines', 'wedding-limousine-sydney', 'wedding-limousine-hire-wollongong', 'wedding-limousine-shellharbour',
+  'wedding-limousine-sydney', 'wedding-limousine-hire-wollongong', 'wedding-limousine-shellharbour',
   'airport-limo-transfers-sydney', 'cruise-transfer-sydney', 'birthday-limousine-sydney',
   'concert-limo-transfers-sydney', 'school-formal-limousine-hire-sydney', 'corporate-transfers',
   'party-limousine-hire-sydney', 'hens-party-limo-sydney',
@@ -1065,7 +1064,7 @@ if (require.main !== module) {
 /* ----- Build everything ----- */
 const SERVICES = [
   ['wedding-limousine-sydney', 'Wedding Limousines'], ['wedding-limousine-hire-wollongong', 'Wedding Limousines'],
-  ['wedding-limousine-shellharbour', 'Wedding Limousines'], ['wedding-cars-limousines', 'Wedding Limousines'],
+  ['wedding-limousine-shellharbour', 'Wedding Limousines'],
   ['airport-limo-transfers-sydney', 'Services'], ['cruise-transfer-sydney', 'Services'], ['birthday-limousine-sydney', 'Services'],
   ['concert-limo-transfers-sydney', 'Services'], ['school-formal-limousine-hire-sydney', 'Services'], ['corporate-transfers', 'Services'],
   ['party-limousine-hire-sydney', 'Services'], ['hens-party-limo-sydney', 'Services'],

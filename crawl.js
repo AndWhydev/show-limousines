@@ -32,7 +32,6 @@ const PAGES = [
   ['wedding-limousine-sydney', 'wedding-limousine-sydney/'],
   ['wedding-limousine-hire-wollongong', 'wedding-limousine-hire-wollongong/'],
   ['wedding-limousine-shellharbour', 'wedding-limousine-shellharbour/'],
-  ['wedding-cars-limousines', 'wedding-cars-limousines/'],
   ['airport-limo-transfers-sydney', 'airport-limo-transfers-sydney/'],
   ['cruise-transfer-sydney', 'cruise-transfer-sydney/'],
   ['birthday-limousine-sydney', 'birthday-limousine-sydney/'],
