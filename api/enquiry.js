@@ -16,7 +16,7 @@ const FIELD_ORDER = [
   ['name', 'Name'],
   ['phone', 'Phone'],
   ['email', 'Email'],
-  ['date', 'Event date'],
+  ['date', 'Date'],
   ['pickup_time', 'Pick up time'],
   ['dropoff_time', 'Drop off time'],
   ['pickup_location', 'Pick up location'],
@@ -90,18 +90,16 @@ module.exports = async function handler(req, res) {
   var auDate = isoToAuDate(trim(body.date));
   var submittedFrom = trim(body.submitted_from) || '(unknown page)';
 
-  // Body starts with the name/phone/email line so mobile inbox previews surface
-  // the useful data first. Name/phone/email are skipped in the field loop below
-  // to avoid duplicating them.
+  // One short lead line, then every supplied field as its own "Label: value"
+  // line. No greeting or explanatory paragraphs — inbox previews only surface
+  // the opening lines, so they have to carry the actual enquiry data.
   var lines = [];
-  lines.push(name + ' · ' + phone + ' · ' + email);
+  lines.push('You have a new website form submission:');
   lines.push('');
   FIELD_ORDER.forEach(function (pair) {
     var key = pair[0], label = pair[1];
-    if (key === 'name' || key === 'phone' || key === 'email') return;
-    var val = trim(body[key]);
+    var val = key === 'date' ? auDate : trim(body[key]);
     if (!val) return;
-    if (key === 'date') val = auDate;
     lines.push(label + ': ' + val);
   });
   lines.push('');
