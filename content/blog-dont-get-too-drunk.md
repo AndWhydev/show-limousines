@@ -30,7 +30,7 @@ images: 5
 - Stretch Hummer (16pax)
 - Mercedes Mercedes S Class AMG Line Sedan
 - Mercedes Valente Luxury Minivan
-- Mercedes Sprinter Limo Van
+- Mercedes Sprinter Party Limo Van
 - Rolls Royce Rolls Royce Phantom
 - About us Gallery
 - Blog

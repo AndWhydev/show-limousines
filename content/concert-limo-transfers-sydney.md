@@ -32,7 +32,7 @@ Our fleet of luxury vehicles can fit both big and small groups and are perfect f
 ### You can choose from:
 - Chrysler Super Stretch Limo – up to 10 passengers
 - Hummer Stretch Limo for Hire – up to 14 or 16 passengers
-- Mercedes Sprinter Limo Van – 14 passengers
+- Mercedes Sprinter Party Limo Van – 14 passengers
 - Mercedes Valente Minibus – 7 passengers
 Contact us today or fill out our online enquiry form so we can find the ideal vehicle for you.
 ## Services We Provide
@@ -53,7 +53,7 @@ Contact us today or fill out our online enquiry form so we can find the ideal ve
 10 Passengers | Learn more >
 ### Chrysler Super Stretch Limousine Black
 ### Mercedes S Class AMG Line Sedan
-### Mercedes Sprinter Limo Van
+### Mercedes Sprinter Party Limo Van
 14 Passengers | Learn more >
 ### Rolls Royce Phantom Sedan
 ### Mercedes Valente Minivan

@@ -53,7 +53,7 @@ If you have a holiday coming up or are coming home for a trip, book a luxury air
 10 Passengers | Learn more >
 ### Chrysler Super Stretch Limousine Black
 ### Mercedes S Class AMG Line Sedan
-### Mercedes Sprinter Limo Van
+### Mercedes Sprinter Party Limo Van
 14 Passengers | Learn more >
 ### Rolls Royce Phantom Sedan
 ### Mercedes Valente Minivan
@@ -61,6 +61,6 @@ If you have a holiday coming up or are coming home for a trip, book a luxury air
 ### What areas do you service?
 We offer our Airport and Cruise Transfer services across Sydney, Wollongong, and all surrounding areas, including the Eastern Suburbs, inner west, Western Sydney, Penrith, Campbelltown, Marrickville, Parramatta, the Sutherland Shire, Bulli, Woonona, Thirroul, and Port Kembla.
 ### How many people can you fit?
-Our vehicles can seat between four and 16 passengers comfortably, depending on which vehicle you choose. For example, our Mercedes Sprinter Limo Van seats up to 14 passengers, while our Mercedes Sedan seats up to 4 passengers. Explore our fleet to see the comforts our vehicles offer.
+Our vehicles can seat between four and 16 passengers comfortably, depending on which vehicle you choose. For example, our Mercedes Sprinter Party Limo Van seats up to 14 passengers, while our Mercedes Sedan seats up to 4 passengers. Explore our fleet to see the comforts our vehicles offer.
 ### What other services do you provide?
 In addition to our airport & cruise transfer services, we also provide car and limousine hire and transfer services for weddings, concert transfers, hen’s parties, birthday parties, school formals, cruise transfers, and other events. Regardless of the occasion, our professional drivers are experienced to make sure you get to your destination on time and in style.

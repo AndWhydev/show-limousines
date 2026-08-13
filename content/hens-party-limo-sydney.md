@@ -23,7 +23,7 @@ Make your hen’s party truly unforgettable and hire a luxurious limousine or pa
 - Air conditioning
 - Comfortable seating
 Each vehicle comes with a professional chauffeur and seats between four and 16 passengers – read about the factors affecting limo hire costs. Choose from:
-- Mercedes Sprinter Limo Van – perfect for up to 14 guests
+- Mercedes Sprinter Party Limo Van – perfect for up to 14 guests
 - Chrysler Super Stretch Limousine
 - Hummer hire in Sydney
 - Mercedes Line Sedan
@@ -34,7 +34,7 @@ Show Limousine offers an affordable yet luxurious limo service to ensure your he
 Whether you have a large group of friends or you're celebrating with your nearest and dearest, we have limo and car vehicles that seat from four to 16 passengers. Choose from our most popular party vehicles:
 - Chrysler Stretch Limousines
 - Hummer Stretch Limousine
-- Mercedes Sprinter Limo Van
+- Mercedes Sprinter Party Limo Van
 - Mercedes Sedan
 Or call us to discuss the perfect car hire for your big night.
 We offer hen’s party limo hire services to the entirety of the metropolitan area of Sydney – from the CBD, to Western Sydney, North Sydney, South Sydney, Northern Beaches, the Eastern Suburbs, all the way down to Wollongong. Whether you’re hitting Oxford Street, Kings Cross, Cargo bar in the city, or the best bars across Parramatta and Sutherland Shire – we’ve got your ride covered.
@@ -56,7 +56,7 @@ We offer hen’s party limo hire services to the entirety of the metropolitan ar
 10 Passengers | Learn more >
 ### Chrysler Super Stretch Limousine Black
 ### Mercedes S Class AMG Line Sedan
-### Mercedes Sprinter Limo Van
+### Mercedes Sprinter Party Limo Van
 14 Passengers | Learn more >
 ### Rolls Royce Phantom Sedan
 ### Mercedes Valente Minivan

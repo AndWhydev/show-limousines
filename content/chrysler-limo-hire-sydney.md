@@ -73,7 +73,7 @@ Add a touch of elegance to the Year 12 formal with a limo hire. Our Chrysler Sup
 10 Passengers | Learn more >
 ### Chrysler Super Stretch Limousine Black
 ### Mercedes S Class AMG Line Sedan
-### Mercedes Sprinter Limo Van
+### Mercedes Sprinter Party Limo Van
 14 Passengers | Learn more >
 ### Rolls Royce Phantom Sedan
 ### Mercedes Valente Minivan

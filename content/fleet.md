@@ -80,14 +80,14 @@ Uniformed Chauffeur
 Comfortable seats
 7 Passengers (plus Chauffeur) – Spacious Interior – Auto Sliding Doors – Black in Colour – Air Conditioned – Uniformed Chauffeur – Comfortable Seats
 Mercedes Valente minivans seating up to 7 passengers each. Versatile vehicles suitable for weddings, airport transfer, cruise transfers, concert transfers or any other occasion.
-Mercedes Sprinter Limo Van – 14 Passengers
+Mercedes Sprinter Party Limo Van – 14 Passengers
 14 passengers ( plus Chauffeur )
 Bluetooth connectivity
 Party Vibe
 Black exterior
 Limousine style seating
 14 Passengers (plus Chauffeur) – LED Lights- 2 Bars- Bluetooth Connectivity- Premium Sound System- Black in Colour – Air Conditioned – Uniformed Chauffeur – Comfortable Limousine Style Seating
-Mercedes Sprinter Limo Van can seat up to 14 passengers. The perfect vehicle to transport groups comfortably. Suitable for weddings, special events, airport transfers, cruise transfers, concert transfers, hen’s parties, school formals or any other occasion.
+Mercedes Sprinter Party Limo Van can seat up to 14 passengers. The perfect vehicle to transport groups comfortably. Suitable for weddings, special events, airport transfers, cruise transfers, concert transfers, hen’s parties, school formals or any other occasion.
 # our collection
 ## Browse OurLuxury Fleet
 ### Hummer Stretch Limousine
@@ -97,7 +97,7 @@ Mercedes Sprinter Limo Van can seat up to 14 passengers. The perfect vehicle to 
 10 Passengers | Learn more >
 ### Chrysler Super Stretch Limousine Black
 ### Mercedes S Class AMG Line Sedan
-### Mercedes Sprinter Limo Van
+### Mercedes Sprinter Party Limo Van
 14 Passengers | Learn more >
 ### Rolls Royce Phantom Sedan
 ### Mercedes Valente Minivan

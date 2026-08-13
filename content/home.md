@@ -46,7 +46,7 @@ At Show Limousines, there’s nothing more we enjoy than bringing your special e
 #### Chrysler Super Stretch Limousine Black
 #### Mercedes S Class AMG Line Sedan
 4 Passengers
-#### Mercedes Sprinter Limo Van
+#### Mercedes Sprinter Party Limo Van
 #### Rolls royce phantom sedan
 #### Mercedes Valente Minivan
 7 Passengers
