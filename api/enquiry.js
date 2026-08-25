@@ -8,7 +8,7 @@
    ============================================================ */
 'use strict';
 
-const WEB3FORMS_KEY = '0e0cebd4-998c-4dd9-8e52-2b955f56f6c2';
+const WEB3FORMS_KEY = 'd0b81b3f-7a21-4f85-8daf-99a4816cdc69';
 const WEB3FORMS_URL = 'https://api.web3forms.com/submit';
 const COUNTER_KEY = 'sl:enquiry_counter';
 
