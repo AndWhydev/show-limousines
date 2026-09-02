@@ -120,11 +120,19 @@ module.exports = async function handler(req, res) {
   // from_name = customer's name so the inbox sender reads "Alice" not "Show
   // Limousines Website". replyto (not email) keeps the customer's address out
   // of the rendered body while still wiring Gmail's Reply button correctly.
+  // Individual field keys (Name/Phone/Email/Date) are included so Web3Forms
+  // uses its summary-style template — this puts the useful data in the mobile
+  // inbox preview instead of their generic "Form Submission Data..." wrapper.
   var payload = {
     access_key: WEB3FORMS_KEY,
     subject: subject,
     from_name: name,
     replyto: email,
+    Name: name,
+    Phone: phone,
+    Email: email,
+    Date: auDate,
+    Occasion: occasion,
     message: enquiryBody,
   };
 
