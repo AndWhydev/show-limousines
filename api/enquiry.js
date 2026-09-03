@@ -14,15 +14,15 @@ const COUNTER_KEY = 'sl:enquiry_counter';
 
 const FIELD_ORDER = [
   ['phone', 'Phone'],
+  ['occasion', 'Occasion'],
   ['name', 'Name'],
-  ['email', 'Email'],
   ['date', 'Date'],
+  ['email', 'Email'],
   ['pickup_time', 'Pick up time'],
   ['dropoff_time', 'Drop off time'],
   ['pickup_location', 'Pick up location'],
   ['dropoff_location', 'Drop off location'],
   ['passengers', 'Passengers'],
-  ['occasion', 'Occasion'],
   ['comments', 'Comments'],
 ];
 
@@ -121,19 +121,15 @@ module.exports = async function handler(req, res) {
   // from_name = customer's name so the inbox sender reads "Alice" not "Show
   // Limousines Website". replyto (not email) keeps the customer's address out
   // of the rendered body while still wiring Gmail's Reply button correctly.
-  // Individual field keys (Name/Phone/Email/Date) are included so Web3Forms
-  // uses its summary-style template — this puts the useful data in the mobile
-  // inbox preview instead of their generic "Form Submission Data..." wrapper.
+  // DELIBERATELY no individual field keys (Name/Phone/Email/etc) — sending
+  // those triggers Web3Forms Pro's summary template, which prepends "Form
+  // Submission Data from your website..." and buries our real body below the
+  // mobile preview cutoff. Sending only `message` makes Web3Forms use it raw.
   var payload = {
     access_key: WEB3FORMS_KEY,
     subject: subject,
     from_name: name,
     replyto: email,
-    Name: name,
-    Phone: phone,
-    Email: email,
-    Date: auDate,
-    Occasion: occasion,
     message: enquiryBody,
   };
 
