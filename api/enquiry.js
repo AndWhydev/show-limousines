@@ -107,13 +107,13 @@ module.exports = async function handler(req, res) {
   lines.push('Enquiry ' + (ref ? '#' + ref : '(ref unavailable)') + ' · Submitted from: ' + submittedFrom);
   var enquiryBody = lines.join('\n');
 
-  // Subject packs ref + name + phone + date + occasion so Mick can triage from
+  // Subject packs ref + date + name + phone + occasion so Mick can triage from
   // the inbox list without opening the email. Kills Gmail threading too.
   var subjectParts = [];
   if (ref) subjectParts.push('#' + ref);
+  if (auDate) subjectParts.push(auDate);
   subjectParts.push(name);
   if (phone) subjectParts.push(phone);
-  if (auDate) subjectParts.push(auDate);
   if (occasion) subjectParts.push(occasion);
   var subject = subjectParts.join(' · ');
 
