@@ -13,8 +13,8 @@ const WEB3FORMS_URL = 'https://api.web3forms.com/submit';
 const COUNTER_KEY = 'sl:enquiry_counter';
 
 const FIELD_ORDER = [
-  ['name', 'Name'],
   ['phone', 'Phone'],
+  ['name', 'Name'],
   ['email', 'Email'],
   ['date', 'Date'],
   ['pickup_time', 'Pick up time'],
@@ -90,12 +90,10 @@ module.exports = async function handler(req, res) {
   var auDate = isoToAuDate(trim(body.date));
   var submittedFrom = trim(body.submitted_from) || '(unknown page)';
 
-  // One short lead line, then every supplied field as its own "Label: value"
-  // line. No greeting or explanatory paragraphs — inbox previews only surface
-  // the opening lines, so they have to carry the actual enquiry data.
+  // Every supplied field as its own "Label: value" line — no preamble.
+  // Inbox previews only surface the first characters of the body, so the
+  // very first line has to carry Phone (Mick's primary triage signal).
   var lines = [];
-  lines.push('You have a new website form submission:');
-  lines.push('');
   FIELD_ORDER.forEach(function (pair) {
     var key = pair[0], label = pair[1];
     var val = key === 'date' ? auDate : trim(body[key]);
