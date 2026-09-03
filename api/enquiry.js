@@ -107,12 +107,15 @@ module.exports = async function handler(req, res) {
   lines.push('Enquiry ' + (ref ? '#' + ref : '(ref unavailable)') + ' · Submitted from: ' + submittedFrom);
   var enquiryBody = lines.join('\n');
 
-  // Unique subject — kills Gmail desktop threading.
-  var subjectParts = ['New enquiry'];
+  // Subject packs ref + name + phone + date + occasion so Mick can triage from
+  // the inbox list without opening the email. Kills Gmail threading too.
+  var subjectParts = [];
   if (ref) subjectParts.push('#' + ref);
-  subjectParts.push('— ' + name);
-  if (occasion) subjectParts.push('(' + occasion + ')');
-  var subject = subjectParts.join(' ');
+  subjectParts.push(name);
+  if (phone) subjectParts.push(phone);
+  if (auDate) subjectParts.push(auDate);
+  if (occasion) subjectParts.push(occasion);
+  var subject = subjectParts.join(' · ');
 
   // Web3Forms free tier blocks server-to-server POSTs — the browser must be the
   // client. We return the fully-composed Web3Forms payload so main.js can relay
