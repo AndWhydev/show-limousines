@@ -106,20 +106,23 @@ module.exports = async function handler(req, res) {
   lines.push('Enquiry ' + (ref ? '#' + ref : '(ref unavailable)') + ' · Submitted from: ' + submittedFrom);
   var enquiryBody = lines.join('\n');
 
-  // Worded subject reads like a real email to spam filters. The unique #ref
-  // still stops Gmail threading enquiries together.
-  //   "New enquiry #123 – Wedding, 14/11/2026 – Jane Citizen"
-  var subject = 'New enquiry' + (ref ? ' #' + ref : '') +
-    ' – ' + occasion + (auDate ? ', ' + auDate : '') +
-    ' – ' + name;
+  // Subject packs ref + date + name + phone + occasion so Mick can triage from
+  // the inbox list without opening the email. Kills Gmail threading too.
+  var subjectParts = [];
+  if (ref) subjectParts.push('#' + ref);
+  if (auDate) subjectParts.push(auDate);
+  subjectParts.push(name);
+  if (phone) subjectParts.push(phone);
+  if (occasion) subjectParts.push(occasion);
+  var subject = subjectParts.join(' · ');
 
   // Web3Forms free tier blocks server-to-server POSTs — the browser must be the
   // client. We return the fully-composed Web3Forms payload so main.js can relay
   // it from the browser in a second hop.
-  // from_name is a fixed business name — never user input — so a stranger's
-  // name or bot text can't land in the From line. replyto (not email) keeps
-  // the customer's address out of the rendered body while still wiring
-  // Gmail's Reply button; it's omitted when the email doesn't look valid.
+  // from_name = customer's name so the inbox sender reads "Alice" not "Show
+  // Limousines Website". replyto (not email) keeps the customer's address out
+  // of the rendered body while still wiring Gmail's Reply button correctly;
+  // it's omitted when the email doesn't look valid.
   // DELIBERATELY no individual field keys (Name/Phone/Email/etc) — sending
   // those triggers Web3Forms Pro's summary template, which prepends "Form
   // Submission Data from your website..." and buries our real body below the
@@ -127,7 +130,7 @@ module.exports = async function handler(req, res) {
   var payload = {
     access_key: WEB3FORMS_KEY,
     subject: subject,
-    from_name: 'Show Limousines Website',
+    from_name: name,
     message: enquiryBody,
   };
   if (EMAIL_RE.test(email)) payload.replyto = email;
