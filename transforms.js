@@ -83,7 +83,7 @@ function apply(slug, main, C) {
   /* ---------- universal keep-items (any page that has the section) ---------- */
   // K5 testimonials label
   main = main.replace(/(<div class="testi__trust"><span>Trusted by<\/span>)160\+ Sydney clients/g,
-    '$1165+ Five-Star reviews');
+    '$1175+ Five-Star reviews');
   // K4 quote field rename
   main = main.replace(/>Additional Comments</g, '>Additional Details<');
   // K7 add the wedding-cars FAQ (keep page-specific items; insert as first) —
@@ -134,14 +134,14 @@ const PKG_PAGES = new Set(['wedding-limousine-sydney', 'wedding-limousine-hire-w
 const SYDNEY = 'wedding-limousine-sydney';
 const SYDNEY_SUB = 'Luxury wedding cars, stretch limousines and professional chauffeurs for your special day.';
 
-/* "165+ 5-Star Google Reviews | 10+ Years | 365 Days a year" trust bar under the hero,
+/* "175+ 5-Star Google Reviews | 10+ Years | 365 Days a year" trust bar under the hero,
    reusing the homepage hero stat typography (.hero__stat-num/.hero__stat-label/.hero__stat-sep). */
 function statsStrip() {
   const stat = (n, l) => `<div class="hero__stat"><span class="hero__stat-num">${n}</span> <span class="hero__stat-label">${l}</span></div>`;
   const sep = '<span class="hero__stat-sep" aria-hidden="true"></span>';
   return `    <section class="wstat" aria-label="Show Limousines at a glance">
       <div class="wstat__inner reveal">
-        ${stat('165+', '5-Star Google Reviews')}
+        ${stat('175+', '5-Star Google Reviews')}
         ${sep}
         ${stat('10+', 'Years')}
         ${sep}
@@ -207,8 +207,8 @@ function applyWedding(slug, main, C) {
   main = main.replace(/(<section class="page-hero[\s\S]*?<\/section>)/, `$1\n${statsStrip()}\n${C.whyChoose()}`);
   // Both: How It Works, placed after the testimonials section
   main = main.replace(/(<section class="testi"[\s\S]*?<\/section>)/, `$1\n${C.howItWorks()}`);
-  // Unify testimonials label to 165+ on wedding pages (overrides keep-item #5 here only)
-  main = main.replace(/(<div class="testi__trust"><span>Trusted by<\/span>)16[05]\+ Five-Star reviews/, '$1165+ Five-Star reviews');
+  // Unify testimonials label to 175+ on wedding pages (overrides keep-item #5 here only)
+  main = main.replace(/(<div class="testi__trust"><span>Trusted by<\/span>)1[67][05]\+ Five-Star reviews/, '$1175+ Five-Star reviews');
   return main;
 }
 
