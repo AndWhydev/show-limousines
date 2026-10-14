@@ -123,6 +123,22 @@ function apply(slug, main, C) {
   /* ---------- wedding pages: re-integrate today's bespoke sections ---------- */
   if (WEDDING_SLUGS.has(slug)) main = applyWedding(slug, main, C);
 
+  /* ---------- Wollongong location page: no Hummer content (client request, Oct 2026) ---------- */
+  if (slug === 'limo-hire-wollongong') main = dropHummer(main);
+
+  return main;
+}
+
+/* Remove Hummer content from a page's <main>: the Hummer fleet card(s), the "stretched Hummer"
+   testimonial slide (counter total follows the slide count) and the Hummer clause in the
+   capacity FAQ. Site-wide chrome (nav Hummer menu, footer "Hummer Hire" link) is NOT touched —
+   it lives outside <main>. Idempotent. */
+function dropHummer(main) {
+  main = main.replace(/\s*<article class="fleet-card[^"]*">(?:(?!<\/article>)[\s\S])*?fleet-card__badge">Hummer<(?:(?!<\/article>)[\s\S])*?<\/article>/g, '');
+  main = main.replace(/\s*<div class="testi__slide[^"]*" data-slide="\d+">\s*<p class="testi__quote">Hired a stretched Hummer[\s\S]*?<\/div>\s*<\/div>\s*<\/div>/, '');
+  const slides = (main.match(/class="testi__slide[ "]/g) || []).length;
+  if (slides) main = main.replace(/(<span class="testi__counter"><strong id="testiCur">01<\/strong> \/ )\d+/, `$1${String(slides).padStart(2, '0')}`);
+  main = main.replace('For our stretch limousines and hummer limousines, we can fit up to 16 guests in one car.', 'For our stretch limousines, we can fit up to 10 guests in one car.');
   return main;
 }
 
@@ -212,4 +228,4 @@ function applyWedding(slug, main, C) {
   return main;
 }
 
-module.exports = { apply };
+module.exports = { apply, dropHummer };

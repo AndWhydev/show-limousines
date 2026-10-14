@@ -39,7 +39,6 @@ Whether you’re heading to a concert, the airport, or a cruise, our Wollongong 
 ### Corporate Transfers
 # our collection
 ## Browse OurLuxury Fleet
-### Hummer Stretch Limousine
 ### Chrysler Super Stretch Limousines Double Gull Wing Doors
 ### Chrysler Super Stretch Limousine "Black Edition"
 ### Chrysler Super Stretch Limousine
