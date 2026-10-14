@@ -723,6 +723,9 @@ const PINNED = new Set([
   // Hand-built landing pages (Oct 2026), modelled on the wedding page layout. Their static
   // index.html is the source of truth; content/<slug>.md holds the title/description record.
   'limo-hire-sydney', 'stretch-limousine-sydney',
+  // Suburb location pages (see location-pages-log.md). Static index.html is the source of truth.
+  'limo-hire-abbotsbury', 'limo-hire-abbotsford', 'limo-hire-acacia-gardens', 'limo-hire-agnes-banks', 'limo-hire-airds', 'limo-hire-alexandria',
+  'wedding-car-hire-abbotsbury', 'wedding-car-hire-abbotsford', 'wedding-car-hire-acacia-gardens', 'wedding-car-hire-agnes-banks', 'wedding-car-hire-airds', 'wedding-car-hire-alexandria',
 ]);
 
 function emit(slug, parts) {
