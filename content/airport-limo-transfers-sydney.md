@@ -12,11 +12,11 @@ images: 115
 ---
 
 # Luxury Airport Transfers Sydney
-Trusted by 175+ satisfied clients who have rated us five stars, Show Limousines provide comfortable and luxurious transfers in Sydney and Wollongong to Sydney Kingsford domestic and international airport.
+Trusted by 180+ satisfied clients who have rated us five stars, Show Limousines provide comfortable and luxurious transfers in Sydney and Wollongong to Sydney Kingsford domestic and international airport.
 ## Call 0422 023 413
 Or get a quick quote
 ## Limousine Transfer Services for Sydney Airport
-Get to the airport in comfortable style with Show Limousines. Backed by a five-star Google rating from 175+ happy customers, we are Sydney and Wollongong’s trusted car and limo hire transfer company, with a fleet of over 10 vehicles and experienced, professional chauffeurs.
+Get to the airport in comfortable style with Show Limousines. Backed by a five-star Google rating from 180+ happy customers, we are Sydney and Wollongong’s trusted car and limo hire transfer company, with a fleet of over 10 vehicles and experienced, professional chauffeurs.
 Choose the right vehicle for your group:
 - White Chrysler Super Stretch Limousine – seats up to 10 passengers
 - Mercedes Sedan – seats up to 4 passengers

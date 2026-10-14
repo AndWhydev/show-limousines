@@ -12,7 +12,7 @@ images: 118
 ---
 
 # Hen's Party Limousines Sydney
-Backed by a five-star rating on Google from 175+ happy clients, Show Limousines provides premium hen party limo hire across Sydney, Wollongong, and all surrounding areas.
+Backed by a five-star rating on Google from 180+ happy clients, Show Limousines provides premium hen party limo hire across Sydney, Wollongong, and all surrounding areas.
 ## Call 0422 023 413
 Or get a quick quote
 ## Hen Party Limo Services Across Sydney & Wollongong

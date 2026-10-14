@@ -14,7 +14,7 @@ images: 125
 # Limo Hire Sydney
 Limousines for weddings, formals, birthdays,airport transfers, events, and special occasions.
 #### 5.0 Google Rating
-175+ Verified Reviews From Real Customers
+180+ Verified Reviews From Real Customers
 #### Serving Sydney
 Pick Up & Drop Off Across Sydney
 #### Red Carpet
@@ -65,7 +65,7 @@ We take great pride in delivering exceptional customer service – from the mome
 #### Servicing Greater Sydney & Wollongong
 #### 0422 023 413
 #### info@showlimousines.com.au
-#### 175+ 5 Star Google Reviews
+#### 180+ 5 Star Google Reviews
 #### 365 Days a Year
 ### Customer Testimonials
 ### Hear From Show Limousines' Customers
