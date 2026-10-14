@@ -17,7 +17,7 @@ const FIELD_ORDER = [
   ['phone', 'Phone'],
   ['occasion', 'Occasion'],
   ['name', 'Name'],
-  ['date', 'Date'],
+  ['date', 'Date of event'],
   ['email', 'Email'],
   ['pickup_time', 'Pick up time'],
   ['dropoff_time', 'Drop off time'],
