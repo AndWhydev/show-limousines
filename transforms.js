@@ -124,7 +124,11 @@ function apply(slug, main, C) {
   if (WEDDING_SLUGS.has(slug)) main = applyWedding(slug, main, C);
 
   /* ---------- Wollongong location page: no Hummer content (client request, Oct 2026) ---------- */
-  if (slug === 'limo-hire-wollongong') main = dropHummer(main);
+  if (slug === 'limo-hire-wollongong') {
+    main = dropHummer(main);
+    // 4 cards left: balanced 2x2 on desktop/tablet (.fleet__grid--quad in styles.css), 1 column on phones.
+    main = main.replace('<div class="fleet__grid">', '<div class="fleet__grid fleet__grid--quad">');
+  }
 
   return main;
 }

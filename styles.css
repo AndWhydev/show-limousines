@@ -1319,6 +1319,11 @@
       background: rgba(var(--accent-rgb), 0.15);
       transform: rotate(45deg);
     }
+    /* Four-card fleet grids (e.g. Wollongong location page): balanced 2x2 instead of 3 + 1.
+       Desktop/tablet only — the 640px rule below still stacks it to one column on phones. */
+    @media (min-width: 641px) {
+      .fleet__grid--quad { grid-template-columns: repeat(2, 1fr); }
+    }
     @media (max-width: 1024px) {
       .fleet__grid { grid-template-columns: repeat(2, 1fr); }
       .fleet__header { grid-template-columns: 1fr; gap: 18px; align-items: start; }
