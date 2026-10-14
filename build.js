@@ -78,6 +78,8 @@ const NAV = [
     { label: 'Wedding Car Hire Wollongong', href: '/wedding-limousine-hire-wollongong/' },
   ] },
   { label: 'Services', href: '/services/', wide: true, children: [
+    { label: 'Limo Hire Sydney', href: '/limo-hire-sydney/' },
+    { label: 'Stretch Limousines', href: '/stretch-limousine-sydney/' },
     { label: 'Airport Transfers', href: '/airport-limo-transfers-sydney/' },
     { label: 'Cruise Transfers', href: '/cruise-transfer-sydney/' },
     { label: 'Birthday Limos', href: '/birthday-limousine-sydney/' },
@@ -235,6 +237,7 @@ const FOOT_EVENT = [
   ['Airport Transfers', '/airport-limo-transfers-sydney/'], ['Birthday Transfers', '/birthday-limousine-sydney/'],
   ['School Formals', '/school-formal-limousine-hire-sydney/'], ['Party & Event Car Hire', '/party-limousine-hire-sydney/'],
   ['Corporate Transfers', '/corporate-transfers/'],
+  ['Limo Hire Sydney', '/limo-hire-sydney/'], ['Stretch Limousine Hire', '/stretch-limousine-sydney/'],
 ];
 const FOOT_LOC = [
   ['Limo Hire Sydney', '/'], ['Campbelltown', '/limo-hire-campbelltown/'], ['Eastern Suburbs', '/limo-hire-eastern-suburbs/'],
@@ -717,6 +720,9 @@ const PINNED = new Set([
   'limo-hire-penrith', 'limo-hire-sutherland-shire', 'limo-hire-wollongong',
   // Contact
   'contact',
+  // Hand-built landing pages (Oct 2026), modelled on the wedding page layout. Their static
+  // index.html is the source of truth; content/<slug>.md holds the title/description record.
+  'limo-hire-sydney', 'stretch-limousine-sydney',
 ]);
 
 function emit(slug, parts) {
