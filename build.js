@@ -240,7 +240,7 @@ const FOOT_EVENT = [
   ['Limo Hire Sydney', '/limo-hire-sydney/'], ['Stretch Limousine Hire', '/stretch-limousine-sydney/'],
 ];
 const FOOT_LOC = [
-  ['Limo Hire Sydney', '/'], ['Campbelltown', '/limo-hire-campbelltown/'], ['Eastern Suburbs', '/limo-hire-eastern-suburbs/'],
+  ['Limo Hire Sydney', '/limo-hire-sydney/'], ['Campbelltown', '/limo-hire-campbelltown/'], ['Eastern Suburbs', '/limo-hire-eastern-suburbs/'],
   ['Inner West', '/limo-hire-inner-west/'], ['Marrickville', '/limo-hire-marrickville/'], ['Northern Beaches', '/limo-hire-northern-beaches/'],
   ['Parramatta', '/limo-hire-parramatta/'], ['Penrith', '/limo-hire-penrith/'], ['Sutherland Shire', '/limo-hire-sutherland-shire/'], ['Wollongong', '/limo-hire-wollongong/'],
 ];
