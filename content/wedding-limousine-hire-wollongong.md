@@ -3,7 +3,7 @@ slug: wedding-limousine-hire-wollongong
 source: https://www.showlimousines.com.au/wedding-limousine-hire-wollongong/
 status: 200
 title: "Wollongong Wedding Limo Hire | Show Limousines & Wedding Cars"
-description: "Show Limousines provide modern luxury Chrysler super stretch Limousines, Hummer Limousines, Wedding Limo Hire and Limo Hire in Sydney and Wollongong."
+description: "Show Limousines provide modern luxury Chrysler super stretch Limousines, Wedding Limo Hire and Limo Hire in Sydney and Wollongong."
 canonical: https://www.showlimousines.com.au/wedding-limousine-hire-wollongong/
 og_title: ""
 og_description: ""

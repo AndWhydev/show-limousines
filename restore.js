@@ -54,7 +54,7 @@ for (const slug of C.RESTORE_SLUGS) {
   const mainM = old.match(/<main[^>]*>[\s\S]*?<\/main>/);
   if (!headM || !mainM) { missing.push(file + ' (no head/main)'); continue; }
 
-  const head = headM[0];
+  const head = transforms.applyHead ? transforms.applyHead(slug, headM[0]) : headM[0];
   let main = mainM[0];
   main = transforms.apply(slug, main, C); // keep-items + today's work
   main = C.responsify(main);              // retina AVIF/WebP srcset on fleet imgs

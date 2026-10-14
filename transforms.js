@@ -202,10 +202,12 @@ ${inner}
 
 const WOLLONGONG = 'wedding-limousine-hire-wollongong';
 const FLEET_INTRO = 'Slide through our full wedding fleet — limousines, stretch Hummers, sedans and people-movers.';
+const FLEET_INTRO_NO_HUMMER = 'Slide through our full wedding fleet — limousines, sedans and people-movers.';
 function ourFleet(slug, C) {
   // Wollongong shows no Hummer stretch images, so its carousel drops both Hummers.
-  const cars = slug === WOLLONGONG ? C.VEHICLES.filter(v => v.badge !== 'Hummer') : C.VEHICLES;
-  return C.fleetCarousel('Our Fleet', FLEET_INTRO, cars);
+  const noHummer = slug === WOLLONGONG;
+  const cars = noHummer ? C.VEHICLES.filter(v => v.badge !== 'Hummer') : C.VEHICLES;
+  return C.fleetCarousel('Our Fleet', noHummer ? FLEET_INTRO_NO_HUMMER : FLEET_INTRO, cars);
 }
 
 function applyWedding(slug, main, C) {
@@ -225,7 +227,28 @@ function applyWedding(slug, main, C) {
   main = main.replace(/(<section class="testi"[\s\S]*?<\/section>)/, `$1\n${C.howItWorks()}`);
   // Unify testimonials label to 180+ on wedding pages (overrides keep-item #5 here only)
   main = main.replace(/(<div class="testi__trust"><span>Trusted by<\/span>)1[678][05]\+ Five-Star reviews/, '$1180+ Five-Star reviews');
+  // Wollongong: no Hummer content at all (client request, Oct 2026)
+  if (slug === WOLLONGONG) main = dropHummerWeddingCopy(dropHummer(main));
   return main;
 }
 
-module.exports = { apply, dropHummer };
+/* Wollongong wedding page copy without Hummers — the client's own sentences with the Hummer
+   clause cut. Idempotent. Meta descriptions are handled in applyHead(). */
+function dropHummerWeddingCopy(main) {
+  return main
+    .replace('Wedding Limo Service, Wedding Limo Hire, Hummer Limo Hire and Wedding Car Hire', 'Wedding Limo Service, Wedding Limo Hire and Wedding Car Hire')
+    .replace('our range of Wedding Limousines, Hummer Limousines and Wedding Cars', 'our range of Wedding Limousines and Wedding Cars')
+    .replace('Wedding Limousine Service, Wedding Limo Hire, Hummer Wedding Limo Hire and Wedding Car Hire', 'Wedding Limousine Service, Wedding Limo Hire and Wedding Car Hire')
+    .replace(FLEET_INTRO, FLEET_INTRO_NO_HUMMER)
+    .replace('Chrysler Super Stretch limousines including the Gullwing, stretch Hummers, the Mercedes S-Class AMG sedan', 'Chrysler Super Stretch limousines including the Gullwing, the Mercedes S-Class AMG sedan');
+}
+
+/* <head> transforms (restore.js keeps the OLD head verbatim otherwise). */
+function applyHead(slug, head) {
+  if (slug === WOLLONGONG) {
+    head = head.split('Chrysler super stretch Limousines, Hummer Limousines, Wedding Limo Hire').join('Chrysler super stretch Limousines, Wedding Limo Hire');
+  }
+  return head;
+}
+
+module.exports = { apply, applyHead, dropHummer, dropHummerWeddingCopy };
