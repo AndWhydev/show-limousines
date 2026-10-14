@@ -237,7 +237,7 @@ const FOOT_EVENT = [
   ['Airport Transfers', '/airport-limo-transfers-sydney/'], ['Birthday Transfers', '/birthday-limousine-sydney/'],
   ['School Formals', '/school-formal-limousine-hire-sydney/'], ['Party & Event Car Hire', '/party-limousine-hire-sydney/'],
   ['Corporate Transfers', '/corporate-transfers/'],
-  ['Limo Hire Sydney', '/limo-hire-sydney/'], ['Stretch Limousine Hire', '/stretch-limousine-sydney/'],
+  ['Stretch Limousine Hire', '/stretch-limousine-sydney/'],
 ];
 const FOOT_LOC = [
   ['Limo Hire Sydney', '/limo-hire-sydney/'], ['Campbelltown', '/limo-hire-campbelltown/'], ['Eastern Suburbs', '/limo-hire-eastern-suburbs/'],
