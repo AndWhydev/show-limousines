@@ -534,6 +534,17 @@
              still works and nothing throws. */
         (function initDatePickers() {
           var lastEl = null, lastAt = 0;
+          /* Event dates can't be in the past: min = today (the visitor's local date, not UTC,
+             so early-morning Sydney visitors aren't offered yesterday). Set on load, and again
+             whenever a date field is focused/clicked so a tab left open past midnight, or the
+             fresh form cloned in after a submit, never carries a stale minimum. */
+          function todayISO() {
+            var d = new Date();
+            var p = function (n) { return (n < 10 ? '0' : '') + n; };
+            return d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate());
+          }
+          function setMin(el) { if (el) el.min = todayISO(); }
+          document.querySelectorAll('input[type="date"]').forEach(setMin);
           function now() {
             return (window.performance && performance.now) ? performance.now() : new Date().getTime();
           }
@@ -556,8 +567,8 @@
             if (!t || !t.closest) return null;
             return t.closest('input[type="date"]');
           }
-          document.addEventListener('click', function (e) { openPicker(dateField(e)); });
-          document.addEventListener('focusin', function (e) { openPicker(dateField(e)); });
+          document.addEventListener('click', function (e) { var el = dateField(e); setMin(el); openPicker(el); });
+          document.addEventListener('focusin', function (e) { var el = dateField(e); setMin(el); openPicker(el); });
         })();
 
         // -------- Navigation --------
