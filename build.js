@@ -447,7 +447,7 @@ const BANNER = {
   'thank-you': ['banner-hero-gullwing-poster.jpg', '50%', false],
   'sitemap': ['banner-fleet-chrysler-white-v2.jpg', '50%', false],
   // Blog posts
-  'blog-dont-get-too-drunk': ['banner-veh-mercedes-sprinter-v2.jpg', '82%', false],
+  'blog-dont-get-too-drunk': ['banner-blog-sprinter-street.jpg', '82%', false],
   'blog-limousine-hire-costs-sydney': ['banner-fleet-chrysler-black-v2.jpg', '50%', false],
   'blog-dos-and-donts': ['banner-fleet-chrysler-gullwing-v2.jpg', '50%', false],
   'blog-wedding-limo-checklist': ['banner-wedding-chrysler-gullwing.jpg', '50%', false],
