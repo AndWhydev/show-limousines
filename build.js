@@ -726,6 +726,8 @@ const PINNED = new Set([
   // Suburb location pages (see location-pages-log.md). Static index.html is the source of truth.
   'limo-hire-abbotsbury', 'limo-hire-abbotsford', 'limo-hire-acacia-gardens', 'limo-hire-agnes-banks', 'limo-hire-airds', 'limo-hire-alexandria',
   'wedding-car-hire-abbotsbury', 'wedding-car-hire-abbotsford', 'wedding-car-hire-acacia-gardens', 'wedding-car-hire-agnes-banks', 'wedding-car-hire-airds', 'wedding-car-hire-alexandria',
+  'limo-hire-alfords-point', 'limo-hire-allambie-heights', 'limo-hire-allawah', 'limo-hire-ambarvale', 'limo-hire-annandale', 'limo-hire-annangrove',
+  'wedding-car-hire-alfords-point', 'wedding-car-hire-allambie-heights', 'wedding-car-hire-allawah', 'wedding-car-hire-ambarvale', 'wedding-car-hire-annandale', 'wedding-car-hire-annangrove',
 ]);
 
 function emit(slug, parts) {

@@ -2,7 +2,7 @@
 
 Every suburb location page on showlimousines.com.au. Each monthly run builds the next 6 **Limousine Hire [Suburb]** and next 6 **Wedding Car Hire [Suburb]** pages, skipping anything already logged here.
 
-- **Suburb source:** https://www.lovelimousines.com.au/service-areas/ (suburb names only). Order: alphabetical, all Sydney suburbs before any Wollongong/Illawarra ones. As fetched on 14 Oct 2026 the list has 682 unique suburbs, all Greater Sydney — no Wollongong/Illawarra suburbs.
+- **Suburb source:** https://www.lovelimousines.com.au/service-areas/ (suburb names only). Order: alphabetical, all Sydney suburbs before any Wollongong/Illawarra ones. As fetched on 14 Oct 2026 and again on 9 Nov 2026 the list has 682 unique suburbs, all Greater Sydney — no Wollongong/Illawarra suburbs.
 - **Slugs:** `limo-hire-[suburb]/` and `wedding-car-hire-[suburb]/`. Pages are PINNED in `build.js`; `content/[slug].md` records title/description.
 - **Rules:** unique copy per page, real fleet/details only, no Hummers on Wollongong/Illawarra pages, not in the main menu, every page in `sitemap.xml`.
 
@@ -22,6 +22,18 @@ Every suburb location page on showlimousines.com.au. Each monthly run builds the
 | 2026-10-14 | Agnes Banks | 2753 | Wedding Car Hire | https://www.showlimousines.com.au/wedding-car-hire-agnes-banks/ |
 | 2026-10-14 | Airds | 2560 | Wedding Car Hire | https://www.showlimousines.com.au/wedding-car-hire-airds/ |
 | 2026-10-14 | Alexandria | 2015 | Wedding Car Hire | https://www.showlimousines.com.au/wedding-car-hire-alexandria/ |
+| 2026-11-09 | Alfords Point | 2234 | Limousine Hire | https://www.showlimousines.com.au/limo-hire-alfords-point/ |
+| 2026-11-09 | Allambie Heights | 2100 | Limousine Hire | https://www.showlimousines.com.au/limo-hire-allambie-heights/ |
+| 2026-11-09 | Allawah | 2218 | Limousine Hire | https://www.showlimousines.com.au/limo-hire-allawah/ |
+| 2026-11-09 | Ambarvale | 2560 | Limousine Hire | https://www.showlimousines.com.au/limo-hire-ambarvale/ |
+| 2026-11-09 | Annandale | 2038 | Limousine Hire | https://www.showlimousines.com.au/limo-hire-annandale/ |
+| 2026-11-09 | Annangrove | 2156 | Limousine Hire | https://www.showlimousines.com.au/limo-hire-annangrove/ |
+| 2026-11-09 | Alfords Point | 2234 | Wedding Car Hire | https://www.showlimousines.com.au/wedding-car-hire-alfords-point/ |
+| 2026-11-09 | Allambie Heights | 2100 | Wedding Car Hire | https://www.showlimousines.com.au/wedding-car-hire-allambie-heights/ |
+| 2026-11-09 | Allawah | 2218 | Wedding Car Hire | https://www.showlimousines.com.au/wedding-car-hire-allawah/ |
+| 2026-11-09 | Ambarvale | 2560 | Wedding Car Hire | https://www.showlimousines.com.au/wedding-car-hire-ambarvale/ |
+| 2026-11-09 | Annandale | 2038 | Wedding Car Hire | https://www.showlimousines.com.au/wedding-car-hire-annandale/ |
+| 2026-11-09 | Annangrove | 2156 | Wedding Car Hire | https://www.showlimousines.com.au/wedding-car-hire-annangrove/ |
 
 ## Pages that existed before this log (counted as built)
 
@@ -45,4 +57,4 @@ Every suburb location page on showlimousines.com.au. Each monthly run builds the
 
 ## Next up
 
-Next run starts at **Alfords Point** (Sutherland Shire, 2234), then Allambie Heights, Allawah, Ambarvale, Annandale, Annangrove — for both types. Skip Bankstown, Campbelltown, Liverpool, Marrickville, Parramatta and Penrith for Limousine Hire (already built).
+Next run starts at **Arcadia** (2159), then Arncliffe, Arndell Park, Artarmon, Ashbury, Ashcroft — for both types. Skip Bankstown, Campbelltown, Liverpool, Marrickville, Parramatta and Penrith for Limousine Hire (already built).
